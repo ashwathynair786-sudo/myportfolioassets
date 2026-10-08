@@ -233,6 +233,89 @@ button { font: inherit; color: inherit; }
 .spec .pg { font-size: 11px; letter-spacing: .14em; color: #8A8178; border-top: 1px solid #D8D2C7; padding-top: 12px; display: flex; justify-content: space-between; }
 @media (max-width: 820px) { .half, .full { grid-column: 1 / -1; } .spec { grid-template-columns: 1fr; } }
 
+
+.lamp-tile .eg { display: flex; align-items: center; gap: 10px; }
+.lamp-tile .eg img { width: 44px; height: 54px; object-fit: contain; flex: none; background: rgba(216,210,199,.06); border-radius: 4px; padding: 3px; }
+.spec .pic { display: grid; grid-template-rows: 1fr auto; gap: 12px; padding: 7% 7% 6%; place-items: stretch; }
+.spec .pic .hero-shot { display: grid; place-items: center; }
+.spec .pic .hero-shot img { width: min(100%, 340px); height: auto; filter: drop-shadow(0 18px 30px rgba(205,70,4,.18)); }
+.spec .pic .thumbs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.spec .pic .thumbs > * { aspect-ratio: 1; width: 100%; object-fit: cover; display: block; background: var(--moon); }
+.spec .pic .thumbs svg { padding: 10%; overflow: visible; }
+
+/* ---------- website ---------- */
+.browser { border: 1px solid var(--soot); border-radius: 12px; overflow: hidden; background: var(--deep); }
+.chrome { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: #24201D; border-bottom: 1px solid var(--soot); }
+.chrome i { width: 10px; height: 10px; border-radius: 50%; background: var(--soot); }
+.chrome span { margin-left: 12px; flex: 1; max-width: 360px; background: var(--night); border-radius: 6px; padding: 3px 12px; font-size: 11px; color: var(--muted); letter-spacing: .04em; }
+.site { --pad: clamp(16px, 4vw, 48px); }
+.site-nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px var(--pad); border-bottom: 1px solid rgba(61,58,55,.7); }
+.site-nav svg { width: 108px; display: block; }
+.site-nav nav { display: flex; gap: 24px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--ash); }
+.btn { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; padding: 11px 20px; border-radius: 999px; border: 1px solid var(--filament); color: var(--filament); background: none; white-space: nowrap; }
+.btn.solid { background: var(--filament); color: var(--night); }
+.site-hero { position: relative; min-height: 440px; display: grid; align-items: end; background: #0d0b0a; overflow: hidden; }
+.site-hero img { position: absolute; top: 0; right: 0; width: 58%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+@media (max-width: 700px) { .site-hero img { width: 100%; } .site-hero::after { background: linear-gradient(0deg, #0d0b0a 0%, rgba(13,11,10,.85) 55%, rgba(13,11,10,.2) 100%); } .site-hero { min-height: 480px; } }
+.site-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #0d0b0a 0%, #0d0b0a 42%, rgba(13,11,10,.5) 55%, rgba(13,11,10,0) 72%), linear-gradient(0deg, rgba(17,16,15,.7), rgba(17,16,15,0) 40%); }
+.site-hero .copy { position: relative; z-index: 1; padding: 56px var(--pad); display: grid; gap: 18px; max-width: 560px; }
+.site-hero h3 { font-size: clamp(40px, 6vw, 72px); font-weight: 300; line-height: 1; color: var(--moon); }
+.site-hero h3 em { color: var(--filament); }
+.site-hero p { color: var(--ash); font-size: 15px; }
+.site-hero .ctas { display: flex; flex-wrap: wrap; gap: 10px; }
+.site-sec { padding: 48px var(--pad); border-top: 1px solid rgba(61,58,55,.7); }
+.site-sec-h { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 26px; }
+.site-sec-h h4 { margin: 0; font-family: var(--display); font-weight: 300; font-size: 34px; color: var(--wick); }
+.site-sec-h a { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--filament); text-decoration: none; }
+.forms-nav { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+.forms-nav div { display: grid; gap: 8px; justify-items: center; padding: 14px 8px 12px; border: 1px solid rgba(61,58,55,.8); border-radius: 10px; }
+.forms-nav svg { width: 62px; height: 80px; overflow: visible; }
+.forms-nav span { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ash); text-align: center; }
+.pgrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.pcard { display: grid; gap: 12px; min-width: 0; }
+.pcard .ph { position: relative; aspect-ratio: 4 / 5; background: radial-gradient(60% 55% at 50% 45%, rgba(255,160,14,.22), rgba(255,160,14,0) 70%), var(--night); border-radius: 8px; overflow: hidden; }
+.pcard .ph img { position: absolute; inset: 0; width: 100%; height: 100%; transition: opacity .35s; }
+.pcard .ph .cut { object-fit: contain; padding: 0 10% 8%; object-position: 50% 0; }
+.pcard .ph .room { object-fit: cover; opacity: 0; }
+.pcard:hover .ph .room, .pcard:focus-within .ph .room { opacity: 1; }
+.pcard .ph .tagl { position: absolute; left: 10px; top: 10px; z-index: 1; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--night); background: var(--glow); border-radius: 999px; padding: 3px 9px; }
+.pcard h5 { margin: 0; font-family: var(--display); font-weight: 400; font-size: 22px; color: var(--wick); line-height: 1.1; }
+.pcard .meta { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.pcard .size { font-size: 13px; color: var(--ash); font-variant-numeric: tabular-nums; }
+.mats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.mats figure { margin: 0; position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 8px; }
+.mats img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mats figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 14px 12px; background: linear-gradient(0deg, rgba(17,16,15,.85), rgba(17,16,15,0)); font-family: var(--display); font-size: 22px; color: var(--moon); }
+.roomstory { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0; background: var(--moon); color: var(--soot); border-radius: 8px; overflow: hidden; }
+.roomstory img { width: 100%; height: 100%; min-height: 320px; max-height: 460px; object-fit: cover; object-position: 50% 25%; display: block; }
+.roomstory .t { padding: 40px; display: grid; gap: 16px; align-content: center; }
+.roomstory h4 { margin: 0; font-family: var(--display); font-weight: 300; font-size: 38px; line-height: 1.05; }
+.roomstory p { color: #5A544E; font-size: 14px; }
+.roomstory .btn { color: var(--ember); border-color: var(--ember); justify-self: start; }
+.site-foot { padding: 28px var(--pad); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); border-top: 1px solid rgba(61,58,55,.7); }
+.web-row { margin-top: 24px; display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 40px; align-items: start; }
+.phone { width: 100%; max-width: 300px; border: 1px solid var(--soot); border-radius: 34px; padding: 10px; background: #0b0a09; }
+.phone .scr { border-radius: 26px; overflow: hidden; background: var(--deep); }
+.phone .bar { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; }
+.phone .bar svg { width: 80px; }
+.phone .bar span { width: 18px; height: 10px; border-top: 1.5px solid var(--ash); border-bottom: 1.5px solid var(--ash); }
+.phone .pd-img { aspect-ratio: 1; display: grid; place-items: center; background: radial-gradient(55% 55% at 50% 45%, rgba(255,160,14,.3), rgba(255,160,14,0) 70%); }
+.phone .pd-img img { width: 72%; }
+.phone .pd { padding: 16px 18px 22px; display: grid; gap: 10px; }
+.phone .pd .k { font-size: 9.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--filament); }
+.phone .pd h5 { margin: 0; font-family: var(--display); font-weight: 300; font-size: 32px; color: var(--moon); line-height: 1; }
+.phone .pd p { font-size: 12.5px; color: var(--ash); }
+.phone .pd dl { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 4px 0; }
+.phone .pd dt { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+.phone .pd dd { margin: 0; font-size: 12.5px; color: var(--wick); }
+.phone .pd .btn { text-align: center; }
+.webnotes { display: grid; gap: 22px; }
+.webnotes div { border-top: 1px solid var(--soot); padding-top: 14px; }
+.webnotes h4 { margin: 0 0 6px; font-size: 12px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--wick); }
+.webnotes p { color: var(--ash); font-size: 14px; }
+@media (max-width: 900px) { .forms-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); } .pgrid, .mats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .roomstory, .web-row { grid-template-columns: 1fr; } .site-nav nav { display: none; } }
+@media (max-width: 520px) { .site-hero { min-height: 400px; } .site-sec-h h4 { font-size: 28px; } .roomstory .t { padding: 24px; } }
+
 /* ---------- voice ---------- */
 .voice { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .say { border: 1px solid var(--soot); padding: 28px; display: grid; gap: 16px; align-content: start; }
@@ -307,7 +390,7 @@ footer svg { width: 180px; height: auto; display: block; }
       <p class="lede">Antara makes handcrafted lights in rice paper, raw silk, crushed fabric and rattan cane. Each one glows through its material. This book sets out how the brand looks, sounds and lights up.</p>
       <button class="switch" id="heroSwitch" aria-pressed="true"><span class="knob"></span><span id="heroSwitchLabel">Light is on</span></button>
       <nav class="toc" aria-label="Sections">
-        <a href="#name">The name</a><a href="#logo">Logo</a><a href="#philosophy">Philosophy</a><a href="#lights">The lights</a><a href="#usage">Usage</a><a href="#colour">Colour</a><a href="#type">Type</a><a href="#applications">Applications</a><a href="#voice">Voice</a>
+        <a href="#name">The name</a><a href="#logo">Logo</a><a href="#philosophy">Philosophy</a><a href="#lights">The lights</a><a href="#usage">Usage</a><a href="#colour">Colour</a><a href="#type">Type</a><a href="#applications">Applications</a><a href="#website">Website</a><a href="#voice">Voice</a>
       </nav>
     </div>
   </header>
@@ -497,7 +580,10 @@ footer svg { width: 180px; height: auto; display: block; }
       </figure>
       <figure class="app full">
         <div class="spec">
-          <div class="pic"><svg data-lamp="fringe" viewBox="0 0 200 260" aria-hidden="true"></svg></div>
+          <div class="pic">
+            <div class="hero-shot"><img src="img/p-fringe.webp" alt="Aurora Gold fringe pendant, lit" loading="lazy"></div>
+            <div class="thumbs"><img src="img/m-fringe.webp" alt="Close-up of the fabric fringe" loading="lazy"><img src="img/r-fringe.webp" alt="Aurora Gold in a living room" loading="lazy"><svg data-lamp="fringe" viewBox="0 0 200 260" aria-label="Fringe pendant illustration"></svg></div>
+          </div>
           <div class="body">
             <div class="top"><svg viewBox="245 1535 950 192" aria-label="Antara"><use href="#wordmark" x="245" y="1535" width="950" height="192" fill="#3D3A37"/></svg><span>Fabric hanging edition</span></div>
             <span class="k">Fringe pendant · Fabric</span>
@@ -538,6 +624,75 @@ footer svg { width: 180px; height: auto; display: block; }
         </div>
         <figcaption>Product tag</figcaption>
       </figure>
+    </div>
+  </section>
+
+  <section id="website">
+    <div class="sec-head">
+      <div><p class="eyebrow">Website</p><h2>Antara online</h2></div>
+      <p>The website works like an evening walk through a showroom. It opens on a lit room, lets people browse by form and material, and shows every light as a real photo first. Hover a product card to see it hanging in a room.</p>
+    </div>
+    <div class="browser">
+      <div class="chrome"><i></i><i></i><i></i><span>antara · Home</span></div>
+      <div class="site">
+        <div class="site-nav">
+          <svg viewBox="245 1535 950 192" aria-label="Antara"><use href="#wordmark" x="245" y="1535" width="950" height="192" fill="url(#wordLit)"/></svg>
+          <nav><span>Lights</span><span>Materials</span><span>Rooms</span><span>Journal</span><span>Studio</span></nav>
+          <span class="btn">Enquire</span>
+        </div>
+        <div class="site-hero">
+          <img src="img/r-cloud.webp" alt="Opaline cloud light in a warm living room" loading="lazy">
+          <div class="copy">
+            <span class="eyebrow">Fabric hanging edition</span>
+            <h3>Light from <em>within</em></h3>
+            <p>Handcrafted lights in rice paper, raw silk, fabric and rattan cane. Made to glow, not glare.</p>
+            <div class="ctas"><span class="btn solid">Explore the lights</span><span class="btn">Shop by room</span></div>
+          </div>
+        </div>
+        <div class="site-sec">
+          <div class="site-sec-h"><h4>Shop by form</h4><a>All twelve forms</a></div>
+          <div class="forms-nav" id="formsNav"></div>
+        </div>
+        <div class="site-sec">
+          <div class="site-sec-h"><h4>New this season</h4><a>View all</a></div>
+          <div class="pgrid" id="pgrid"></div>
+        </div>
+        <div class="site-sec">
+          <div class="site-sec-h"><h4>Made from</h4><a>About our materials</a></div>
+          <div class="mats">
+            <figure><img src="img/m-lantern.webp" alt="" loading="lazy"><figcaption>Rice paper</figcaption></figure>
+            <figure><img src="img/m-silkbell.webp" alt="" loading="lazy"><figcaption>Raw silk</figcaption></figure>
+            <figure><img src="img/m-hourglass.webp" alt="" loading="lazy"><figcaption>Crushed paper</figcaption></figure>
+            <figure><img src="img/m-canedrum.webp" alt="" loading="lazy"><figcaption>Rattan cane</figcaption></figure>
+          </div>
+        </div>
+        <div class="site-sec">
+          <div class="roomstory">
+            <img src="img/r-sconce.webp" alt="Trio Essence sconce on a sage wall" loading="lazy">
+            <div class="t"><span class="eyebrow" style="color:var(--brass)">Room story</span><h4>A reading corner, lit from the wall</h4><p>Trio Essence washes light up and down the wall through a band of woven cane. One sconce is enough for a chair, a lamp table and a slow evening.</p><span class="btn">Shop the room</span></div>
+          </div>
+        </div>
+        <div class="site-foot"><span>Antara · Light from within</span><span>Lights · Materials · Rooms · Care · Contact</span></div>
+      </div>
+    </div>
+    <div class="web-row">
+      <div class="phone"><div class="scr">
+        <div class="bar"><svg viewBox="245 1535 950 192" aria-label="Antara"><use href="#wordmark" x="245" y="1535" width="950" height="192" fill="url(#wordLit)"/></svg><span></span></div>
+        <div class="pd-img"><img src="img/p-silkbell.webp" alt="Silken Glow silk bell, lit" loading="lazy"></div>
+        <div class="pd">
+          <span class="k">Silk bell · Raw silk</span>
+          <h5>Silken Glow</h5>
+          <p>Raw silk stretched over a hand-bent frame. It glows like a lantern and pools soft light on the table below.</p>
+          <dl><div><dt>Size</dt><dd>D500 mm</dd></div><div><dt>Light source</dt><dd>E27 holder</dd></div><div><dt>Colour</dt><dd>Beige white</dd></div><div><dt>Product ID</dt><dd>TBINC 1006</dd></div></dl>
+          <span class="btn solid">Enquire about this light</span>
+        </div>
+      </div></div>
+      <div class="webnotes">
+        <div><h4>Product card</h4><p>The real photo comes first, cut out and placed on Night with a soft Filament glow behind it, so every light looks switched on. On hover the card shows the light in a room. Below it: name in Cormorant, form and material as a spaced label, then size.</p></div>
+        <div><h4>Navigation by form</h4><p>The line illustrations become the menu. Each form is a small drawn light that glows on hover, linking the brand drawings to the real products.</p></div>
+        <div><h4>Product page on phone</h4><p>Photo, form and material, name, a two-line description and the key specs from the catalogue. One clear button: Enquire.</p></div>
+        <div><h4>Colour on screen</h4><p>Night for the page, Moonlight for story panels, Filament only for buttons, links and glow. Ember is kept for sale or urgent notices.</p></div>
+      </div>
     </div>
   </section>
 
@@ -602,56 +757,56 @@ footer svg { width: 180px; height: auto; display: block; }
 
   // ---------- the twelve forms ----------
   const LIGHTS = {
-    lantern: { name: 'Paper lantern', mat: 'Rice paper', eg: 'Noir Blanc, Monarch Noir, Grandeur Noir', svg: (() => {
+    lantern: { name: 'Paper lantern', mat: 'Rice paper', photo: 'Noir Blanc', eg: 'Monarch Noir, Grandeur Noir', svg: (() => {
       const body = 'M72 44 Q72 30 86 30 H114 Q128 30 128 44 V150 H72Z', dome = 'M50 212 A50 54 0 0 1 150 212Z';
       return HALO(100, 130, 100) + POOL(52, 148, 212, 40) + CORD(0, 24) + L(rect(92, 24, 108, 30)) +
         SHADE(body) + range(42, 144, 9).map(y => thin(`M72 ${y} H128`)).join('') +
         SHADE(dome) + ribsE(100, 212, 50, 54, range(168, 206, 9)) + SOLID(rect(70, 150, 130, 158)) + L(rect(70, 150, 130, 158));
     })() },
-    silkbell: { name: 'Silk bell', mat: 'Raw silk', eg: 'Silken Glow, Elysian Silk, Serene Aura', svg: (() => {
+    silkbell: { name: 'Silk bell', mat: 'Raw silk', photo: 'Silken Glow', eg: 'Elysian Silk, Serene Aura', svg: (() => {
       const d = 'M92 44 H108 C112 92 160 116 168 186 H32 C40 116 88 92 92 44Z';
       return HALO(100, 140, 96) + POOL(34, 166, 186, 30) + CORD(0, 38) + L(rect(93, 38, 107, 44)) + SHADE(d) +
         [-2, -1, 1, 2].map(k => thin(`M${100 + k * 3} 46 C${100 + k * 10} 100 ${100 + k * 28} 130 ${100 + k * 33} 186`)).join('') + L('M32 186 H168', 2);
     })() },
-    orb: { name: 'Ribbed orb', mat: 'Liquidified paper', eg: 'Pearl Veil, Alabaster', svg: (() => {
+    orb: { name: 'Ribbed orb', mat: 'Liquidified paper', photo: 'Pearl Veil', eg: 'Alabaster', svg: (() => {
       let ribs = '';
       [1, 2, 3].forEach(k => { const rx = (74 * k / 4).toFixed(1); ribs += thin(`M100 76 A${rx} 46 0 0 0 100 168`) + thin(`M100 76 A${rx} 46 0 0 1 100 168`); });
       return HALO(100, 122, 104) + CORD(0, 70) + L(rect(92, 70, 108, 77)) + SHADE(ell(100, 122, 74, 46)) + ribs;
     })() },
-    pebble: { name: 'Pebble', mat: 'Liquidified paper', eg: 'Lustre Ivory Halo', svg: (() => {
+    pebble: { name: 'Pebble', mat: 'Liquidified paper', photo: 'Lustre Ivory', eg: 'Lustre Ivory 600', svg: (() => {
       const d = 'M100 30 C150 34 170 110 152 170 C140 214 72 224 54 182 C34 134 50 36 100 30Z';
       return HALO(104, 128, 100) + CORD(0, 30) + SHADE(d) + thin('M98 31 C70 92 74 162 110 214') + thin('M102 31 C128 80 140 140 130 202');
     })() },
-    cloud: { name: 'Cloud', mat: 'Liquidified paper', eg: 'Opaline Essence', svg: (() =>
+    cloud: { name: 'Cloud', mat: 'Liquidified paper', photo: 'Opaline', eg: 'Opaline 500', svg: (() =>
       HALO(100, 140, 104) + CORD(0, 82) + SHADE(blob(100, 140, 58, 9, 8)) + L(blob(100, 140, 30, 5, 8, Math.PI / 8), 0.9, 'opacity=".55"'))() },
-    column: { name: 'Column', mat: 'Silk + paper', eg: 'Silken Ray, Ivory Lumen, Terra Luxe', svg: (() =>
+    column: { name: 'Column', mat: 'Silk + paper', photo: 'Silken Ray', eg: 'Ivory Lumen, Terra Luxe', svg: (() =>
       HALO(100, 130, 112) + CORD(0, 14) + SHADE(rect(90, 14, 110, 30)) + SHADE(ell(100, 52, 26, 22)) + ribsE(100, 52, 26, 22, [42, 52, 62]) +
       SHADE(rect(92, 74, 108, 80)) + SHADE('M92 80 H108 L126 112 L108 144 H92 L74 112Z') + thin('M74 112 H126') +
       SHADE(ell(100, 170, 30, 26)) + ribsE(100, 170, 30, 26, [157, 170, 183]) + SHADE(rect(92, 196, 108, 204)) + SHADE('M86 204 H114 L100 248Z'))() },
-    fringe: { name: 'Fringe pendant', mat: 'Fabric', eg: 'Aurora Gold', svg: (() => {
+    fringe: { name: 'Fringe pendant', mat: 'Fabric', photo: 'Aurora Gold', eg: 'in gold and yellow', svg: (() => {
       const tier = (x1, y1, x2, y2) => SOLID(rect(x1, y1, x2, y2)) + G(rect(x1, y1, x2, y2)) + L(`M${x1} ${y2} V${y1} H${x2} V${y2}`) +
         strands(x1, x2, x1, x2, y1 + 3, y2, Math.round((x2 - x1) / 5), 2.5) + L(`M${x1} ${y1} H${x2}`, 2.5);
       return HALO(100, 140, 100) + POOL(50, 150, 190, 36) + CORD(0, 36) + tier(48, 118, 152, 190) + tier(60, 78, 140, 150) + tier(74, 36, 126, 110);
     })() },
-    linea: { name: 'Linea', mat: 'Crushed fabric', eg: 'Eclipse Amber', svg: (() => {
+    linea: { name: 'Linea', mat: 'Crushed fabric', photo: 'Eclipse Amber', eg: 'in two lengths', svg: (() => {
       const d = 'M10 120 Q100 86 190 120 Q100 172 10 120Z';
       return HALO(100, 124, 96) + G('M30 134 H170 L200 260 H0Z', 'url(#beam)', 'fill-opacity=".5"') + L('M50 0 L56 104', 1) + L('M150 0 L144 104', 1) +
         SHADE(d) + thin('M18 121 Q100 112 182 121');
     })() },
-    hourglass: { name: 'Woven hourglass', mat: 'Crushed paper', eg: 'Rustique Azure Weave', svg: (() =>
+    hourglass: { name: 'Woven hourglass', mat: 'Crushed paper', photo: 'Rustique Azure', eg: 'Weave 400 and 500', svg: (() =>
       HALO(100, 140, 100) + POOL(38, 162, 196, 30) + CORD(0, 36) +
       SHADE('M62 128 H138 L164 196 H36Z') + strands(62, 138, 36, 164, 131, 196, 20, 2) +
       SHADE('M86 36 H114 L138 128 H62Z') + strands(86, 114, 62, 138, 38, 126, 12) + L('M62 128 H138', 2))() },
-    canedrum: { name: 'Cane drum', mat: 'Rattan cane', eg: 'Golden Harvest, Amber Canopy', svg: (() =>
+    canedrum: { name: 'Cane drum', mat: 'Rattan cane', photo: 'Golden Harvest', eg: 'Amber Canopy, Sunlit', svg: (() =>
       HALO(100, 110, 106) + POOL(42, 158, 150, 36) + CORD(0, 48) +
       SHADE(rect(40, 86, 160, 150), 'url(#cane)') + mesh(40, 86, 160, 150) +
       SHADE(rect(66, 48, 134, 86), 'url(#cane)') + mesh(66, 48, 134, 86) +
       L('M66 48 H134', 3) + L('M40 86 H160', 3) + L('M40 150 H160', 3))() },
-    canecone: { name: 'Cane + cone', mat: 'Cane + fabric', eg: 'Midnight Echo, Celestial Bloom', svg: (() =>
+    canecone: { name: 'Cane + cone', mat: 'Cane + fabric', photo: 'Midnight Echo', eg: 'Indigo Echo, Celestial Bloom', svg: (() =>
       HALO(100, 120, 100) + POOL(28, 172, 158, 24) + CORD(0, 60) +
       SHADE('M80 100 H120 L174 158 H26Z') + SHADE(rect(80, 60, 120, 100), 'url(#cane)') + mesh(80, 60, 120, 100) +
       L('M80 60 H120', 3) + L('M80 100 H120', 2) + L('M26 158 H174', 3))() },
-    sconce: { name: 'Wall sconce', mat: 'Cane + fabric', eg: 'Trio Essence', svg: (() =>
+    sconce: { name: 'Wall sconce', mat: 'Cane + fabric', photo: 'Trio Essence', eg: 'in blue and grey', svg: (() =>
       G('M72 52 H128 L170 0 H30Z', 'url(#beamUp)') + G('M68 206 H132 L178 260 H22Z', 'url(#beam)', 'fill-opacity=".6"') + HALO(100, 128, 96) +
       SHADE('M72 52 H128 L114 100 H86Z') + SHADE('M86 146 H114 L132 206 H68Z') +
       SHADE(rect(64, 96, 136, 146), 'url(#cane)') + mesh(64, 96, 136, 146) +
@@ -680,7 +835,7 @@ footer svg { width: 180px; height: auto; display: block; }
       b.setAttribute('aria-pressed', 'true');
       b.setAttribute('aria-label', `${it.name}, switch light`);
       b.style.setProperty('--delay', `-${(n++ * 2.3) % 11}s`);
-      b.innerHTML = `<div class="art">${svgOf(k)}</div><div class="lbl"><b>${it.name}</b><span>${it.mat}</span></div><div class="eg">Seen in <i>${it.eg}</i></div>`;
+      b.innerHTML = `<div class="art">${svgOf(k)}</div><div class="lbl"><b>${it.name}</b><span>${it.mat}</span></div><div class="eg"><img src="img/p-${k}.webp" alt="${it.photo} photo" loading="lazy"><span>Pictured: <i>${it.photo}</i><br>Also ${it.eg}</span></div>`;
       b.addEventListener('click', () => { const off = b.classList.toggle('is-off'); b.setAttribute('aria-pressed', String(!off)); });
       grid.appendChild(b);
     });
@@ -689,6 +844,15 @@ footer svg { width: 180px; height: auto; display: block; }
   document.getElementById('onPaper').innerHTML = ['lantern', 'fringe', 'canedrum', 'pebble'].map((k, i) =>
     `<div class="art" style="--delay:-${i * 3}s">${svgOf(k)}</div>`).join('') +
     '<p>On paper, the line switches to Soot. The glow stays the same colour.</p>';
+
+
+  // ---------- website mock ----------
+  document.getElementById('formsNav').innerHTML = ['lantern', 'silkbell', 'orb', 'fringe', 'canedrum', 'sconce'].map((k, i) =>
+    `<div style="--delay:-${i * 1.7}s">${svgOf(k)}<span>${LIGHTS[k].name}</span></div>`).join('');
+  const NEW = [['fringe', 'Aurora Gold', 'D400 × H400 mm', 'New'], ['silkbell', 'Silken Glow', 'D500 mm', ''], ['canedrum', 'Golden Harvest', 'D400 × H300 mm', 'Cane edition'], ['cloud', 'Opaline', 'D500 mm', '']];
+  document.getElementById('pgrid').innerHTML = NEW.map(([k, nm, size, tag]) => `<div class="pcard" tabindex="0">
+      <div class="ph">${tag ? `<span class="tagl">${tag}</span>` : ''}<img class="cut" src="img/p-${k}.webp" alt="${nm}, lit" loading="lazy"><img class="room" src="img/r-${k}.webp" alt="${nm} in a room" loading="lazy"></div>
+      <div><h5>${nm}</h5><div class="meta">${LIGHTS[k].name} · ${LIGHTS[k].mat}</div></div><div class="size">${size}</div></div>`).join('');
 
   // ---------- drop lines: lights hung from one ceiling at different heights ----------
   const DROP = [['fringe', 34], ['orb', 70], ['lantern', 18], ['canecone', 58], ['silkbell', 26], ['column', 6], ['pebble', 64], ['canedrum', 30], ['hourglass', 52], ['cloud', 12], ['linea', 44]];

@@ -1,0 +1,679 @@
+<title>Antara Brand Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Tiro+Devanagari+Sanskrit&display=swap">
+<style>
+/* Layout: one long night-time scroll. Dark is the brand's ground; cream "paper" panels show the brand by daylight. */
+:root {
+  color-scheme: dark;
+  --night: #1A1614;     /* page ground */
+  --deep: #11100F;      /* logo ground, tiles */
+  --soot: #3D3A37;      /* hairlines, secondary surfaces */
+  --ash: #D8D2C7;       /* line art on dark */
+  --moon: #F4F1EA;      /* paper */
+  --wick: #F5E5CC;      /* tagline cream */
+  --glow: #FECA9A;
+  --filament: #FFA00E;  /* the light */
+  --brass: #C88A4A;
+  --ember: #CD4604;
+  --kumkum: #7C0000;
+  --text: #F4F1EA;
+  --muted: #A69E94;
+  --display: "Cormorant Garamond", "Cormorant", Garamond, "Times New Roman", serif;
+  --sans: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --deva: "Tiro Devanagari Sanskrit", "Noto Serif Devanagari", serif;
+  --tile: var(--deep);
+  --ink: var(--ash);
+}
+* { box-sizing: border-box; }
+body { background: var(--night); color: var(--text); font-family: var(--sans); font-weight: 300; font-size: 15px; line-height: 1.7; }
+.wrap { max-width: 1140px; margin: 0 auto; padding-inline: 24px; }
+@media (max-width: 520px) { .wrap { padding-inline: 16px; } }
+
+h1, h2, h3 { font-family: var(--display); font-weight: 300; text-wrap: balance; margin: 0; line-height: 1.05; }
+h2 { font-size: clamp(38px, 5.4vw, 64px); letter-spacing: .01em; }
+h3 { font-size: 28px; font-weight: 400; }
+p { margin: 0; max-width: 62ch; }
+.eyebrow { font-size: 11px; font-weight: 500; letter-spacing: .28em; text-transform: uppercase; color: var(--filament); }
+.muted { color: var(--muted); }
+section { padding-block: 96px; border-top: 1px solid var(--soot); }
+.sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 24px 64px; align-items: end; margin-bottom: 56px; }
+.sec-head p { color: var(--muted); }
+@media (max-width: 820px) { .sec-head { grid-template-columns: 1fr; } section { padding-block: 72px; } }
+
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--filament); outline-offset: 3px; }
+
+/* light states, shared by the logo and every lamp */
+.glow { animation: flick var(--dur, 11s) var(--delay, 0s) infinite; }
+@keyframes flick {
+  0%, 64% { opacity: 1; }
+  65% { opacity: .1; } 66% { opacity: .85; } 67% { opacity: 0; }
+  68%, 82% { opacity: 0; }
+  83% { opacity: .9; } 84% { opacity: .2; } 85.5%, 100% { opacity: 1; }
+}
+.is-off .glow { animation: none; opacity: 0; transition: opacity .08s; }
+@media (prefers-reduced-motion: reduce) { .glow { animation: none; } }
+
+/* ---------- hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 440px) minmax(0, 1fr); gap: 40px 72px; align-items: center; padding-block: 56px 72px; }
+.poster { background: var(--deep); width: 100%; aspect-ratio: 1440 / 1941; max-width: 100%; display: block; }
+.hero h1 { font-size: clamp(56px, 9vw, 112px); letter-spacing: .02em; }
+.hero h1 em { font-style: italic; color: var(--filament); }
+.hero .lede { font-size: 17px; margin-top: 24px; color: var(--ash); }
+.switch { margin-top: 36px; display: inline-flex; align-items: center; gap: 14px; background: none; border: 1px solid var(--soot); border-radius: 999px; padding: 10px 20px 10px 10px; cursor: pointer; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; }
+.switch .knob { width: 40px; height: 22px; border-radius: 999px; background: var(--filament); position: relative; transition: background .15s; }
+.switch .knob::after { content: ""; position: absolute; top: 3px; left: 21px; width: 16px; height: 16px; border-radius: 50%; background: var(--night); transition: left .15s; }
+.switch[aria-pressed="false"] .knob { background: var(--soot); }
+.switch[aria-pressed="false"] .knob::after { left: 3px; background: var(--ash); }
+.toc { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+.toc a { color: var(--muted); text-decoration: none; }
+.toc a:hover { color: var(--filament); }
+@media (max-width: 820px) { .hero { grid-template-columns: 1fr; } .poster { max-width: 380px; } }
+
+.festoon { display: block; width: 100%; height: auto; }
+
+/* ---------- name ---------- */
+.name-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px 72px; }
+.deva { font-family: var(--deva); font-size: clamp(88px, 14vw, 168px); line-height: 1.1; color: var(--filament); }
+.translit { font-family: var(--display); font-style: italic; font-size: 26px; color: var(--wick); margin-top: 8px; }
+.defs { display: grid; gap: 28px; }
+.defs dt { font-family: var(--display); font-size: 24px; font-weight: 400; color: var(--wick); }
+.defs dd { margin: 4px 0 0; color: var(--ash); }
+@media (max-width: 820px) { .name-grid { grid-template-columns: 1fr; } }
+
+/* ---------- logo anatomy ---------- */
+.anatomy { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 48px 72px; align-items: start; }
+.parts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; }
+.part h4 { margin: 0 0 6px; font-weight: 500; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--filament); }
+.part p { color: var(--ash); font-size: 14.5px; }
+.statement { grid-column: 1 / -1; border-top: 1px solid var(--soot); padding-top: 28px; font-family: var(--display); font-size: clamp(24px, 3vw, 32px); line-height: 1.3; color: var(--wick); max-width: 30ch; }
+@media (max-width: 820px) { .anatomy { grid-template-columns: 1fr; } .parts { grid-template-columns: 1fr; } }
+
+/* ---------- philosophy ---------- */
+.creed { font-family: var(--display); font-weight: 300; font-size: clamp(34px, 5vw, 60px); line-height: 1.12; max-width: 20ch; text-wrap: balance; }
+.creed em { color: var(--filament); }
+.principles { margin-top: 64px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px 32px; }
+.principle svg { width: 64px; height: 84px; display: block; margin-bottom: 18px; }
+.principle h3 { font-size: 24px; margin-bottom: 10px; color: var(--wick); }
+.principle p { color: var(--ash); font-size: 14.5px; }
+@media (max-width: 960px) { .principles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .principles { grid-template-columns: 1fr; } }
+
+/* ---------- logo versions ---------- */
+.versions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.ver { display: grid; grid-template-rows: 1fr auto; min-height: 260px; }
+.ver .stage { display: grid; place-items: center; padding: 40px 32px; }
+.ver .cap { display: flex; justify-content: space-between; gap: 16px; padding: 14px 18px; font-size: 12px; letter-spacing: .08em; border-top: 1px solid rgba(128,120,110,.25); }
+.ver .cap b { font-weight: 500; letter-spacing: .18em; text-transform: uppercase; font-size: 11px; }
+.lockup { width: min(100%, 360px); display: grid; gap: 14px; justify-items: center; }
+.lockup svg { display: block; width: 100%; height: auto; }
+.lockup .tg { width: 52%; }
+.v-dark { background: var(--deep); }
+.v-paper { background: var(--moon); color: var(--soot); }
+.v-ember { background: var(--ember); color: var(--moon); }
+.v-kumkum { background: var(--kumkum); color: var(--wick); }
+.markbox { width: 120px; height: 120px; border-radius: 28px; background: var(--night); border: 1px solid var(--soot); display: grid; place-items: center; overflow: hidden; }
+.mark-row { display: flex; gap: 24px; align-items: end; flex-wrap: wrap; justify-content: center; }
+.mark-row .markbox:nth-child(2) { width: 64px; height: 64px; border-radius: 15px; }
+.mark-row .markbox:nth-child(3) { width: 32px; height: 32px; border-radius: 8px; }
+.rules { margin-top: 40px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.rules h4 { margin: 0 0 8px; font-size: 12px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--wick); }
+.rules p, .rules li { color: var(--ash); font-size: 14.5px; }
+.rules ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+@media (max-width: 820px) { .versions, .rules { grid-template-columns: 1fr; } }
+
+/* ---------- colour ---------- */
+.swatches { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+.sw { min-width: 0; background: none; border: 0; padding: 0; text-align: left; cursor: pointer; display: grid; gap: 12px; }
+.sw .chip { aspect-ratio: 1 / 1.1; width: 100%; border: 1px solid rgba(216,210,199,.12); position: relative; }
+.sw .chip span { position: absolute; left: 12px; bottom: 10px; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; opacity: 0; transition: opacity .15s; }
+.sw:hover .chip span, .sw:focus-visible .chip span, .sw.copied .chip span { opacity: 1; }
+.sw .nm { font-family: var(--display); font-size: 22px; line-height: 1.1; color: var(--wick); }
+.sw .hex { font-size: 12px; letter-spacing: .08em; font-variant-numeric: tabular-nums; color: var(--ash); }
+.sw .role { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+.ratio { margin-top: 48px; display: flex; height: 64px; outline: 1px solid var(--soot); }
+.ratio div { position: relative; }
+.ratio small { position: absolute; left: 8px; bottom: -26px; font-size: 11px; letter-spacing: .1em; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.ratio-note { margin-top: 48px; color: var(--muted); font-size: 14px; }
+@media (max-width: 960px) { .swatches { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ratio small { display: none; } }
+
+/* ---------- type ---------- */
+.faces { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.face { border: 1px solid var(--soot); padding: 28px; display: grid; gap: 18px; align-content: start; min-width: 0; }
+.face .big { font-size: 96px; line-height: 1; color: var(--wick); }
+.face .use { font-size: 11px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--filament); }
+.face h3 { font-size: 30px; }
+.face p { color: var(--ash); font-size: 14px; }
+.face .glyphs { font-size: 18px; letter-spacing: .06em; color: var(--muted); word-break: break-all; }
+.f-alta svg { width: 100%; height: 96px; }
+.f-corm .big, .f-corm h3, .f-corm .glyphs { font-family: var(--display); font-weight: 300; }
+.f-mont .big, .f-mont h3 { font-family: var(--sans); font-weight: 300; }
+.scale { margin-top: 48px; display: grid; gap: 0; }
+.scale > div { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 24px; align-items: baseline; padding-block: 18px; border-top: 1px solid var(--soot); }
+.scale small { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); font-variant-numeric: tabular-nums; }
+@media (max-width: 960px) { .faces { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .scale > div { grid-template-columns: 1fr; gap: 4px; } }
+
+/* ---------- lamps ---------- */
+.lamp-rules { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; margin-bottom: 48px; }
+.lamp-rules div { border-top: 1px solid var(--filament); padding-top: 14px; }
+.lamp-rules h4 { margin: 0 0 6px; font-size: 12px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--wick); }
+.lamp-rules p { font-size: 14px; color: var(--ash); }
+.lamps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.lamp-tile { min-width: 0; background: var(--tile); border: 1px solid transparent; padding: 18px 18px 14px; cursor: pointer; text-align: left; display: grid; gap: 10px; transition: border-color .15s; }
+.lamp-tile:hover { border-color: var(--soot); }
+.lamp-tile .art { aspect-ratio: 200 / 260; width: 100%; }
+.lamp-tile .art svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.lamp-tile .lbl { flex-wrap: wrap; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.lamp-tile .lbl b { font-family: var(--display); font-weight: 400; font-size: 21px; color: var(--wick); }
+.lamp-tile .lbl span { font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+.lamp-tile.is-off .lbl span::after { content: " · off"; color: var(--ember); }
+.lamp-hint { margin-top: 18px; font-size: 13px; color: var(--muted); }
+.on-paper { margin-top: 16px; background: var(--moon); color: var(--soot); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 28px; --tile: var(--moon); --ink: var(--soot); }
+.on-paper .art { aspect-ratio: 200/260; }
+.on-paper svg { width: 100%; height: 100%; overflow: visible; }
+.on-paper p { grid-column: 1 / -1; font-size: 13px; color: var(--soot); margin-top: 8px; }
+@media (max-width: 960px) { .lamps, .on-paper, .lamp-rules { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* ---------- applications ---------- */
+.apps { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; }
+.app { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.app figcaption { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+.card-front, .card-back { grid-column: span 3; }
+.social { grid-column: span 3; }
+.tagapp { grid-column: span 3; }
+.bc { aspect-ratio: 85 / 55; position: relative; overflow: hidden; }
+.bc-front { background: var(--deep); }
+.bc-front .pend { position: absolute; right: 9%; top: 0; width: 34%; height: 100%; }
+.bc-front .wm { position: absolute; left: 8%; bottom: 23%; width: 46%; }
+.bc-front .tg { position: absolute; left: 8%; bottom: 13%; width: 22%; }
+.bc-back { background: var(--moon); color: var(--soot); padding: 7% 8%; display: grid; align-content: space-between; --ink: var(--soot); --tile: var(--moon); }
+.bc-back .who { font-family: var(--display); font-size: clamp(20px, 2.4vw, 28px); line-height: 1.1; }
+.bc-back .who small { display: block; font-family: var(--sans); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; margin-top: 6px; color: var(--brass); }
+.bc-back .lines { font-size: clamp(10px, 1.1vw, 12px); line-height: 1.7; letter-spacing: .04em; }
+.bc-back .diya { position: absolute; right: 6%; top: 8%; width: 20%; }
+.post { aspect-ratio: 1; background: var(--kumkum); position: relative; overflow: hidden; display: grid; grid-template-rows: auto 1fr auto; padding: 8%; --ink: var(--wick); --tile: var(--kumkum); }
+.post .k { font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: var(--glow); }
+.post .h { font-family: var(--display); font-weight: 300; font-size: clamp(28px, 4vw, 46px); line-height: 1.04; color: var(--moon); align-self: center; max-width: 11ch; }
+.post .h em { color: var(--filament); }
+.post .row { display: flex; justify-content: space-between; align-items: end; gap: 6%; }
+.post .row svg { width: 26%; aspect-ratio: 200/260; height: auto; overflow: visible; }
+.post .wm { position: absolute; right: 8%; top: 8%; width: 22%; }
+.tagbox { aspect-ratio: 1; background: var(--soot); display: grid; place-items: center; padding: 6%; }
+.ptag { width: 52%; aspect-ratio: 5 / 9; background: var(--moon); color: var(--soot); clip-path: polygon(18% 0, 82% 0, 100% 9%, 100% 100%, 0 100%, 0 9%); position: relative; display: grid; grid-template-rows: auto 1fr auto; padding: 22% 10% 10%; justify-items: center; text-align: center; --ink: var(--soot); --tile: var(--moon); }
+.ptag::before { content: ""; position: absolute; top: 5%; left: 50%; width: 9%; aspect-ratio: 1; border-radius: 50%; transform: translateX(-50%); background: var(--soot); }
+.ptag .art { width: 78%; aspect-ratio: 200/260; align-self: center; }
+.ptag .art svg { width: 100%; height: 100%; overflow: visible; }
+.ptag .wm { width: 70%; }
+.ptag .nm { font-family: var(--display); font-size: clamp(16px, 2vw, 22px); line-height: 1.1; }
+.ptag .nm small { display: block; font-family: var(--sans); font-size: 8px; letter-spacing: .22em; text-transform: uppercase; color: var(--brass); margin-top: 4px; }
+@media (max-width: 820px) { .card-front, .card-back, .social, .tagapp { grid-column: 1 / -1; } }
+
+/* ---------- voice ---------- */
+.voice { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.say { border: 1px solid var(--soot); padding: 28px; display: grid; gap: 16px; align-content: start; }
+.say h4 { margin: 0; font-size: 11px; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; }
+.say.yes h4 { color: var(--filament); }
+.say.no h4 { color: var(--muted); }
+.say q { font-family: var(--display); font-size: 24px; line-height: 1.3; quotes: none; color: var(--wick); }
+.say.no q { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--ember); text-decoration-thickness: 1px; }
+.traits { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 10px; }
+.traits span { border: 1px solid var(--soot); border-radius: 999px; padding: 6px 16px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ash); }
+@media (max-width: 820px) { .voice { grid-template-columns: 1fr; } }
+
+footer { border-top: 1px solid var(--soot); padding-block: 48px 64px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; align-items: end; color: var(--muted); font-size: 12px; letter-spacing: .1em; }
+footer svg { width: 180px; height: auto; display: block; }
+</style>
+
+<!-- shared defs: brand symbols + light gradients -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFA00E" stop-opacity=".95"/>
+      <stop offset=".45" stop-color="#FFA00E" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#FFA00E" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="beamUp" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#FFA00E" stop-opacity=".6"/>
+      <stop offset="1" stop-color="#FFA00E" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="bulb"><stop offset="0" stop-color="#FFF3D6"/><stop offset=".55" stop-color="#FECA9A"/><stop offset="1" stop-color="#FFA00E"/></radialGradient>
+    <radialGradient id="halo"><stop offset="0" stop-color="#FFA00E" stop-opacity=".5"/><stop offset=".5" stop-color="#FFA00E" stop-opacity=".13"/><stop offset="1" stop-color="#FFA00E" stop-opacity="0"/></radialGradient>
+    <radialGradient id="flame" cx=".5" cy=".72" r=".62"><stop offset="0" stop-color="#FFF3D6"/><stop offset=".4" stop-color="#FECA9A"/><stop offset=".78" stop-color="#FFA00E"/><stop offset="1" stop-color="#CD4604"/></radialGradient>
+    <radialGradient id="glass" cy=".58"><stop offset="0" stop-color="#FECA9A" stop-opacity=".95"/><stop offset=".6" stop-color="#FFA00E" stop-opacity=".5"/><stop offset="1" stop-color="#CD4604" stop-opacity=".2"/></radialGradient>
+    <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FECA9A"/><stop offset="1" stop-color="#FFA00E"/></linearGradient>
+    <linearGradient id="logoBeam" gradientUnits="userSpaceOnUse" x1="0" y1="498" x2="0" y2="1941">
+      <stop offset="0" stop-color="#FFA00E"/><stop offset=".25" stop-color="#995F08"/><stop offset=".5" stop-color="#4C2F04"/><stop offset=".75" stop-color="#170F01"/><stop offset=".95" stop-color="#020100"/>
+    </linearGradient>
+    <linearGradient id="logoWord" gradientUnits="userSpaceOnUse" x1="0" y1="1724" x2="0" y2="1537">
+      <stop offset="0" stop-color="#000"/><stop offset=".5" stop-color="#905A08"/><stop offset="1" stop-color="#FFA00E"/>
+    </linearGradient>
+    <linearGradient id="wordLit" gradientUnits="userSpaceOnUse" x1="0" y1="1724" x2="0" y2="1537">
+      <stop offset="0" stop-color="#7A4A06"/><stop offset="1" stop-color="#FFA00E"/>
+    </linearGradient>
+    <symbol id="wordmark" viewBox="245 1535 950 192"><path d="M 328.4 1537.4 L 247.3 1719.5 L 253.8 1719.5 L 285.8 1647.7 L 355.3 1647.7 L 386.1 1719.5 L 408 1719.5 L 329.9 1537.4 Z M 321.2 1568.1 L 353.3 1643 L 287.9 1643 Z M 321.2 1568.1 M 431.8 1537.4 L 431.8 1719.5 L 436.5 1719.5 L 436.5 1569.8 L 576.2 1724.5 L 577 1724.5 L 577 1540.8 L 572.3 1540.8 L 572.3 1692.1 L 432.6 1537.4 Z M 431.8 1537.4 M 601.3 1540.8 L 731.8 1540.8 L 731.8 1545.5 L 601.3 1545.5 Z M 656.4 1545.5 L 676.7 1545.5 L 676.7 1719.5 L 656.4 1719.5 Z M 656.4 1545.5 M 783.8 1537.4 L 702.8 1719.5 L 709.3 1719.5 L 741.2 1647.7 L 810.8 1647.7 L 841.5 1719.5 L 863.4 1719.5 L 785.4 1537.4 Z M 776.6 1568.1 L 808.7 1643 L 743.3 1643 Z M 776.6 1568.1 M 887.3 1540.8 L 887.3 1719.5 L 907.7 1719.5 L 907.7 1636.5 L 920.8 1636.5 L 986.7 1719.5 L 1012.4 1719.5 L 945.6 1635.4 C 966.7 1632.5 998.5 1622.2 998.5 1585.5 C 998.5 1546.2 955.9 1540.8 941.3 1540.8 C 927.6 1540.8 887.3 1540.8 887.3 1540.8 M 907.7 1545.5 L 930.5 1545.5 C 959.8 1545.5 977.1 1557.5 977.1 1588.6 C 977.1 1620.5 956.6 1631.8 923.3 1631.8 L 907.7 1631.8 Z M 907.7 1545.5 M 1113.1 1537.4 L 1032 1719.5 L 1038.5 1719.5 L 1070.4 1647.7 L 1140 1647.7 L 1170.8 1719.5 L 1192.7 1719.5 L 1114.6 1537.4 Z M 1105.9 1568.1 L 1138 1643 L 1072.5 1643 Z M 1105.9 1568.1"/></symbol>
+<symbol id="tagline" viewBox="478 1749 451 70"><path d="M 490.3 1763.1 L 490.3 1792.2 C 490.3 1793.3 490.4 1794.1 490.6 1794.7 C 490.9 1795.3 491.3 1795.7 492 1795.9 C 492.6 1796 493.6 1796.1 494.9 1796.1 L 500.3 1796.1 C 503 1796.1 505.3 1795.3 507 1793.7 C 508.8 1792.1 509.9 1790 510.4 1787.3 C 510.4 1787.2 510.6 1787.1 510.8 1787.2 C 511 1787.2 511.1 1787.3 511.1 1787.4 C 511 1788.6 510.9 1790.1 510.8 1791.8 C 510.6 1793.6 510.6 1795.2 510.6 1796.6 C 510.6 1797.3 510.3 1797.6 509.6 1797.6 L 480.1 1797.6 C 480 1797.6 479.9 1797.5 479.9 1797.2 C 479.9 1797 480 1796.8 480.1 1796.8 C 481.5 1796.8 482.6 1796.7 483.4 1796.5 C 484.1 1796.3 484.6 1795.9 484.9 1795.2 C 485.1 1794.6 485.3 1793.7 485.3 1792.5 L 485.3 1763.1 C 485.3 1761.9 485.1 1760.9 484.9 1760.3 C 484.6 1759.7 484.1 1759.3 483.4 1759.1 C 482.6 1758.8 481.5 1758.7 480.1 1758.7 C 480 1758.7 479.9 1758.6 479.9 1758.3 C 479.9 1758.1 480 1757.9 480.1 1757.9 C 481.1 1757.9 482.2 1758 483.6 1758 C 484.9 1758.1 486.3 1758.1 487.7 1758.1 C 489.3 1758.1 490.7 1758.1 492 1758 C 493.2 1758 494.4 1757.9 495.4 1757.9 C 495.5 1757.9 495.5 1758.1 495.5 1758.3 C 495.5 1758.6 495.5 1758.7 495.4 1758.7 C 493.9 1758.7 492.8 1758.8 492.1 1759.1 C 491.4 1759.3 490.9 1759.7 490.7 1760.4 C 490.4 1761 490.3 1761.9 490.3 1763.1  M 520.7 1765.4 C 519.8 1765.4 519 1765.2 518.4 1764.6 C 517.8 1764.1 517.6 1763.4 517.6 1762.4 C 517.6 1761.5 517.8 1760.7 518.4 1760.2 C 519 1759.7 519.8 1759.5 520.7 1759.5 C 521.7 1759.5 522.4 1759.7 522.9 1760.2 C 523.4 1760.7 523.7 1761.5 523.7 1762.4 C 523.7 1764.4 522.7 1765.4 520.7 1765.4 M 515.1 1797.6 C 515 1797.6 515 1797.5 515 1797.2 C 515 1797 515 1796.8 515.1 1796.8 C 516.7 1796.8 517.7 1796.6 518.2 1796 C 518.7 1795.4 518.9 1794.2 518.9 1792.5 L 518.9 1780.8 C 518.9 1779.3 518.8 1778.2 518.5 1777.6 C 518.2 1776.9 517.7 1776.5 516.9 1776.5 C 516.6 1776.5 516.2 1776.6 515.7 1776.7 C 515.3 1776.9 514.8 1777.1 514.2 1777.4 C 514 1777.4 513.9 1777.3 513.8 1777.1 C 513.7 1776.8 513.7 1776.7 513.9 1776.6 L 522.5 1772.6 C 522.6 1772.6 522.7 1772.5 522.8 1772.5 C 522.9 1772.5 523 1772.6 523.2 1772.7 C 523.3 1772.9 523.4 1773 523.4 1773.2 C 523.4 1773.6 523.4 1774.4 523.3 1775.6 C 523.3 1776.9 523.3 1778.6 523.3 1780.7 L 523.3 1792.5 C 523.3 1794.2 523.5 1795.4 524 1796 C 524.5 1796.6 525.5 1796.8 527.1 1796.8 C 527.2 1796.8 527.3 1797 527.3 1797.2 C 527.3 1797.5 527.2 1797.6 527.1 1797.6 C 526.3 1797.6 525.4 1797.6 524.4 1797.5 C 523.3 1797.5 522.2 1797.5 521.1 1797.5 C 520 1797.5 518.9 1797.5 517.9 1797.5 C 516.9 1797.6 515.9 1797.6 515.1 1797.6  M 548.3 1777.6 L 548.3 1775.5 C 549.7 1774.5 551 1773.8 552.2 1773.3 C 553.5 1772.8 554.9 1772.5 556.4 1772.5 C 556.5 1772.5 556.6 1772.7 556.7 1773 C 556.7 1773.3 556.8 1773.7 556.8 1774.1 C 556.8 1774.6 556.7 1775.1 556.6 1775.7 C 556.4 1776.3 556.3 1776.6 556.1 1776.5 C 555.6 1776.2 555 1776 554.2 1775.8 C 553.5 1775.6 552.6 1775.5 551.8 1775.5 C 551.2 1775.5 550.7 1775.5 550.2 1775.6 C 549.8 1775.7 549.3 1775.8 548.8 1776 Z M 543.6 1788.1 C 544.8 1788.1 545.8 1787.7 546.6 1786.8 C 547.5 1785.9 547.9 1784.4 547.9 1782.2 C 547.9 1780.4 547.6 1778.8 546.9 1777.6 C 546.3 1776.3 545.5 1775.3 544.5 1774.7 C 543.4 1774 542.4 1773.7 541.2 1773.7 C 539.9 1773.7 538.9 1774.1 538.2 1775 C 537.5 1775.9 537.1 1777.3 537.1 1779.2 C 537.1 1781.1 537.4 1782.7 538.1 1784.1 C 538.7 1785.4 539.6 1786.5 540.6 1787.1 C 541.5 1787.8 542.6 1788.1 543.6 1788.1 M 542.2 1789.2 C 540.2 1789.2 538.5 1788.8 537 1788 C 535.5 1787.2 534.4 1786.2 533.6 1784.9 C 532.9 1783.6 532.5 1782.2 532.5 1780.8 C 532.5 1779.2 532.9 1777.8 533.9 1776.5 C 534.8 1775.3 536.1 1774.4 537.7 1773.7 C 539.3 1773 541 1772.7 542.9 1772.7 C 545.1 1772.7 546.9 1773.1 548.3 1773.8 C 549.7 1774.6 550.8 1775.6 551.5 1776.9 C 552.2 1778.1 552.6 1779.4 552.6 1780.7 C 552.6 1782.3 552.1 1783.7 551.2 1785 C 550.3 1786.2 549.1 1787.3 547.5 1788 C 545.9 1788.8 544.2 1789.2 542.2 1789.2 M 540.6 1815.4 C 537.7 1815.4 535.3 1814.8 533.6 1813.4 C 531.9 1812.1 531.1 1810.4 531.1 1808.4 C 531.1 1806.6 531.8 1804.8 533.3 1803 C 534.8 1801.3 537 1799.5 540.1 1797.7 L 540.8 1798.5 C 539.8 1799 538.8 1799.6 538 1800.2 C 537.2 1800.9 536.5 1801.7 536 1802.5 C 535.6 1803.4 535.3 1804.5 535.3 1805.8 C 535.3 1807.5 535.7 1808.8 536.4 1810 C 537.1 1811.1 538 1812 539.3 1812.6 C 540.5 1813.2 542 1813.5 543.6 1813.5 C 546.2 1813.5 548.4 1812.7 550.1 1811.3 C 551.8 1809.8 552.6 1807.8 552.6 1805.3 C 552.6 1803.5 552.2 1802.2 551.4 1801.4 C 550.5 1800.6 549.4 1800.1 547.9 1799.9 C 546.4 1799.7 544.7 1799.6 542.7 1799.6 C 540.9 1799.6 539.3 1799.5 537.8 1799.3 C 536.3 1799.1 535.1 1798.7 534.1 1798.1 C 533.2 1797.4 532.7 1796.4 532.7 1794.9 C 532.7 1793.5 533.2 1792.1 534.1 1791 C 535.1 1789.8 536.5 1788.6 538.4 1787.4 L 539.1 1787.9 C 538.1 1788.6 537.4 1789.3 537 1790 C 536.5 1790.6 536.3 1791.4 536.3 1792.2 C 536.3 1793.2 536.6 1793.9 537.3 1794.4 C 537.9 1794.9 538.8 1795.3 540.1 1795.5 C 541.4 1795.7 543.1 1795.8 545.2 1795.8 C 546.3 1795.8 547.5 1795.8 548.8 1795.9 C 550.1 1795.9 551.3 1796.1 552.5 1796.5 C 553.6 1796.9 554.6 1797.5 555.3 1798.5 C 556.1 1799.4 556.4 1800.7 556.4 1802.4 C 556.4 1804.1 556 1805.8 555.2 1807.4 C 554.3 1808.9 553.2 1810.3 551.7 1811.5 C 550.2 1812.7 548.5 1813.7 546.6 1814.4 C 544.7 1815.1 542.7 1815.4 540.6 1815.4  M 576.1 1797.6 C 576 1797.6 576 1797.5 576 1797.2 C 576 1797 576 1796.8 576.1 1796.8 C 577.7 1796.8 578.7 1796.6 579.2 1796 C 579.7 1795.4 579.9 1794.2 579.9 1792.5 L 579.9 1782.7 C 579.9 1777.9 578.1 1775.5 574.3 1775.5 C 572.9 1775.5 571.4 1775.9 569.8 1776.8 C 568.3 1777.7 567 1778.9 566 1780.3 L 565.7 1779.6 C 567.5 1777.2 569.3 1775.4 571.1 1774.2 C 573 1773 574.9 1772.4 576.9 1772.4 C 579.3 1772.4 581.1 1773.1 582.3 1774.4 C 583.6 1775.8 584.2 1777.7 584.2 1780.2 L 584.2 1792.5 C 584.2 1794.2 584.5 1795.4 585 1796 C 585.5 1796.6 586.5 1796.8 588.1 1796.8 C 588.2 1796.8 588.3 1797 588.3 1797.2 C 588.3 1797.5 588.2 1797.6 588.1 1797.6 C 587.3 1797.6 586.4 1797.6 585.4 1797.5 C 584.4 1797.5 583.3 1797.5 582.1 1797.5 C 581 1797.5 579.9 1797.5 578.9 1797.5 C 577.8 1797.6 576.9 1797.6 576.1 1797.6 M 559 1797.6 C 559 1797.6 558.9 1797.5 558.9 1797.2 C 558.9 1797 559 1796.8 559 1796.8 C 560.6 1796.8 561.6 1796.6 562.1 1796 C 562.6 1795.4 562.9 1794.2 562.9 1792.5 L 562.9 1759.8 C 562.9 1758.4 562.7 1757.3 562.4 1756.6 C 562.2 1755.9 561.7 1755.6 560.9 1755.6 C 560.3 1755.6 559.4 1755.9 558.2 1756.4 C 558 1756.5 557.9 1756.4 557.8 1756.2 C 557.6 1755.9 557.6 1755.8 557.8 1755.7 L 566.3 1751.6 L 566.5 1751.6 C 566.6 1751.6 566.8 1751.7 566.9 1751.8 C 567.1 1751.9 567.2 1752.1 567.2 1752.2 L 567.2 1792.5 C 567.2 1794.2 567.4 1795.4 567.9 1796 C 568.4 1796.6 569.5 1796.8 571 1796.8 C 571.2 1796.8 571.2 1797 571.2 1797.2 C 571.2 1797.5 571.2 1797.6 571 1797.6 C 570.2 1797.6 569.3 1797.6 568.3 1797.5 C 567.3 1797.5 566.2 1797.5 565.1 1797.5 C 563.9 1797.5 562.8 1797.5 561.8 1797.5 C 560.8 1797.6 559.8 1797.6 559 1797.6  M 607.8 1776.2 C 606.1 1775.8 604.5 1775.6 602.9 1775.5 C 601.3 1775.3 599.7 1775.3 597.9 1775.3 L 597.9 1773.8 C 599.6 1773.8 601.3 1773.7 602.9 1773.6 C 604.4 1773.5 606.1 1773.3 608 1773.2 C 608.1 1773.2 608.2 1773.3 608.3 1773.6 C 608.4 1773.9 608.4 1774.2 608.4 1774.6 C 608.4 1775 608.3 1775.3 608.2 1775.7 C 608.1 1776.1 607.9 1776.3 607.8 1776.2 M 601.2 1798.4 C 600.2 1798.4 599.2 1798.2 598.3 1797.9 C 597.3 1797.6 596.5 1797 595.9 1796.2 C 595.3 1795.4 595 1794.3 595 1793 L 595 1778.3 C 595 1777.3 594.9 1776.6 594.7 1776.1 C 594.5 1775.6 594.2 1775.2 593.8 1775.1 C 593.3 1774.9 592.6 1774.8 591.7 1774.8 C 591.5 1774.8 591.5 1774.7 591.5 1774.3 C 591.5 1774 591.5 1773.9 591.7 1773.9 C 593.5 1773.8 595 1773.4 596.2 1772.5 C 597.4 1771.6 598.1 1770.4 598.4 1768.9 C 598.4 1768.8 598.6 1768.7 598.9 1768.7 C 599.2 1768.7 599.3 1768.8 599.3 1768.9 L 599.3 1790.8 C 599.3 1792.5 599.8 1793.8 600.6 1794.6 C 601.5 1795.4 602.7 1795.8 604.2 1795.8 C 605.3 1795.8 606.2 1795.6 607.1 1795.2 C 608 1794.9 608.7 1794.5 609.2 1794 C 609.4 1793.9 609.6 1793.9 609.7 1794.1 C 609.9 1794.3 609.8 1794.5 609.7 1794.6 C 608.1 1795.9 606.7 1796.9 605.4 1797.5 C 604.1 1798.1 602.7 1798.4 601.2 1798.4  M 619.6 1816 C 617.5 1816 615.9 1815.6 614.8 1815 C 613.8 1814.3 613.2 1813.4 613.2 1812.3 C 613.2 1811.5 613.5 1810.8 614.2 1810.2 C 614.8 1809.6 615.4 1809.3 616 1809.3 C 616.3 1809.3 616.7 1809.5 617.1 1809.9 C 617.4 1810.4 617.8 1810.9 618.2 1811.4 C 618.6 1811.9 619.1 1812.3 619.6 1812.7 C 620.1 1813.1 620.8 1813.3 621.5 1813.3 C 622.3 1813.3 622.9 1813.1 623.5 1812.6 C 624 1812.1 624.6 1811.3 625.1 1810.1 C 625.6 1809 626.2 1807.4 626.7 1805.4 L 635.3 1776 C 635.5 1775.2 635.2 1774.8 634.4 1774.8 L 630.5 1774.9 C 630.1 1774.9 629.9 1774.8 629.8 1774.6 C 629.7 1774.5 629.6 1774.2 629.6 1774 C 629.6 1773.7 629.7 1773.3 630 1772.9 C 630.3 1772.4 630.7 1772.2 631.1 1772.2 L 635.4 1771.9 C 635.9 1771.9 636.2 1771.5 636.5 1770.8 L 637 1768.9 C 638.1 1764.9 639.5 1761.8 641.3 1759.4 C 643.1 1757.1 644.9 1755.4 646.9 1754.4 C 648.9 1753.3 650.6 1752.8 652.2 1752.8 C 654.2 1752.8 655.7 1753.2 656.8 1754.1 C 658 1754.9 658.5 1756 658.5 1757.4 C 658.5 1758.4 658.3 1759.3 657.7 1760 C 657.2 1760.7 656.5 1761 655.8 1761 C 655.4 1761 655 1760.7 654.8 1760.2 C 654.5 1759.6 654.2 1759 653.8 1758.2 C 653.5 1757.4 653 1756.7 652.4 1756.2 C 651.9 1755.7 651.2 1755.4 650.3 1755.4 C 649.2 1755.4 648.3 1755.7 647.6 1756.4 C 646.8 1757 646.1 1758 645.5 1759.4 C 644.8 1760.9 644.1 1762.7 643.4 1765.1 C 643.2 1766 643 1766.8 642.8 1767.5 C 642.6 1768.3 642.4 1769.1 642.1 1769.9 C 642.1 1770.1 642 1770.3 641.9 1770.5 C 641.9 1770.7 641.8 1770.9 641.8 1771.1 C 641.8 1771.4 641.9 1771.6 642.1 1771.7 C 642.2 1771.8 642.4 1771.8 642.6 1771.8 C 643.8 1771.8 645 1771.8 646.1 1771.7 C 647.2 1771.7 648.3 1771.6 649.3 1771.6 C 649.7 1771.6 649.8 1771.9 649.8 1772.4 C 649.8 1772.6 649.8 1772.8 649.6 1773.2 C 649.4 1773.5 649.2 1773.8 648.9 1774.1 C 648.6 1774.3 648.4 1774.4 648.1 1774.4 L 642.5 1774.6 C 642 1774.6 641.6 1774.7 641.2 1774.8 C 640.9 1775 640.7 1775.3 640.6 1775.8 C 639.2 1780.5 637.8 1785.2 636.5 1790.1 C 635.1 1794.9 633.8 1799.6 632.5 1804.3 C 632.1 1805.9 631.4 1807.4 630.4 1808.8 C 629.4 1810.2 628.2 1811.5 626.8 1812.5 C 625.5 1813.6 624.2 1814.5 622.9 1815.1 C 621.7 1815.7 620.5 1816 619.6 1816  M 656.9 1780.4 L 656.5 1779.7 C 658.1 1777.8 659.4 1776.3 660.5 1775.3 C 661.6 1774.2 662.5 1773.5 663.2 1773.1 C 664 1772.7 664.7 1772.5 665.4 1772.5 C 666.3 1772.5 667.2 1772.8 668 1773.4 C 668.9 1773.9 669.4 1774.6 669.4 1775.5 C 669.4 1776.1 669.2 1776.6 668.7 1777.1 C 668.3 1777.5 667.8 1777.7 667 1777.7 C 666.4 1777.7 665.8 1777.6 665.4 1777.2 C 665 1776.8 664.6 1776.4 664.2 1776.1 C 663.8 1775.7 663.3 1775.5 662.6 1775.5 C 662.3 1775.5 661.9 1775.6 661.4 1775.8 C 661 1776.1 660.5 1776.5 659.8 1777.2 C 659.1 1777.9 658.1 1779 656.9 1780.4 M 650.2 1797.6 C 650 1797.6 650 1797.5 650 1797.2 C 650 1797 650 1796.8 650.2 1796.8 C 651.7 1796.8 652.7 1796.6 653.2 1796 C 653.7 1795.4 653.9 1794.2 653.9 1792.5 L 653.9 1780.1 C 653.9 1778.7 653.7 1777.7 653.4 1777.1 C 653.1 1776.5 652.6 1776.2 651.8 1776.2 C 651.4 1776.2 650.9 1776.2 650.3 1776.4 C 649.8 1776.5 649.2 1776.7 648.4 1777 C 648.3 1777.1 648.1 1777.1 648.1 1776.8 C 648 1776.6 648 1776.4 648.1 1776.3 L 655.9 1772.6 C 656.1 1772.6 656.2 1772.5 656.3 1772.5 C 656.7 1772.5 657.1 1773 657.6 1773.9 C 658 1774.9 658.3 1776.2 658.3 1777.9 L 658.3 1792.5 C 658.3 1793.6 658.4 1794.6 658.8 1795.2 C 659.1 1795.8 659.7 1796.3 660.5 1796.5 C 661.4 1796.7 662.7 1796.8 664.3 1796.8 C 664.4 1796.8 664.5 1797 664.5 1797.2 C 664.5 1797.5 664.4 1797.6 664.3 1797.6 C 663.2 1797.6 662 1797.6 660.6 1797.5 C 659.2 1797.5 657.7 1797.5 656.1 1797.5 C 655 1797.5 653.9 1797.5 652.9 1797.5 C 651.8 1797.6 650.9 1797.6 650.2 1797.6  M 686.7 1797.2 C 688.8 1797.2 690.4 1796.4 691.6 1794.8 C 692.7 1793.1 693.3 1790.7 693.3 1787.3 C 693.3 1784.5 692.9 1782 692 1780 C 691.2 1777.9 690.1 1776.4 688.6 1775.2 C 687.2 1774.1 685.6 1773.6 683.8 1773.6 C 681.8 1773.6 680.2 1774.3 679.1 1775.9 C 677.9 1777.5 677.4 1779.9 677.4 1782.9 C 677.4 1785.6 677.8 1788 678.6 1790.2 C 679.4 1792.4 680.5 1794.1 681.9 1795.3 C 683.3 1796.6 684.9 1797.2 686.7 1797.2 M 684.9 1798.4 C 682.3 1798.4 680.1 1797.8 678.2 1796.6 C 676.3 1795.4 674.8 1793.7 673.8 1791.7 C 672.8 1789.6 672.3 1787.4 672.3 1785 C 672.3 1782.8 672.7 1780.9 673.5 1779.3 C 674.4 1777.7 675.4 1776.4 676.8 1775.4 C 678.2 1774.3 679.6 1773.6 681.2 1773 C 682.9 1772.5 684.4 1772.3 686 1772.3 C 688.6 1772.3 690.9 1772.9 692.7 1774.2 C 694.6 1775.5 696 1777.1 697 1779.1 C 698 1781.1 698.5 1783.2 698.5 1785.4 C 698.5 1788 697.9 1790.3 696.6 1792.3 C 695.3 1794.3 693.7 1795.8 691.6 1796.8 C 689.6 1797.9 687.3 1798.4 684.9 1798.4  M 736.1 1797.6 C 736 1797.6 736 1797.5 736 1797.2 C 736 1797 736 1796.8 736.1 1796.8 C 737.7 1796.8 738.7 1796.6 739.2 1796 C 739.7 1795.4 740 1794.2 740 1792.5 L 740 1782.7 C 740 1777.9 738.2 1775.5 734.7 1775.5 C 733.3 1775.5 731.9 1775.9 730.4 1776.8 C 729 1777.7 727.8 1778.9 726.7 1780.3 L 726.5 1779.6 C 728.2 1777.2 729.9 1775.4 731.7 1774.2 C 733.5 1773 735.3 1772.4 737.3 1772.4 C 739.5 1772.4 741.2 1773 742.4 1774.3 C 743.6 1775.6 744.2 1777.6 744.2 1780.2 L 744.2 1792.5 C 744.2 1794.2 744.5 1795.4 745 1796 C 745.5 1796.6 746.5 1796.8 748.1 1796.8 C 748.2 1796.8 748.3 1797 748.3 1797.2 C 748.3 1797.5 748.2 1797.6 748.1 1797.6 C 747.3 1797.6 746.4 1797.6 745.4 1797.5 C 744.3 1797.5 743.2 1797.5 742.1 1797.5 C 741 1797.5 739.9 1797.5 738.9 1797.5 C 737.8 1797.6 736.9 1797.6 736.1 1797.6 M 719.7 1797.6 C 719.6 1797.6 719.5 1797.5 719.5 1797.2 C 719.5 1797 719.6 1796.8 719.7 1796.8 C 721.2 1796.8 722.2 1796.6 722.7 1796 C 723.2 1795.4 723.5 1794.2 723.5 1792.5 L 723.5 1782.7 C 723.5 1777.9 721.8 1775.5 718.3 1775.5 C 716.8 1775.5 715.4 1775.9 713.9 1776.8 C 712.5 1777.7 711.3 1778.9 710.3 1780.3 L 710.1 1779.6 C 711.7 1777.2 713.5 1775.4 715.2 1774.2 C 717 1773 718.9 1772.4 720.8 1772.4 C 723 1772.4 724.7 1773 726 1774.3 C 727.2 1775.5 727.8 1777.4 727.8 1779.9 L 727.8 1792.5 C 727.8 1794.2 728.1 1795.4 728.5 1796 C 729 1796.6 730.1 1796.8 731.6 1796.8 C 731.7 1796.8 731.8 1797 731.8 1797.2 C 731.8 1797.5 731.7 1797.6 731.6 1797.6 C 730.8 1797.6 729.9 1797.6 728.9 1797.5 C 727.9 1797.5 726.8 1797.5 725.7 1797.5 C 724.5 1797.5 723.4 1797.5 722.4 1797.5 C 721.4 1797.6 720.5 1797.6 719.7 1797.6 M 703.4 1797.6 C 703.3 1797.6 703.2 1797.5 703.2 1797.2 C 703.2 1797 703.3 1796.8 703.4 1796.8 C 704.9 1796.8 705.9 1796.6 706.4 1796 C 706.9 1795.4 707.1 1794.2 707.1 1792.5 L 707.1 1780.1 C 707.1 1778.7 707 1777.7 706.7 1777.1 C 706.3 1776.5 705.8 1776.2 705 1776.2 C 704.6 1776.2 704.1 1776.2 703.6 1776.4 C 703 1776.5 702.4 1776.7 701.7 1777 C 701.5 1777.1 701.4 1777.1 701.3 1776.8 C 701.2 1776.6 701.2 1776.4 701.4 1776.3 L 709.2 1772.6 C 709.3 1772.6 709.5 1772.5 709.5 1772.5 C 709.9 1772.5 710.3 1773 710.8 1773.9 C 711.3 1774.9 711.5 1776.2 711.5 1777.9 L 711.5 1792.5 C 711.5 1794.2 711.8 1795.4 712.2 1796 C 712.7 1796.6 713.8 1796.8 715.3 1796.8 C 715.4 1796.8 715.5 1797 715.5 1797.2 C 715.5 1797.5 715.4 1797.6 715.3 1797.6 C 714.5 1797.6 713.6 1797.6 712.6 1797.5 C 711.6 1797.5 710.5 1797.5 709.4 1797.5 C 708.2 1797.5 707.1 1797.5 706.1 1797.5 C 705 1797.6 704.1 1797.6 703.4 1797.6  M 792.7 1797.5 L 783.6 1778.4 C 782.7 1776.5 782 1775.3 781.5 1774.7 C 780.9 1774.2 780.3 1773.9 779.5 1773.9 C 779.4 1773.9 779.3 1773.7 779.3 1773.5 C 779.3 1773.2 779.4 1773.1 779.5 1773.1 C 780.1 1773.1 780.8 1773.1 781.5 1773.2 C 782.3 1773.2 783.1 1773.2 784.1 1773.2 C 785.5 1773.2 786.8 1773.2 787.9 1773.2 C 788.9 1773.1 789.9 1773.1 790.8 1773.1 C 790.9 1773.1 790.9 1773.2 790.9 1773.5 C 790.9 1773.7 790.9 1773.9 790.8 1773.9 C 789.6 1773.9 788.6 1774.1 788 1774.4 C 787.3 1774.8 787.2 1775.4 787.6 1776.3 L 795.6 1792.7 L 793.4 1796.2 L 800.6 1778.6 C 801.2 1777 801.2 1775.8 800.5 1775 C 799.7 1774.3 798.4 1773.9 796.3 1773.9 C 796.2 1773.9 796.1 1773.7 796.1 1773.5 C 796.1 1773.2 796.2 1773.1 796.3 1773.1 C 797.3 1773.1 798.2 1773.1 799.2 1773.2 C 800.1 1773.2 801.2 1773.2 802.7 1773.2 C 803.7 1773.2 804.4 1773.2 805 1773.2 C 805.6 1773.1 806.3 1773.1 807.1 1773.1 C 807.2 1773.1 807.3 1773.2 807.3 1773.5 C 807.3 1773.7 807.2 1773.9 807.1 1773.9 C 806.1 1773.9 805.1 1774.2 804.3 1775 C 803.5 1775.7 802.7 1777 802 1778.8 L 794.1 1797.5 C 794 1797.7 793.8 1797.8 793.4 1797.8 C 793 1797.8 792.8 1797.7 792.7 1797.5 M 777.6 1797.5 L 768.4 1778.4 C 767.5 1776.5 766.7 1775.2 766.1 1774.7 C 765.5 1774.1 764.8 1773.9 764 1773.9 C 763.9 1773.9 763.8 1773.7 763.8 1773.5 C 763.8 1773.2 763.9 1773.1 764 1773.1 C 764.6 1773.1 765.3 1773.1 766.1 1773.2 C 766.9 1773.2 767.8 1773.2 768.9 1773.2 C 770.3 1773.2 771.6 1773.2 772.6 1773.2 C 773.7 1773.1 774.7 1773.1 775.6 1773.1 C 775.7 1773.1 775.8 1773.2 775.8 1773.5 C 775.8 1773.7 775.7 1773.9 775.6 1773.9 C 774.4 1773.9 773.4 1774 772.7 1774.4 C 772 1774.7 771.9 1775.4 772.4 1776.3 L 780.4 1792.7 L 778.1 1796.2 L 785 1779.5 L 786.3 1780 L 779 1797.5 C 778.9 1797.7 778.7 1797.8 778.3 1797.8 C 777.9 1797.8 777.6 1797.7 777.6 1797.5  M 815.8 1765.4 C 814.8 1765.4 814 1765.2 813.4 1764.6 C 812.9 1764.1 812.6 1763.4 812.6 1762.4 C 812.6 1761.5 812.9 1760.7 813.4 1760.2 C 814 1759.7 814.8 1759.5 815.8 1759.5 C 816.7 1759.5 817.4 1759.7 817.9 1760.2 C 818.5 1760.7 818.7 1761.5 818.7 1762.4 C 818.7 1764.4 817.7 1765.4 815.8 1765.4 M 810.2 1797.6 C 810 1797.6 810 1797.5 810 1797.2 C 810 1797 810 1796.8 810.2 1796.8 C 811.7 1796.8 812.7 1796.6 813.2 1796 C 813.7 1795.4 814 1794.2 814 1792.5 L 814 1780.8 C 814 1779.3 813.8 1778.2 813.5 1777.6 C 813.2 1776.9 812.7 1776.5 811.9 1776.5 C 811.6 1776.5 811.2 1776.6 810.8 1776.7 C 810.3 1776.9 809.8 1777.1 809.2 1777.4 C 809 1777.4 808.9 1777.3 808.8 1777.1 C 808.7 1776.8 808.7 1776.7 808.9 1776.6 L 817.5 1772.6 C 817.7 1772.6 817.7 1772.5 817.8 1772.5 C 817.9 1772.5 818 1772.6 818.2 1772.7 C 818.3 1772.9 818.4 1773 818.4 1773.2 C 818.4 1773.6 818.4 1774.4 818.4 1775.6 C 818.3 1776.9 818.3 1778.6 818.3 1780.7 L 818.3 1792.5 C 818.3 1794.2 818.5 1795.4 819 1796 C 819.5 1796.6 820.5 1796.8 822.1 1796.8 C 822.2 1796.8 822.3 1797 822.3 1797.2 C 822.3 1797.5 822.2 1797.6 822.1 1797.6 C 821.3 1797.6 820.4 1797.6 819.4 1797.5 C 818.4 1797.5 817.3 1797.5 816.1 1797.5 C 815 1797.5 813.9 1797.5 812.9 1797.5 C 811.9 1797.6 811 1797.6 810.2 1797.6  M 842.6 1776.2 C 840.9 1775.8 839.3 1775.6 837.7 1775.5 C 836.1 1775.3 834.5 1775.3 832.8 1775.3 L 832.8 1773.8 C 834.4 1773.8 836.1 1773.7 837.7 1773.6 C 839.3 1773.5 841 1773.3 842.8 1773.2 C 842.9 1773.2 843 1773.3 843.1 1773.6 C 843.2 1773.9 843.2 1774.2 843.2 1774.6 C 843.2 1775 843.2 1775.3 843 1775.7 C 842.9 1776.1 842.8 1776.3 842.6 1776.2 M 836.1 1798.4 C 835 1798.4 834 1798.2 833.1 1797.9 C 832.1 1797.6 831.3 1797 830.7 1796.2 C 830.1 1795.4 829.8 1794.3 829.8 1793 L 829.8 1778.3 C 829.8 1777.3 829.7 1776.6 829.5 1776.1 C 829.4 1775.6 829 1775.2 828.6 1775.1 C 828.1 1774.9 827.4 1774.8 826.5 1774.8 C 826.3 1774.8 826.3 1774.7 826.3 1774.3 C 826.3 1774 826.3 1773.9 826.5 1773.9 C 828.3 1773.8 829.8 1773.4 831 1772.5 C 832.2 1771.6 832.9 1770.4 833.2 1768.9 C 833.2 1768.8 833.4 1768.7 833.7 1768.7 C 834 1768.7 834.2 1768.8 834.2 1768.9 L 834.2 1790.8 C 834.2 1792.5 834.6 1793.8 835.5 1794.6 C 836.3 1795.4 837.5 1795.8 839 1795.8 C 840.1 1795.8 841.1 1795.6 841.9 1795.2 C 842.8 1794.9 843.5 1794.5 844 1794 C 844.2 1793.9 844.4 1793.9 844.5 1794.1 C 844.7 1794.3 844.7 1794.5 844.5 1794.6 C 842.9 1795.9 841.5 1796.9 840.2 1797.5 C 838.9 1798.1 837.5 1798.4 836.1 1798.4  M 864.2 1797.6 C 864.1 1797.6 864.1 1797.5 864.1 1797.2 C 864.1 1797 864.1 1796.8 864.2 1796.8 C 865.8 1796.8 866.8 1796.6 867.3 1796 C 867.8 1795.4 868 1794.2 868 1792.5 L 868 1782.7 C 868 1777.9 866.2 1775.5 862.4 1775.5 C 861 1775.5 859.5 1775.9 857.9 1776.8 C 856.4 1777.7 855.2 1778.9 854.1 1780.3 L 853.8 1779.6 C 855.6 1777.2 857.4 1775.4 859.2 1774.2 C 861.1 1773 863 1772.4 865.1 1772.4 C 867.4 1772.4 869.2 1773.1 870.4 1774.4 C 871.7 1775.8 872.3 1777.7 872.3 1780.2 L 872.3 1792.5 C 872.3 1794.2 872.6 1795.4 873.1 1796 C 873.6 1796.6 874.7 1796.8 876.2 1796.8 C 876.3 1796.8 876.4 1797 876.4 1797.2 C 876.4 1797.5 876.3 1797.6 876.2 1797.6 C 875.4 1797.6 874.5 1797.6 873.5 1797.5 C 872.5 1797.5 871.4 1797.5 870.3 1797.5 C 869.1 1797.5 868 1797.5 867 1797.5 C 865.9 1797.6 865 1797.6 864.2 1797.6 M 847.2 1797.6 C 847.1 1797.6 847 1797.5 847 1797.2 C 847 1797 847.1 1796.8 847.2 1796.8 C 848.7 1796.8 849.8 1796.6 850.2 1796 C 850.7 1795.4 851 1794.2 851 1792.5 L 851 1759.8 C 851 1758.4 850.8 1757.3 850.6 1756.6 C 850.3 1755.9 849.8 1755.6 849.1 1755.6 C 848.4 1755.6 847.5 1755.9 846.3 1756.4 C 846.1 1756.5 846 1756.4 845.9 1756.2 C 845.8 1755.9 845.8 1755.8 845.9 1755.7 L 854.4 1751.6 L 854.6 1751.6 C 854.8 1751.6 854.9 1751.7 855.1 1751.8 C 855.2 1751.9 855.3 1752.1 855.3 1752.2 L 855.3 1792.5 C 855.3 1794.2 855.5 1795.4 856 1796 C 856.5 1796.6 857.6 1796.8 859.1 1796.8 C 859.3 1796.8 859.3 1797 859.3 1797.2 C 859.3 1797.5 859.3 1797.6 859.1 1797.6 C 858.3 1797.6 857.4 1797.6 856.4 1797.5 C 855.4 1797.5 854.3 1797.5 853.2 1797.5 C 852 1797.5 851 1797.5 849.9 1797.5 C 848.9 1797.6 848 1797.6 847.2 1797.6  M 886.2 1765.4 C 885.2 1765.4 884.4 1765.2 883.9 1764.6 C 883.3 1764.1 883 1763.4 883 1762.4 C 883 1761.5 883.3 1760.7 883.9 1760.2 C 884.4 1759.7 885.2 1759.5 886.2 1759.5 C 887.1 1759.5 887.8 1759.7 888.4 1760.2 C 888.9 1760.7 889.2 1761.5 889.2 1762.4 C 889.2 1764.4 888.2 1765.4 886.2 1765.4 M 880.6 1797.6 C 880.5 1797.6 880.4 1797.5 880.4 1797.2 C 880.4 1797 880.5 1796.8 880.6 1796.8 C 882.1 1796.8 883.1 1796.6 883.6 1796 C 884.1 1795.4 884.4 1794.2 884.4 1792.5 L 884.4 1780.8 C 884.4 1779.3 884.2 1778.2 884 1777.6 C 883.7 1776.9 883.1 1776.5 882.4 1776.5 C 882 1776.5 881.6 1776.6 881.2 1776.7 C 880.8 1776.9 880.2 1777.1 879.6 1777.4 C 879.5 1777.4 879.3 1777.3 879.2 1777.1 C 879.1 1776.8 879.2 1776.7 879.3 1776.6 L 888 1772.6 C 888.1 1772.6 888.2 1772.5 888.2 1772.5 C 888.3 1772.5 888.5 1772.6 888.6 1772.7 C 888.8 1772.9 888.8 1773 888.8 1773.2 C 888.8 1773.6 888.8 1774.4 888.8 1775.6 C 888.7 1776.9 888.7 1778.6 888.7 1780.7 L 888.7 1792.5 C 888.7 1794.2 889 1795.4 889.4 1796 C 889.9 1796.6 891 1796.8 892.5 1796.8 C 892.6 1796.8 892.7 1797 892.7 1797.2 C 892.7 1797.5 892.6 1797.6 892.5 1797.6 C 891.8 1797.6 890.9 1797.6 889.8 1797.5 C 888.8 1797.5 887.7 1797.5 886.6 1797.5 C 885.4 1797.5 884.3 1797.5 883.3 1797.5 C 882.3 1797.6 881.4 1797.6 880.6 1797.6  M 914.4 1797.6 C 914.3 1797.6 914.2 1797.5 914.2 1797.2 C 914.2 1797 914.3 1796.8 914.4 1796.8 C 915.9 1796.8 916.9 1796.6 917.4 1796 C 917.9 1795.4 918.2 1794.2 918.2 1792.5 L 918.2 1782.5 C 918.2 1780.1 917.7 1778.3 916.8 1777.1 C 915.9 1776 914.5 1775.4 912.6 1775.4 C 911.1 1775.4 909.6 1775.8 908.1 1776.7 C 906.6 1777.6 905.3 1778.8 904.3 1780.3 L 904 1779.5 C 905.7 1777.1 907.5 1775.4 909.4 1774.1 C 911.2 1772.9 913.1 1772.3 915.2 1772.3 C 917.5 1772.3 919.3 1773 920.6 1774.3 C 921.9 1775.7 922.5 1777.6 922.5 1780.1 L 922.5 1792.5 C 922.5 1794.2 922.8 1795.4 923.3 1796 C 923.8 1796.6 924.8 1796.8 926.3 1796.8 C 926.5 1796.8 926.5 1797 926.5 1797.2 C 926.5 1797.5 926.5 1797.6 926.3 1797.6 C 925.5 1797.6 924.6 1797.6 923.6 1797.5 C 922.6 1797.5 921.5 1797.5 920.4 1797.5 C 919.2 1797.5 918.1 1797.5 917.1 1797.5 C 916.1 1797.6 915.2 1797.6 914.4 1797.6 M 897.3 1797.6 C 897.2 1797.6 897.2 1797.5 897.2 1797.2 C 897.2 1797 897.2 1796.8 897.3 1796.8 C 898.9 1796.8 899.9 1796.6 900.4 1796 C 900.8 1795.4 901.1 1794.2 901.1 1792.5 L 901.1 1780.1 C 901.1 1778.7 900.9 1777.7 900.6 1777.1 C 900.3 1776.5 899.8 1776.2 899 1776.2 C 898.6 1776.2 898.1 1776.2 897.5 1776.4 C 897 1776.5 896.4 1776.7 895.6 1777 C 895.5 1777.1 895.3 1777.1 895.2 1776.8 C 895.2 1776.6 895.2 1776.4 895.3 1776.3 L 903.1 1772.6 C 903.3 1772.6 903.4 1772.5 903.5 1772.5 C 903.9 1772.5 904.3 1773 904.8 1773.9 C 905.2 1774.9 905.5 1776.2 905.5 1777.9 L 905.5 1792.5 C 905.5 1794.2 905.7 1795.4 906.2 1796 C 906.7 1796.6 907.7 1796.8 909.3 1796.8 C 909.4 1796.8 909.5 1797 909.5 1797.2 C 909.5 1797.5 909.4 1797.6 909.3 1797.6 C 908.5 1797.6 907.6 1797.6 906.5 1797.5 C 905.5 1797.5 904.4 1797.5 903.3 1797.5 C 902.2 1797.5 901.1 1797.5 900 1797.5 C 899 1797.6 898.1 1797.6 897.3 1797.6 "/></symbol>
+
+    <symbol id="mark" viewBox="0 0 200 200">
+      <path class="glow" fill="url(#beam)" d="M86 92 L30 200 H170 L114 92 A14 14 0 0 1 86 92Z"/>
+      <path class="glow" fill="url(#bulb)" d="M86 92 A14 14 0 0 0 114 92Z"/>
+      <path fill="none" stroke="#F4F1EA" stroke-width="3" d="M46 92 A54 52 0 0 1 154 92 Z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+  <header class="hero" id="top">
+    <svg class="poster" id="poster" viewBox="0 0 1440 1941" role="img" aria-label="Antara logo: a street lamp lights the name Antara and the line Light from within">
+      <rect width="1440" height="1941" fill="#11100F"/>
+      <circle class="glow" cx="1098" cy="505" r="230" fill="url(#halo)" style="--dur:14s"/>
+      <path class="glow" style="--dur:14s" fill="url(#logoBeam)" fill-opacity=".94" d="M1029.3 498.4 L0 1823.6 V1941 H1440 V1042.3 L1166.7 498.4 A68.7 68.7 0 0 1 1029.3 498.4Z"/>
+      <path class="glow" style="--dur:14s" fill="#FFD27A" d="M1029.3 498.4 A68.7 68.7 0 0 0 1166.7 498.4Z"/>
+      <path fill="#11100F" stroke="#fff" stroke-width="1.1" d="M855.6 498.4 A227 218.7 0 0 1 1309.6 498.4 H855.6Z"/>
+      <rect x="1262.8" y="498.4" width="47.2" height="1439" fill="#000" stroke="#fff" stroke-width="1.3"/>
+      <g class="glow" style="--dur:14s">
+        <use href="#wordmark" x="245" y="1535" width="950" height="192" fill="url(#logoWord)"/>
+        <use href="#tagline" x="478" y="1749" width="451" height="70" fill="#F5E5CC"/>
+      </g>
+    </svg>
+    <div>
+      <p class="eyebrow">Brand book · Edition 01</p>
+      <h1>Antara<br><em>Light from within</em></h1>
+      <p class="lede">The identity of Antara is built on one simple idea. Lines draw the world, and light gives it meaning. The logo, the illustrations, the colours and the voice all follow from that.</p>
+      <button class="switch" id="heroSwitch" aria-pressed="true"><span class="knob"></span><span id="heroSwitchLabel">Light is on</span></button>
+      <nav class="toc" aria-label="Sections">
+        <a href="#name">The name</a><a href="#logo">Logo</a><a href="#philosophy">Philosophy</a><a href="#usage">Usage</a><a href="#colour">Colour</a><a href="#type">Type</a><a href="#lamps">Illustration</a><a href="#applications">Applications</a><a href="#voice">Voice</a>
+      </nav>
+    </div>
+  </header>
+
+  <svg class="festoon" data-festoon viewBox="0 0 1140 120" aria-hidden="true"></svg>
+
+  <section id="name">
+    <div class="sec-head">
+      <div><p class="eyebrow">The name</p><h2>What Antara means</h2></div>
+      <p>The name comes from Sanskrit and from Indian classical music. Both meanings point the same way: inward, and then upward.</p>
+    </div>
+    <div class="name-grid">
+      <div>
+        <div class="deva" lang="hi">अंतरा</div>
+        <div class="translit">antarā · /ən̪.t̪ə.ɾaː/</div>
+      </div>
+      <dl class="defs">
+        <div><dt>Within</dt><dd>From the Sanskrit <i>antar</i>: inner, inside, the space within. It is the root of <i>antaratma</i>, the inner self. Antara is about the light a person, a room or a home carries inside.</dd></div>
+        <div><dt>The rising verse</dt><dd>In a raga or a song, the <i>antara</i> is the second movement. After the <i>sthayi</i> settles low, the antara climbs into the upper octave. It is the moment a song lifts, and the moment a dark room changes when a lamp is lit.</dd></div>
+        <div><dt>The space between</dt><dd><i>Antar</i> also means interval, the gap between two things. Light lives in that gap, between a lamp and what it touches.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="logo">
+    <div class="sec-head">
+      <div><p class="eyebrow">Logo meaning</p><h2>A lamp that reveals a name</h2></div>
+      <p>The logo is a scene, not a symbol. A street lamp bends over the dark, and only what stands inside its light can be seen.</p>
+    </div>
+    <div class="anatomy">
+      <svg class="poster" viewBox="0 0 1440 1941" aria-hidden="true">
+        <rect width="1440" height="1941" fill="#11100F"/>
+        <path fill="url(#logoBeam)" fill-opacity=".94" d="M1029.3 498.4 L0 1823.6 V1941 H1440 V1042.3 L1166.7 498.4 A68.7 68.7 0 0 1 1029.3 498.4Z"/>
+        <path fill="#FFD27A" d="M1029.3 498.4 A68.7 68.7 0 0 0 1166.7 498.4Z"/>
+        <path fill="#11100F" stroke="#fff" stroke-width="1.1" d="M855.6 498.4 A227 218.7 0 0 1 1309.6 498.4 H855.6Z"/>
+        <rect x="1262.8" y="498.4" width="47.2" height="1439" fill="#000" stroke="#fff" stroke-width="1.3"/>
+        <use href="#wordmark" x="245" y="1535" width="950" height="192" fill="url(#logoWord)"/>
+        <use href="#tagline" x="478" y="1749" width="451" height="70" fill="#F5E5CC"/>
+      </svg>
+      <div class="parts">
+        <div class="part"><h4>The shade</h4><p>A half dome drawn in a single white line. It reads as a lamp, and also as half a sun at dusk. It is the only part of the logo that is outline only, because the shade is structure and holds no light.</p></div>
+        <div class="part"><h4>The bulb</h4><p>A small hollow cut into the beam, where the light begins. It is the <i>antar</i>, the inside. Everything else in the logo comes out of this point.</p></div>
+        <div class="part"><h4>The beam</h4><p>One cone of warm amber that fades to black as it falls, like real light. It is tilted, not centred, so the logo feels like a moment someone walked into.</p></div>
+        <div class="part"><h4>The pole</h4><p>A single dark vertical set to the side. It holds the light up without standing in it. That is the role Antara wants in people's homes: support, not spectacle.</p></div>
+        <div class="part"><h4>The wordmark</h4><p>ANTARA in Alta, widely spaced. Each letter is lit from the top and fades at its feet, so the name sits inside the light rather than on top of it.</p></div>
+        <div class="part"><h4>The tagline</h4><p>"Light from within" in a warm cream serif. The italic <i>f</i> gives a small flicker in an otherwise calm line.</p></div>
+        <p class="statement">Switch the lamp off and the name disappears. Antara only exists in the light, and that idea runs through everything else in this book.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="philosophy">
+    <p class="eyebrow" style="margin-bottom:24px">Brand philosophy</p>
+    <p class="creed">Every room has an <em>antara</em>, a quiet inner light. We make the lamps that let it show.</p>
+    <div class="principles">
+      <div class="principle"><svg data-lamp="diya" viewBox="0 0 200 260" aria-hidden="true"></svg><h3>Warmth before brightness</h3><p>We choose amber over white and glow over glare. A good lamp makes a room feel lived in, not lit up.</p></div>
+      <div class="principle"><svg data-lamp="bulb" viewBox="0 0 200 260" aria-hidden="true" style="--delay:-3s"></svg><h3>The line holds, the light speaks</h3><p>Objects are drawn as outlines. Colour belongs only to light. This keeps the brand calm and makes every glow count.</p></div>
+      <div class="principle"><svg data-lamp="lantern" viewBox="0 0 200 260" aria-hidden="true" style="--delay:-6s"></svg><h3>Darkness is part of the design</h3><p>We leave space for night. Dark grounds and generous margins are what let a small light feel big.</p></div>
+      <div class="principle"><svg data-lamp="street" viewBox="0 0 200 260" aria-hidden="true" style="--delay:-9s"></svg><h3>From diya to street lamp</h3><p>Antara holds the oil lamp at a threshold and the street lamp outside the window. Heritage and the everyday sit in one family.</p></div>
+    </div>
+  </section>
+
+  <section id="usage">
+    <div class="sec-head">
+      <div><p class="eyebrow">Logo usage</p><h2>Versions of the logo</h2></div>
+      <p>The full lamp scene is the primary logo. Where there is no room for it, use the wordmark lockup or the lamp mark. The lit gradient is only used on dark grounds.</p>
+    </div>
+    <div class="versions">
+      <figure class="ver v-dark" style="margin:0">
+        <div class="stage"><div class="lockup">
+          <svg viewBox="245 1535 950 192" aria-label="Antara"><use href="#wordmark" x="245" y="1535" width="950" height="192" fill="url(#wordLit)"/></svg>
+          <svg class="tg" viewBox="478 1749 451 70" aria-hidden="true"><use href="#tagline" x="478" y="1749" width="451" height="70" fill="#F5E5CC"/></svg>
+        </div></div>
+        <figcaption class="cap"><b>Lit wordmark</b><span class="muted">On Night and Deep only</span></figcaption>
+      </figure>
+      <figure class="ver v-paper" style="margin:0">
+        <div class="stage"><div class="lockup">
+          <svg viewBox="245 1535 950 192" aria-label="Antara"><use href="#wordmark" x="245" y="1535" width="950" height="192" fill="#3D3A37"/></svg>
+          <svg class="tg" viewBox="478 1749 451 70" aria-hidden="true"><use href="#tagline" x="478" y="1749" width="451" height="70" fill="#C88A4A"/></svg>
+        </div></div>
+        <figcaption class="cap"><b>Daylight wordmark</b><span>Soot and Brass on Moonlight</span></figcaption>
+      </figure>
+      <figure class="ver v-kumkum" style="margin:0">
+        <div class="stage"><div class="lockup">
+          <svg viewBox="245 1535 950 192" aria-label="Antara"><use href="#wordmark" x="245" y="1535" width="950" height="192" fill="#F5E5CC"/></svg>
+          <svg class="tg" viewBox="478 1749 451 70" aria-hidden="true"><use href="#tagline" x="478" y="1749" width="451" height="70" fill="#FECA9A"/></svg>
+        </div></div>
+        <figcaption class="cap"><b>Festive</b><span>Wick on Kumkum</span></figcaption>
+      </figure>
+      <figure class="ver v-dark" style="margin:0">
+        <div class="stage"><div class="mark-row">
+          <div class="markbox"><svg width="96" height="96" aria-label="Antara lamp mark"><use href="#mark"/></svg></div>
+          <div class="markbox"><svg width="52" height="52" aria-hidden="true"><use href="#mark"/></svg></div>
+          <div class="markbox"><svg width="26" height="26" aria-hidden="true"><use href="#mark"/></svg></div>
+        </div></div>
+        <figcaption class="cap"><b>Lamp mark</b><span class="muted">App icon, avatar, favicon</span></figcaption>
+      </figure>
+    </div>
+    <div class="rules">
+      <div><h4>Clear space</h4><p>Keep empty space around every version equal to the height of the A in the wordmark. Nothing else enters the light.</p></div>
+      <div><h4>Minimum size</h4><p>Wordmark: 25 mm or 120 px wide. Drop the tagline below 40 mm or 200 px. Lamp mark: 16 px.</p></div>
+      <div><h4>Don't</h4><ul><li>Light the logo in cool white or blue.</li><li>Put the lit gradient on a light background.</li><li>Move the beam so it comes from below or the left.</li><li>Fill the shade or outline the beam.</li></ul></div>
+    </div>
+  </section>
+
+  <section id="colour">
+    <div class="sec-head">
+      <div><p class="eyebrow">Colour</p><h2>The colours of a lit evening</h2></div>
+      <p>Ten colours in three groups: the dark that holds the light, the light itself, and the warm earth of brass, clay and kumkum. Click a swatch to copy its hex code.</p>
+    </div>
+    <div class="swatches" id="swatches"></div>
+    <div class="ratio" id="ratio" aria-label="Colour proportions"></div>
+    <p class="ratio-note">Use roughly these proportions. Most of any layout is dark. Light colours are used like light: in small, warm amounts.</p>
+  </section>
+
+  <section id="type">
+    <div class="sec-head">
+      <div><p class="eyebrow">Typography</p><h2>Three typefaces, three jobs</h2></div>
+      <p>Alta is kept for the logo. Cormorant Garamond is the voice of headlines and quotes. Montserrat does the quiet work of body text, labels and interfaces. All three come from the source file.</p>
+    </div>
+    <div class="faces">
+      <div class="face f-alta">
+        <span class="use">Logo only</span>
+        <svg viewBox="245 1535 950 192" aria-label="Antara set in Alta"><use href="#wordmark" x="245" y="1535" width="950" height="192" fill="#F5E5CC"/></svg>
+        <h3 style="font-family:var(--display)">Alta</h3>
+        <p>A tall, open display face with long, light strokes. Use it only for the wordmark and never set new words in it, so the name stays unique.</p>
+      </div>
+      <div class="face f-corm">
+        <span class="use">Headlines · quotes · tagline</span>
+        <div class="big">Aa <i>ff</i></div>
+        <h3>Cormorant Garamond</h3>
+        <p>Light (300) for headlines, Italic for emphasis and the flame-like <i>f</i>. Set large, with tight line spacing.</p>
+        <div class="glyphs">ABCDEFGHIJKLM nopqrstuvwxyz 0123456789</div>
+      </div>
+      <div class="face f-mont">
+        <span class="use">Body · labels · UI</span>
+        <div class="big">Aa</div>
+        <h3>Montserrat</h3>
+        <p>Light (300) for body text, Medium (500) in spaced capitals for labels. Keep it small and let the serif lead.</p>
+        <div class="glyphs" style="font-family:var(--sans)">ABCDEFGHIJKLM nopqrstuvwxyz 0123456789</div>
+      </div>
+    </div>
+    <div class="scale">
+      <div><small>Display · 64/68</small><span style="font-family:var(--display);font-weight:300;font-size:clamp(36px,5vw,64px);line-height:1.06">Light from within</span></div>
+      <div><small>Heading · 32/36</small><span style="font-family:var(--display);font-size:32px;line-height:1.1">The Diwali collection is here</span></div>
+      <div><small>Label · 11 / +24%</small><span class="eyebrow">Hand-finished brass · 2700 K</span></div>
+      <div><small>Body · 15/26</small><span style="max-width:60ch">Each lamp is drawn to be seen at night. We design for the hour after sunset, when one warm light can change how a whole room feels.</span></div>
+    </div>
+  </section>
+
+  <section id="lamps">
+    <div class="sec-head">
+      <div><p class="eyebrow">Illustration</p><h2>A family of lamps</h2></div>
+      <p>The illustrations show many kinds of lamp, from the diya to the street lamp. Each one is drawn as a border only. The only filled shapes are flame, bulb and beam, so the light is always the subject.</p>
+    </div>
+    <div class="lamp-rules">
+      <div><h4>Line</h4><p>A single 1.5 px stroke in Ash on dark, or Soot on paper. Round joins, no fills on objects.</p></div>
+      <div><h4>Light</h4><p>Filament fading to transparent. Cores of flames and bulbs go to Glow and near white.</p></div>
+      <div><h4>Direction</h4><p>Light falls down and outward. Beams are cones, flames are teardrops, halos are soft circles.</p></div>
+      <div><h4>Motion</h4><p>Lamps flicker on and switch off. They never fade slowly, because real lamps don't.</p></div>
+    </div>
+    <div class="lamps" id="lampGrid"></div>
+    <p class="lamp-hint">Tap any lamp to switch it off or on.</p>
+    <div class="on-paper" id="onPaper"></div>
+  </section>
+
+  <section id="applications">
+    <div class="sec-head">
+      <div><p class="eyebrow">Applications</p><h2>The brand at work</h2></div>
+      <p>The lamps travel across every touchpoint. Each piece uses one lamp, one light, and lots of dark or paper around it.</p>
+    </div>
+    <div class="apps">
+      <figure class="app card-front" style="margin:0">
+        <div class="bc bc-front">
+          <svg class="pend" data-lamp="pendant" viewBox="0 0 200 260" preserveAspectRatio="xMidYMin meet" aria-hidden="true"></svg>
+          <svg class="wm" viewBox="245 1535 950 192" aria-label="Antara"><use href="#wordmark" x="245" y="1535" width="950" height="192" fill="url(#wordLit)"/></svg>
+          <svg class="tg" viewBox="478 1749 451 70" aria-hidden="true"><use href="#tagline" x="478" y="1749" width="451" height="70" fill="#F5E5CC"/></svg>
+        </div>
+        <figcaption>Business card · front</figcaption>
+      </figure>
+      <figure class="app card-back" style="margin:0">
+        <div class="bc bc-back">
+          <svg class="diya" data-lamp="diya" viewBox="0 0 200 260" aria-hidden="true"></svg>
+          <div class="who">Name Surname<small>Founder</small></div>
+          <div class="lines">+00 00000 00000<br>hello@yourdomain<br>Studio address, City</div>
+        </div>
+        <figcaption>Business card · back</figcaption>
+      </figure>
+      <figure class="app social" style="margin:0">
+        <div class="post">
+          <span class="k">Festive collection</span>
+          <svg class="wm" viewBox="245 1535 950 192" aria-label="Antara"><use href="#wordmark" x="245" y="1535" width="950" height="192" fill="#F5E5CC"/></svg>
+          <p class="h">Every room has an <em>inner light</em></p>
+          <div class="row">
+            <svg data-lamp="diya" viewBox="0 0 200 260" aria-hidden="true"></svg>
+            <svg data-lamp="diya" viewBox="0 0 200 260" aria-hidden="true" style="--delay:-4s"></svg>
+            <svg data-lamp="diya" viewBox="0 0 200 260" aria-hidden="true" style="--delay:-7s"></svg>
+          </div>
+        </div>
+        <figcaption>Social post · 1:1</figcaption>
+      </figure>
+      <figure class="app tagapp" style="margin:0">
+        <div class="tagbox">
+          <div class="ptag">
+            <svg class="wm" viewBox="245 1535 950 192" aria-label="Antara"><use href="#wordmark" x="245" y="1535" width="950" height="192" fill="#3D3A37"/></svg>
+            <div class="art"><svg data-lamp="lantern" viewBox="0 0 200 260" aria-hidden="true"></svg></div>
+            <div class="nm">Kandil<small>Brass lantern</small></div>
+          </div>
+        </div>
+        <figcaption>Product tag</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="voice">
+    <div class="sec-head">
+      <div><p class="eyebrow">Voice</p><h2>How Antara speaks</h2></div>
+      <p>Like the hour after sunset: warm, unhurried and close. Short sentences. Concrete words about rooms, evenings and people, not watts and features.</p>
+    </div>
+    <div class="voice">
+      <div class="say yes"><h4>Sounds like Antara</h4><q>Light it at dusk. Let the room slow down.</q><q>Made for the corner where you read at night.</q></div>
+      <div class="say no"><h4>Not Antara</h4><q>Ultra-bright 2000-lumen LED solution!</q><q>Upgrade your lighting game today.</q></div>
+    </div>
+    <div class="traits"><span>Warm</span><span>Calm</span><span>Rooted</span><span>Poetic, not precious</span><span>Quietly modern</span></div>
+  </section>
+
+  <svg class="festoon" data-festoon viewBox="0 0 1140 120" aria-hidden="true"></svg>
+
+  <footer>
+    <svg viewBox="245 1535 950 192" aria-label="Antara"><use href="#wordmark" x="245" y="1535" width="950" height="192" fill="url(#wordLit)"/></svg>
+    <span>Antara brand book · Edition 01 · Light from within</span>
+  </footer>
+</div>
+
+<script>
+(() => {
+  const LINE = 'fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"';
+  const FILL = 'fill="var(--tile)" stroke="var(--ink)" stroke-width="1.5" stroke-linejoin="round"';
+  const CORE = '#FFF3D6';
+  const LAMPS = {
+    street: { name: 'Street lamp', kind: 'In the logo', svg: `
+      <circle class="glow" cx="105" cy="74" r="44" fill="url(#halo)"/>
+      <path class="glow" fill="url(#beam)" d="M92 70 L6 250 H194 L118 70 A13 13 0 0 1 92 70Z"/>
+      <path class="glow" fill="url(#bulb)" d="M92 70 A13 13 0 0 0 118 70Z"/>
+      <path ${FILL} d="M58 70 A47 44 0 0 1 152 70 Z"/>
+      <rect ${LINE} x="144" y="70" width="8" height="180"/>
+      <path ${LINE} d="M14 250 H196"/>` },
+    pendant: { name: 'Pendant', kind: 'Ceiling', svg: `
+      <circle class="glow" cx="100" cy="142" r="48" fill="url(#halo)"/>
+      <path class="glow" fill="url(#beam)" d="M86 138 L18 260 H182 L114 138 A14 14 0 0 1 86 138Z"/>
+      <path class="glow" fill="url(#bulb)" d="M86 138 A14 14 0 0 0 114 138Z"/>
+      <path ${LINE} d="M100 0 V78"/>
+      <rect ${FILL} x="93" y="78" width="14" height="10"/>
+      <path ${FILL} d="M93 88 L58 138 H142 L107 88Z"/>` },
+    table: { name: 'Table lamp', kind: 'Bedside', svg: `
+      <path class="glow" fill="url(#beamUp)" d="M72 62 H128 L162 6 H38Z"/>
+      <path class="glow" fill="url(#beam)" fill-opacity=".7" d="M52 128 H148 L196 240 H4Z"/>
+      <path class="glow" fill="url(#shade)" d="M72 62 H128 L148 128 H52Z"/>
+      <path ${LINE} d="M72 62 H128 L148 128 H52Z"/>
+      <path ${LINE} d="M100 128 V222 M122 128 V150"/>
+      <circle ${LINE} cx="122" cy="153" r="3"/>
+      <path ${FILL} d="M76 238 L84 222 H116 L124 238Z"/>
+      <path ${LINE} d="M24 240 H176"/>` },
+    desk: { name: 'Desk lamp', kind: 'Study', svg: `
+      <circle class="glow" cx="178" cy="140" r="42" fill="url(#halo)"/>
+      <path class="glow" fill="url(#beam)" d="M160 146 L192 124 L214 248 H96Z"/>
+      <path class="glow" fill="url(#bulb)" d="M160 146 A19.5 19.5 0 0 0 192 124Z"/>
+      <path ${LINE} d="M60 228 L92 150 L148 104"/>
+      <circle ${FILL} cx="92" cy="150" r="5"/>
+      <path ${FILL} d="M140 98 L158 86 L192 124 L160 146Z"/>
+      <circle ${FILL} cx="148" cy="104" r="5"/>
+      <path ${FILL} d="M24 240 L32 228 H88 L96 240Z"/>
+      <circle ${FILL} cx="60" cy="228" r="5"/>` },
+    diya: { name: 'Diya', kind: 'Oil lamp', svg: `<g transform="translate(-16 0)">
+      <circle class="glow" cx="170" cy="150" r="58" fill="url(#halo)"/>
+      <path ${LINE} d="M30 190 Q95 246 156 192 Q168 188 176 176 Q160 178 150 182 Q95 176 30 190Z"/>
+      <path ${LINE} d="M42 192 Q95 186 148 186"/>
+      <path ${LINE} d="M82 218 L76 236 H118 L112 218"/>
+      <circle ${LINE} cx="70" cy="206" r="2"/><circle ${LINE} cx="93" cy="211" r="2"/><circle ${LINE} cx="116" cy="207" r="2"/>
+      <path ${LINE} d="M168 178 L171 171"/>
+      <path class="glow" fill="url(#flame)" d="M171 110 C185 134 189 158 171 171 C153 158 157 134 171 110Z"/>
+      <path class="glow" fill="${CORE}" d="M171 140 C177 152 178 162 171 167 C164 162 165 152 171 140Z"/></g>` },
+    lantern: { name: 'Kandil', kind: 'Lantern', svg: `
+      <circle class="glow" cx="100" cy="140" r="96" fill="url(#halo)"/>
+      <path class="glow" fill="url(#glass)" d="M74 78 H126 L130 92 V178 L122 192 H78 L70 178 V92Z"/>
+      <path class="glow" fill="url(#flame)" d="M100 112 C109 128 111 145 100 154 C89 145 91 128 100 112Z"/>
+      <path ${LINE} d="M100 0 V30"/>
+      <circle ${LINE} cx="100" cy="36" r="6"/>
+      <path ${LINE} d="M76 66 Q100 26 124 66"/>
+      <path ${LINE} d="M70 78 L80 64 H120 L130 78Z"/>
+      <path ${LINE} d="M74 78 H126 L130 92 V178 L122 192 H78 L70 178 V92Z"/>
+      <path ${LINE} d="M90 80 V190 M110 80 V190 M70 96 H130 M70 174 H130"/>
+      <rect ${LINE} x="76" y="192" width="48" height="12"/>
+      <path ${LINE} d="M92 204 L100 214 L108 204"/>` },
+    candle: { name: 'Candle', kind: 'Taper', svg: `
+      <circle class="glow" cx="100" cy="92" r="70" fill="url(#halo)"/>
+      <path class="glow" fill="url(#flame)" d="M100 60 C113 84 115 102 100 113 C85 102 87 84 100 60Z"/>
+      <path class="glow" fill="${CORE}" d="M100 88 C105 97 106 104 100 109 C94 104 95 97 100 88Z"/>
+      <path ${LINE} d="M100 121 V111"/>
+      <path ${LINE} d="M84 124 V230 M116 124 V230"/>
+      <path ${LINE} d="M84 124 Q100 130 116 124 Q100 118 84 124Z"/>
+      <path ${LINE} d="M89 127 V150 Q92 157 95 150 V128"/>
+      <path ${LINE} d="M54 232 Q100 250 146 232 Q100 222 54 232Z"/>` },
+    bulb: { name: 'Filament bulb', kind: 'Edison', svg: `
+      <circle class="glow" cx="100" cy="104" r="84" fill="url(#halo)"/>
+      <path class="glow" fill="url(#glass)" fill-opacity=".7" d="M100 34 C146 34 162 76 152 106 C144 130 124 146 122 168 H78 C76 146 56 130 48 106 C38 76 54 34 100 34Z"/>
+      <path class="glow" fill="none" stroke="#FFE3A8" stroke-width="2.5" stroke-linejoin="round" d="M90 168 V128 L95 112 L100 126 L105 112 L110 128 V168"/>
+      <path ${LINE} d="M100 34 C146 34 162 76 152 106 C144 130 124 146 122 168 H78 C76 146 56 130 48 106 C38 76 54 34 100 34Z"/>
+      <path ${LINE} d="M80 168 H120 V200 H80Z M80 178 H120 M80 189 H120"/>
+      <path ${LINE} d="M90 200 H110 L104 212 H96Z"/>` }
+  };
+  const ORDER = ['street', 'diya', 'lantern', 'pendant', 'table', 'desk', 'candle', 'bulb'];
+
+  document.querySelectorAll('svg[data-lamp]').forEach(el => { el.innerHTML = LAMPS[el.dataset.lamp].svg; });
+
+  // illustration grid
+  const grid = document.getElementById('lampGrid');
+  ORDER.forEach((k, i) => {
+    const b = document.createElement('button');
+    b.className = 'lamp-tile';
+    b.setAttribute('aria-pressed', 'true');
+    b.style.setProperty('--delay', `-${(i * 2.7) % 11}s`);
+    b.innerHTML = `<div class="art"><svg viewBox="0 0 200 260" aria-hidden="true">${LAMPS[k].svg}</svg></div>
+      <div class="lbl"><b>${LAMPS[k].name}</b><span>${LAMPS[k].kind}</span></div>`;
+    b.setAttribute('aria-label', `${LAMPS[k].name}, switch light`);
+    b.addEventListener('click', () => {
+      const off = b.classList.toggle('is-off');
+      b.setAttribute('aria-pressed', String(!off));
+    });
+    grid.appendChild(b);
+  });
+  const paper = document.getElementById('onPaper');
+  paper.innerHTML = ['street', 'lantern', 'table', 'candle'].map((k, i) =>
+    `<div class="art" style="--delay:-${i * 3}s"><svg viewBox="0 0 200 260" aria-hidden="true">${LAMPS[k].svg}</svg></div>`).join('') +
+    '<p>On paper, the line switches to Soot. The light stays the same colour.</p>';
+
+  // festoon: a string of lanterns between sections
+  document.querySelectorAll('[data-festoon]').forEach((svg, n) => {
+    const W = 1140, count = 9;
+    let out = `<path d="M0 8 Q${W / 2} 70 ${W} 8" fill="none" stroke="var(--soot)" stroke-width="1.2"/>`;
+    for (let i = 0; i < count; i++) {
+      const x = 60 + i * ((W - 120) / (count - 1));
+      const t = x / W, y = 8 + 2 * t * (1 - t) * 62;
+      const k = i % 2 ? 'bulb' : 'lantern';
+      const w = k === 'bulb' ? 34 : 40;
+      out += `<svg x="${x - w / 2}" y="${y - (k === 'bulb' ? 6 : 0)}" width="${w}" height="${w * 1.3}" viewBox="0 0 200 260" overflow="visible" style="--delay:-${(i * 1.9 + n * 5) % 11}s">${k === 'bulb' ? '<path d="M100 -20 V34" stroke="var(--ink)" stroke-width="4"/>' + LAMPS.bulb.svg.replace(/stroke-width="1.5"/g, 'stroke-width="5"') : LAMPS.lantern.svg.replace(/stroke-width="1.5"/g, 'stroke-width="5"')}</svg>`;
+    }
+    svg.innerHTML = out;
+  });
+
+  // colour
+  const COLORS = [
+    ['Night', '#1A1614', 'Main background. The dark that holds the light.', '#F4F1EA'],
+    ['Soot', '#3D3A37', 'Hairlines, secondary panels, line art on paper.', '#F4F1EA'],
+    ['Ash', '#D8D2C7', 'Line art and secondary text on dark.', '#1A1614'],
+    ['Moonlight', '#F4F1EA', 'Paper. Daylight backgrounds and print.', '#1A1614'],
+    ['Wick', '#F5E5CC', 'Tagline and headlines on dark.', '#1A1614'],
+    ['Filament', '#FFA00E', 'The light. Beams, flames, the lit wordmark.', '#1A1614'],
+    ['Glow', '#FECA9A', 'Halos, bulb cores, soft highlights.', '#1A1614'],
+    ['Brass', '#C88A4A', 'Metal details, secondary accent, small labels.', '#1A1614'],
+    ['Ember', '#CD4604', 'Calls to action and sale moments.', '#F4F1EA'],
+    ['Kumkum', '#7C0000', 'Festive grounds: Diwali, weddings, gifting.', '#F5E5CC']
+  ];
+  const rgb = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)).join(' ');
+  const sw = document.getElementById('swatches');
+  COLORS.forEach(([n, h, role, on]) => {
+    const b = document.createElement('button');
+    b.className = 'sw';
+    b.innerHTML = `<div class="chip" style="background:${h}"><span style="color:${on}">Copy</span></div>
+      <div><div class="nm">${n}</div><div class="hex">${h} · RGB ${rgb(h)}</div></div><div class="role">${role}</div>`;
+    b.addEventListener('click', () => {
+      const lbl = b.querySelector('.chip span');
+      const done = t => { lbl.textContent = t; b.classList.add('copied'); setTimeout(() => { lbl.textContent = 'Copy'; b.classList.remove('copied'); }, 1400); };
+      navigator.clipboard.writeText(h).then(() => done('Copied'), () => done(h));
+    });
+    sw.appendChild(b);
+  });
+  const RATIO = [['Night', 48, '#1A1614'], ['Soot', 14, '#3D3A37'], ['Moonlight', 10, '#F4F1EA'], ['Ash', 6, '#D8D2C7'], ['Wick', 6, '#F5E5CC'], ['Filament', 8, '#FFA00E'], ['Glow', 3, '#FECA9A'], ['Brass', 2, '#C88A4A'], ['Ember', 2, '#CD4604'], ['Kumkum', 1, '#7C0000']];
+  document.getElementById('ratio').innerHTML = RATIO.map(([n, p, c], i) =>
+    `<div style="flex:${p};background:${c}" title="${n} ${p}%">${p >= 6 ? `<small>${n} ${p}%</small>` : ''}</div>`).join('');
+
+  // hero switch
+  const sBtn = document.getElementById('heroSwitch'), poster = document.getElementById('poster');
+  sBtn.addEventListener('click', () => {
+    const on = sBtn.getAttribute('aria-pressed') !== 'true';
+    sBtn.setAttribute('aria-pressed', String(on));
+    poster.classList.toggle('is-off', !on);
+    document.getElementById('heroSwitchLabel').textContent = on ? 'Light is on' : 'Light is off';
+  });
+})();
+</script>

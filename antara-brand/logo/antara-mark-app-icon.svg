@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="1024" height="1024"><defs>
+<radialGradient id="pHalo"><stop offset="0" stop-color="#FFA00E" stop-opacity=".55"/><stop offset=".5" stop-color="#FFA00E" stop-opacity=".14"/><stop offset="1" stop-color="#FFA00E" stop-opacity="0"/></radialGradient>
+<linearGradient id="pCone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFA00E" stop-opacity=".6"/><stop offset="1" stop-color="#FFA00E" stop-opacity="0"/></linearGradient>
+<radialGradient id="pFloor"><stop offset="0" stop-color="#FFA00E" stop-opacity=".35"/><stop offset="1" stop-color="#FFA00E" stop-opacity="0"/></radialGradient>
+</defs><rect width="100" height="100" rx="22" fill="#11100F"/><g transform="translate(14 12) scale(.72)"><path d="M50 6 V24" stroke="#F5E5CC" stroke-width="3"/><path d="M50 22 L16 90 H29 L50 46 L71 90 H84Z" fill="#F5E5CC"/><path d="M42 66 H58 L71 90 H29Z" fill="url(#pCone)"/><path d="M42 66 A8 8 0 0 0 58 66Z" fill="#FFD27A"/></g></svg>

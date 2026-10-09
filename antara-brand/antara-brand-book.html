@@ -43,7 +43,12 @@ body { background: var(--page); color: var(--soot); font-family: var(--sans); fo
 .bg-paper { background: var(--paper); } .bg-night { background: var(--night); } .bg-deep { background: var(--deep); }
 .bg-ember { background: var(--ember); color: var(--paper); } .bg-kumkum { background: var(--kumkum); color: var(--wick); }
 .bg-stone { background: var(--stone); } .bg-white { background: #fff; }
-.u { border: 1px solid currentColor; border-radius: 0 0 999px 999px; }
+/* brand shape: the cone of light. Top edge = the semicircle's flat edge; sides follow the angles of the A's legs. */
+.cone { position: relative; aspect-ratio: 1 / .955; }
+.cone > .cone-line { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.cone > .cone-bulb { position: absolute; top: 0; left: 41%; width: 18%; height: auto; z-index: 1; }
+.cone > .in { position: absolute; left: 0; right: 0; bottom: 9%; display: grid; justify-items: center; gap: 8px; text-align: center; z-index: 1; }
+.cone-clip { clip-path: polygon(41% 0, 59% 0, 100% 100%, 0 100%); }
 .wm { display: block; width: 100%; height: auto; }
 button { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--filament); outline-offset: 3px; }
@@ -73,10 +78,11 @@ img { display: block; }
 .statement sup { font-family: var(--sans); font-size: .36em; color: var(--ember); vertical-align: super; margin-left: 1px; }
 .watermark { position: absolute; width: 70%; right: -14%; bottom: -16%; color: #EAE4D9; }
 .photo img { width: 100%; height: 100%; object-fit: cover; }
-.photo .u { position: absolute; left: 50%; top: 14%; transform: translateX(-50%); width: 38%; height: 70%; color: rgba(255,243,214,.85); display: grid; align-items: end; justify-items: center; padding-bottom: 22%; }
-.photo .u span { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #FFF3D6; text-align: center; }
-.frame-big { width: 34%; height: 66%; display: grid; place-items: center; text-align: center; }
-.frame-big em { font-family: var(--display); font-style: italic; font-weight: 300; font-size: clamp(22px, 2.6vw, 34px); line-height: 1.1; padding-inline: 10%; }
+.conephoto { display: grid; place-items: center; }
+.conephoto .shot { width: 78%; margin-top: 6%; }
+.conephoto .shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.cone.big { width: 64%; margin-top: 4%; }
+.cone.big em { font-family: var(--display); font-style: italic; font-weight: 300; font-size: clamp(22px, 2.6vw, 34px); line-height: 1.1; padding-inline: 10%; }
 .logo-hold { width: 64%; display: grid; gap: 18px; justify-items: center; }
 .logo-hold .tg { width: 44%; height: auto; }
 .mark-big { width: 30%; height: auto; overflow: visible; }
@@ -147,9 +153,7 @@ img { display: block; }
 .tag::before { content: ""; position: absolute; top: 7%; left: 50%; width: 9%; aspect-ratio: 1; border-radius: 50%; transform: translateX(-50%); background: var(--stone); box-shadow: inset 0 1px 2px rgba(0,0,0,.25); }
 .tag.t1 { background: var(--ember); color: var(--paper); left: 18%; top: 22%; transform: rotate(-9deg); }
 .tag.t2 { background: var(--paper); color: var(--soot); right: 16%; top: 28%; transform: rotate(7deg); --ink: var(--soot); --tile: var(--paper); align-content: space-between; text-align: center; }
-.tag .u { width: 74%; height: 62%; display: grid; place-items: center; justify-self: center; }
 .tag.t2 > * { width: 100%; }
-.tag .u svg { width: 46%; }
 .tag.t2 svg.art { width: 82%; aspect-ratio: 200 / 260; overflow: visible; }
 .tag.t2 b { font-family: var(--display); font-weight: 400; font-size: clamp(13px, 1.5vw, 18px); line-height: 1.1; display: block; }
 .tag.t2 small { font-size: 7px; letter-spacing: .2em; text-transform: uppercase; color: var(--brass); }
@@ -157,8 +161,6 @@ img { display: block; }
 .boxrow { position: absolute; inset: 14% 8% 10%; display: flex; align-items: end; justify-content: center; gap: 3%; }
 .box { position: relative; width: 28%; aspect-ratio: 4 / 4.6; box-shadow: 0 30px 40px rgba(26,22,20,.22); display: grid; place-items: center; }
 .box::before { content: ""; position: absolute; left: 0; right: 0; top: -9%; height: 9%; background: inherit; filter: brightness(1.12); transform: skewX(-38deg); transform-origin: bottom left; }
-.box .u { width: 52%; height: 60%; display: grid; place-items: center; margin-bottom: 12%; }
-.box .u svg { width: 82%; aspect-ratio: 200 / 260; overflow: visible; }
 .box > svg.wm { position: absolute; right: 8%; bottom: 7%; width: 34%; }
 .box .by { position: absolute; left: 8%; top: 7%; font-size: 7px; letter-spacing: .2em; text-transform: uppercase; opacity: .8; }
 .box.b1 { background: var(--ember); color: var(--paper); --ink: var(--paper); --tile: var(--ember); }
@@ -166,8 +168,6 @@ img { display: block; }
 .box.b3 { background: var(--night); color: var(--wick); --ink: var(--wick); --tile: var(--night); }
 .books { display: grid; place-items: center; }
 .book { position: absolute; width: 40%; aspect-ratio: 3 / 4; box-shadow: 0 26px 40px rgba(26,22,20,.25), inset 6px 0 0 rgba(0,0,0,.12); display: grid; place-items: center; }
-.book .u { width: 70%; height: 74%; display: grid; place-items: center; align-content: center; gap: 10%; }
-.book .u svg.wm { width: 70%; }
 .book small { font-size: 7px; letter-spacing: .22em; text-transform: uppercase; }
 .book.k1 { background: var(--ember); color: var(--paper); left: 12%; top: 13%; transform: rotate(-6deg); }
 .book.k2 { background: var(--night); color: var(--wick); right: 12%; top: 18%; transform: rotate(5deg); }
@@ -181,13 +181,23 @@ img { display: block; }
 .post .ph { font-family: var(--display); font-weight: 300; font-size: clamp(16px, 2vw, 26px); line-height: 1.05; position: absolute; left: 8%; right: 8%; bottom: 8%; }
 .p1 { background: var(--ember); color: var(--paper); --ink: var(--paper); --tile: var(--ember); }
 .p1 svg.art { position: absolute; left: 22%; top: 0; width: 56%; aspect-ratio: 200/260; overflow: visible; }
-.p2 img { width: 100%; height: 100%; object-fit: cover; }
-.p2 .u { position: absolute; left: 22%; right: 22%; top: 12%; bottom: 20%; color: #FFF3D6; }
 .p2 .ph { color: #FFF3D6; text-align: center; }
 .p3 { background: var(--night); color: var(--wick); }
 .p3 img { position: absolute; left: 24%; top: 13%; width: 52%; }
 .p3 .ph em { color: var(--filament); }
 
+
+.tag .cone { width: 92%; justify-self: center; }
+.tag .cone .in svg { width: 26%; }
+.box .cone { width: 72%; margin-bottom: 18%; }
+.box .cone .in { bottom: 12%; font-family: var(--display); font-size: clamp(11px, 1.3vw, 17px); line-height: 1.1; }
+.book .cone { width: 82%; margin-top: 6%; }
+.book .cone .in svg.wm { width: 64%; }
+.p2 { background: var(--night); }
+.p2 .cone { position: absolute; left: 12%; top: 9%; width: 76%; }
+.p2 .cone img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+.shero .im { background: var(--paper); padding: 6% 6% 0; }
+.shero .im img { clip-path: polygon(41% 0, 59% 0, 100% 100%, 0 100%); }
 /* catalogue page */
 .spec { background: var(--paper); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); --ink: var(--soot); --tile: #ECE6DB; }
 .spec .pic { background: #ECE6DB; display: grid; grid-template-rows: 1fr auto; gap: 12px; padding: 7% 7% 6%; }
@@ -317,13 +327,15 @@ img { display: block; }
         <p>Light<sup>1</sup> passed through paper, silk and cane<sup>2</sup>, shaped by hand<sup>3</sup> for rooms that feel lived in<sup>4</sup>.</p>
       </div>
     </section>
-    <section class="b sq photo">
-      <img src="img/r-sconce.webp" alt="Trio Essence sconce glowing on a sage wall" loading="lazy">
-      <div class="u"><span>Trio Essence<br>Wall sconce</span></div>
+    <section class="b sq bg-night conephoto on-dark">
+      <span class="lbl">Trio Essence · wall sconce</span>
+      <div class="cone shot noline" style="color:#FFD27A"><img class="cone-clip" src="img/r-sconce.webp" alt="Trio Essence sconce glowing on a sage wall, cropped in the cone shape" loading="lazy"></div>
     </section>
 
     <section class="b sq bg-ember center">
-      <div class="u frame-big"><em>Light from within</em></div>
+      <span class="lbl">Brand shape · the cone</span>
+      <div class="cone big"><div class="in"><em>Light from within</em></div></div>
+      <span class="note" style="color:rgba(244,241,234,.75)">Drawn from the logo: the semicircle's edge, opened along the angles of the A.</span>
     </section>
     <section class="b sq bg-paper center">
       <span class="lbl">Primary logo</span>
@@ -414,23 +426,23 @@ img { display: block; }
     </section>
     <section class="b sq bg-white">
       <span class="lbl">Swing tags</span>
-      <div class="tag t1"><div class="u"><svg viewBox="0 0 162 188" aria-hidden="true" style="--ink:#F4F1EA;--bulb:#F4F1EA"><use href="#markA" width="162" height="188"/></svg></div></div>
+      <div class="tag t1"><div class="cone"><div class="in"><svg viewBox="0 0 162 188" aria-hidden="true" style="--ink:#F4F1EA;--bulb:#F4F1EA"><use href="#markA" width="162" height="188"/></svg></div></div></div>
       <div class="tag t2"><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#3D3A37;--bulb:#CD4604;width:70%;margin:0 auto"><use href="#wm" width="946" height="188"/></svg><svg class="art" data-lamp="canedrum" viewBox="0 0 200 260" aria-hidden="true"></svg><div><b>Golden Harvest</b><small>Rattan cane · D400</small></div></div>
     </section>
 
     <section class="b full wide bg-paper boxes">
       <span class="lbl">Packaging</span>
       <div class="boxrow">
-        <div class="box b1"><span class="by">Handcrafted by Antara</span><div class="u"><svg data-lamp="lantern" viewBox="0 0 200 260" aria-hidden="true"></svg></div><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#F4F1EA;--bulb:#F4F1EA"><use href="#wm" width="946" height="188"/></svg></div>
-        <div class="box b2"><span class="by">Handcrafted by Antara</span><div class="u"><svg data-lamp="fringe" viewBox="0 0 200 260" aria-hidden="true"></svg></div><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#3D3A37;--bulb:#CD4604"><use href="#wm" width="946" height="188"/></svg></div>
-        <div class="box b3"><span class="by">Handcrafted by Antara</span><div class="u"><svg data-lamp="canecone" viewBox="0 0 200 260" aria-hidden="true"></svg></div><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#F5E5CC;--bulb:#FFA00E"><use href="#wm" width="946" height="188"/></svg></div>
+        <div class="box b1"><span class="by">Handcrafted by Antara</span><div class="cone"><div class="in">Paper lantern</div></div><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#F4F1EA;--bulb:#F4F1EA"><use href="#wm" width="946" height="188"/></svg></div>
+        <div class="box b2"><span class="by">Handcrafted by Antara</span><div class="cone"><div class="in">Fringe pendant</div></div><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#3D3A37;--bulb:#CD4604"><use href="#wm" width="946" height="188"/></svg></div>
+        <div class="box b3"><span class="by">Handcrafted by Antara</span><div class="cone"><div class="in">Cane + cone</div></div><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#F5E5CC;--bulb:#FFA00E"><use href="#wm" width="946" height="188"/></svg></div>
       </div>
     </section>
 
     <section class="b sq bg-stone books">
       <span class="lbl">Catalogue</span>
-      <div class="book k1"><div class="u"><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#F4F1EA;--bulb:#F4F1EA"><use href="#wm" width="946" height="188"/></svg><small>Fabric hanging edition</small></div></div>
-      <div class="book k2"><div class="u"><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#F5E5CC;--bulb:#FFA00E"><use href="#wm" width="946" height="188"/></svg><small>The cane edition</small></div></div>
+      <div class="book k1"><div class="cone"><div class="in"><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#F4F1EA;--bulb:#F4F1EA"><use href="#wm" width="946" height="188"/></svg><small>Fabric hanging edition</small></div></div></div>
+      <div class="book k2"><div class="cone"><div class="in"><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#F5E5CC;--bulb:#FFA00E"><use href="#wm" width="946" height="188"/></svg><small>The cane edition</small></div></div></div>
     </section>
     <section class="b sq sign">
       <span class="lbl" style="color:rgba(245,229,204,.7)">Signage</span>
@@ -440,7 +452,7 @@ img { display: block; }
     <section class="b full bg-stone posts">
       <span class="lbl">Social</span>
       <div class="post p1"><svg class="art" data-lamp="silkbell" viewBox="0 0 200 260" aria-hidden="true"></svg><span class="pl" style="--ink:#F4F1EA;--bulb:#F4F1EA"><svg viewBox="0 0 162 188"><use href="#markA" width="162" height="188"/></svg>antara</span><p class="ph">Soft light for slow evenings</p></div>
-      <div class="post p2"><img src="img/r-silkbell.webp" alt="Silken Glow over a dining table" loading="lazy"><div class="u"></div><p class="ph">Light from within</p></div>
+      <div class="post p2"><div class="cone noline" style="color:#FFD27A"><img class="cone-clip" src="img/r-silkbell.webp" alt="Silken Glow over a dining table" loading="lazy"></div><p class="ph">Light from within</p></div>
       <div class="post p3"><span class="pl" style="--ink:#F5E5CC;--bulb:#FFA00E"><svg viewBox="0 0 162 188"><use href="#markA" width="162" height="188"/></svg>antara</span><img src="img/p-orb.webp" alt="Pearl Veil orb" loading="lazy"><p class="ph">New · <em>Pearl Veil</em></p></div>
     </section>
 
@@ -595,6 +607,12 @@ img { display: block; }
   const ORDER = ['lantern', 'silkbell', 'orb', 'pebble', 'cloud', 'column', 'fringe', 'linea', 'hourglass', 'canedrum', 'canecone', 'sconce'];
   document.getElementById('lights').innerHTML = ORDER.map(k => `<button class="lt" aria-pressed="true" aria-label="${LIGHTS[k].name}, switch light"><svg viewBox="0 0 200 260" aria-hidden="true">${LIGHTS[k].svg}</svg><b>${LIGHTS[k].name}</b></button>`).join('');
   document.querySelectorAll('.lt').forEach(b => b.addEventListener('click', () => { const off = b.classList.toggle('is-off'); b.setAttribute('aria-pressed', String(!off)); }));
+
+  // brand shape: outline + semicircle for every .cone
+  document.querySelectorAll('.cone').forEach(c => {
+    if (!c.classList.contains('noline')) c.insertAdjacentHTML('afterbegin', '<svg class="cone-line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polygon points="41,0 59,0 100,100 0,100" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>');
+    c.insertAdjacentHTML('beforeend', '<svg class="cone-bulb" viewBox="0 0 26 13" aria-hidden="true"><path d="M0 0 A13 13 0 0 0 26 0Z" fill="currentColor"/></svg>');
+  });
 
   // exclusive zone diagrams
   const zone = (w, h, u, body) => {

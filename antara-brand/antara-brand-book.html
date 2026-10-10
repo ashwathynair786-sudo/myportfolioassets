@@ -128,9 +128,13 @@ img { display: block; }
 .lights { padding: 64px 24px 24px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; --ink: var(--ash); --tile: var(--deep); }
 .lt { background: var(--deep); border: 0; padding: 14px 10px 12px; cursor: pointer; display: grid; gap: 8px; text-align: center; }
 .lt svg { width: 100%; aspect-ratio: 200 / 260; overflow: visible; display: block; }
-.lt b { font-weight: 500; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--wick); }
-.lt.is-off .glow { opacity: 0; }
-.glow { transition: opacity .08s; }
+.lt b { font-weight: 500; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: rgba(245,229,204,.55); transition: color .3s; }
+/* lights start switched off and flicker on when hovered, focused or tapped */
+.lights .lt .glow { opacity: 0; }
+.lights .lt:hover .glow, .lights .lt:focus-visible .glow, .lights .lt.is-on .glow { animation: flickOn .9s ease-out forwards; }
+.lights .lt:hover b, .lights .lt:focus-visible b, .lights .lt.is-on b { color: var(--wick); }
+@keyframes flickOn { 0% { opacity: 0; } 12% { opacity: 1; } 20% { opacity: .15; } 32% { opacity: .9; } 40% { opacity: .1; } 58%, 100% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .lights .lt:hover .glow, .lights .lt:focus-visible .glow, .lights .lt.is-on .glow { animation: none; opacity: 1; } }
 
 /* photography */
 .photos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 10px; aspect-ratio: 2 / 1; }
@@ -406,7 +410,7 @@ img { display: block; }
 
     <section class="b full bg-night on-dark">
       <span class="lbl">The lights · twelve forms</span>
-      <span class="lbl r" style="color:rgba(245,229,204,.5)">Tap to switch</span>
+      <span class="lbl r" style="color:rgba(245,229,204,.5)">Hover or tap to switch on</span>
       <div class="lights" id="lights"></div>
     </section>
 
@@ -605,8 +609,8 @@ img { display: block; }
 
   document.querySelectorAll('svg[data-lamp]').forEach(el => { el.innerHTML = LIGHTS[el.dataset.lamp].svg; });
   const ORDER = ['lantern', 'silkbell', 'orb', 'pebble', 'cloud', 'column', 'fringe', 'linea', 'hourglass', 'canedrum', 'canecone', 'sconce'];
-  document.getElementById('lights').innerHTML = ORDER.map(k => `<button class="lt" aria-pressed="true" aria-label="${LIGHTS[k].name}, switch light"><svg viewBox="0 0 200 260" aria-hidden="true">${LIGHTS[k].svg}</svg><b>${LIGHTS[k].name}</b></button>`).join('');
-  document.querySelectorAll('.lt').forEach(b => b.addEventListener('click', () => { const off = b.classList.toggle('is-off'); b.setAttribute('aria-pressed', String(!off)); }));
+  document.getElementById('lights').innerHTML = ORDER.map(k => `<button class="lt" aria-pressed="false" aria-label="${LIGHTS[k].name}, switch light"><svg viewBox="0 0 200 260" aria-hidden="true">${LIGHTS[k].svg}</svg><b>${LIGHTS[k].name}</b></button>`).join('');
+  document.querySelectorAll('.lt').forEach(b => b.addEventListener('click', () => { const on = b.classList.toggle('is-on'); b.setAttribute('aria-pressed', String(on)); }));
 
   // brand shape: outline + semicircle for every .cone
   document.querySelectorAll('.cone').forEach(c => {

@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@400;500;600&display=swap">
+<style>
+*{box-sizing:border-box;margin:0}
+body{background:#888;font-family:Montserrat,Arial,sans-serif}
+.post{position:relative;width:1080px;height:1350px;overflow:hidden}
+.lbl{font-size:22px;font-weight:600;letter-spacing:.26em;text-transform:uppercase}
+.disp{font-family:"Cormorant Garamond",Garamond,serif;font-weight:300;line-height:1.02}
+.lamp{position:absolute;width:340px;height:442px;overflow:visible}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs><!--GRAD--><!--SYM--></defs></svg>
+<div class="post" id="canepost" style="background:#7C0000;color:#F5E5CC;--ink:#F5E5CC;--tile:#7C0000">
+  <p class="lbl" style="position:absolute;top:80px;left:0;right:0;text-align:center;color:#FECA9A">New collection</p>
+  <p class="disp" style="position:absolute;top:140px;left:0;right:0;text-align:center;font-size:120px">The Cane Edition</p>
+  <p style="position:absolute;top:300px;left:0;right:0;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:44px;color:#FECA9A">Woven light for slow evenings</p>
+  <svg class="lamp" data-lamp="canedrum" viewBox="0 0 200 260" style="left:30px;top:565px"></svg>
+  <svg class="lamp" data-lamp="caneorb" viewBox="0 0 200 260" style="left:370px;top:565px"></svg>
+  <svg class="lamp" data-lamp="canecone" viewBox="0 0 200 260" style="left:710px;top:565px"></svg>
+  <div style="position:absolute;top:1090px;left:30px;right:30px;display:grid;grid-template-columns:repeat(3,1fr);text-align:center;font-family:'Cormorant Garamond',serif;font-size:38px">
+    <span>Amber Canopy</span><span>Golden Ember</span><span>Indigo Echo</span></div>
+  <p class="lbl" style="position:absolute;top:1150px;left:0;right:0;text-align:center;font-size:18px;color:rgba(245,229,204,.7)">Rattan cane · hand woven</p>
+  <svg viewBox="0 0 946 188" style="position:absolute;left:420px;bottom:60px;width:240px;--ink:#F5E5CC;--bulb:#FECA9A"><use href="#wm" width="946" height="188"/></svg>
+</div>
+<script>
+(() => {
+//LIGHTS
+  // Golden Ember: a round cane globe
+  const orbMesh = (() => { let d = ''; for (let y = 80; y <= 200; y += 7) for (let x = 40; x <= 160; x += 7) { if (Math.hypot(x - 100, y - 140) < 56) d += `M${(x - 2.2).toFixed(1)} ${y}l2.2 -2.2 2.2 2.2 -2.2 2.2z`; } return `<path d="${d}" fill="none" stroke="var(--ink)" stroke-width=".8" opacity=".8"/>`; })();
+  LIGHTS.caneorb = { svg: HALO(100, 140, 104) + POOL(62, 138, 196, 30) + CORD(0, 72) +
+    `<circle cx="100" cy="140" r="62" fill="var(--tile)"/><circle class="glow" cx="100" cy="140" r="62" fill="url(#cane)"/>` + orbMesh +
+    L('M100 72 m-62 68 a62 62 0 1 0 124 0 a62 62 0 1 0 -124 0', 3) + L('M38 140 Q100 168 162 140', 1.2) + L('M100 78 Q74 140 100 202', 1.1, 'opacity=".7"') + L('M100 78 Q126 140 100 202', 1.1, 'opacity=".7"') };
+  document.querySelectorAll('svg[data-lamp]').forEach(el => { el.innerHTML = LIGHTS[el.dataset.lamp].svg; });
+})();
+</script>
+</body></html>

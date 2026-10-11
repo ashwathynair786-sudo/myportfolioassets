@@ -43,12 +43,12 @@ body { background: var(--page); color: var(--soot); font-family: var(--sans); fo
 .bg-paper { background: var(--paper); } .bg-night { background: var(--night); } .bg-deep { background: var(--deep); }
 .bg-ember { background: var(--ember); color: var(--paper); } .bg-kumkum { background: var(--kumkum); color: var(--wick); }
 .bg-stone { background: var(--stone); } .bg-white { background: #fff; }
-/* brand shape: the cone of light. Top edge = the semicircle's flat edge; sides follow the angles of the A's legs. */
-.cone { position: relative; aspect-ratio: 1 / .955; }
-.cone > .cone-line { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
-.cone > .cone-bulb { position: absolute; top: 0; left: 41%; width: 18%; height: auto; z-index: 1; }
-.cone > .in { position: absolute; left: 0; right: 0; bottom: 9%; display: grid; justify-items: center; gap: 8px; text-align: center; z-index: 1; }
-.cone-clip { clip-path: polygon(41% 0, 59% 0, 100% 100%, 0 100%); }
+/* brand shape: the glow. A circle of light cut flat by the ceiling line (the semicircle's flat edge), widest where a pendant's shade hangs. */
+.bshape { position: relative; aspect-ratio: 4 / 5; }
+.bshape > .bshape-line { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.bshape > .bshape-bulb { position: absolute; top: 0; left: 44%; width: 12%; height: auto; z-index: 1; }
+.bshape > .in { position: absolute; left: 6%; right: 6%; bottom: 24%; display: grid; justify-items: center; gap: 8px; text-align: center; z-index: 1; }
+.bshape-clip { clip-path: url(#glowClip); }
 .wm { display: block; width: 100%; height: auto; }
 button { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--filament); outline-offset: 3px; }
@@ -78,11 +78,11 @@ img { display: block; }
 .statement sup { font-family: var(--sans); font-size: .36em; color: var(--ember); vertical-align: super; margin-left: 1px; }
 .watermark { position: absolute; width: 70%; right: -14%; bottom: -16%; color: #EAE4D9; }
 .photo img { width: 100%; height: 100%; object-fit: cover; }
-.conephoto { display: grid; place-items: center; }
-.conephoto .shot { width: 78%; margin-top: 6%; }
-.conephoto .shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
-.cone.big { width: 64%; margin-top: 4%; }
-.cone.big em { font-family: var(--display); font-style: italic; font-weight: 300; font-size: clamp(22px, 2.6vw, 34px); line-height: 1.1; padding-inline: 10%; }
+.shapephoto { display: grid; place-items: center; }
+.shapephoto .shot { width: 60%; margin-top: 4%; }
+.shapephoto .shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.bshape.big { width: 56%; margin-top: 2%; }
+.bshape.big em { font-family: var(--display); font-style: italic; font-weight: 300; font-size: clamp(22px, 2.6vw, 34px); line-height: 1.1; padding-inline: 10%; }
 .logo-hold { width: 64%; display: grid; gap: 18px; justify-items: center; }
 .logo-hold .tg { width: 44%; height: auto; }
 .mark-big { width: 30%; height: auto; overflow: visible; }
@@ -191,17 +191,17 @@ img { display: block; }
 .p3 .ph em { color: var(--filament); }
 
 
-.tag .cone { width: 92%; justify-self: center; }
-.tag .cone .in svg { width: 26%; }
-.box .cone { width: 72%; margin-bottom: 18%; }
-.box .cone .in { bottom: 12%; font-family: var(--display); font-size: clamp(11px, 1.3vw, 17px); line-height: 1.1; }
-.book .cone { width: 82%; margin-top: 6%; }
-.book .cone .in svg.wm { width: 64%; }
+.tag .bshape { width: 78%; justify-self: center; }
+.tag .bshape .in svg { width: 30%; }
+.box .bshape { width: 58%; margin-bottom: 14%; }
+.box .bshape .in { bottom: 12%; font-family: var(--display); font-size: clamp(11px, 1.3vw, 17px); line-height: 1.1; }
+.book .bshape { width: 76%; margin-top: 4%; }
+.book .bshape .in svg.wm { width: 72%; }
 .p2 { background: var(--night); }
-.p2 .cone { position: absolute; left: 12%; top: 9%; width: 76%; }
-.p2 .cone img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+.p2 .bshape { position: absolute; left: 14%; top: 7%; width: 72%; }
+.p2 .bshape img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
 .shero .im { background: var(--paper); padding: 6% 6% 0; }
-.shero .im img { clip-path: polygon(41% 0, 59% 0, 100% 100%, 0 100%); }
+.shero .im img { clip-path: url(#glowClip); }
 /* catalogue page */
 .spec { background: var(--paper); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); --ink: var(--soot); --tile: #ECE6DB; }
 .spec .pic { background: #ECE6DB; display: grid; grid-template-rows: 1fr auto; gap: 12px; padding: 7% 7% 6%; }
@@ -298,6 +298,7 @@ img { display: block; }
       <stop offset="0" stop-color="#FFF3D6"/><stop offset=".42" stop-color="#FECA9A" stop-opacity=".95"/><stop offset=".85" stop-color="#FFA00E" stop-opacity=".85"/><stop offset="1" stop-color="#CD4604" stop-opacity=".75"/>
     </radialGradient>
 <linearGradient id="cane" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD27A" stop-opacity=".95"/><stop offset="1" stop-color="#C88A4A" stop-opacity=".8"/></linearGradient>
+<clipPath id="glowClip" clipPathUnits="objectBoundingBox"><path d="M0.127 0 H0.873 A0.5 0.6 0 1 1 0.127 0 Z"/></clipPath>
 <radialGradient id="bHalo2"><stop offset="0" stop-color="#FFB547" stop-opacity=".6"/><stop offset=".35" stop-color="#FFA00E" stop-opacity=".22"/><stop offset="1" stop-color="#FFA00E" stop-opacity="0"/></radialGradient>
 
 <symbol id="wm" viewBox="0 0 946 188"><path fill="var(--ink, currentColor)" d="M 184.5 0.0 L 184.5 182.2 L 189.2 182.2 L 189.2 32.4 L 328.9 187.1 L 329.7 187.1 L 329.7 3.5 L 325.0 3.5 L 325.0 154.7 L 185.3 0.0 Z M 184.5 0.0 M 354.0 3.5 L 484.4 3.5 L 484.4 8.2 L 354.0 8.2 Z M 409.0 8.2 L 429.4 8.2 L 429.4 182.2 L 409.0 182.2 Z M 409.0 8.2 M 640.0 3.5 L 640.0 182.2 L 660.3 182.2 L 660.3 99.1 L 673.5 99.1 L 739.4 182.2 L 765.1 182.2 L 698.3 98.0 C 719.4 95.1 751.1 84.8 751.1 48.1 C 751.1 8.8 708.5 3.4 694.0 3.4 C 680.2 3.4 640.0 3.5 640.0 3.5 M 660.3 8.1 L 683.2 8.1 C 712.4 8.1 729.7 20.1 729.7 51.3 C 729.7 83.1 709.3 94.4 675.9 94.4 L 660.3 94.4 Z M 660.3 8.1 M 81.4 0.0 L 0.3 182.2 L 6.8 182.2 L 74.2 30.7 L 139.1 182.2 L 161.0 182.2 L 82.9 0.0 Z M 536.9 0.0 L 455.8 182.2 L 462.2 182.2 L 529.6 30.7 L 594.5 182.2 L 616.5 182.2 L 538.4 0.0 Z M 866.1 0.0 L 785.0 182.2 L 791.5 182.2 L 858.9 30.7 L 923.8 182.2 L 945.7 182.2 L 867.6 0.0 Z"/><path fill="var(--bulb, currentColor)" d="M60.6 100 A13 13 0 0 0 86.6 100Z M516.0 100 A13 13 0 0 0 542.0 100Z M845.3 100 A13 13 0 0 0 871.3 100Z"/></symbol>
@@ -331,15 +332,15 @@ img { display: block; }
         <p>Light<sup>1</sup> passed through paper, silk and cane<sup>2</sup>, shaped by hand<sup>3</sup> for rooms that feel lived in<sup>4</sup>.</p>
       </div>
     </section>
-    <section class="b sq bg-night conephoto on-dark">
+    <section class="b sq bg-night shapephoto on-dark">
       <span class="lbl">Trio Essence · wall sconce</span>
-      <div class="cone shot noline" style="color:#FFD27A"><img class="cone-clip" src="img/r-sconce.webp" alt="Trio Essence sconce glowing on a sage wall, cropped in the cone shape" loading="lazy"></div>
+      <div class="bshape shot noline" style="color:#FFD27A"><img class="bshape-clip" src="img/r-sconce.webp" alt="Trio Essence sconce glowing on a sage wall, cropped in the Antara glow" loading="lazy"></div>
     </section>
 
     <section class="b sq bg-ember center">
-      <span class="lbl">Brand shape · the cone</span>
-      <div class="cone big"><div class="in"><em>Light from within</em></div></div>
-      <span class="note" style="color:rgba(244,241,234,.75)">Drawn from the logo: the semicircle's edge, opened along the angles of the A.</span>
+      <span class="lbl">Brand shape · the glow</span>
+      <div class="bshape big"><div class="in"><em>Light from within</em></div></div>
+      <span class="note" style="color:rgba(244,241,234,.75)">A circle of light cut flat by the ceiling line, the semicircle's edge. Widest where the shade hangs.</span>
     </section>
     <section class="b sq bg-paper center">
       <span class="lbl">Primary logo</span>
@@ -430,23 +431,23 @@ img { display: block; }
     </section>
     <section class="b sq bg-white">
       <span class="lbl">Swing tags</span>
-      <div class="tag t1"><div class="cone"><div class="in"><svg viewBox="0 0 162 188" aria-hidden="true" style="--ink:#F4F1EA;--bulb:#F4F1EA"><use href="#markA" width="162" height="188"/></svg></div></div></div>
+      <div class="tag t1"><div class="bshape"><div class="in"><svg viewBox="0 0 162 188" aria-hidden="true" style="--ink:#F4F1EA;--bulb:#F4F1EA"><use href="#markA" width="162" height="188"/></svg></div></div></div>
       <div class="tag t2"><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#3D3A37;--bulb:#CD4604;width:70%;margin:0 auto"><use href="#wm" width="946" height="188"/></svg><svg class="art" data-lamp="canedrum" viewBox="0 0 200 260" aria-hidden="true"></svg><div><b>Golden Harvest</b><small>Rattan cane · D400</small></div></div>
     </section>
 
     <section class="b full wide bg-paper boxes">
       <span class="lbl">Packaging</span>
       <div class="boxrow">
-        <div class="box b1"><span class="by">Handcrafted by Antara</span><div class="cone"><div class="in">Paper lantern</div></div><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#F4F1EA;--bulb:#F4F1EA"><use href="#wm" width="946" height="188"/></svg></div>
-        <div class="box b2"><span class="by">Handcrafted by Antara</span><div class="cone"><div class="in">Fringe pendant</div></div><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#3D3A37;--bulb:#CD4604"><use href="#wm" width="946" height="188"/></svg></div>
-        <div class="box b3"><span class="by">Handcrafted by Antara</span><div class="cone"><div class="in">Cane + cone</div></div><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#F5E5CC;--bulb:#FFA00E"><use href="#wm" width="946" height="188"/></svg></div>
+        <div class="box b1"><span class="by">Handcrafted by Antara</span><div class="bshape"><div class="in">Paper lantern</div></div><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#F4F1EA;--bulb:#F4F1EA"><use href="#wm" width="946" height="188"/></svg></div>
+        <div class="box b2"><span class="by">Handcrafted by Antara</span><div class="bshape"><div class="in">Fringe pendant</div></div><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#3D3A37;--bulb:#CD4604"><use href="#wm" width="946" height="188"/></svg></div>
+        <div class="box b3"><span class="by">Handcrafted by Antara</span><div class="bshape"><div class="in">Cane + cone</div></div><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#F5E5CC;--bulb:#FFA00E"><use href="#wm" width="946" height="188"/></svg></div>
       </div>
     </section>
 
     <section class="b sq bg-stone books">
       <span class="lbl">Catalogue</span>
-      <div class="book k1"><div class="cone"><div class="in"><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#F4F1EA;--bulb:#F4F1EA"><use href="#wm" width="946" height="188"/></svg><small>Fabric hanging edition</small></div></div></div>
-      <div class="book k2"><div class="cone"><div class="in"><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#F5E5CC;--bulb:#FFA00E"><use href="#wm" width="946" height="188"/></svg><small>The cane edition</small></div></div></div>
+      <div class="book k1"><div class="bshape"><div class="in"><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#F4F1EA;--bulb:#F4F1EA"><use href="#wm" width="946" height="188"/></svg><small>Fabric hanging edition</small></div></div></div>
+      <div class="book k2"><div class="bshape"><div class="in"><svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#F5E5CC;--bulb:#FFA00E"><use href="#wm" width="946" height="188"/></svg><small>The cane edition</small></div></div></div>
     </section>
     <section class="b sq sign">
       <span class="lbl" style="color:rgba(245,229,204,.7)">Signage</span>
@@ -456,7 +457,7 @@ img { display: block; }
     <section class="b full bg-stone posts">
       <span class="lbl">Social</span>
       <div class="post p1"><svg class="art" data-lamp="silkbell" viewBox="0 0 200 260" aria-hidden="true"></svg><span class="pl" style="--ink:#F4F1EA;--bulb:#F4F1EA"><svg viewBox="0 0 162 188"><use href="#markA" width="162" height="188"/></svg>antara</span><p class="ph">Soft light for slow evenings</p></div>
-      <div class="post p2"><div class="cone noline" style="color:#FFD27A"><img class="cone-clip" src="img/r-silkbell.webp" alt="Silken Glow over a dining table" loading="lazy"></div><p class="ph">Light from within</p></div>
+      <div class="post p2"><div class="bshape noline" style="color:#FFD27A"><img class="bshape-clip" src="img/r-silkbell.webp" alt="Silken Glow over a dining table" loading="lazy"></div><p class="ph">Light from within</p></div>
       <div class="post p3"><span class="pl" style="--ink:#F5E5CC;--bulb:#FFA00E"><svg viewBox="0 0 162 188"><use href="#markA" width="162" height="188"/></svg>antara</span><img src="img/p-orb.webp" alt="Pearl Veil orb" loading="lazy"><p class="ph">New · <em>Pearl Veil</em></p></div>
     </section>
 
@@ -612,10 +613,10 @@ img { display: block; }
   document.getElementById('lights').innerHTML = ORDER.map(k => `<button class="lt" aria-pressed="false" aria-label="${LIGHTS[k].name}, switch light"><svg viewBox="0 0 200 260" aria-hidden="true">${LIGHTS[k].svg}</svg><b>${LIGHTS[k].name}</b></button>`).join('');
   document.querySelectorAll('.lt').forEach(b => b.addEventListener('click', () => { const on = b.classList.toggle('is-on'); b.setAttribute('aria-pressed', String(on)); }));
 
-  // brand shape: outline + semicircle for every .cone
-  document.querySelectorAll('.cone').forEach(c => {
-    if (!c.classList.contains('noline')) c.insertAdjacentHTML('afterbegin', '<svg class="cone-line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polygon points="41,0 59,0 100,100 0,100" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>');
-    c.insertAdjacentHTML('beforeend', '<svg class="cone-bulb" viewBox="0 0 26 13" aria-hidden="true"><path d="M0 0 A13 13 0 0 0 26 0Z" fill="currentColor"/></svg>');
+  // brand shape: outline + semicircle for every .bshape
+  document.querySelectorAll('.bshape').forEach(c => {
+    if (!c.classList.contains('noline')) c.insertAdjacentHTML('afterbegin', '<svg class="bshape-line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M12.7 0 H87.3 A50 60 0 1 1 12.7 0 Z" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>');
+    c.insertAdjacentHTML('beforeend', '<svg class="bshape-bulb" viewBox="0 0 26 13" aria-hidden="true"><path d="M0 0 A13 13 0 0 0 26 0Z" fill="currentColor"/></svg>');
   });
 
   // exclusive zone diagrams

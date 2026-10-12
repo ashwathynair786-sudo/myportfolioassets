@@ -11,7 +11,11 @@ const book = readFileSync(new URL('../antara-brand-book.html', import.meta.url),
 const sprite = book.slice(book.indexOf('<svg width="0" height="0"'), book.indexOf('</defs></svg>') + '</defs></svg>'.length);
 const lightsJs = book.slice(book.indexOf('// ---------- drawing helpers'), book.indexOf("document.querySelectorAll('svg[data-lamp]')")) +
   "document.querySelectorAll('svg[data-lamp]').forEach(el => { el.innerHTML = LIGHTS[el.dataset.lamp].svg; });";
-const FONTS = `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@400;500&display=swap">`;
+// Billboard type: Montserrat SemiBold + Bold, loaded from the font files in ./fonts
+const FONTS = `<style>
+  @font-face { font-family: "MontserratBB"; font-weight: 600; src: url("fonts/Montserrat-SemiBold.ttf") format("truetype"); }
+  @font-face { font-family: "MontserratBB"; font-weight: 700; src: url("fonts/Montserrat-Bold.ttf") format("truetype"); }
+</style>`;
 
 const COPY = { line1: 'Light you can', line2: 'feel.', sub: 'Handcrafted lights in paper, silk and cane', lamp: 'silkbell' };
 const FW = 1600, FH = 660;
@@ -23,9 +27,9 @@ const face = `<!doctype html><html><head><meta charset="utf-8">${FONTS}<style>
   .face { position: relative; width: ${FW}px; height: ${FH}px; overflow: hidden; background: #1A1614; --ink: #F5E5CC; --tile: #1A1614; }
   .face::before { content: ""; position: absolute; left: 860px; top: -40px; width: 760px; height: 760px; background: radial-gradient(closest-side, rgba(255,160,14,.22), rgba(255,160,14,.06) 55%, transparent); }
   .lamp { position: absolute; top: 0; left: 1036px; height: ${FH}px; width: ${Math.round(FH * 200 / 260)}px; overflow: visible; }
-  h1 { position: absolute; left: 112px; top: 96px; margin: 0; font-family: "Cormorant Garamond", serif; font-weight: 300; font-size: 156px; line-height: .94; letter-spacing: -.01em; color: #F5E5CC; }
-  h1 em { font-weight: 300; color: #FFA00E; }
-  p { position: absolute; left: 118px; top: 452px; margin: 0; font-family: Montserrat, sans-serif; font-weight: 500; font-size: 19px; letter-spacing: .24em; text-transform: uppercase; color: #D8D2C7; }
+  h1 { position: absolute; left: 112px; top: 112px; margin: 0; font-family: MontserratBB, sans-serif; font-weight: 600; font-size: 112px; line-height: 1.04; letter-spacing: -.025em; color: #F5E5CC; }
+  h1 em { font-style: normal; font-weight: 700; color: #FFA00E; }
+  p { position: absolute; left: 118px; top: 400px; margin: 0; font-family: MontserratBB, sans-serif; font-weight: 600; font-size: 19px; letter-spacing: .24em; text-transform: uppercase; color: #D8D2C7; }
   .wm { position: absolute; left: 118px; bottom: 74px; width: 250px; height: auto; }
 </style></head><body>${sprite}
 <div class="face">

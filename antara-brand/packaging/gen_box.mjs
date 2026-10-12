@@ -29,12 +29,8 @@ const light = (k, x, y, s, k2 = 0.62, ink = INK) => {
   const inner = LIGHTS[k][1].replace(/stroke-width="([\d.]+)"/g, (_, v) => `stroke-width="${(+v * k2).toFixed(3)}"`);
   return `<g transform="translate(${x} ${y}) scale(${s})" fill="none" stroke="${ink}" stroke-linecap="round" stroke-linejoin="round">${inner}</g>`;
 };
-// Brand shape (the glow) with the mark inside: used as a maker's stamp.
-const stamp = (x, y, w) => {
-  const h = w * 1.25, glow = `M${0.127 * w} 0 H${0.873 * w} A${w / 2} ${0.6 * h} 0 1 1 ${0.127 * w} 0 Z`, ms = w * 0.42 / 162;
-  return `<g transform="translate(${x} ${y})"><path d="${glow}" fill="none" stroke="${INK}" stroke-width="0.9"/>` +
-    `<g transform="translate(${w / 2 - 81 * ms} ${h * 0.3}) scale(${ms})"><path d="${MARK_A}" fill="${INK}"/><path d="${MARK_BULB}" fill="${EMBER}"/></g></g>`;
-};
+// The mark (A with its semicircle of light), used as a small maker's mark.
+const stamp = (x, y, w) => { const ms = w / 162; return `<g transform="translate(${x} ${y}) scale(${ms})"><path d="${MARK_A}" fill="${INK}"/><path d="${MARK_BULB}" fill="${EMBER}"/></g>`; };
 const T = (x, y, s, txt, o = {}) => `<text x="${x}" y="${y}" font-family="${o.f || 'Montserrat'}, sans-serif" font-size="${s}" font-weight="${o.w || 400}"` +
   `${o.ls ? ` letter-spacing="${o.ls}"` : ''}${o.a ? ` text-anchor="${o.a}"` : ''} fill="${o.c || INK}">${txt}</text>`;
 
@@ -73,7 +69,7 @@ const PANEL = {
     tagline(84, 277, 96),
     pill(36, 390, 'Size') + T(90, 403, 11, P.size, { w: 500 }),
     light(P.light, 352 - 100 * 1.8, 0, 1.8),
-    stamp(428, 36, 36),
+    stamp(434, 36, 30),
   ].join(''),
   sideB: () => [
     wordmark(36, 40, 96),
@@ -105,7 +101,7 @@ const PANEL = {
     T(L / 2, 312, 9, 'THE TWELVE FORMS OF LIGHT', { w: 600, ls: 2.2, a: 'middle' }),
     T(L / 2, 346, 12, 'Handcrafted lights in rice paper, raw silk,', { a: 'middle' }),
     T(L / 2, 364, 12, 'crushed fabric and rattan cane.', { a: 'middle' }),
-    stamp(L / 2 - 14, 386, 28),
+    stamp(L / 2 - 12, 382, 24),
   ].join(''),
   topFront: () => handling(36, F - 58, 26) + T(132, F - 47, 9.5, 'LIGHT INSIDE · PLEASE HANDLE WITH CARE', { w: 600, ls: 1.6 }) +
     T(132, F - 33, 9.5, 'Open from the top. Lift by the frame.', {}),

@@ -1,0 +1,72 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Studio 113 logo loop</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@500&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1080px; background: #0A0A0A; overflow: hidden; }
+#stage { position: relative; width: 1080px; height: 1080px; }
+#stamp { position: absolute; left: 50%; top: 110px; width: 470px; margin-left: -235px; transform-origin: 50% 60%; }
+#pm { position: absolute; left: 520px; top: 440px; width: 470px; color: #FFF8EE; mix-blend-mode: difference; transform-origin: 25% 50%; }
+#wm { position: absolute; left: 50%; top: 820px; width: 500px; margin-left: -250px; }
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="7" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -3.2 0 0 0 2.35" result="m"/>
+    <feComposite in="SourceGraphic" in2="m" operator="in"/>
+  </filter>
+  <path id="pm-arc" d="M 40 120 A 80 80 0 1 1 200 120 A 80 80 0 1 1 40 120"/>
+</defs></svg>
+<div id="stage">
+  <img id="stamp" src="../assets/logo/stamp-black.png" alt="">
+  <svg id="pm" viewBox="0 0 600 240">
+    <g filter="url(#rough)" fill="none" stroke="currentColor">
+      <circle cx="120" cy="120" r="108" stroke-width="5"/>
+      <circle cx="120" cy="120" r="64" stroke-width="2.5"/>
+      <text font-family="Montserrat" font-weight="600" font-size="19" letter-spacing="4.2" fill="currentColor" stroke="none"><textPath href="#pm-arc">STUDIO 113 · HOUSE OF KANCHANA ·</textPath></text>
+      <text x="120" y="112" text-anchor="middle" font-family="Cormorant Infant" font-size="40" font-weight="500" fill="currentColor" stroke="none">113</text>
+      <text x="120" y="144" text-anchor="middle" font-family="Montserrat" font-size="13" font-weight="600" letter-spacing="3" fill="currentColor" stroke="none">2024</text>
+      <g stroke-width="5" stroke-linecap="round">
+        <path d="M 236 70 q 24 -16 48 0 t 48 0 t 48 0 t 48 0 t 48 0 t 48 0 t 48 0"/>
+        <path d="M 240 102 q 24 -16 48 0 t 48 0 t 48 0 t 48 0 t 48 0 t 48 0 t 48 0"/>
+        <path d="M 240 134 q 24 -16 48 0 t 48 0 t 48 0 t 48 0 t 48 0 t 48 0 t 48 0"/>
+        <path d="M 236 166 q 24 -16 48 0 t 48 0 t 48 0 t 48 0 t 48 0 t 48 0 t 48 0"/>
+      </g>
+    </g>
+  </svg>
+  <img id="wm" src="../assets/logo/wordmark-cream.png" alt="">
+</div>
+<script>
+// Deterministic timeline: render(t) sets every property for time t (seconds). Loop length 4.5 s.
+const D = 4.5;
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const seg = (t, a, b) => clamp((t - a) / (b - a));
+const easeOut = x => 1 - Math.pow(1 - x, 3);
+const easeIn = x => x * x * x;
+const stamp = document.getElementById('stamp'), pm = document.getElementById('pm'), wm = document.getElementById('wm');
+window.render = function (t) {
+  const out = 1 - easeIn(seg(t, 3.85, 4.4));          // everything fades out at the end
+  // drop: scale 1.3 → 1, lift shadow shrinks, rotation settles; tiny overshoot at landing
+  const d = easeOut(seg(t, 0.05, 0.55));
+  const land = seg(t, 0.55, 0.75), bump = Math.sin(land * Math.PI) * 0.018;
+  const s = 1.3 - 0.3 * d - bump;
+  const rot = -11 + 7 * d;
+  const lift = 1 - d;
+  stamp.style.opacity = clamp(d * 1.6) * out;
+  stamp.style.transform = `translateY(${-30 * lift}px) rotate(${rot}deg) scale(${s})`;
+  stamp.style.filter = `drop-shadow(0 ${14 + 50 * lift}px ${22 + 40 * lift}px rgba(0,0,0,${0.75 - 0.3 * lift}))`;
+  // postmark strike at 1.0 s: snaps from 1.12 to 1, ink at full instantly, then holds
+  const k = seg(t, 1.0, 1.12);
+  pm.style.opacity = (t < 1.0 ? 0 : 1) * out;
+  pm.style.transform = `rotate(-9deg) scale(${1.12 - 0.12 * easeOut(k)})`;
+  // the stamp is nudged by the strike
+  if (t >= 1.0 && t < 1.2) stamp.style.transform += ` translateY(${Math.sin(seg(t, 1.0, 1.2) * Math.PI) * 5}px)`;
+  // wordmark rises in
+  const w = easeOut(seg(t, 1.6, 2.3));
+  wm.style.opacity = w * out;
+  wm.style.transform = `translateY(${20 * (1 - w)}px)`;
+};
+render(0);
+</script>
+</body></html>

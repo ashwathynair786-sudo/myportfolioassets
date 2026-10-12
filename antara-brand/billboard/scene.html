@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+  html, body { margin: 0; height: 100%; overflow: hidden }
+  body { background: linear-gradient(180deg, #1E1A2C 0%, #33293F 30%, #6E4A55 58%, #C27B66 80%, #EBB085 94%, #F4C996 100%); }
+  .sun { position: absolute; right: -10%; bottom: -30%; width: 90%; height: 80%; background: radial-gradient(closest-side, rgba(255,200,140,.45), transparent); }
+  .stage { position: absolute; inset: 0; perspective: 2100px; perspective-origin: 42% 118%; }
+  .rig { position: absolute; left: 47%; top: 34%; transform-style: preserve-3d; transform: rotateY(-23deg) rotateX(2deg); }
+  .rig * { transform-style: preserve-3d; }
+  .sl, .front { position: absolute; left: -500px; top: -206.5px; width: 1000px; height: 413px; border-radius: 46px; }
+  .front { transform: translateZ(1px); background: #2B2522; padding: 7px; box-sizing: border-box; }
+  .front img { display: block; width: 100%; height: 100%; border-radius: 39px; object-fit: cover; }
+  .walk { position: absolute; left: -630px; top: -55px; width: 1260px; height: 110px; transform: translateY(250.5px) rotateX(90deg);
+    background: repeating-linear-gradient(90deg, #1b1716 0 3px, #2b2421 3px 9px), #231d1b; box-shadow: inset 0 0 0 4px #3a2f2a; }
+  .walk-edge { position: absolute; left: -630px; width: 1260px; height: 12px; top: 244.5px; transform: translateZ(55px); background: linear-gradient(#5a463b, #2a221f); }
+  .beam { position: absolute; height: 10px; top: 260.5px; background: linear-gradient(#6a5244, #2a221f); }
+  .lampf { position: absolute; width: 46px; height: 16px; top: 232.5px; transform: translateZ(40px); background: linear-gradient(#4a3c35, #1e1917); border-radius: 3px; }
+  .pole { position: absolute; left: -48px; width: 96px; top: 254.5px; height: 1400px; transform: translateZ(-42px) rotateY(23deg);
+    background: linear-gradient(90deg, #120f0e 0%, #3b302b 18%, #7a6052 38%, #3a2e29 62%, #151110 100%); }
+</style></head><body><div class="sun"></div><div class="stage">
+  <div class="rig"><div class="pole"></div></div>
+  <div class="rig"><div class="sl" style="transform:translateZ(-3.0px);background:rgb(52,46,43)"></div><div class="sl" style="transform:translateZ(-6.0px);background:rgb(51,45,42)"></div><div class="sl" style="transform:translateZ(-9.0px);background:rgb(50,44,41)"></div><div class="sl" style="transform:translateZ(-12.0px);background:rgb(49,43,40)"></div><div class="sl" style="transform:translateZ(-15.0px);background:rgb(48,42,39)"></div><div class="sl" style="transform:translateZ(-18.0px);background:rgb(48,42,39)"></div><div class="sl" style="transform:translateZ(-21.0px);background:rgb(47,41,38)"></div><div class="sl" style="transform:translateZ(-24.0px);background:rgb(46,40,37)"></div><div class="sl" style="transform:translateZ(-27.0px);background:rgb(45,39,36)"></div><div class="sl" style="transform:translateZ(-30.0px);background:rgb(44,38,35)"></div><div class="sl" style="transform:translateZ(-33.0px);background:rgb(43,37,34)"></div><div class="sl" style="transform:translateZ(-36.0px);background:rgb(42,36,33)"></div><div class="sl" style="transform:translateZ(-39.0px);background:rgb(41,35,32)"></div><div class="sl" style="transform:translateZ(-42.0px);background:rgb(40,34,31)"></div><div class="sl" style="transform:translateZ(-45.0px);background:rgb(39,33,30)"></div><div class="sl" style="transform:translateZ(-48.0px);background:rgb(39,33,30)"></div><div class="sl" style="transform:translateZ(-51.0px);background:rgb(38,32,29)"></div><div class="sl" style="transform:translateZ(-54.0px);background:rgb(37,31,28)"></div><div class="sl" style="transform:translateZ(-57.0px);background:rgb(36,30,27)"></div><div class="sl" style="transform:translateZ(-60.0px);background:rgb(35,29,26)"></div><div class="sl" style="transform:translateZ(-63.0px);background:rgb(34,28,25)"></div><div class="sl" style="transform:translateZ(-66.0px);background:rgb(33,27,24)"></div><div class="sl" style="transform:translateZ(-69.0px);background:rgb(32,26,23)"></div><div class="sl" style="transform:translateZ(-72.0px);background:rgb(31,25,22)"></div><div class="sl" style="transform:translateZ(-75.0px);background:rgb(30,24,21)"></div><div class="sl" style="transform:translateZ(-78.0px);background:rgb(30,24,21)"></div><div class="sl" style="transform:translateZ(-81.0px);background:rgb(29,23,20)"></div><div class="sl" style="transform:translateZ(-84.0px);background:rgb(28,22,19)"></div><div class="front"><img src="antara-billboard-face.png" alt=""></div></div>
+  <div class="rig">
+    <div class="walk"></div>
+    <div class="walk-edge"></div>
+    <div class="beam" style="left:-560px;width:550px;transform:translateZ(28px)"></div>
+    <div class="beam" style="left:50px;width:550px;transform:translateZ(-14px)"></div>
+    <div class="lampf" style="left:-300px"></div><div class="lampf" style="left:220px"></div>
+  </div>
+</div></body></html>

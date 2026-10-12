@@ -27,18 +27,20 @@ const face = `<!doctype html><html><head><meta charset="utf-8">${FONTS}<style>
   .face { position: relative; width: ${FW}px; height: ${FH}px; overflow: hidden; background: #1A1614; --ink: #F5E5CC; --tile: #1A1614; }
   .face::before { content: ""; position: absolute; left: 860px; top: -40px; width: 760px; height: 760px; background: radial-gradient(closest-side, rgba(255,160,14,.22), rgba(255,160,14,.06) 55%, transparent); }
   .lamp { position: absolute; top: 0; left: 1036px; height: ${FH}px; width: ${Math.round(FH * 200 / 260)}px; overflow: visible; }
-  h1 { position: absolute; left: 112px; top: 112px; margin: 0; font-family: MontserratBB, sans-serif; font-weight: 600; font-size: 112px; line-height: 1.04; letter-spacing: -.025em; color: #F5E5CC; }
+  h1 { position: absolute; left: 112px; top: 210px; margin: 0; white-space: nowrap; font-family: MontserratBB, sans-serif; font-weight: 600; font-size: 100px; line-height: 1; letter-spacing: -.025em; color: #F5E5CC; }
   h1 em { font-style: normal; font-weight: 700; color: #FFA00E; }
-  p { position: absolute; left: 118px; top: 400px; margin: 0; font-family: MontserratBB, sans-serif; font-weight: 600; font-size: 19px; letter-spacing: .24em; text-transform: uppercase; color: #D8D2C7; }
+  p { position: absolute; left: 118px; top: 330px; margin: 0; font-family: MontserratBB, sans-serif; font-weight: 600; font-size: 19px; letter-spacing: .24em; text-transform: uppercase; color: #D8D2C7; }
   .wm { position: absolute; left: 118px; bottom: 74px; width: 250px; height: auto; }
 </style></head><body>${sprite}
 <div class="face">
   <svg class="lamp" data-lamp="${COPY.lamp}" viewBox="0 0 200 260" aria-hidden="true"></svg>
-  <h1>${COPY.line1}<br><em>${COPY.line2}</em></h1>
+  <h1>${COPY.line1} <em>${COPY.line2}</em></h1>
   <p>${COPY.sub}</p>
   <svg class="wm" viewBox="0 0 946 188" aria-label="Antara" style="--ink:#F5E5CC;--bulb:#FFA00E"><use href="#wm" width="946" height="188"/></svg>
 </div>
-<script>(() => { ${lightsJs} })();</script></body></html>`;
+<script>(() => { ${lightsJs} })();
+// headline on one line: shrink to fit the space left of the light
+document.fonts.ready.then(() => { const h = document.querySelector('h1'), max = 880; let fs = 100; while (h.scrollWidth > max && fs > 40) h.style.fontSize = (fs -= 1) + 'px'; document.body.dataset.ready = '1'; });</script></body></html>`;
 writeFileSync(`${OUT}face.html`, face);
 
 // ---------- 3D mockup ----------
@@ -79,7 +81,7 @@ writeFileSync(`${OUT}scene.html`, scene);
 
 const b = await chromium.launch();
 const p = await b.newPage({ viewport: { width: FW, height: FH }, deviceScaleFactor: 2 });
-await p.goto('file://' + OUT + 'face.html'); await p.waitForTimeout(1500);
+await p.goto('file://' + OUT + 'face.html'); await p.waitForSelector('body[data-ready]'); await p.waitForTimeout(500);
 await p.locator('.face').screenshot({ path: `${OUT}antara-billboard-face.png` });
 await p.pdf({ path: `${OUT}antara-billboard-face.pdf`, width: `${FW}px`, height: `${FH}px`, printBackground: true });
 const q = await b.newPage({ viewport: { width: 1600, height: 1200 }, deviceScaleFactor: 2 });

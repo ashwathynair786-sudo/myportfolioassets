@@ -70,7 +70,10 @@ img { display: block; }
 .statement li { counter-increment: s; } .statement li::before { content: counter(s) ". "; }
 .statement p { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(22px, 2.7vw, 34px); line-height: 1.22; max-width: 19ch; color: var(--night); text-wrap: balance; }
 .statement sup { font-family: var(--sans); font-size: .36em; color: var(--ember); vertical-align: super; margin-left: 1px; }
-.watermark { position: absolute; width: 70%; right: -14%; bottom: -16%; color: #EAE4D9; }
+.watermark { position: absolute; width: 70%; right: -14%; bottom: -16%; color: #262120; }
+.statement.bg-night ol { color: var(--ash); }
+.statement.bg-night p { color: var(--wick); }
+.statement.bg-night sup { color: var(--filament); }
 .photo img { width: 100%; height: 100%; object-fit: cover; }
 .logo-hold { width: 64%; display: grid; gap: 18px; justify-items: center; }
 .logo-hold .tg { width: 44%; height: auto; }
@@ -380,7 +383,7 @@ img { display: block; }
       <blockquote><b>Together, they create a powerful idea:</b> Antara is the light that exists between what is seen and what is felt.</blockquote>
     </section>
 
-    <section class="b sq bg-paper statement">
+    <section class="b sq bg-night statement">
       <svg class="watermark" viewBox="0 0 162 188" aria-hidden="true"><use href="#glyphL" width="162" height="188"/></svg>
       <div class="inner">
         <span class="pill">Antara · <span lang="hi" style="font-family:'Tiro Devanagari Sanskrit',serif;letter-spacing:0;font-size:12px">अंतरा</span> · within</span>

@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* Layout: one long letter from Park Street — black ground, the stamp arrives by post, everything else printed on paper and laid on a dark desk. Single dark look by choice (the brand's own black). */
 :root {
@@ -15,7 +15,8 @@
   --mint: #7FC4B0;         /* teal lifted for small accents on black */
   --muted: rgba(255,248,238,.6);
   --rule: rgba(255,248,238,.14);
-  --serif: "Cormorant Infant", "Cormorant Garamond", Georgia, serif;
+  --display: "Forum", "EB Garamond", Georgia, serif;   /* primary brand font */
+  --serif: "EB Garamond", Garamond, Georgia, serif;     /* secondary brand font */
   --sans: "Montserrat", "Helvetica Neue", Arial, sans-serif;
   --mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
   --gutter: clamp(16px, 4vw, 48px);
@@ -35,7 +36,7 @@ h2, h3 { text-wrap: balance; }
 .sec { padding-block: clamp(56px, 9vw, 110px); }
 .sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; padding-bottom: 16px; margin-bottom: clamp(32px, 5vw, 56px); border-bottom: 1px solid var(--rule); }
 .sec-head .eyebrow { color: var(--mint); }
-.sec-head h2 { font: 300 clamp(30px, 5vw, 52px)/1 var(--serif); }
+.sec-head h2 { font: 400 clamp(30px, 5vw, 52px)/1 var(--display); }
 .on-paper { background: var(--paper); color: var(--ink); }
 .on-paper .sec-head { border-color: rgba(10,10,10,.15); }
 .on-paper .sec-head .eyebrow { color: var(--teal); }
@@ -69,9 +70,9 @@ h2, h3 { text-wrap: balance; }
 .story .corner { position: absolute; z-index: 1; color: rgba(255,248,238,.5); font-size: 9px; }
 .story .tl { left: 16px; top: 16px; } .story .tr { right: 16px; top: 16px; } .story .bl { left: 16px; bottom: 16px; } .story .br { right: 16px; bottom: 16px; }
 .story-body { position: relative; z-index: 1; max-width: 640px; margin-inline: auto; padding: clamp(88px, 13vw, 150px) 8px; text-align: center; }
-.story-body h2 { font: italic 300 clamp(48px, 9vw, 96px)/1 var(--serif); }
+.story-body h2 { font: 400 clamp(48px, 9vw, 96px)/1 var(--display); }
 .story-body .bar { width: 64px; height: 1px; margin: 36px auto; background: var(--mint); }
-.story-body p { font: 400 clamp(18px, 2.2vw, 23px)/1.6 var(--serif); color: rgba(255,248,238,.82); }
+.story-body p { font: 400 clamp(17px, 2vw, 21px)/1.65 var(--serif); color: rgba(255,248,238,.82); }
 .story-body p + p { margin-top: 20px; }
 .draft { display: inline-block; margin-top: 28px; padding: 6px 10px; border: 1px dashed rgba(127,196,176,.5); color: var(--mint); }
 
@@ -118,22 +119,38 @@ h2, h3 { text-wrap: balance; }
     radial-gradient(circle, var(--paper) 5px, transparent 5.5px) 100% 0 / 12px 16px repeat-y; }
 .swatch .top { display: flex; justify-content: space-between; align-items: flex-start; }
 .swatch .top .eyebrow { opacity: .7; font-size: 9px; }
-.swatch .val { font: 400 18px/1 var(--serif); opacity: .8; }
-.swatch .nm { font: 400 30px/1.1 var(--serif); }
+.swatch .val { font: 400 18px/1 var(--display); opacity: .8; }
+.swatch .nm { font: 400 30px/1.1 var(--display); }
 .swatch .code { margin-top: 8px; font: 11px/1.6 var(--mono); letter-spacing: .06em; opacity: .75; font-variant-numeric: tabular-nums; }
 .palette-note { max-width: 62ch; margin-top: 40px; font: italic 400 19px/1.5 var(--serif); color: rgba(10,10,10,.62); }
 
 /* 7 · fonts */
 .font-card { min-width: 0; padding: clamp(24px, 4vw, 40px); border: 1px solid var(--rule); }
 .font-card .eyebrow { color: var(--muted); }
-.font-card h3 { margin-top: 8px; font: 400 clamp(28px, 3.5vw, 38px)/1.1 var(--serif); }
-.font-card .spec { margin-top: 40px; width: 100%; }
-.font-card .about { margin-top: 32px; max-width: 52ch; font-size: 13px; line-height: 1.7; color: var(--muted); }
-.font-card .aa { margin-top: 24px; font: 300 clamp(88px, 14vw, 160px)/1 var(--serif); }
+.font-card h3 { margin-top: 8px; font: 400 clamp(28px, 3.5vw, 38px)/1.1 var(--display); }
+.font-card .aa { margin-top: 24px; font: 400 clamp(88px, 14vw, 160px)/1 var(--display); }
+.font-card.garamond h3, .font-card.garamond .aa { font-family: var(--serif); }
 .font-card .aa em { color: var(--mint); }
-.font-card .abc { margin-top: 24px; font: 400 17px/1.6 var(--serif); letter-spacing: .12em; color: var(--muted); overflow-wrap: anywhere; }
-.font-card .web { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--rule); }
-.font-card .web p { margin-top: 8px; font: 400 24px/1.2 var(--sans); }
+.font-card .abc { margin-top: 24px; font: 400 clamp(18px, 2.2vw, 24px)/1.5 var(--display); letter-spacing: .08em; overflow-wrap: anywhere; }
+.font-card.garamond .abc { font-family: var(--serif); letter-spacing: .04em; }
+.font-card .about { margin-top: 28px; max-width: 52ch; font: 400 17px/1.6 var(--serif); color: var(--muted); }
+.font-card .weights { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--rule); font: 22px/1.3 var(--serif); }
+.font-card .web { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--rule); }
+.font-card .web p { margin-top: 8px; font: 400 20px/1.2 var(--sans); }
+
+/* logo grid: construction lines drawn over the stamp */
+.lg { display: grid; gap: clamp(32px, 5vw, 64px); grid-template-columns: 1fr; align-items: center; }
+@media (min-width: 860px) { .lg { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); } }
+.lg-figure { position: relative; width: min(100%, 560px); margin-inline: auto; aspect-ratio: 800 / 968; }
+.lg-figure img { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .32; }
+.lg-figure svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.lg-notes { display: grid; gap: 0; }
+.lg-notes div { padding-block: 18px; border-top: 1px solid var(--rule); }
+.lg-notes div:last-child { border-bottom: 1px solid var(--rule); }
+.lg-notes dt { display: flex; align-items: center; gap: 10px; }
+.lg-notes dt i { flex: none; width: 22px; height: 0; border-top: 2px solid var(--c); }
+.lg-notes dt i.dash { border-top-style: dashed; }
+.lg-notes dd { margin: 8px 0 0; font: 400 19px/1.5 var(--serif); color: rgba(255,248,238,.82); }
 
 /* 8–9 · postcards on the desk */
 .desk { background: radial-gradient(90% 70% at 50% 0%, #1a1714, var(--ink) 70%); }
@@ -232,8 +249,39 @@ footer.end img.w { width: min(70%, 520px); }
     <div class="grid2">
       <figure class="logo-tile"><figcaption class="eyebrow">Primary logo</figcaption><img class="stamp" src="book/stamp-black.webp" alt="Primary logo: Lady K stamp in black"><p class="note">The stamp. Black is always the first choice.</p></figure>
       <figure class="logo-tile"><figcaption class="eyebrow">Primary logo · colour</figcaption><img class="stamp" src="book/stamp-teal.webp" alt="Primary logo in teal green"><p class="note">Teal green, used sparingly.</p></figure>
-      <figure class="logo-tile"><figcaption class="eyebrow">Secondary logo · wordmark</figcaption><img class="word" src="book/wordmark-black.webp" alt="Secondary logo: Studio 113, House of Kanchana wordmark"><p class="note">IvyPresto Display over Calmetta. For small sizes, social and photography.</p></figure>
+      <figure class="logo-tile"><figcaption class="eyebrow">Secondary logo · wordmark</figcaption><img class="word" src="book/wordmark-black.webp" alt="Secondary logo: Studio 113, House of Kanchana wordmark"><p class="note">The wordmark. For small sizes, social and over photography.</p></figure>
       <figure class="logo-tile teal"><figcaption class="eyebrow">One colour · reverse</figcaption><img class="stamp" src="book/stamp-ink-cream.webp" alt="One-colour reversed stamp in cream on teal"><p class="note">For foil, emboss and single-ink print.</p></figure>
+    </div>
+  </section>
+
+  <!-- 5b · logo grid -->
+  <section class="sec wrap">
+    <div class="sec-head"><p class="eyebrow">Logo system</p><h2>Logo grid</h2></div>
+    <div class="lg">
+      <div class="lg-figure">
+        <img src="book/stamp-black.webp" alt="">
+        <svg viewBox="0 0 800 968" role="img" aria-label="Construction grid over the stamp logo: a 16 by 20 module frame, concentric arch circles on the vertical axis, and bands for the denomination tags and the banner">
+          <g stroke="#7FC4B0" stroke-opacity=".6" stroke-width="1"><line x1="100.75" y1="58" x2="100.75" y2="910"/><line x1="143.50" y1="58" x2="143.50" y2="910"/><line x1="186.25" y1="58" x2="186.25" y2="910"/><line x1="229.00" y1="58" x2="229.00" y2="910"/><line x1="271.75" y1="58" x2="271.75" y2="910"/><line x1="314.50" y1="58" x2="314.50" y2="910"/><line x1="357.25" y1="58" x2="357.25" y2="910"/><line x1="400.00" y1="58" x2="400.00" y2="910"/><line x1="442.75" y1="58" x2="442.75" y2="910"/><line x1="485.50" y1="58" x2="485.50" y2="910"/><line x1="528.25" y1="58" x2="528.25" y2="910"/><line x1="571.00" y1="58" x2="571.00" y2="910"/><line x1="613.75" y1="58" x2="613.75" y2="910"/><line x1="656.50" y1="58" x2="656.50" y2="910"/><line x1="699.25" y1="58" x2="699.25" y2="910"/><line x1="58" y1="100.75" x2="742" y2="100.75"/><line x1="58" y1="143.50" x2="742" y2="143.50"/><line x1="58" y1="186.25" x2="742" y2="186.25"/><line x1="58" y1="229.00" x2="742" y2="229.00"/><line x1="58" y1="271.75" x2="742" y2="271.75"/><line x1="58" y1="314.50" x2="742" y2="314.50"/><line x1="58" y1="357.25" x2="742" y2="357.25"/><line x1="58" y1="400.00" x2="742" y2="400.00"/><line x1="58" y1="442.75" x2="742" y2="442.75"/><line x1="58" y1="485.50" x2="742" y2="485.50"/><line x1="58" y1="528.25" x2="742" y2="528.25"/><line x1="58" y1="571.00" x2="742" y2="571.00"/><line x1="58" y1="613.75" x2="742" y2="613.75"/><line x1="58" y1="656.50" x2="742" y2="656.50"/><line x1="58" y1="699.25" x2="742" y2="699.25"/><line x1="58" y1="742.00" x2="742" y2="742.00"/><line x1="58" y1="784.75" x2="742" y2="784.75"/><line x1="58" y1="827.50" x2="742" y2="827.50"/><line x1="58" y1="870.25" x2="742" y2="870.25"/></g>
+          <rect x="58" y="58" width="684" height="852" fill="none" stroke="#FFF8EE" stroke-width="2.5"/>
+          <line x1="400" y1="18" x2="400" y2="950" stroke="#FFF8EE" stroke-width="1.5" stroke-dasharray="8 6"/>
+          <circle cx="400" cy="470" r="245" fill="none" stroke="#E07AB4" stroke-width="2.5"/>
+          <circle cx="400" cy="470" r="330" fill="none" stroke="#E07AB4" stroke-width="1.5" stroke-dasharray="10 6"/>
+          <circle cx="400" cy="470" r="6" fill="#E07AB4"/>
+          <g stroke="#E0B95A" stroke-width="2"><line x1="20" y1="490" x2="780" y2="490"/><line x1="20" y1="555" x2="780" y2="555"/><line x1="20" y1="735" x2="780" y2="735"/><line x1="20" y1="810" x2="780" y2="810"/></g>
+          <g fill="#FFF8EE" font-family="Montserrat, sans-serif" font-size="15" font-weight="600" letter-spacing="2">
+            <text x="58" y="44">16 MODULES</text>
+            <text x="796" y="58" transform="rotate(90 796 58)">20 MODULES</text>
+            <text x="404" y="964">AXIS</text>
+          </g>
+          <g fill="none" stroke="#FFF8EE" stroke-width="2"><rect x="58" y="58" width="42.75" height="42.75"/></g>
+        </svg>
+      </div>
+      <dl class="lg-notes">
+        <div><dt class="eyebrow"><i style="--c:#7FC4B0"></i>Module</dt><dd>The frame is a 4 : 5 rectangle, 16 modules wide and 20 tall. Every element snaps to this grid.</dd></div>
+        <div><dt class="eyebrow"><i class="dash" style="--c:#FFF8EE"></i>Vertical axis</dt><dd>Lady K, the arch and the banner are centred on one axis. Only her profile turns away from it.</dd></div>
+        <div><dt class="eyebrow"><i style="--c:#E07AB4"></i>Concentric arch</dt><dd>The window and the arched name share one centre. Studio 113 is set along the outer circle.</dd></div>
+        <div><dt class="eyebrow"><i style="--c:#E0B95A"></i>Bands</dt><dd>The 113 PS tags sit on the centre band, 1.5 modules tall. The House of Kanchana banner is 11 modules wide and 1.75 modules tall.</dd></div>
+      </dl>
     </div>
   </section>
 
@@ -259,17 +307,19 @@ footer.end img.w { width: min(70%, 520px); }
     <div class="sec-head"><p class="eyebrow">Typography</p><h2>Fonts</h2></div>
     <div class="grid2">
       <div class="font-card">
-        <p class="eyebrow">Primary · Semi-bold</p>
-        <h3>IvyPresto Display</h3>
-        <img class="spec" src="book/ivypresto-specimen.webp" alt="IvyPresto Display alphabet and numerals">
-        <p class="about">An Old Style display serif after Hendrik van den Keere, by The Ivy Foundry. Used for the wordmark and headlines.</p>
-      </div>
-      <div class="font-card">
-        <p class="eyebrow">Secondary · Regular and italic</p>
-        <h3>Cormorant Infant</h3>
-        <p class="aa">Aa <em>Aa</em></p>
+        <p class="eyebrow">Primary · Regular</p>
+        <h3>Forum</h3>
+        <p class="aa">Aa</p>
         <p class="abc">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789</p>
-        <div class="web"><span class="eyebrow">For web</span><p>Montserrat Regular</p></div>
+        <p class="about">A display serif with Roman inscriptional capitals. Used for headlines, titles and names.</p>
+      </div>
+      <div class="font-card garamond">
+        <p class="eyebrow">Secondary · Regular to Extra Bold, with italics</p>
+        <h3>EB Garamond</h3>
+        <p class="aa">Aa <em><i>Aa</i></em></p>
+        <p class="abc">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br><i>abcdefghijklmnopqrstuvwxyz</i><br>0123456789</p>
+        <p class="weights"><span style="font-weight:400">Regular</span><span style="font-weight:500">Medium</span><span style="font-weight:600">SemiBold</span><span style="font-weight:700">Bold</span><span style="font-weight:800">ExtraBold</span><span style="font-style:italic">Italic</span></p>
+        <div class="web"><span class="eyebrow">Labels and web</span><p>Montserrat Regular</p></div>
       </div>
     </div>
   </section>

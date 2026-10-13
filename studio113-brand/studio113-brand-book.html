@@ -1,0 +1,334 @@
+<title>Studio 113 Brand Book</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: one long letter from Park Street — black ground, the stamp arrives by post, everything else printed on paper and laid on a dark desk. Single dark look by choice (the brand's own black). */
+:root {
+  --ink: #0A0A0A;          /* brand black, the page ground */
+  --desk: #121010;         /* the desk the postcards sit on */
+  --paper: #F4ECDD;        /* paper sections and swatch perforations */
+  --card: #F8F0DF;         /* postcard stock */
+  --floral: #FFF8EE;       /* brand floral white, text on black */
+  --teal: #016953;         /* brand teal green */
+  --mint: #7FC4B0;         /* teal lifted for small accents on black */
+  --muted: rgba(255,248,238,.6);
+  --rule: rgba(255,248,238,.14);
+  --serif: "Cormorant Infant", "Cormorant Garamond", Georgia, serif;
+  --sans: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --gutter: clamp(16px, 4vw, 48px);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--ink); }
+body { margin: 0; background: var(--ink); color: var(--floral); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; }
+h1, h2, h3, p, figure { margin: 0; }
+h2, h3 { text-wrap: balance; }
+.wrap { padding-inline: var(--gutter); }
+.serif { font-family: var(--serif); }
+.eyebrow { font: 600 10px/1.2 var(--sans); letter-spacing: .28em; text-transform: uppercase; }
+
+/* section header */
+.sec { padding-block: clamp(56px, 9vw, 110px); }
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; padding-bottom: 16px; margin-bottom: clamp(32px, 5vw, 56px); border-bottom: 1px solid var(--rule); }
+.sec-head .eyebrow { color: var(--mint); }
+.sec-head h2 { font: 300 clamp(30px, 5vw, 52px)/1 var(--serif); }
+.on-paper { background: var(--paper); color: var(--ink); }
+.on-paper .sec-head { border-color: rgba(10,10,10,.15); }
+.on-paper .sec-head .eyebrow { color: var(--teal); }
+
+/* 1 · wordmark on black */
+.hero { min-height: min(86vh, 760px); display: grid; place-items: center; padding-block: 72px; }
+.hero img { width: min(78%, 760px); animation: rise 1.4s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes rise { from { opacity: .001; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* 2 · envelope */
+.env-sec { display: flex; flex-direction: column; align-items: center; padding-block: 24px 96px; }
+.envelope { position: relative; display: block; width: min(520px, 86vw); aspect-ratio: 160 / 100; margin-top: clamp(230px, 56vw, 360px); padding: 0; border: 0; background: none; cursor: pointer; perspective: 1400px; }
+.envelope:focus-visible { outline: 2px solid var(--mint); outline-offset: 10px; }
+.env-back { position: absolute; inset: 0; z-index: 0; border-radius: 4px; background: #014a3b; box-shadow: 0 24px 40px rgba(0,0,0,.35), 0 3px 6px rgba(0,0,0,.35); }
+.env-stamp { position: absolute; left: 50%; bottom: 8%; z-index: 2; width: 34%; transform: translate(-50%, 0); transform-origin: 50% 100%; filter: drop-shadow(0 10px 16px rgba(0,0,0,.45)); }
+.env-pocket { position: absolute; inset: 0; z-index: 3; width: 100%; height: 100%; }
+.env-address { position: absolute; left: 0; right: 0; bottom: 11%; z-index: 4; text-align: center; font: italic 400 clamp(14px, 2.6vw, 21px)/1.25 var(--serif); color: var(--floral); opacity: .9; pointer-events: none; }
+.env-flap { position: absolute; left: 0; top: 0; z-index: 5; width: 100%; height: 62%; transform-origin: 50% 0; transition: transform .5s ease 1.15s, z-index 0s linear 1.4s; }
+.envelope[data-state="open"] .env-flap { z-index: 1; transform: rotateX(180deg); transition: transform .7s cubic-bezier(.5,0,.3,1), z-index 0s linear .35s; }
+.envelope[data-state="open"] .env-stamp { animation: pop 1.5s cubic-bezier(.3,.7,.25,1) .55s both; }
+.envelope[data-state="closed"] .env-stamp { animation: tuck 1.1s cubic-bezier(.5,0,.6,.4) reverse both; }
+@keyframes pop { 0% { transform: translate(-50%,0) rotate(0) scale(1); z-index: 2; } 45% { transform: translate(-50%,-150%) rotate(-5deg) scale(1.05); z-index: 2; } 47% { z-index: 6; } 100% { transform: translate(-50%,-62%) rotate(-3deg) scale(1.55); z-index: 6; } }
+@keyframes tuck { 0% { transform: translate(-50%,0) rotate(0) scale(1); z-index: 2; } 45% { transform: translate(-50%,-150%) rotate(-5deg) scale(1.05); z-index: 2; } 47% { z-index: 6; } 100% { transform: translate(-50%,-62%) rotate(-3deg) scale(1.55); z-index: 6; } }
+.env-hint { margin-top: 32px; color: var(--muted); }
+
+/* 3 · story time */
+.story { position: relative; max-width: 1040px; margin-inline: auto; overflow: hidden; border: 1px solid var(--rule); background-color: #0b0b0b;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cpath d='M0 .5H56M.5 0V56' fill='none' stroke='%23FFF8EE' stroke-opacity='.2' stroke-dasharray='1.5 4.5'/%3E%3C/svg%3E");
+  background-size: 56px 56px; background-position: center; }
+.story::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(60% 55% at 50% 50%, rgba(11,11,11,.85), rgba(11,11,11,0)); }
+.story .corner { position: absolute; z-index: 1; color: rgba(255,248,238,.5); font-size: 9px; }
+.story .tl { left: 16px; top: 16px; } .story .tr { right: 16px; top: 16px; } .story .bl { left: 16px; bottom: 16px; } .story .br { right: 16px; bottom: 16px; }
+.story-body { position: relative; z-index: 1; max-width: 640px; margin-inline: auto; padding: clamp(88px, 13vw, 150px) 8px; text-align: center; }
+.story-body h2 { font: italic 300 clamp(48px, 9vw, 96px)/1 var(--serif); }
+.story-body .bar { width: 64px; height: 1px; margin: 36px auto; background: var(--mint); }
+.story-body p { font: 400 clamp(18px, 2.2vw, 23px)/1.6 var(--serif); color: rgba(255,248,238,.82); }
+.story-body p + p { margin-top: 20px; }
+.draft { display: inline-block; margin-top: 28px; padding: 6px 10px; border: 1px dashed rgba(127,196,176,.5); color: var(--mint); }
+
+/* 4 · Calcutta on film */
+.film { position: relative; aspect-ratio: 16 / 9; max-width: 100%; overflow: hidden; background: #0a0806; }
+.film > img.photo { width: 100%; height: 100%; object-fit: cover; filter: brightness(.82); animation: flicker 4s steps(40) infinite, drift 28s ease-in-out infinite alternate; }
+.film::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 90% at 50% 45%, transparent 45%, rgba(0,0,0,.65)), linear-gradient(rgba(10,8,6,.15), rgba(10,8,6,.35)); }
+.film .scrim { position: absolute; inset: 0; background: radial-gradient(55% 40% at 50% 50%, rgba(8,6,4,.62), rgba(8,6,4,0)), linear-gradient(transparent 70%, rgba(8,6,4,.6)); }
+.film .grain { position: absolute; inset: -50%; opacity: .28; mix-blend-mode: overlay; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1.4 -.2'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain .9s steps(6) infinite; }
+.film .scratch { position: absolute; top: 0; bottom: 0; left: 31%; width: 1px; background: linear-gradient(transparent, rgba(255,240,220,.35) 20%, rgba(255,240,220,.15) 70%, transparent); animation: scratch 7s linear infinite; }
+.film .mark { position: absolute; inset: 0; display: grid; place-items: center; z-index: 2; }
+.film .mark img { width: min(72%, 680px); filter: drop-shadow(0 4px 30px rgba(0,0,0,.6)); }
+.film .cap { position: absolute; z-index: 2; bottom: 16px; font-size: 10px; color: rgba(255,248,238,.7); }
+.film .cap.l { left: 20px; } .film .cap.r { right: 20px; font-size: 9px; letter-spacing: .04em; text-transform: none; color: rgba(255,248,238,.5); }
+@keyframes grain { 0% { transform: translate(0,0); } 20% { transform: translate(-6%,4%); } 40% { transform: translate(4%,-7%); } 60% { transform: translate(-3%,8%); } 80% { transform: translate(7%,2%); } 100% { transform: translate(-5%,-4%); } }
+@keyframes flicker { 0%, 100% { filter: brightness(.82); } 10% { filter: brightness(.78); } 12% { filter: brightness(.86); } 40% { filter: brightness(.8); } 42% { filter: brightness(.85); } 70% { filter: brightness(.77); } 72% { filter: brightness(.84); } }
+@keyframes drift { from { transform: scale(1.04); } to { transform: scale(1.1) translate(-1.5%, -1%); } }
+@keyframes scratch { 0% { left: 31%; opacity: 0; } 8% { opacity: 1; } 30% { left: 33%; opacity: .2; } 31% { opacity: 0; } 55% { left: 68%; opacity: 0; } 58% { opacity: .8; } 80% { left: 66%; opacity: .3; } 82%, 100% { opacity: 0; } }
+@media (max-width: 640px) { .film { aspect-ratio: 4 / 5; } .film .cap.r { display: none; } }
+
+/* 5 · logos */
+.grid2 { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 760px) { .grid2 { grid-template-columns: 1fr 1fr; } }
+.logo-tile { position: relative; display: grid; place-items: center; aspect-ratio: 5 / 4; max-width: 100%; overflow: hidden; background: var(--floral); color: var(--ink); }
+.logo-tile.teal { background: var(--teal); color: var(--floral); }
+.logo-tile .eyebrow { position: absolute; left: 24px; top: 24px; }
+.logo-tile .note { position: absolute; left: 24px; right: 24px; bottom: 22px; font: italic 400 16px/1.3 var(--serif); opacity: .7; }
+.logo-tile .stamp, .logo-tile .word { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+.logo-tile .stamp { height: 62%; width: auto; }
+.logo-tile .word { width: 70%; height: auto; }
+
+/* 6 · colours as stamps */
+.swatches { display: grid; gap: 28px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+.swatches.accents { margin-top: 28px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.swatch { position: relative; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px; padding: 18px; box-shadow: 0 1px 2px rgba(0,0,0,.12), inset 0 0 0 1px rgba(10,10,10,.08); }
+.accents .swatch { min-height: 190px; }
+.swatch::before { content: ""; position: absolute; inset: -6px; pointer-events: none;
+  background:
+    radial-gradient(circle, var(--paper) 5px, transparent 5.5px) 0 0 / 16px 12px repeat-x,
+    radial-gradient(circle, var(--paper) 5px, transparent 5.5px) 0 100% / 16px 12px repeat-x,
+    radial-gradient(circle, var(--paper) 5px, transparent 5.5px) 0 0 / 12px 16px repeat-y,
+    radial-gradient(circle, var(--paper) 5px, transparent 5.5px) 100% 0 / 12px 16px repeat-y; }
+.swatch .top { display: flex; justify-content: space-between; align-items: flex-start; }
+.swatch .top .eyebrow { opacity: .7; font-size: 9px; }
+.swatch .val { font: 400 18px/1 var(--serif); opacity: .8; }
+.swatch .nm { font: 400 30px/1.1 var(--serif); }
+.swatch .code { margin-top: 8px; font: 11px/1.6 var(--mono); letter-spacing: .06em; opacity: .75; font-variant-numeric: tabular-nums; }
+.palette-note { max-width: 62ch; margin-top: 40px; font: italic 400 19px/1.5 var(--serif); color: rgba(10,10,10,.62); }
+
+/* 7 · fonts */
+.font-card { min-width: 0; padding: clamp(24px, 4vw, 40px); border: 1px solid var(--rule); }
+.font-card .eyebrow { color: var(--muted); }
+.font-card h3 { margin-top: 8px; font: 400 clamp(28px, 3.5vw, 38px)/1.1 var(--serif); }
+.font-card .spec { margin-top: 40px; width: 100%; }
+.font-card .about { margin-top: 32px; max-width: 52ch; font-size: 13px; line-height: 1.7; color: var(--muted); }
+.font-card .aa { margin-top: 24px; font: 300 clamp(88px, 14vw, 160px)/1 var(--serif); }
+.font-card .aa em { color: var(--mint); }
+.font-card .abc { margin-top: 24px; font: 400 17px/1.6 var(--serif); letter-spacing: .12em; color: var(--muted); overflow-wrap: anywhere; }
+.font-card .web { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--rule); }
+.font-card .web p { margin-top: 8px; font: 400 24px/1.2 var(--sans); }
+
+/* 8–9 · postcards on the desk */
+.desk { background: radial-gradient(90% 70% at 50% 0%, #1a1714, var(--ink) 70%); }
+.cards4 { display: grid; gap: clamp(28px, 4vw, 48px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.cards2 { display: grid; gap: clamp(28px, 4vw, 48px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
+.postcard { padding: clamp(10px, 1.4vw, 18px) clamp(10px, 1.4vw, 18px) 12px; background: var(--card); color: #1a1a1a; transform: rotate(var(--tilt, 0deg)); box-shadow: 0 24px 40px rgba(0,0,0,.5), 0 2px 4px rgba(0,0,0,.35); transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.postcard:hover { transform: rotate(0) translateY(-6px); }
+.postcard .ph { overflow: hidden; aspect-ratio: 4 / 5; max-width: 100%; }
+.cards2 .postcard .ph { aspect-ratio: 3 / 2; }
+.postcard .ph img { width: 100%; height: 100%; object-fit: cover; }
+.postcard figcaption { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 12px; font: italic 400 clamp(18px, 2vw, 24px)/1 var(--serif); }
+.postcard figcaption img { width: 36px; }
+
+/* 10 · social */
+.social { display: grid; gap: 20px; padding: clamp(16px, 3vw, 32px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); background: var(--paper); }
+.post { overflow: hidden; border-radius: 12px; border: 1px solid rgba(10,10,10,.12); background: #0f0f0f; color: var(--floral); }
+.post header { display: flex; align-items: center; gap: 10px; padding: 10px 12px; }
+.post header .av { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--floral); color: var(--ink); font: 600 11px/1 var(--sans); }
+.post header b { display: block; font-size: 12px; }
+.post header small { display: block; font-size: 10px; color: var(--muted); }
+.post img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.post p { padding: 10px 12px 14px; font-size: 11px; line-height: 1.5; color: var(--muted); }
+.post p b { color: var(--floral); }
+
+footer.end { display: grid; place-items: center; gap: 28px; padding-block: 120px; text-align: center; }
+footer.end img.s { width: 120px; transform: rotate(-3deg); }
+footer.end img.w { width: min(70%, 520px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero img, .film > img.photo, .film .grain, .film .scratch { animation: none; }
+  .film .scratch { display: none; }
+  .env-flap, .postcard { transition: none !important; }
+  .envelope[data-state] .env-stamp { animation-duration: 1ms; animation-delay: 0s; }
+}
+</style>
+
+<main>
+  <!-- 1 · wordmark on black -->
+  <section class="hero wrap" aria-label="Studio 113 wordmark">
+    <img src="book/wordmark-cream.webp" alt="Studio 113, House of Kanchana">
+  </section>
+
+  <!-- 2 · the envelope pops out the stamp -->
+  <section class="env-sec wrap" aria-label="The stamp logo arrives by post">
+    <button type="button" class="envelope" id="envelope" data-state="idle" aria-label="Open the envelope">
+      <span class="env-back"></span>
+      <img class="env-stamp" src="book/stamp-black.webp" alt="Studio 113 primary logo: a vintage postage stamp of Lady K">
+      <svg class="env-pocket" viewBox="0 0 160 100" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 0 L80 56 L0 100 Z" fill="#015a47"/>
+        <path d="M160 0 L80 56 L160 100 Z" fill="#015a47"/>
+        <path d="M0 100 L80 44 L160 100 Z" fill="#016953"/>
+        <path d="M0 100 L80 44 L160 100" fill="none" stroke="rgba(0,0,0,.18)" stroke-width=".4"/>
+      </svg>
+      <span class="env-address" aria-hidden="true">To Lady K,<br>Park Street, Calcutta</span>
+      <svg class="env-flap" viewBox="0 0 160 62" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 0 L160 0 L80 62 Z" fill="#017a61"/>
+        <path d="M0 0 L80 62 L160 0" fill="none" stroke="rgba(0,0,0,.2)" stroke-width=".4"/>
+      </svg>
+    </button>
+    <p class="eyebrow env-hint" id="env-hint">Tap to open</p>
+  </section>
+
+  <!-- 3 · story time -->
+  <section class="wrap" style="padding-block: 24px 72px">
+    <div class="story">
+      <span class="eyebrow corner tl">No. 113</span>
+      <span class="eyebrow corner tr">Park Street · Calcutta</span>
+      <span class="eyebrow corner bl">House of Kanchana</span>
+      <span class="eyebrow corner br">Est. 1967</span>
+      <div class="story-body">
+        <h2>Story time</h2>
+        <div class="bar"></div>
+        <p>Lady K is the face of Studio 113. She steps out of a vintage mural that has hung in the House of Kanchana store on Park Street, Calcutta, for decades. The House has dressed the city since 1967, and Studio 113 is its newest label.</p>
+        <p>The logo turns her into a postage stamp, after the ornate frames of vintage Indian stamps: her profile inside an arched window, a flower in her hair, 113 PS as the stamp's value and House of Kanchana as its mark of origin. Like a letter, every saree that leaves the studio carries her with it.</p>
+        <span class="eyebrow draft">Draft copy · replace with your own</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · Calcutta on grainy film -->
+  <section aria-label="Calcutta on film">
+    <div class="film">
+      <img class="photo" src="book/calcutta-1945-film.webp" alt="Chowringhee, Calcutta, in 1945: trams, rickshaws and motor cars on a wide avenue">
+      <span class="grain" aria-hidden="true"></span>
+      <span class="scratch" aria-hidden="true"></span>
+      <span class="scrim" aria-hidden="true"></span>
+      <div class="mark"><img src="book/wordmark-cream.webp" alt=""></div>
+      <p class="eyebrow cap l">Chowringhee, Calcutta · 1945</p>
+      <p class="cap r">Photo: Clyde Waddell, public domain</p>
+    </div>
+  </section>
+
+  <!-- 5 · types of logos -->
+  <section class="sec wrap">
+    <div class="sec-head"><p class="eyebrow">Logo system</p><h2>Types of logos</h2></div>
+    <div class="grid2">
+      <figure class="logo-tile"><figcaption class="eyebrow">Primary logo</figcaption><img class="stamp" src="book/stamp-black.webp" alt="Primary logo: Lady K stamp in black"><p class="note">The stamp. Black is always the first choice.</p></figure>
+      <figure class="logo-tile"><figcaption class="eyebrow">Primary logo · colour</figcaption><img class="stamp" src="book/stamp-teal.webp" alt="Primary logo in teal green"><p class="note">Teal green, used sparingly.</p></figure>
+      <figure class="logo-tile"><figcaption class="eyebrow">Secondary logo · wordmark</figcaption><img class="word" src="book/wordmark-black.webp" alt="Secondary logo: Studio 113, House of Kanchana wordmark"><p class="note">IvyPresto Display over Calmetta. For small sizes, social and photography.</p></figure>
+      <figure class="logo-tile teal"><figcaption class="eyebrow">One colour · reverse</figcaption><img class="stamp" src="book/stamp-ink-cream.webp" alt="One-colour reversed stamp in cream on teal"><p class="note">For foil, emboss and single-ink print.</p></figure>
+    </div>
+  </section>
+
+  <!-- 6 · colours -->
+  <section class="sec wrap on-paper">
+    <div class="sec-head"><p class="eyebrow">Colour</p><h2>Colours</h2></div>
+    <div class="swatches">
+      <div class="swatch" style="background:#0A0A0A;color:#FFF8EE"><div class="top"><span class="eyebrow">Primary</span><span class="val">113</span></div><div><p class="nm">Black</p><p class="code">#0A0A0A<br>RGB 10 10 10</p></div></div>
+      <div class="swatch" style="background:#FFFFFF;color:#0A0A0A"><div class="top"><span class="eyebrow">Primary</span><span class="val">113</span></div><div><p class="nm">White</p><p class="code">#FFFFFF<br>RGB 255 255 255</p></div></div>
+      <div class="swatch" style="background:#016953;color:#FFF8EE"><div class="top"><span class="eyebrow">Secondary</span><span class="val">113</span></div><div><p class="nm">Teal green</p><p class="code">#016953<br>RGB 1 105 83</p></div></div>
+      <div class="swatch" style="background:#FFF8EE;color:#0A0A0A"><div class="top"><span class="eyebrow">Secondary</span><span class="val">113</span></div><div><p class="nm">Floral white</p><p class="code">#FFF8EE<br>RGB 255 248 238</p></div></div>
+    </div>
+    <div class="swatches accents">
+      <div class="swatch" style="background:#AB4681;color:#FFF8EE"><div class="top"><span class="eyebrow">Accent</span><span class="val">113</span></div><div><p class="nm">Raspberry rose</p><p class="code">#AB4681 · RGB 171 70 129</p></div></div>
+      <div class="swatch" style="background:#1F3C75;color:#FFF8EE"><div class="top"><span class="eyebrow">Accent</span><span class="val">113</span></div><div><p class="nm">Lapis blue</p><p class="code">#1F3C75 · RGB 31 60 117</p></div></div>
+      <div class="swatch" style="background:#B5882D;color:#FFF8EE"><div class="top"><span class="eyebrow">Accent</span><span class="val">113</span></div><div><p class="nm">Alpine</p><p class="code">#B5882D · RGB 181 136 45</p></div></div>
+    </div>
+    <p class="palette-note">Black and white lead every communication. Teal green and floral white add depth and warmth; raspberry rose, lapis blue and alpine are kept for a glint of colour.</p>
+  </section>
+
+  <!-- 7 · fonts -->
+  <section class="sec wrap">
+    <div class="sec-head"><p class="eyebrow">Typography</p><h2>Fonts</h2></div>
+    <div class="grid2">
+      <div class="font-card">
+        <p class="eyebrow">Primary · Semi-bold</p>
+        <h3>IvyPresto Display</h3>
+        <img class="spec" src="book/ivypresto-specimen.webp" alt="IvyPresto Display alphabet and numerals">
+        <p class="about">An Old Style display serif after Hendrik van den Keere, by The Ivy Foundry. Used for the wordmark and headlines.</p>
+      </div>
+      <div class="font-card">
+        <p class="eyebrow">Secondary · Regular and italic</p>
+        <h3>Cormorant Infant</h3>
+        <p class="aa">Aa <em>Aa</em></p>
+        <p class="abc">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789</p>
+        <div class="web"><span class="eyebrow">For web</span><p>Montserrat Regular</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · product images -->
+  <section class="sec wrap desk">
+    <div class="sec-head"><p class="eyebrow">Photography</p><h2>Product images</h2></div>
+    <div class="cards4">
+      <figure class="postcard" style="--tilt:-2.5deg"><div class="ph"><img src="book/photo-arch.webp" alt="Model in a printed black saree under a carved arch" style="object-position:50% 20%"></div><figcaption>The arch<img src="book/stamp-black.webp" alt=""></figcaption></figure>
+      <figure class="postcard" style="--tilt:1.5deg"><div class="ph"><img src="book/photo-chair.webp" alt="Model seated against hand-painted floral walls" style="object-position:50% 30%"></div><figcaption>The portrait<img src="book/stamp-black.webp" alt=""></figcaption></figure>
+      <figure class="postcard" style="--tilt:-1deg"><div class="ph"><img src="book/photo-drape.webp" alt="Saree drape caught in motion on black" style="object-position:70% 20%"></div><figcaption>The drape<img src="book/stamp-black.webp" alt=""></figcaption></figure>
+      <figure class="postcard" style="--tilt:2.5deg"><div class="ph"><img src="book/brochure-gold.webp" alt="Studio 113 brochure in alpine gold beside jewellery" style="object-position:50% 40%"></div><figcaption>The edit<img src="book/stamp-black.webp" alt=""></figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 9 · mockups -->
+  <section class="sec wrap desk">
+    <div class="sec-head"><p class="eyebrow">Applications</p><h2>Mockups</h2></div>
+    <div class="cards2">
+      <figure class="postcard" style="--tilt:-1.2deg"><div class="ph"><img src="book/mockup-postcards.webp" alt="Studio 113 postcards with the stamp logo on teal"></div><figcaption>Postcards<img src="book/stamp-black.webp" alt=""></figcaption></figure>
+      <figure class="postcard" style="--tilt:1deg"><div class="ph"><img src="book/mockup-tablet.webp" alt="Studio 113 website on a tablet"></div><figcaption>Website<img src="book/stamp-black.webp" alt=""></figcaption></figure>
+      <figure class="postcard" style="--tilt:.8deg"><div class="ph"><img src="book/mockup-lookbook.webp" alt="Studio 113 lookbook spread on teal"></div><figcaption>Lookbook<img src="book/stamp-black.webp" alt=""></figcaption></figure>
+      <figure class="postcard" style="--tilt:-1.4deg"><div class="ph"><img src="book/mockup-packaging.webp" alt="Studio 113 gradient packaging sealed with the stamp"></div><figcaption>Packaging<img src="book/stamp-black.webp" alt=""></figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 10 · social media -->
+  <section class="sec wrap">
+    <div class="sec-head"><p class="eyebrow">Social</p><h2>Social media</h2></div>
+    <div class="social">
+      <article class="post"><header><span class="av">S</span><span><b>studio113</b><small>House of Kanchana · Calcutta</small></span></header><img src="book/social-01-letters.webp" alt="Sent with love, from Park Street: a photo framed as a postage stamp and franked"><p><b>studio113</b> Sent with love, from Park Street.</p></article>
+      <article class="post"><header><span class="av">S</span><span><b>studio113</b><small>House of Kanchana · Calcutta</small></span></header><img src="book/social-02-heritage.webp" alt="Heritage, worn new. Studio 113 on teal green"><p><b>studio113</b> Heritage, worn new.</p></article>
+      <article class="post"><header><span class="av">S</span><span><b>studio113</b><small>House of Kanchana · Calcutta</small></span></header><img src="book/social-03-new-launch.webp" alt="New launch: a portrait framed in an arch on alpine"><p><b>studio113</b> New launch, framed in the arch.</p></article>
+    </div>
+  </section>
+
+  <footer class="end wrap">
+    <img class="s" src="book/stamp-black.webp" alt="">
+    <img class="w" src="book/wordmark-cream.webp" alt="Studio 113, House of Kanchana">
+  </footer>
+</main>
+
+<script>
+// Envelope: opens when it scrolls into view (or straight away if motion is reduced); tap to tuck the stamp back or open again.
+(function () {
+  var env = document.getElementById('envelope');
+  var hint = document.getElementById('env-hint');
+  function set(state) {
+    env.dataset.state = state;
+    var open = state === 'open';
+    env.setAttribute('aria-label', open ? 'Tuck the stamp back into the envelope' : 'Open the envelope');
+    hint.textContent = open ? 'The primary logo · tap to tuck it back' : 'Tap to open';
+  }
+  env.addEventListener('click', function () { set(env.dataset.state === 'open' ? 'closed' : 'open'); });
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) { set('open'); return; }
+  var io = new IntersectionObserver(function (entries) {
+    if (entries[0] && entries[0].isIntersecting) { set('open'); io.disconnect(); }
+  }, { threshold: 0.5 });
+  io.observe(env);
+})();
+</script>

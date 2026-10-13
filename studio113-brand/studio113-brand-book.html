@@ -138,19 +138,33 @@ h2, h3 { text-wrap: balance; }
 .font-card .web { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--rule); }
 .font-card .web p { margin-top: 8px; font: 400 20px/1.2 var(--sans); }
 
-/* logo grid: construction lines drawn over the stamp */
-.lg { display: grid; gap: clamp(32px, 5vw, 64px); grid-template-columns: 1fr; align-items: center; }
-@media (min-width: 860px) { .lg { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); } }
-.lg-figure { position: relative; width: min(100%, 560px); margin-inline: auto; aspect-ratio: 800 / 968; }
-.lg-figure img { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .32; }
-.lg-figure svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.lg-notes { display: grid; gap: 0; }
-.lg-notes div { padding-block: 18px; border-top: 1px solid var(--rule); }
-.lg-notes div:last-child { border-bottom: 1px solid var(--rule); }
+/* logo grid: construction lines measured on the wordmark (1600 × 382 artwork units) */
+.lg-panel { padding: clamp(20px, 4vw, 48px); background: var(--floral); overflow-x: auto; }
+.lg-panel svg { display: block; width: 100%; min-width: 520px; height: auto; }
+.lg-notes { display: grid; margin-top: clamp(28px, 4vw, 44px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 0 28px; }
+.lg-notes div { padding-block: 16px; border-top: 1px solid var(--rule); }
 .lg-notes dt { display: flex; align-items: center; gap: 10px; }
 .lg-notes dt i { flex: none; width: 22px; height: 0; border-top: 2px solid var(--c); }
 .lg-notes dt i.dash { border-top-style: dashed; }
-.lg-notes dd { margin: 8px 0 0; font: 400 19px/1.5 var(--serif); color: rgba(255,248,238,.82); }
+.lg-notes dd { margin: 8px 0 0; font: 400 18px/1.5 var(--serif); color: rgba(255,248,238,.82); }
+
+/* from mural to stamp */
+.m2s { display: grid; gap: 20px; grid-template-columns: 1fr; align-items: start; }
+@media (min-width: 860px) { .m2s { grid-template-columns: 1fr auto 1fr auto 1fr; } }
+.m2s figure { min-width: 0; }
+.m2s .box { position: relative; aspect-ratio: 1128 / 1600; max-width: 100%; overflow: hidden; background: #1a1a1a; }
+.m2s .box img { width: 100%; height: 100%; object-fit: cover; }
+.m2s .box.stamp-box { display: grid; place-items: center; background: var(--floral); }
+.m2s .box.stamp-box img { width: 72%; height: auto; object-fit: contain; }
+.m2s .hl { position: absolute; left: .5%; top: 5%; width: 47.9%; height: 42.2%; border: 2px solid var(--mint); box-shadow: 0 0 0 2000px rgba(10,10,10,.35); }
+.m2s figcaption { margin-top: 12px; font: italic 400 19px/1.35 var(--serif); color: rgba(255,248,238,.82); }
+.m2s figcaption .eyebrow { display: block; margin-bottom: 4px; font-style: normal; color: var(--mint); }
+.m2s .arrow { align-self: center; justify-self: center; font: 400 34px/1 var(--display); color: var(--mint); }
+@media (max-width: 859px) { .m2s .arrow { transform: rotate(90deg); } }
+.m2s-notes { display: grid; margin-top: clamp(32px, 5vw, 56px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 0 28px; }
+.m2s-notes div { padding-block: 16px; border-top: 1px solid var(--rule); }
+.m2s-notes dt { color: var(--mint); }
+.m2s-notes dd { margin: 8px 0 0; font: 400 18px/1.5 var(--serif); color: rgba(255,248,238,.82); }
 
 /* 8–9 · postcards on the desk */
 .desk { background: radial-gradient(90% 70% at 50% 0%, #1a1714, var(--ink) 70%); }
@@ -223,11 +237,28 @@ footer.end img.w { width: min(70%, 520px); }
       <div class="story-body">
         <h2>Story time</h2>
         <div class="bar"></div>
-        <p>Lady K is the face of Studio 113. She steps out of a vintage mural that has hung in the House of Kanchana store on Park Street, Calcutta, for decades. The House has dressed the city since 1967, and Studio 113 is its newest label.</p>
-        <p>The logo turns her into a postage stamp, after the ornate frames of vintage Indian stamps: her profile inside an arched window, a flower in her hair, 113 PS as the stamp's value and House of Kanchana as its mark of origin. Like a letter, every saree that leaves the studio carries her with it.</p>
+        <p>Lady K is the face of Studio 113. She steps out of a vintage mural that has hung in the House of Kanchana store at 113 Park Street, Calcutta, for decades. The House has dressed the city since 1967, and Studio 113 is its newest label.</p>
+        <p>The logo turns her into a postage stamp, after the ornate frames of vintage Indian stamps: her profile from the mural inside an arched window, a flower in her hair, the address 113 Park Street written as the stamp's value, and House of Kanchana as its mark of origin. Like a letter, every saree that leaves the studio carries her with it.</p>
         <span class="eyebrow draft">Draft copy · replace with your own</span>
       </div>
     </div>
+  </section>
+
+  <!-- 3b · from mural to stamp -->
+  <section class="sec wrap">
+    <div class="sec-head"><p class="eyebrow">The source</p><h2>From mural to stamp</h2></div>
+    <div class="m2s">
+      <figure><div class="box"><img src="book/mural.webp" alt="The black-and-cream tiled mural of faces in the House of Kanchana store"><span class="hl" aria-hidden="true"></span></div><figcaption><span class="eyebrow">The mural</span>House of Kanchana, 113 Park Street</figcaption></figure>
+      <span class="arrow" aria-hidden="true">→</span>
+      <figure><div class="box"><img src="book/mural-detail.webp" alt="Detail of the mural: a woman resting her cheek on her hand, wearing an earring"></div><figcaption><span class="eyebrow">The detail</span>Lady K, hand at her cheek</figcaption></figure>
+      <span class="arrow" aria-hidden="true">→</span>
+      <figure><div class="box stamp-box"><img src="book/stamp-black.webp" alt="The Studio 113 stamp logo drawn from the mural"></div><figcaption><span class="eyebrow">The stamp</span>Redrawn as a vintage postage stamp</figcaption></figure>
+    </div>
+    <dl class="m2s-notes">
+      <div><dt class="eyebrow">Kept from the mural</dt><dd>Her profile, the hand resting on her cheek, the earring, the almond eye and the bold lips.</dd></div>
+      <div><dt class="eyebrow">Added for the stamp</dt><dd>A flower in her hair, an arched window and the ornate frame of a vintage Indian stamp.</dd></div>
+      <div><dt class="eyebrow">113 PS</dt><dd>The store's address, 113 Park Street, written where a stamp shows its value.</dd></div>
+    </dl>
   </section>
 
   <!-- 4 · Calcutta on grainy film -->
@@ -254,35 +285,42 @@ footer.end img.w { width: min(70%, 520px); }
     </div>
   </section>
 
-  <!-- 5b · logo grid -->
+  <!-- 5b · logo grid (wordmark) -->
   <section class="sec wrap">
     <div class="sec-head"><p class="eyebrow">Logo system</p><h2>Logo grid</h2></div>
-    <div class="lg">
-      <div class="lg-figure">
-        <img src="book/stamp-black.webp" alt="">
-        <svg viewBox="0 0 800 968" role="img" aria-label="Construction grid over the stamp logo: a 16 by 20 module frame, concentric arch circles on the vertical axis, and bands for the denomination tags and the banner">
-          <g stroke="#7FC4B0" stroke-opacity=".6" stroke-width="1"><line x1="100.75" y1="58" x2="100.75" y2="910"/><line x1="143.50" y1="58" x2="143.50" y2="910"/><line x1="186.25" y1="58" x2="186.25" y2="910"/><line x1="229.00" y1="58" x2="229.00" y2="910"/><line x1="271.75" y1="58" x2="271.75" y2="910"/><line x1="314.50" y1="58" x2="314.50" y2="910"/><line x1="357.25" y1="58" x2="357.25" y2="910"/><line x1="400.00" y1="58" x2="400.00" y2="910"/><line x1="442.75" y1="58" x2="442.75" y2="910"/><line x1="485.50" y1="58" x2="485.50" y2="910"/><line x1="528.25" y1="58" x2="528.25" y2="910"/><line x1="571.00" y1="58" x2="571.00" y2="910"/><line x1="613.75" y1="58" x2="613.75" y2="910"/><line x1="656.50" y1="58" x2="656.50" y2="910"/><line x1="699.25" y1="58" x2="699.25" y2="910"/><line x1="58" y1="100.75" x2="742" y2="100.75"/><line x1="58" y1="143.50" x2="742" y2="143.50"/><line x1="58" y1="186.25" x2="742" y2="186.25"/><line x1="58" y1="229.00" x2="742" y2="229.00"/><line x1="58" y1="271.75" x2="742" y2="271.75"/><line x1="58" y1="314.50" x2="742" y2="314.50"/><line x1="58" y1="357.25" x2="742" y2="357.25"/><line x1="58" y1="400.00" x2="742" y2="400.00"/><line x1="58" y1="442.75" x2="742" y2="442.75"/><line x1="58" y1="485.50" x2="742" y2="485.50"/><line x1="58" y1="528.25" x2="742" y2="528.25"/><line x1="58" y1="571.00" x2="742" y2="571.00"/><line x1="58" y1="613.75" x2="742" y2="613.75"/><line x1="58" y1="656.50" x2="742" y2="656.50"/><line x1="58" y1="699.25" x2="742" y2="699.25"/><line x1="58" y1="742.00" x2="742" y2="742.00"/><line x1="58" y1="784.75" x2="742" y2="784.75"/><line x1="58" y1="827.50" x2="742" y2="827.50"/><line x1="58" y1="870.25" x2="742" y2="870.25"/></g>
-          <rect x="58" y="58" width="684" height="852" fill="none" stroke="#FFF8EE" stroke-width="2.5"/>
-          <line x1="400" y1="18" x2="400" y2="950" stroke="#FFF8EE" stroke-width="1.5" stroke-dasharray="8 6"/>
-          <circle cx="400" cy="470" r="245" fill="none" stroke="#E07AB4" stroke-width="2.5"/>
-          <circle cx="400" cy="470" r="330" fill="none" stroke="#E07AB4" stroke-width="1.5" stroke-dasharray="10 6"/>
-          <circle cx="400" cy="470" r="6" fill="#E07AB4"/>
-          <g stroke="#E0B95A" stroke-width="2"><line x1="20" y1="490" x2="780" y2="490"/><line x1="20" y1="555" x2="780" y2="555"/><line x1="20" y1="735" x2="780" y2="735"/><line x1="20" y1="810" x2="780" y2="810"/></g>
-          <g fill="#FFF8EE" font-family="Montserrat, sans-serif" font-size="15" font-weight="600" letter-spacing="2">
-            <text x="58" y="44">16 MODULES</text>
-            <text x="796" y="58" transform="rotate(90 796 58)">20 MODULES</text>
-            <text x="404" y="964">AXIS</text>
+    <div class="lg-panel">
+        <svg viewBox="-230 -200 2160 760" role="img" aria-label="Construction grid over the Studio 113 wordmark: cap height C, line gap of half C, caption height about 0.28 C, caption width five-eighths of the wordmark, and C/2 clear space">
+          <rect x="-108" y="-108" width="1816" height="598" fill="none" stroke="#AB4681" stroke-width="3" stroke-dasharray="14 10"/>
+          <g fill="#016953" fill-opacity=".06" stroke="#016953" stroke-opacity=".55" stroke-width="2"><rect x="0" y="0" width="123" height="216"/><rect x="160" y="0" width="159" height="216"/><rect x="356" y="0" width="181" height="216"/><rect x="573" y="0" width="188" height="216"/><rect x="799" y="0" width="72" height="216"/><rect x="909" y="0" width="188" height="216"/><rect x="1224" y="0" width="89" height="216"/><rect x="1348" y="0" width="90" height="216"/><rect x="1476" y="0" width="122" height="216"/></g>
+          <image href="book/wordmark-black.webp" x="0" y="0" width="1600" height="382"/>
+          <g stroke="#016953" stroke-width="2.5"><line x1="-200" y1="0" x2="1800" y2="0"/><line x1="-200" y1="216" x2="1800" y2="216"/></g>
+          <g stroke="#B5882D" stroke-width="2.5"><line x1="-200" y1="322" x2="1800" y2="322"/><line x1="-200" y1="381" x2="1800" y2="381"/></g>
+          <line x1="800" y1="-190" x2="800" y2="550" stroke="#0A0A0A" stroke-width="2" stroke-dasharray="10 8"/>
+          <g stroke="#0A0A0A" stroke-width="2.5" fill="none">
+            <path d="M-150 0 V216 M-165 0 H-135 M-165 216 H-135"/>
+            <path d="M-150 216 V322 M-165 322 H-135"/>
+            <path d="M1750 322 V381 M1735 322 H1765 M1735 381 H1765"/>
+            <path d="M0 -150 H1598 M0 -165 V-135 M1598 -165 V-135"/>
+            <path d="M298 420 H1308 M298 405 V435 M1308 405 V435"/>
+            <path d="M123 -40 H160 M123 -52 V-28 M160 -52 V-28"/>
           </g>
-          <g fill="none" stroke="#FFF8EE" stroke-width="2"><rect x="58" y="58" width="42.75" height="42.75"/></g>
+          <g fill="#0A0A0A" font-family="Montserrat, sans-serif" font-weight="600" font-size="30" letter-spacing="2">
+            <text x="-200" y="118" text-anchor="end">C</text>
+            <text x="-172" y="282" text-anchor="end">C/2</text>
+            <text x="1780" y="362">0.28 C</text>
+            <text x="800" y="-168" text-anchor="middle">W</text>
+            <text x="803" y="468" text-anchor="middle">5/8 W</text>
+            <text x="141" y="-66" text-anchor="middle">0.17 C</text>
+            <text x="-100" y="540" fill="#AB4681">CLEAR SPACE C/2</text>
+          </g>
         </svg>
-      </div>
-      <dl class="lg-notes">
-        <div><dt class="eyebrow"><i style="--c:#7FC4B0"></i>Module</dt><dd>The frame is a 4 : 5 rectangle, 16 modules wide and 20 tall. Every element snaps to this grid.</dd></div>
-        <div><dt class="eyebrow"><i class="dash" style="--c:#FFF8EE"></i>Vertical axis</dt><dd>Lady K, the arch and the banner are centred on one axis. Only her profile turns away from it.</dd></div>
-        <div><dt class="eyebrow"><i style="--c:#E07AB4"></i>Concentric arch</dt><dd>The window and the arched name share one centre. Studio 113 is set along the outer circle.</dd></div>
-        <div><dt class="eyebrow"><i style="--c:#E0B95A"></i>Bands</dt><dd>The 113 PS tags sit on the centre band, 1.5 modules tall. The House of Kanchana banner is 11 modules wide and 1.75 modules tall.</dd></div>
-      </dl>
     </div>
+    <dl class="lg-notes">
+      <div><dt class="eyebrow"><i style="--c:#016953"></i>Cap height C</dt><dd>The height of STUDIO 113 sets every other measurement in the wordmark.</dd></div>
+      <div><dt class="eyebrow"><i style="--c:#B5882D"></i>Caption</dt><dd>HOUSE OF KANCHANA sits half a C below, at about 0.28 C tall, spanning five-eighths of the wordmark width.</dd></div>
+      <div><dt class="eyebrow"><i class="dash" style="--c:#FFF8EE"></i>Axis and spacing</dt><dd>Both lines centre on one axis. Letters sit an even 0.17 C apart; the word space is about 0.6 C.</dd></div>
+      <div><dt class="eyebrow"><i class="dash" style="--c:#AB4681"></i>Clear space</dt><dd>Keep C/2 clear on every side of the wordmark.</dd></div>
+    </dl>
   </section>
 
   <!-- 6 · colours -->

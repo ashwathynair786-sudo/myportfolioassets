@@ -166,6 +166,31 @@ h2, h3 { text-wrap: balance; }
 .m2s-notes dt { color: var(--mint); }
 .m2s-notes dd { margin: 8px 0 0; font: 400 18px/1.5 var(--serif); color: rgba(255,248,238,.82); }
 
+/* house of kanchana: a bundle of letters opens into an airmail postcard */
+.hk-stage { display: grid; place-items: center; padding-block: 12px; }
+.hk-stack, .hk-card { grid-area: 1 / 1; }
+.hk-stack { width: min(340px, 72vw); padding: 0; border: 0; background: none; cursor: pointer; transition: transform .6s cubic-bezier(.2,.8,.2,1), opacity .5s ease, filter .5s ease; }
+.hk-stack img { width: 100%; filter: drop-shadow(0 30px 40px rgba(0,0,0,.6)); }
+.hk-stack:hover { transform: rotate(-2deg) translateY(-6px); }
+.hk-stack:focus-visible { outline: 2px solid var(--mint); outline-offset: 10px; }
+.hk-stage[data-open="true"] .hk-stack { transform: translateY(10%) scale(.82); opacity: .28; filter: blur(1px); }
+.hk-card { position: relative; width: min(760px, 100%); padding: 12px; visibility: hidden; opacity: 0; transform: translateY(18%) scale(.4) rotate(-8deg);
+  background: repeating-linear-gradient(135deg, #B8322E 0 16px, var(--card) 16px 24px, #1F3C75 24px 40px, var(--card) 40px 48px);
+  box-shadow: 0 34px 60px rgba(0,0,0,.6), 0 3px 6px rgba(0,0,0,.4);
+  transition: transform .5s ease-in, opacity .3s ease .2s, visibility 0s linear .5s; }
+.hk-stage[data-open="true"] .hk-card { visibility: visible; opacity: 1; transform: none; transform: rotate(-1.2deg); transition: transform .9s cubic-bezier(.2,.9,.25,1.08), opacity .3s ease, visibility 0s; }
+.hk-inner { padding: clamp(22px, 4vw, 48px); background: var(--card); color: #1a1a1a; }
+.hk-inner::after { content: ""; display: block; clear: both; }
+.hk-logo { float: right; width: clamp(76px, 12vw, 124px); margin: 0 0 14px 22px; transform: rotate(4deg); filter: drop-shadow(0 3px 4px rgba(0,0,0,.2)); }
+.hk-inner .eyebrow { color: #1F3C75; }
+.hk-inner h3 { margin-top: 10px; font: 400 clamp(28px, 4vw, 44px)/1.05 var(--display); color: #0A0A0A; }
+.hk-text { margin-top: 18px; font: 400 clamp(17px, 1.9vw, 21px)/1.65 var(--serif); }
+.hk-sign { margin-top: 22px; font: italic 400 18px/1.2 var(--serif); color: #B8322E; }
+.hk-close { position: absolute; right: -14px; top: -14px; display: grid; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 50%; background: var(--ink); color: var(--floral); font: 400 22px/1 var(--sans); cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,.4); }
+.hk-close:focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; }
+@media (max-width: 640px) { .hk-card { width: calc(100% - 20px); } }
+.hk-hint { margin-top: 28px; text-align: center; color: var(--muted); }
+
 /* 8–9 · postcards on the desk */
 .desk { background: radial-gradient(90% 70% at 50% 0%, #1a1714, var(--ink) 70%); }
 .cards4 { display: grid; gap: clamp(28px, 4vw, 48px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
@@ -196,7 +221,7 @@ footer.end img.w { width: min(70%, 520px); }
 @media (prefers-reduced-motion: reduce) {
   .hero img, .film > img.photo, .film .grain, .film .scratch { animation: none; }
   .film .scratch { display: none; }
-  .env-flap, .postcard { transition: none !important; }
+  .env-flap, .postcard, .hk-stack, .hk-card { transition: none !important; }
   .envelope[data-state] .env-stamp { animation-duration: 1ms; animation-delay: 0s; }
 }
 </style>
@@ -272,6 +297,27 @@ footer.end img.w { width: min(70%, 520px); }
       <p class="eyebrow cap l">Chowringhee, Calcutta · 1945</p>
       <p class="cap r">Photo: Clyde Waddell, public domain</p>
     </div>
+  </section>
+
+  <!-- 4b · house of kanchana -->
+  <section class="sec wrap" aria-label="The House of Kanchana">
+    <div class="sec-head"><p class="eyebrow">Since 1967</p><h2>The House of Kanchana</h2></div>
+    <div class="hk-stage" id="hk-stage" data-open="false">
+      <button type="button" class="hk-stack" id="hk-stack" aria-expanded="false" aria-controls="hk-card" aria-label="Open the letter from the House of Kanchana">
+        <img src="book/house-letters.webp" alt="A bundle of old letters sealed with red wax: From House of Kanchana">
+      </button>
+      <article class="hk-card" id="hk-card" aria-hidden="true">
+        <button type="button" class="hk-close" id="hk-close" aria-label="Close the postcard" tabindex="-1">×</button>
+        <div class="hk-inner">
+          <img class="hk-logo" src="book/stamp-black.webp" alt="Studio 113 stamp logo">
+          <p class="eyebrow">Park Street, Kolkata · Est. 1967</p>
+          <h3>The House of Kanchana</h3>
+          <p class="hk-text">Established in 1967, the House of Kanchana has been a beacon of refined luxury in the realm of Indian fashion, a legacy meticulously crafted by the visionary, Late Sri Om Prakash Ji Gourisaria. The House operates under Kanchana Sarees, Kanchana Next and KNNC in the heart of Kolkata, Park Street. Studio 113 is the newest gem in the illustrious crown of the House, breathing new life into a segment of Indian-wear that's very close to our hearts.</p>
+          <p class="hk-sign">With love, from 113 Park Street</p>
+        </div>
+      </article>
+    </div>
+    <p class="eyebrow hk-hint" id="hk-hint">Tap the letters to open</p>
   </section>
 
   <!-- 5 · types of logos -->
@@ -388,8 +434,8 @@ footer.end img.w { width: min(70%, 520px); }
   <section class="sec wrap">
     <div class="sec-head"><p class="eyebrow">Social</p><h2>Social media</h2></div>
     <div class="social">
-      <article class="post"><header><span class="av">S</span><span><b>studio113</b><small>House of Kanchana · Calcutta</small></span></header><img src="book/social-ig-01.webp" alt="A gloved hand holds an embossed card: In silk whispers we've danced through 2025's tales together. Lady K"><p><b>studio113</b> In silk whispers we've danced through 2025's tales together. Lady K</p></article>
       <article class="post"><header><span class="av">S</span><span><b>studio113</b><small>House of Kanchana · Calcutta</small></span></header><img src="book/social-ig-02.webp" alt="Model in a mustard satin saree with a floral border and chevron blouse, in a painted salon with red curtains"><p><b>studio113</b> Mustard satin with a painted floral border.</p></article>
+      <article class="post"><header><span class="av">S</span><span><b>studio113</b><small>House of Kanchana · Calcutta</small></span></header><img src="book/social-ig-01.webp" alt="A gloved hand holds an embossed card: In silk whispers we've danced through 2025's tales together. Lady K"><p><b>studio113</b> In silk whispers we've danced through 2025's tales together. Lady K</p></article>
       <article class="post"><header><span class="av">S</span><span><b>studio113</b><small>House of Kanchana · Calcutta</small></span></header><img src="book/social-ig-03.webp" alt="Three models in mustard, yellow and pink floral satin sarees on a carved sofa"><p><b>studio113</b> Three shades of satin, one salon.</p></article>
     </div>
   </section>
@@ -418,5 +464,25 @@ footer.end img.w { width: min(70%, 520px); }
     if (entries[0] && entries[0].isIntersecting) { set('open'); io.disconnect(); }
   }, { threshold: 0.5 });
   io.observe(env);
+})();
+
+// House of Kanchana: the letters open into a postcard; close with the button, Esc, or by tapping the letters again.
+(function () {
+  var stage = document.getElementById('hk-stage');
+  var stack = document.getElementById('hk-stack');
+  var card = document.getElementById('hk-card');
+  var close = document.getElementById('hk-close');
+  var hint = document.getElementById('hk-hint');
+  function set(open) {
+    stage.dataset.open = open ? 'true' : 'false';
+    stack.setAttribute('aria-expanded', open ? 'true' : 'false');
+    card.setAttribute('aria-hidden', open ? 'false' : 'true');
+    close.tabIndex = open ? 0 : -1;
+    hint.textContent = open ? 'Tap × to fold it away' : 'Tap the letters to open';
+    (open ? close : stack).focus({ preventScroll: true });
+  }
+  stack.addEventListener('click', function () { set(stage.dataset.open !== 'true'); });
+  close.addEventListener('click', function () { set(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && stage.dataset.open === 'true') set(false); });
 })();
 </script>

@@ -17,7 +17,7 @@
     --lime: #c4e536;
     --on-lime: #111114;
     --booking: #5a8bff;
-    --airwallex: #ff7a45;
+    --airwallex: #fb5920;
     --mena: #f2b84b;
     --font-display: "Sora", "Helvetica Neue", Arial, sans-serif;
     --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
@@ -264,6 +264,21 @@
   .tile.wide img { width: min(440px, 70%); }
   @media (max-width: 600px) { .tile.wide { aspect-ratio: 4 / 3; } }
 
+  /* Airwallex · ABH (client-supplied brand) */
+  .cover-real.abh { background: #fb5920; }
+  .cover-real.abh::after { background: linear-gradient(to top, rgba(40,10,0,.7), transparent 55%); }
+  .abh-band { background: #000; padding-block: clamp(32px, 6vw, 72px) 0; }
+  .abh-covers { display: grid; gap: clamp(12px, 2vw, 24px); grid-template-columns: 1fr; }
+  @media (min-width: 860px) { .abh-covers { grid-template-columns: 1fr 1fr; } }
+  .abh-covers img { display: block; width: 100%; height: auto; max-width: 100%; aspect-ratio: 16 / 9; border: 1px solid rgba(255,255,255,.12); }
+  .abh-credit { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,.7); margin: 0; padding-block: 14px 18px; text-transform: uppercase; letter-spacing: .06em; }
+  .chip.given { border-style: solid; border-color: var(--line); color: var(--fg-dim); }
+  .abh-site { background: #000; }
+  .abh-site .kicker { font-family: var(--font-mono); letter-spacing: .3em; color: #fb5920; }
+  .abh-site h4 { font-family: var(--font-mono); font-weight: 500; text-transform: uppercase; letter-spacing: .08em; }
+  .abh-mail-slot { padding: clamp(32px, 6vw, 64px) clamp(20px, 4vw, 48px) 64px; }
+  .abh-mail-slot p { margin: 0; max-width: 40ch; color: var(--fg-dim); font-weight: 300; }
+
   /* LinkedIn post frames */
   .li-posts { display: grid; gap: clamp(16px, 2.4vw, 28px); grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--muted); padding: clamp(16px, 3vw, 36px); align-items: start; }
   @media (max-width: 760px) { .li-posts { grid-template-columns: 1fr; } .li { max-width: 380px; width: 100%; margin-inline: auto; } }
@@ -320,7 +335,7 @@
 </style>
 
 <div class="note wrap">
-  <p>Layout preview for project 04. Booking Holdings is complete with your real website, illustration, logo, LinkedIn posts and emailers. Every dashed tag names the asset that goes in that slot. All text is draft copy for you to rewrite, and the mock artwork is only a stand-in for your real files.</p>
+  <p>Layout preview for project 04. Booking Holdings is complete. Airwallex has its client-supplied brand covers; the microsite and emailers are next. Every dashed tag names the asset that goes in that slot. All text is draft copy for you to rewrite, and the mock artwork is only a stand-in for your real files.</p>
 </div>
 
 <header class="site-header wrap">
@@ -348,7 +363,7 @@
 
   <div class="slot cover" aria-label="Cover placeholder">
     <div class="cover-real"><img src="assets/booking/hackcellence-cover-illustration.webp" alt="" loading="eager"><h3>Booking Holdings</h3></div>
-    <div class="contours" style="--c: var(--airwallex); --cx: 30%; --cy: 70%"><h3>Airwallex</h3></div>
+    <div class="cover-real abh"><img src="assets/airwallex/abh-cover-orange-crop.webp" alt=""><h3>Airwallex</h3></div>
     <div class="contours" style="--c: var(--mena); --cx: 60%; --cy: 20%"><h3>MENA Ignite</h3></div>
     <span class="slot-tag top"><b>Cover</b> · looping film or a 3-up collage of key visuals · 2:1 · MP4/WebM + poster</span>
   </div>
@@ -515,6 +530,58 @@
         </div>
       </div>
     </section>
+    <section class="chapter abh" id="airwallex" style="--c: var(--airwallex); padding-top: 0;">
+      <div class="abh-band wrap">
+        <div class="abh-covers">
+          <img src="assets/airwallex/abh-cover-logo.webp" alt="ABH, Agentic Banking Hackathon, logo on black">
+          <img src="assets/airwallex/abh-cover-orange.webp" alt="ABH design system cover: Agentic Banking Hackathon on an orange nebula">
+        </div>
+        <p class="abh-credit">Brand and design system supplied by Airwallex · Creative: Jason Durgin</p>
+      </div>
+
+      <div class="wrap" style="padding-top: clamp(48px, 8vw, 96px);">
+        <div class="chapter-head">
+          <div>
+            <p class="eyebrow">Airwallex</p>
+            <h2 class="chapter-name">Agentic Banking Hackathon<span>.</span></h2>
+            <p class="chapter-theme">Airwallex arrived with the ABH brand and design system already in place. I took it into the campaign: the microsite and the emailers.</p>
+            <div class="chips">
+              <span class="chip given">Brand · by Airwallex</span><span class="chip todo">Microsite</span><span class="chip todo">Emailers</span>
+            </div>
+          </div>
+          <div class="facts">
+            <div><p class="eyebrow">Brand</p><p>Supplied by Airwallex</p></div>
+            <div><p class="eyebrow">My role</p><p>Microsite, emailers</p></div>
+            <div><p class="eyebrow">Format</p><p>To add from the microsite</p></div>
+            <div><p class="eyebrow">Dates</p><p>To add from the microsite</p></div>
+          </div>
+        </div>
+
+        <div class="split" style="margin-block: 8px 24px;">
+          <div><span class="real-badge">Draft copy, edit me</span></div>
+          <div class="bk-brief">
+            <div><p class="eyebrow lime">The brief</p><p>Airwallex came with an established brand for the hackathon. My job was to turn it into a campaign: a microsite and a set of emailers that feel fully Airwallex and still work as a HackerEarth event.</p></div>
+            <div><p class="eyebrow lime">What I made</p><p>I worked inside the ABH system, using its pixel logo, mono type and orange palette, and built the microsite and the emailers from it.</p></div>
+          </div>
+        </div>
+
+        <div class="group-label"><h3>Microsite</h3><p>Coming next</p></div>
+        <div class="slot browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span class="url">Microsite link to come</span></div>
+          <div class="site abh-site">
+            <span class="kicker">Agentic Banking Hackathon</span>
+            <h4>Microsite goes here.</h4>
+          </div>
+          <span class="slot-tag"><b>Website</b> · send the link and I'll capture the full page</span>
+        </div>
+
+        <div class="group-label"><h3>Emailers</h3><p>Coming next</p></div>
+        <div class="slot abh-mail-slot">
+          <p>Send the emailer HTML files and they'll open from envelopes here, like the Booking ones.</p>
+          <span class="slot-tag"><b>Emailers</b> · HTML files</span>
+        </div>
+      </div>
+    </section>
     <div id="chapters-rest"></div>
   </div>
 
@@ -528,7 +595,7 @@
       <div class="card">
         <div class="thumb slot">
           <div class="cover-real"><img src="assets/booking/hackcellence-cover-illustration.webp" alt=""></div>
-          <div class="contours" style="--c: var(--airwallex)"></div>
+          <div class="cover-real abh"><img src="assets/airwallex/abh-cover-orange-crop.webp" alt=""></div>
           <div class="contours" style="--c: var(--mena)"></div>
           <span class="slot-tag"><b>Thumbnail</b> · 4:3 · WebP</span>
         </div>
@@ -562,16 +629,6 @@
   // One entry per hackathon. Swap in real facts; this mirrors how projects.ts would hold it.
   const hackathons = [
     {
-      id: "airwallex", name: "Airwallex", accent: "var(--airwallex)",
-      theme: "A fintech hackathon for building on global payments infrastructure.",
-      kicker: "Fintech hackathon · APIs",
-      headline: "Ship the future of global payments.",
-      url: "hackerearth.com/challenges/hackathon/airwallex",
-      facts: [["Format", "Online"], ["Region", "APAC"], ["Year", "20XX"], ["Audience", "Fintech developers"]],
-      kit: ["Microsite", "Social", "Emailers", "Standee", "Certificate"],
-      posts: ["The challenge is live", "Prize pool", "Submissions close soon"],
-    },
-    {
       id: "mena-ignite", name: "MENA Ignite", accent: "var(--mena)",
       theme: "A regional innovation hackathon for builders across the Middle East and North Africa.",
       kicker: "Regional hackathon · MENA",
@@ -585,7 +642,7 @@
 
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-  document.getElementById("index").innerHTML = `<li><a href="#booking-holdings" style="--c:var(--booking)">Booking Holdings</a></li>` + hackathons.map((h) =>
+  document.getElementById("index").innerHTML = `<li><a href="#booking-holdings" style="--c:var(--booking)">Booking Holdings</a></li><li><a href="#airwallex" style="--c:var(--airwallex)">Airwallex</a></li>` + hackathons.map((h) =>
     `<li><a href="#${h.id}" style="--c:${h.accent}">${esc(h.name)}</a></li>`).join("");
 
   document.getElementById("chapters-rest").innerHTML = hackathons.map((h) => `

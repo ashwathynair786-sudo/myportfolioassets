@@ -229,7 +229,6 @@
   .bk-lockup { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px 40px; }
   .bk-lockup img { display: block; height: auto; }
   .bk-lockup .he { width: min(300px, 62vw); }
-  .bk-lockup .coe { width: min(320px, 70vw); }
   .bk-display { font-family: "Archivo", var(--font-display); font-weight: 800; letter-spacing: -.035em; line-height: .92; }
   .bk-band h2 { font-size: clamp(3rem, 11vw, 9.5rem); margin-top: clamp(28px, 5vw, 56px); }
   .bk-band .hero-img { display: block; width: 100%; margin-top: clamp(24px, 4vw, 48px); max-width: 100%; }
@@ -251,11 +250,6 @@
   .tile.cream { background: var(--bk-cream); color: var(--bk-ink); }
   .tile .cap { position: absolute; left: 14px; bottom: 12px; font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,.75); }
   .tile.cream .cap { color: rgba(26,26,26,.65); }
-  .lockup-stack { display: grid; gap: 22px; justify-items: center; width: 100%; }
-  .lockup-stack .he { width: 78%; }
-  .lockup-stack .rule { width: 60%; height: 1px; background: rgba(255,255,255,.25); }
-  .lockup-stack .coe { width: 70%; }
-  .lockup-stack .pw { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; color: rgba(255,255,255,.75); }
   .swatches { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; }
   @media (max-width: 600px) { .swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   .swatches div { aspect-ratio: 1 / 1.1; padding: 12px; display: flex; flex-direction: column; justify-content: flex-end; font-family: var(--font-mono); font-size: 11px; line-height: 1.4; }
@@ -280,12 +274,50 @@
   .bk .cert b { font-family: "Archivo", var(--font-display); font-weight: 800; letter-spacing: -.02em; }
   .bk .cert .logo { width: 42%; background: var(--bk-blue); padding: 6px 8px; }
 
+  .tile.wide { grid-column: 1 / -1; aspect-ratio: 21 / 8; }
+  .tile.wide img { width: min(440px, 70%); }
+  @media (max-width: 600px) { .tile.wide { aspect-ratio: 4 / 3; } }
+
+  /* Emailers: envelopes that open on hover, full email in a lightbox */
+  .mailbox { display: grid; gap: clamp(20px, 3vw, 40px); grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--muted); padding: clamp(20px, 4vw, 48px); }
+  @media (max-width: 760px) { .mailbox { grid-template-columns: 1fr; } .mail { max-width: 340px; margin-inline: auto; } }
+  .mail { all: unset; box-sizing: border-box; width: 100%; align-self: start; cursor: pointer; display: grid; gap: 18px; padding-top: 38%; min-width: 0; }
+  .mail:focus-visible { outline: 2px solid var(--lime); outline-offset: 6px; }
+  .env { position: relative; display: block; aspect-ratio: 4 / 3; perspective: 900px; }
+  .env > span { position: absolute; }
+  .env-back { inset: 0; background: #002e6d; border-radius: 6px; }
+  .letter { left: 7%; right: 7%; top: 5%; height: 92%; z-index: 2; background: #fff; overflow: hidden; border-radius: 3px; box-shadow: 0 -6px 24px rgba(0,0,0,.35); transition: transform .55s cubic-bezier(.2,.8,.2,1) .12s; }
+  .letter img { display: block; width: 100%; height: auto; }
+  .env-front { inset: 0; z-index: 3; background: #0a4aa6; border-radius: 6px; clip-path: polygon(0 0, 50% 56%, 100% 0, 100% 100%, 0 100%); display: flex; align-items: flex-end; justify-content: flex-end; padding: 6%; }
+  .env-front img { width: 34%; height: auto; opacity: .9; }
+  .flap { left: 0; right: 0; top: 0; height: 58%; z-index: 4; background: #003a8c; clip-path: polygon(0 0, 100% 0, 50% 100%); transform-origin: top center; transition: transform .4s ease, z-index 0s linear .2s; }
+  .mail:hover .flap, .mail:focus-visible .flap, .mail.open .flap { transform: rotateX(180deg); z-index: 1; transition: transform .4s ease, z-index 0s linear .2s; }
+  .mail:hover .letter, .mail:focus-visible .letter, .mail.open .letter { transform: translateY(-46%); }
+  .mail-meta { display: grid; gap: 6px; }
+  .mail-meta .to, .lb-head .to { font-family: var(--font-mono); font-size: 11px; color: var(--lime); text-transform: uppercase; letter-spacing: .06em; }
+  .mail-meta b { font-size: 15px; font-weight: 600; line-height: 1.35; }
+  .mail-meta .pre { color: var(--fg-dim); font-size: 13px; font-weight: 300; line-height: 1.5; }
+  .mail-meta .read { font-size: 12px; color: var(--fg); opacity: .7; transition: opacity .2s; }
+  .mail:hover .read, .mail:focus-visible .read { opacity: 1; color: var(--lime); }
+
+  .lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(6, 6, 9, .92); backdrop-filter: blur(6px); display: flex; flex-direction: column;
+    padding: max(12px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+  .lightbox[hidden] { display: none !important; }
+  .lb-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: min(640px, 100%); margin: 0 auto; padding-block: 8px 12px; }
+  .lb-head { display: grid; gap: 2px; min-width: 0; }
+  .lb-head b { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lb-actions { display: flex; gap: 6px; flex: none; }
+  .lb-actions button { font: inherit; font-size: 12px; color: var(--fg); background: var(--surface); border: 1px solid var(--line); padding: 7px 12px; cursor: pointer; }
+  .lb-actions button:hover { border-color: var(--lime); }
+  .lb-scroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; width: min(640px, 100%); margin: 0 auto; }
+  .lb-scroll img { display: block; width: 100%; height: auto; }
+
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
   html { scroll-behavior: smooth; }
 </style>
 
 <div class="note wrap">
-  <p>Layout preview for project 04. Booking Holdings now uses your real website, illustration and logos; social, emailers and certificate are still stand-ins. Every dashed tag names the asset that goes in that slot. All text is draft copy for you to rewrite, and the mock artwork is only a stand-in for your real files.</p>
+  <p>Layout preview for project 04. Booking Holdings now uses your real website, illustration, logo and emailers; the social posts are still stand-ins. Every dashed tag names the asset that goes in that slot. All text is draft copy for you to rewrite, and the mock artwork is only a stand-in for your real files.</p>
 </div>
 
 <header class="site-header wrap">
@@ -358,7 +390,6 @@
     <section class="chapter bk" id="booking-holdings" style="--c: var(--booking); padding-top: 0;">
       <div class="bk-band wrap">
         <div class="bk-lockup">
-          <img class="coe" src="assets/booking/booking-holdings-coe-logo.svg" alt="Booking Holdings Centers of Excellence">
           <img class="he" src="assets/booking/hackcellence-embark-logo.webp" alt="HackCellence 2026, The Embark Edition">
         </div>
         <h2 class="bk-display">Think. Build. Ship.</h2>
@@ -373,7 +404,7 @@
             <h2 class="chapter-name">HackCellence 2026<span>.</span></h2>
             <p class="chapter-theme">The Embark Edition: a hiring hackathon for Embark, the six-month tech internship at the Booking Holdings India Center of Excellence in Bangalore.</p>
             <div class="chips">
-              <span class="chip done">Microsite</span><span class="chip done">Key illustration</span><span class="chip done">Event logo</span><span class="chip todo">Social</span><span class="chip todo">Emailers</span><span class="chip todo">Certificate</span>
+              <span class="chip done">Microsite</span><span class="chip done">Key illustration</span><span class="chip done">Event logo</span><span class="chip done">Emailers</span><span class="chip todo">Social</span>
             </div>
           </div>
           <div class="facts five">
@@ -389,23 +420,12 @@
           <div><span class="real-badge">Draft copy, edit me</span></div>
           <div class="bk-brief">
             <div><p class="eyebrow lime">The brief</p><p>Booking Holdings wanted to hire its next intern class through a hackathon. The campaign had to reach final-year engineering students, many of whom had never entered a hackathon, and make a six-month internship feel worth competing for.</p></div>
-            <div><p class="eyebrow lime">What I made</p><p>An event identity for HackCellence: The Embark Edition, built to sit next to the Booking Holdings Centers of Excellence mark and the HackerEarth logo. A friendly, all-blue illustration of students building together sets the tone, and "Think. Build. Ship." carries the message. The microsite turns a long list of rounds, dates, rules and eligibility checks into short, scannable sections.</p></div>
+            <div><p class="eyebrow lime">What I made</p><p>An event identity for HackCellence: The Embark Edition. A friendly, all-blue illustration of students building together sets the tone, and "Think. Build. Ship." carries the message. The microsite turns a long list of rounds, dates, rules and eligibility checks into short, scannable sections, and a set of emailers took the campaign to students and to college placement teams.</p></div>
           </div>
         </div>
 
-        <div class="group-label"><h3>Identity</h3><p>Event logo, co-branding and colour</p></div>
-        <div class="tiles">
-          <div class="tile blue"><img src="assets/booking/hackcellence-embark-logo.webp" alt="HackCellence 2026, The Embark Edition logo" style="width: 82%"><span class="cap">Event logo</span></div>
-          <div class="tile navy">
-            <div class="lockup-stack">
-              <img class="coe" src="assets/booking/booking-holdings-coe-logo.svg" alt="Booking Holdings Centers of Excellence">
-              <span class="rule"></span>
-              <img class="he" src="assets/booking/hackcellence-embark-logo.webp" alt="HackCellence logo" style="width: 56%">
-              <span class="pw">POWERED BY HACKEREARTH</span>
-            </div>
-            <span class="cap">Co-brand lockup</span>
-          </div>
-        </div>
+        <div class="group-label"><h3>Identity</h3><p>Event logo and colour</p></div>
+        <div class="tile blue wide"><img src="assets/booking/hackcellence-embark-logo.webp" alt="HackCellence 2026, The Embark Edition logo"><span class="cap">Event logo</span></div>
         <div class="swatches" style="margin-top: 16px;">
           <div style="background:#003580;color:#fff">Booking blue<br>#003580</div>
           <div style="background:#00224f;color:#fff">Night navy<br>#00224F</div>
@@ -445,31 +465,50 @@
           <span class="slot-tag"><b>Social</b> · stand-in mocks · replace with your real posts (4:5)</span>
         </div>
 
-        <div class="group-label"><h3>Emailers & print</h3><p>Inbox to finale</p></div>
-        <div class="row">
-          <div class="slot stage">
-            <div class="email">
-              <header><small style="font-family: var(--font-mono); font-weight: 400;">Booking Holdings × HackerEarth</small>Think. Build. Ship.</header>
-              <img class="hero" src="assets/booking/hackcellence-cover-illustration.webp" alt="">
-              <div class="body"><div class="bar"></div><div class="bar"></div><div class="bar short"></div><span class="btn">Register now</span></div>
-            </div>
-            <span class="slot-tag"><b>Emailer</b> · invite · full-length PNG</span>
-          </div>
-          <div class="slot stage">
-            <div class="email" style="width:min(200px,70%)">
-              <header><small style="font-family: var(--font-mono); font-weight: 400;">Round 1</small>A hundred minutes, split three ways.</header>
-              <div class="body"><div class="bar"></div><div class="bar short"></div><span class="btn">See the brief</span></div>
-            </div>
-            <span class="slot-tag"><b>Emailer 2</b> · round reminder</span>
-          </div>
-          <div class="slot stage wide">
-            <div class="cert">
-              <img class="logo" src="assets/booking/hackcellence-embark-logo.webp" alt="">
-              <div><b>Certificate of Achievement</b><div class="name" style="margin-top:8px">Participant name</div></div>
-              <div class="sig"><i>Booking Holdings CoE</i><i>HackerEarth</i></div>
-            </div>
-            <span class="slot-tag"><b>Certificate</b> · finale, 13–14 Nov</span>
-          </div>
+        <div class="group-label"><h3>Emailers</h3><p>Hover an envelope to open it, click to read the whole email</p></div>
+        <div class="mailbox">
+            <button type="button" class="mail" data-i="0" aria-label="Read emailer: Your next big break starts with a problem statement">
+              <span class="env" aria-hidden="true">
+                <span class="env-back"></span>
+                <span class="letter"><img src="assets/booking/hackcellence-launch.webp" alt="" loading="lazy"></span>
+                <span class="env-front"><img src="assets/booking/hackcellence-embark-logo.webp" alt=""></span>
+                <span class="flap"></span>
+              </span>
+              <span class="mail-meta">
+                <span class="to">To: Students</span>
+                <b>Your next big break starts with a problem statement</b>
+                <span class="pre">Think. Build. Ship. ₹75,000 a month, six months in Bangalore. Registration closes 8 October.</span>
+                <span class="read">Read the full email →</span>
+              </span>
+            </button>
+            <button type="button" class="mail" data-i="1" aria-label="Read emailer: An open engineering internship challenge for your 2027 batch">
+              <span class="env" aria-hidden="true">
+                <span class="env-back"></span>
+                <span class="letter"><img src="assets/booking/hackcellence-placement-teams.webp" alt="" loading="lazy"></span>
+                <span class="env-front"><img src="assets/booking/hackcellence-embark-logo.webp" alt=""></span>
+                <span class="flap"></span>
+              </span>
+              <span class="mail-meta">
+                <span class="to">To: College placement teams</span>
+                <b>An open engineering internship challenge for your 2027 batch</b>
+                <span class="pre">Zero upfront shortlisting. Any 2027 engineering student can enter. Registrations close 8 October.</span>
+                <span class="read">Read the full email →</span>
+              </span>
+            </button>
+            <button type="button" class="mail" data-i="2" aria-label="Read emailer: 28,000 students have already registered">
+              <span class="env" aria-hidden="true">
+                <span class="env-back"></span>
+                <span class="letter"><img src="assets/booking/hackcellence-28k-registered.webp" alt="" loading="lazy"></span>
+                <span class="env-front"><img src="assets/booking/hackcellence-embark-logo.webp" alt=""></span>
+                <span class="flap"></span>
+              </span>
+              <span class="mail-meta">
+                <span class="to">To: Students</span>
+                <b>28,000 students have already registered</b>
+                <span class="pre">You don't need a perfect plan to enter HackCellence: The Embark Edition. Closes 8 October.</span>
+                <span class="read">Read the full email →</span>
+              </span>
+            </button>
         </div>
       </div>
     </section>
@@ -503,6 +542,18 @@
     </a>
   </footer>
 </main>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-labelledby="lb-title">
+  <div class="lb-bar">
+    <div class="lb-head"><span class="to" id="lb-to"></span><b id="lb-title"></b></div>
+    <div class="lb-actions">
+      <button type="button" id="lb-prev" aria-label="Previous email">←</button>
+      <button type="button" id="lb-next" aria-label="Next email">→</button>
+      <button type="button" id="lb-close" aria-label="Close">Close</button>
+    </div>
+  </div>
+  <div class="lb-scroll" id="lb-scroll"><img id="lb-img" alt=""></div>
+</div>
 
 <script>
   // One entry per hackathon. Swap in real facts; this mirrors how projects.ts would hold it.
@@ -605,6 +656,43 @@
         </div>
       </div>
     </section>`).join("");
+
+  // Emailers: hover opens the envelope (CSS); click or Enter opens the full email.
+  const emails = [...document.querySelectorAll(".mail")].map((b) => ({
+    btn: b, src: b.querySelector(".letter img").getAttribute("src"),
+    to: b.querySelector(".to").textContent, subject: b.querySelector("b").textContent,
+  }));
+  const lb = document.getElementById("lightbox");
+  let current = 0, lastFocus = null;
+  function showEmail(i) {
+    current = (i + emails.length) % emails.length;
+    const e = emails[current];
+    document.getElementById("lb-img").src = e.src;
+    document.getElementById("lb-img").alt = "Full emailer: " + e.subject;
+    document.getElementById("lb-to").textContent = e.to;
+    document.getElementById("lb-title").textContent = e.subject;
+    document.getElementById("lb-scroll").scrollTop = 0;
+  }
+  function openEmail(i) {
+    lastFocus = document.activeElement; showEmail(i); lb.hidden = false;
+    document.body.style.overflow = "hidden"; document.getElementById("lb-close").focus();
+  }
+  function closeEmail() {
+    lb.hidden = true; document.body.style.overflow = "";
+    emails.forEach((e) => e.btn.classList.remove("open"));
+    if (lastFocus) lastFocus.focus();
+  }
+  emails.forEach((e, i) => e.btn.addEventListener("click", () => { e.btn.classList.add("open"); openEmail(i); }));
+  document.getElementById("lb-close").addEventListener("click", closeEmail);
+  document.getElementById("lb-prev").addEventListener("click", () => showEmail(current - 1));
+  document.getElementById("lb-next").addEventListener("click", () => showEmail(current + 1));
+  lb.addEventListener("click", (ev) => { if (ev.target === lb) closeEmail(); });
+  document.addEventListener("keydown", (ev) => {
+    if (lb.hidden) return;
+    if (ev.key === "Escape") closeEmail();
+    if (ev.key === "ArrowRight") showEmail(current + 1);
+    if (ev.key === "ArrowLeft") showEmail(current - 1);
+  });
 
   // Highlight the chapter in view in the client index.
   try {

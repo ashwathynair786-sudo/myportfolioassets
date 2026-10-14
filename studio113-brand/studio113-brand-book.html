@@ -199,6 +199,8 @@ h2, h3 { text-wrap: balance; }
 .postcard:hover { transform: rotate(0) translateY(-6px); }
 .postcard .ph { overflow: hidden; aspect-ratio: 4 / 5; max-width: 100%; }
 .cards2 .postcard .ph { aspect-ratio: 3 / 2; }
+.cards2 .postcard.portrait .ph { aspect-ratio: 3 / 4; }
+.cards2 .postcard.wide { grid-column: 1 / -1; justify-self: center; width: min(100%, 940px); }
 .postcard .ph img { width: 100%; height: 100%; object-fit: cover; }
 .postcard figcaption { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 12px; font: italic 400 clamp(18px, 2vw, 24px)/1 var(--serif); }
 .postcard figcaption img { width: 36px; }
@@ -423,10 +425,13 @@ footer.end img.w { width: min(70%, 520px); }
   <section class="sec wrap desk">
     <div class="sec-head"><p class="eyebrow">Applications</p><h2>Mockups</h2></div>
     <div class="cards2">
+      <figure class="postcard portrait" style="--tilt:1.4deg"><div class="ph"><img src="book/mockup-bag.webp" alt="Blush Studio 113 shopping bag with gold foil, hanging from a brass door handle on a green door"></div><figcaption>Shopping bag<img src="book/stamp-black.webp" alt=""></figcaption></figure>
+      <figure class="postcard portrait" style="--tilt:-1.6deg"><div class="ph"><img src="book/mockup-invite.webp" alt="Burgundy Studio 113 invitation with gold foil on a scalloped silver tray"></div><figcaption>Invitation<img src="book/stamp-black.webp" alt=""></figcaption></figure>
       <figure class="postcard" style="--tilt:-1.2deg"><div class="ph"><img src="book/mockup-postcards.webp" alt="Studio 113 postcards with the stamp logo on teal"></div><figcaption>Postcards<img src="book/stamp-black.webp" alt=""></figcaption></figure>
       <figure class="postcard" style="--tilt:1deg"><div class="ph"><img src="book/mockup-tablet.webp" alt="Studio 113 website on a tablet"></div><figcaption>Website<img src="book/stamp-black.webp" alt=""></figcaption></figure>
       <figure class="postcard" style="--tilt:.8deg"><div class="ph"><img src="book/mockup-lookbook.webp" alt="Studio 113 lookbook spread on teal"></div><figcaption>Lookbook<img src="book/stamp-black.webp" alt=""></figcaption></figure>
       <figure class="postcard" style="--tilt:-1.4deg"><div class="ph"><img src="book/mockup-packaging.webp" alt="Studio 113 gradient packaging sealed with the stamp"></div><figcaption>Packaging<img src="book/stamp-black.webp" alt=""></figcaption></figure>
+      <figure class="postcard wide" style="--tilt:-.6deg"><div class="ph"><img src="book/mockup-stationery.webp" alt="Studio 113 letterhead with a blind-embossed wordmark beside an olive envelope sealed with the stamp"></div><figcaption>Letterhead and envelope<img src="book/stamp-black.webp" alt=""></figcaption></figure>
     </div>
   </section>
 

@@ -100,6 +100,7 @@ h2, h3 { text-wrap: balance; }
 @media (min-width: 760px) { .grid2 { grid-template-columns: 1fr 1fr; } }
 .logo-tile { position: relative; display: grid; place-items: center; aspect-ratio: 5 / 4; max-width: 100%; overflow: hidden; background: var(--floral); color: var(--ink); }
 .logo-tile.teal { background: var(--teal); color: var(--floral); }
+.logo-tile.black { background: var(--ink); color: var(--floral); box-shadow: inset 0 0 0 1px var(--rule); }
 .logo-tile .eyebrow { position: absolute; left: 24px; top: 24px; }
 .logo-tile .note { position: absolute; left: 24px; right: 24px; bottom: 22px; font: italic 400 16px/1.3 var(--serif); opacity: .7; }
 .logo-tile .stamp, .logo-tile .word { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
@@ -199,20 +200,19 @@ h2, h3 { text-wrap: balance; }
 .shots3 .shot { aspect-ratio: 2 / 3; }
 @media (min-width: 860px) { .shots3 { gap: 16px; } }
 .mocks { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-areas: "bag inv" "post post" "tab tab" "look look" "pack pack" "card card" "stat stat"; }
+  grid-template-areas: "bag inv" "card card" "post post" "look look" "pack pack" "stat stat"; }
 .mocks .shot { aspect-ratio: 3 / 2; }
 .mocks .m-bag, .mocks .m-inv { aspect-ratio: 3 / 4; }
 .mocks .m-card { aspect-ratio: 4 / 5; }
-.m-bag { grid-area: bag; } .m-inv { grid-area: inv; } .m-post { grid-area: post; } .m-tab { grid-area: tab; }
+.m-bag { grid-area: bag; } .m-inv { grid-area: inv; } .m-post { grid-area: post; }
 .m-look { grid-area: look; } .m-pack { grid-area: pack; } .m-stat { grid-area: stat; } .m-card { grid-area: card; }
 @media (min-width: 860px) {
   .mocks { gap: 16px; grid-template-columns: repeat(12, minmax(0, 1fr));
     grid-template-areas:
-      "bag bag bag bag inv inv inv inv post post post post"
-      "bag bag bag bag inv inv inv inv tab tab tab tab"
-      "look look look look look look pack pack pack pack pack pack"
-      "card card card card stat stat stat stat stat stat stat stat"; }
-  .mocks .m-bag, .mocks .m-inv, .mocks .m-card { aspect-ratio: auto; }
+      "bag bag bag bag inv inv inv inv card card card card"
+      "post post post post post post look look look look look look"
+      "pack pack pack pack pack pack stat stat stat stat stat stat"; }
+  .mocks .m-bag, .mocks .m-inv, .mocks .m-card { aspect-ratio: 3 / 4; }
 }
 
 /* 10 · social */
@@ -337,7 +337,7 @@ footer.end img.w { width: min(70%, 520px); }
   <section class="sec wrap">
     <div class="sec-head"><p class="eyebrow">Logo system</p><h2>Types of logos</h2></div>
     <div class="grid2">
-      <figure class="logo-tile"><figcaption class="eyebrow">Primary logo</figcaption><img class="stamp" src="book/stamp-black.webp" alt="Primary logo: Lady K stamp in black"><p class="note">The stamp. Black is always the first choice.</p></figure>
+      <figure class="logo-tile black"><figcaption class="eyebrow">Primary logo</figcaption><img class="stamp" src="book/stamp-black.webp" alt="Primary logo: Lady K stamp in black"><p class="note">The stamp. Black is always the first choice.</p></figure>
       <figure class="logo-tile"><figcaption class="eyebrow">Primary logo · colour</figcaption><img class="stamp" src="book/stamp-teal.webp" alt="Primary logo in teal green"><p class="note">Teal green, used sparingly.</p></figure>
       <figure class="logo-tile"><figcaption class="eyebrow">Secondary logo · wordmark</figcaption><img class="word" src="book/wordmark-black.webp" alt="Secondary logo: Studio 113, House of Kanchana wordmark"><p class="note">The wordmark. For small sizes, social and over photography.</p></figure>
       <figure class="logo-tile teal"><figcaption class="eyebrow">One colour · reverse</figcaption><img class="stamp" src="book/stamp-ink-cream.webp" alt="One-colour reversed stamp in cream on teal"><p class="note">For foil, emboss and single-ink print.</p></figure>
@@ -441,7 +441,6 @@ footer.end img.w { width: min(70%, 520px); }
       <figure class="shot m-bag"><img src="book/mockup-bag.webp" alt="Blush Studio 113 shopping bag with gold foil, hanging from a brass door handle on a green door" loading="lazy"></figure>
       <figure class="shot m-inv"><img src="book/mockup-invite.webp" alt="Burgundy Studio 113 invitation with gold foil on a scalloped silver tray" loading="lazy"></figure>
       <figure class="shot m-post"><img src="book/mockup-postcards.webp" alt="Studio 113 postcards with the stamp logo on teal" loading="lazy"></figure>
-      <figure class="shot m-tab"><img src="book/mockup-tablet.webp" alt="Studio 113 website on a tablet" loading="lazy"></figure>
       <figure class="shot m-look"><img src="book/mockup-lookbook.webp" alt="Studio 113 lookbook spread on teal" loading="lazy"></figure>
       <figure class="shot m-pack"><img src="book/mockup-packaging.webp" alt="Studio 113 gradient packaging sealed with the stamp" loading="lazy"></figure>
       <figure class="shot m-card"><img src="book/mockup-cards.webp" alt="Stack of green Studio 113 business cards with a blind-embossed wordmark and the stamp, on maroon" loading="lazy"></figure>

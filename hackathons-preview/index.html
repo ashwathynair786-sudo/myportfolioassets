@@ -2,7 +2,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;500&family=Archivo:wght@500;800&display=swap">
 <style>
   /* Layout: the portfolio's project page (header → cover → brief → gallery), extended with
      a kit overview and one chapter per hackathon client, each tinted with its own hue. */
@@ -217,12 +217,75 @@
   .card .row-meta span:last-child { color: var(--fg-dim); }
   .card-preview p.copy { margin: 0; color: var(--fg-dim); font-weight: 300; max-width: 30rem; }
 
+
+  /* Booking Holdings · HackCellence (real assets) */
+  .cover-real { background: var(--bk-blue); }
+  .cover-real img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .cover-real::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,20,50,.85), transparent 55%); }
+  .cover-real h3 { z-index: 1; }
+  .bk { --bk-blue: #003580; --bk-navy: #00224f; --bk-bright: #0a6ce0; --bk-cream: #f5ede3; --bk-ink: #1a1a1a; }
+  :root { --bk-blue: #003580; }
+  .bk-band { background: var(--bk-blue); color: #fff; padding-block: clamp(40px, 7vw, 88px) 0; }
+  .bk-lockup { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px 40px; }
+  .bk-lockup img { display: block; height: auto; }
+  .bk-lockup .he { width: min(300px, 62vw); }
+  .bk-lockup .coe { width: min(320px, 70vw); }
+  .bk-display { font-family: "Archivo", var(--font-display); font-weight: 800; letter-spacing: -.035em; line-height: .92; }
+  .bk-band h2 { font-size: clamp(3rem, 11vw, 9.5rem); margin-top: clamp(28px, 5vw, 56px); }
+  .bk-band .hero-img { display: block; width: 100%; margin-top: clamp(24px, 4vw, 48px); max-width: 100%; }
+  .bk-tag { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,.7); margin: 0; padding-block: 14px 18px; }
+  .real-badge { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 10.5px; color: var(--lime); border: 1px solid color-mix(in srgb, var(--lime) 50%, transparent); padding: 3px 8px; }
+  .real-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--lime); }
+  .chip.done { background: color-mix(in srgb, var(--c) 22%, transparent); }
+  .chip.todo { border-style: dashed; color: var(--fg-dim); }
+  .facts.five { grid-template-columns: 1fr 1fr; }
+  .bk-brief { display: grid; gap: 28px; max-width: 46rem; }
+  .bk-brief p { margin: 0; color: var(--fg-dim); font-weight: 300; }
+  .bk-brief .eyebrow { margin-bottom: 8px; }
+  .tiles { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  @media (min-width: 760px) { .tiles { grid-template-columns: 1fr 1fr; } }
+  .tile { display: grid; place-items: center; aspect-ratio: 4 / 3; padding: 10%; position: relative; max-width: 100%; }
+  .tile img { width: 100%; height: auto; display: block; }
+  .tile.blue { background: var(--bk-blue); }
+  .tile.navy { background: var(--bk-navy); }
+  .tile.cream { background: var(--bk-cream); color: var(--bk-ink); }
+  .tile .cap { position: absolute; left: 14px; bottom: 12px; font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,.75); }
+  .tile.cream .cap { color: rgba(26,26,26,.65); }
+  .lockup-stack { display: grid; gap: 22px; justify-items: center; width: 100%; }
+  .lockup-stack .he { width: 78%; }
+  .lockup-stack .rule { width: 60%; height: 1px; background: rgba(255,255,255,.25); }
+  .lockup-stack .coe { width: 70%; }
+  .lockup-stack .pw { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; color: rgba(255,255,255,.75); }
+  .swatches { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; }
+  @media (max-width: 600px) { .swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .swatches div { aspect-ratio: 1 / 1.1; padding: 12px; display: flex; flex-direction: column; justify-content: flex-end; font-family: var(--font-mono); font-size: 11px; line-height: 1.4; }
+  .browser.scroll .viewport { max-height: min(78vh, 820px); overflow-y: auto; overscroll-behavior: contain; background: #fff; }
+  .browser.scroll .viewport img { display: block; width: 100%; height: auto; }
+  .browser-bar a.live { margin-left: auto; font-family: var(--font-mono); font-size: 11px; color: var(--lime); text-decoration: none; white-space: nowrap; }
+  .browser-bar a.live:hover { text-decoration: underline; }
+  .scroll-hint { font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); margin: 10px 0 0; }
+  /* Booking-styled mocks for pieces not supplied yet */
+  .bk .post-art.bk-art { background: var(--bk-blue); color: #fff; padding: 0; justify-content: flex-start; }
+  .bk .post-art.bk-art img { width: 100%; height: 56%; object-fit: cover; display: block; }
+  .bk .post-art.bk-art .txt { padding: 14px; display: grid; gap: 6px; }
+  .bk .post-art.bk-art b { font-family: "Archivo", var(--font-display); font-weight: 800; letter-spacing: -.03em; font-size: clamp(1.2rem, 2.4vw, 1.75rem); line-height: .95; }
+  .bk .post-art.bk-art span { color: #acd1eb; }
+  .bk .post-art.bk-art.cream { background: var(--bk-cream); color: var(--bk-ink); justify-content: flex-end; padding: 16px; }
+  .bk .post-art.bk-art.cream span { color: var(--bk-blue); }
+  .bk .post-art.bk-art.navy { background: var(--bk-navy); justify-content: flex-end; padding: 16px; }
+  .bk .email header { background: var(--bk-blue); color: #fff; font-family: "Archivo", var(--font-display); font-weight: 800; letter-spacing: -.02em; }
+  .bk .email .hero { width: 100%; display: block; }
+  .bk .email .btn { background: var(--bk-bright); }
+  .bk .cert::before { border-color: var(--bk-blue); }
+  .bk .cert b { font-family: "Archivo", var(--font-display); font-weight: 800; letter-spacing: -.02em; }
+  .bk .cert .logo { width: 42%; background: var(--bk-blue); padding: 6px 8px; }
+
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
   html { scroll-behavior: smooth; }
 </style>
 
 <div class="note wrap">
-  <p>Layout preview for project 04. Every dashed tag names the asset that goes in that slot. All text is draft copy for you to rewrite, and the mock artwork is only a stand-in for your real files.</p>
+  <p>Layout preview for project 04. Booking Holdings now uses your real website, illustration and logos; social, emailers and certificate are still stand-ins. Every dashed tag names the asset that goes in that slot. All text is draft copy for you to rewrite, and the mock artwork is only a stand-in for your real files.</p>
 </div>
 
 <header class="site-header wrap">
@@ -249,7 +312,7 @@
   </section>
 
   <div class="slot cover" aria-label="Cover placeholder">
-    <div class="contours" style="--c: var(--booking); --cx: 80%; --cy: 30%"><h3>Booking Holdings</h3></div>
+    <div class="cover-real"><img src="assets/booking/hackcellence-cover-illustration.webp" alt="" loading="eager"><h3>Booking Holdings</h3></div>
     <div class="contours" style="--c: var(--airwallex); --cx: 30%; --cy: 70%"><h3>Airwallex</h3></div>
     <div class="contours" style="--c: var(--mena); --cx: 60%; --cy: 20%"><h3>MENA Ignite</h3></div>
     <span class="slot-tag top"><b>Cover</b> · looping film or a 3-up collage of key visuals · 2:1 · MP4/WebM + poster</span>
@@ -291,7 +354,127 @@
     <ul id="index"></ul>
   </nav>
 
-  <div id="chapters"></div>
+  <div id="chapters">
+    <section class="chapter bk" id="booking-holdings" style="--c: var(--booking); padding-top: 0;">
+      <div class="bk-band wrap">
+        <div class="bk-lockup">
+          <img class="coe" src="assets/booking/booking-holdings-coe-logo.svg" alt="Booking Holdings Centers of Excellence">
+          <img class="he" src="assets/booking/hackcellence-embark-logo.webp" alt="HackCellence 2026, The Embark Edition">
+        </div>
+        <h2 class="bk-display">Think. Build. Ship.</h2>
+        <img class="hero-img" src="assets/booking/hackcellence-cover-illustration.webp" alt="Illustration of three students coding together, with notes reading Ideas to impact and Build, learn, collaborate, ship">
+        <p class="bk-tag">Key visual · HackCellence 2026 hero illustration</p>
+      </div>
+
+      <div class="wrap" style="padding-top: clamp(48px, 8vw, 96px);">
+        <div class="chapter-head">
+          <div>
+            <p class="eyebrow">Booking Holdings · Centers of Excellence</p>
+            <h2 class="chapter-name">HackCellence 2026<span>.</span></h2>
+            <p class="chapter-theme">The Embark Edition: a hiring hackathon for Embark, the six-month tech internship at the Booking Holdings India Center of Excellence in Bangalore.</p>
+            <div class="chips">
+              <span class="chip done">Microsite</span><span class="chip done">Key illustration</span><span class="chip done">Event logo</span><span class="chip todo">Social</span><span class="chip todo">Emailers</span><span class="chip todo">Certificate</span>
+            </div>
+          </div>
+          <div class="facts five">
+            <div><p class="eyebrow">Format</p><p>Two online rounds, two-day finale</p></div>
+            <div><p class="eyebrow">Finale</p><p>13–14 Nov 2026, Bangalore</p></div>
+            <div><p class="eyebrow">Registration</p><p>21 Sep – 8 Oct 2026</p></div>
+            <div><p class="eyebrow">Audience</p><p>Final-year engineering students, class of 2027</p></div>
+            <div><p class="eyebrow">Prize</p><p>Embark internship, ₹75,000 a month</p></div>
+          </div>
+        </div>
+
+        <div class="split" style="margin-block: 8px 24px;">
+          <div><span class="real-badge">Draft copy, edit me</span></div>
+          <div class="bk-brief">
+            <div><p class="eyebrow lime">The brief</p><p>Booking Holdings wanted to hire its next intern class through a hackathon. The campaign had to reach final-year engineering students, many of whom had never entered a hackathon, and make a six-month internship feel worth competing for.</p></div>
+            <div><p class="eyebrow lime">What I made</p><p>An event identity for HackCellence: The Embark Edition, built to sit next to the Booking Holdings Centers of Excellence mark and the HackerEarth logo. A friendly, all-blue illustration of students building together sets the tone, and "Think. Build. Ship." carries the message. The microsite turns a long list of rounds, dates, rules and eligibility checks into short, scannable sections.</p></div>
+          </div>
+        </div>
+
+        <div class="group-label"><h3>Identity</h3><p>Event logo, co-branding and colour</p></div>
+        <div class="tiles">
+          <div class="tile blue"><img src="assets/booking/hackcellence-embark-logo.webp" alt="HackCellence 2026, The Embark Edition logo" style="width: 82%"><span class="cap">Event logo</span></div>
+          <div class="tile navy">
+            <div class="lockup-stack">
+              <img class="coe" src="assets/booking/booking-holdings-coe-logo.svg" alt="Booking Holdings Centers of Excellence">
+              <span class="rule"></span>
+              <img class="he" src="assets/booking/hackcellence-embark-logo.webp" alt="HackCellence logo" style="width: 56%">
+              <span class="pw">POWERED BY HACKEREARTH</span>
+            </div>
+            <span class="cap">Co-brand lockup</span>
+          </div>
+        </div>
+        <div class="swatches" style="margin-top: 16px;">
+          <div style="background:#003580;color:#fff">Booking blue<br>#003580</div>
+          <div style="background:#00224f;color:#fff">Night navy<br>#00224F</div>
+          <div style="background:#0a6ce0;color:#fff">Signal blue<br>#0A6CE0</div>
+          <div style="background:#acd1eb;color:#00224f">Sky<br>#ACD1EB</div>
+          <div style="background:#f5ede3;color:#1a1a1a">Sand<br>#F5EDE3</div>
+        </div>
+
+        <div class="group-label"><h3>Microsite</h3><p>booking.hackerearth.com</p></div>
+        <div class="browser scroll">
+          <div class="browser-bar"><i></i><i></i><i></i><span class="url">booking.hackerearth.com</span><a class="live" href="https://booking.hackerearth.com/" target="_blank" rel="noopener">Visit live site ↗</a></div>
+          <div class="viewport" tabindex="0" aria-label="Full-length HackCellence microsite, scrollable">
+            <img src="assets/booking/hackcellence-website-full.webp" alt="Full-length HackCellence microsite: hero, Embark internship details, the idea, the two-round route, eligibility, dates calendar, round one breakdown, the finale, about the center, rules and FAQs" loading="lazy">
+          </div>
+        </div>
+        <p class="scroll-hint">Scroll inside the frame to see the whole page.</p>
+
+        <div class="group-label"><h3>Marketing kit</h3><p>Social series</p></div>
+        <div class="slot">
+          <div class="posts">
+            <figure class="post" style="margin:0">
+              <div class="post-head"><span class="avatar">h</span><span>hackerearth<small>Sponsored</small></span></div>
+              <div class="post-art bk-art"><img src="assets/booking/hackcellence-cover-illustration.webp" alt=""><div class="txt"><span>HackCellence 2026</span><b>Think. Build. Ship.</b></div></div>
+              <figcaption class="post-foot"><span>♡</span><span>💬</span><span>↗</span></figcaption>
+            </figure>
+            <figure class="post" style="margin:0">
+              <div class="post-head"><span class="avatar">h</span><span>hackerearth<small>Sponsored</small></span></div>
+              <div class="post-art bk-art cream"><div class="txt" style="padding:0"><span>Embark internship</span><b>Six months. Bangalore. ₹75,000 a month.</b></div></div>
+              <figcaption class="post-foot"><span>♡</span><span>💬</span><span>↗</span></figcaption>
+            </figure>
+            <figure class="post" style="margin:0">
+              <div class="post-head"><span class="avatar">h</span><span>hackerearth<small>Sponsored</small></span></div>
+              <div class="post-art bk-art navy"><div class="txt" style="padding:0"><span>Last call</span><b>Registration closes 8 October.</b></div></div>
+              <figcaption class="post-foot"><span>♡</span><span>💬</span><span>↗</span></figcaption>
+            </figure>
+          </div>
+          <span class="slot-tag"><b>Social</b> · stand-in mocks · replace with your real posts (4:5)</span>
+        </div>
+
+        <div class="group-label"><h3>Emailers & print</h3><p>Inbox to finale</p></div>
+        <div class="row">
+          <div class="slot stage">
+            <div class="email">
+              <header><small style="font-family: var(--font-mono); font-weight: 400;">Booking Holdings × HackerEarth</small>Think. Build. Ship.</header>
+              <img class="hero" src="assets/booking/hackcellence-cover-illustration.webp" alt="">
+              <div class="body"><div class="bar"></div><div class="bar"></div><div class="bar short"></div><span class="btn">Register now</span></div>
+            </div>
+            <span class="slot-tag"><b>Emailer</b> · invite · full-length PNG</span>
+          </div>
+          <div class="slot stage">
+            <div class="email" style="width:min(200px,70%)">
+              <header><small style="font-family: var(--font-mono); font-weight: 400;">Round 1</small>A hundred minutes, split three ways.</header>
+              <div class="body"><div class="bar"></div><div class="bar short"></div><span class="btn">See the brief</span></div>
+            </div>
+            <span class="slot-tag"><b>Emailer 2</b> · round reminder</span>
+          </div>
+          <div class="slot stage wide">
+            <div class="cert">
+              <img class="logo" src="assets/booking/hackcellence-embark-logo.webp" alt="">
+              <div><b>Certificate of Achievement</b><div class="name" style="margin-top:8px">Participant name</div></div>
+              <div class="sig"><i>Booking Holdings CoE</i><i>HackerEarth</i></div>
+            </div>
+            <span class="slot-tag"><b>Certificate</b> · finale, 13–14 Nov</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="chapters-rest"></div>
+  </div>
 
   <section class="section wrap">
     <div class="card-preview">
@@ -302,7 +485,7 @@
       </div>
       <div class="card">
         <div class="thumb slot">
-          <div class="contours" style="--c: var(--booking)"></div>
+          <div class="cover-real"><img src="assets/booking/hackcellence-cover-illustration.webp" alt=""></div>
           <div class="contours" style="--c: var(--airwallex)"></div>
           <div class="contours" style="--c: var(--mena)"></div>
           <span class="slot-tag"><b>Thumbnail</b> · 4:3 · WebP</span>
@@ -324,16 +507,6 @@
 <script>
   // One entry per hackathon. Swap in real facts; this mirrors how projects.ts would hold it.
   const hackathons = [
-    {
-      id: "booking-holdings", name: "Booking Holdings", accent: "var(--booking)",
-      theme: "A hackathon for developers building the next generation of travel tech.",
-      kicker: "Global hackathon · Travel tech",
-      headline: "Build what's next for travel.",
-      url: "hackerearth.com/challenges/hackathon/booking-holdings",
-      facts: [["Format", "Online + finale"], ["Region", "Global"], ["Year", "20XX"], ["Audience", "Developers, students"]],
-      kit: ["Microsite", "Social", "Emailers", "Certificate"],
-      posts: ["Registrations open", "3 days to go", "Meet the winners"],
-    },
     {
       id: "airwallex", name: "Airwallex", accent: "var(--airwallex)",
       theme: "A fintech hackathon for building on global payments infrastructure.",
@@ -358,10 +531,10 @@
 
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-  document.getElementById("index").innerHTML = hackathons.map((h) =>
+  document.getElementById("index").innerHTML = `<li><a href="#booking-holdings" style="--c:var(--booking)">Booking Holdings</a></li>` + hackathons.map((h) =>
     `<li><a href="#${h.id}" style="--c:${h.accent}">${esc(h.name)}</a></li>`).join("");
 
-  document.getElementById("chapters").innerHTML = hackathons.map((h) => `
+  document.getElementById("chapters-rest").innerHTML = hackathons.map((h) => `
     <section class="chapter wrap" id="${h.id}" style="--c:${h.accent}">
       <div class="chapter-head">
         <div>

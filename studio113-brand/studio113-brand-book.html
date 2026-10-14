@@ -195,15 +195,8 @@ h2, h3 { text-wrap: balance; }
 .shot { position: relative; margin: 0; min-height: 0; overflow: hidden; background: #151515; }
 .shot img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .9s cubic-bezier(.2,.8,.2,1); }
 .shot:hover img { transform: scale(1.025); }
-.shot::after { content: ""; position: absolute; inset: auto 0 0 0; height: 90px; pointer-events: none; background: linear-gradient(transparent, rgba(10,10,10,.55)); }
-.shot figcaption { position: absolute; z-index: 1; left: 16px; bottom: 14px; font: 600 10px/1 var(--sans); letter-spacing: .26em; text-transform: uppercase; color: var(--floral); }
-.collection + .collection { margin-top: clamp(32px, 5vw, 56px); }
-.collection-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
-.collection-head h3 { font: 400 clamp(22px, 2.6vw, 30px)/1 var(--display); }
-.collection-head .eyebrow { color: var(--muted); }
 .shots3 { display: grid; gap: 8px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .shots3 .shot { aspect-ratio: 2 / 3; }
-.shots3 .shot::after { display: none; }
 @media (min-width: 860px) { .shots3 { gap: 16px; } }
 .mocks { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-areas: "bag inv" "post post" "tab tab" "look look" "pack pack" "stat stat"; }
@@ -431,21 +424,13 @@ footer.end img.w { width: min(70%, 520px); }
   <!-- 8 · product images -->
   <section class="sec wrap">
     <div class="sec-head"><p class="eyebrow">Photography</p><h2>Product images</h2></div>
-    <div class="collection">
-      <div class="collection-head"><h3>Corsets</h3><span class="eyebrow">Warm studio, natural light</span></div>
-      <div class="shots3">
-        <figure class="shot"><img src="book/product-corset-1.webp" alt="Model in a grey printed corset and black skirt, leaning on a wooden chest" loading="lazy"></figure>
-        <figure class="shot"><img src="book/product-corset-2.webp" alt="Model in an olive and mustard printed corset saree, seated on a wooden chest" loading="lazy"></figure>
-        <figure class="shot"><img src="book/product-corset-3.webp" alt="Model in a mustard printed corset with a draped skirt, looking down" loading="lazy"></figure>
-      </div>
-    </div>
-    <div class="collection">
-      <div class="collection-head"><h3>Mehfil</h3><span class="eyebrow">Painted skies, Persian rugs</span></div>
-      <div class="shots3">
-        <figure class="shot"><img src="book/product-mehfil-1.webp" alt="Model in a yellow floral saree on a Persian rug against a dark painted sky" loading="lazy"></figure>
-        <figure class="shot"><img src="book/product-mehfil-2.webp" alt="Model in a raspberry floral saree on a Persian rug against a dark painted sky" loading="lazy"></figure>
-        <figure class="shot"><img src="book/product-mehfil-3.webp" alt="Model in a yellow floral saree with a high neck on a Persian rug" loading="lazy"></figure>
-      </div>
+    <div class="shots3">
+      <figure class="shot"><img src="book/product-corset-1.webp" alt="Model in a grey printed corset and black skirt, leaning on a wooden chest" loading="lazy"></figure>
+      <figure class="shot"><img src="book/product-corset-2.webp" alt="Model in an olive and mustard printed corset saree, seated on a wooden chest" loading="lazy"></figure>
+      <figure class="shot"><img src="book/product-corset-3.webp" alt="Model in a mustard printed corset with a draped skirt, looking down" loading="lazy"></figure>
+      <figure class="shot"><img src="book/product-mehfil-1.webp" alt="Model in a yellow floral saree on a Persian rug against a dark painted sky" loading="lazy"></figure>
+      <figure class="shot"><img src="book/product-mehfil-2.webp" alt="Model in a raspberry floral saree on a Persian rug against a dark painted sky" loading="lazy"></figure>
+      <figure class="shot"><img src="book/product-mehfil-3.webp" alt="Model in a yellow floral saree with a high neck on a Persian rug" loading="lazy"></figure>
     </div>
   </section>
 
@@ -453,13 +438,13 @@ footer.end img.w { width: min(70%, 520px); }
   <section class="sec wrap">
     <div class="sec-head"><p class="eyebrow">Applications</p><h2>Mockups</h2></div>
     <div class="mocks">
-      <figure class="shot m-bag"><img src="book/mockup-bag.webp" alt="Blush Studio 113 shopping bag with gold foil, hanging from a brass door handle on a green door" loading="lazy"><figcaption>Shopping bag</figcaption></figure>
-      <figure class="shot m-inv"><img src="book/mockup-invite.webp" alt="Burgundy Studio 113 invitation with gold foil on a scalloped silver tray" loading="lazy"><figcaption>Invitation</figcaption></figure>
-      <figure class="shot m-post"><img src="book/mockup-postcards.webp" alt="Studio 113 postcards with the stamp logo on teal" loading="lazy"><figcaption>Postcards</figcaption></figure>
-      <figure class="shot m-tab"><img src="book/mockup-tablet.webp" alt="Studio 113 website on a tablet" loading="lazy"><figcaption>Website</figcaption></figure>
-      <figure class="shot m-look"><img src="book/mockup-lookbook.webp" alt="Studio 113 lookbook spread on teal" loading="lazy"><figcaption>Lookbook</figcaption></figure>
-      <figure class="shot m-pack"><img src="book/mockup-packaging.webp" alt="Studio 113 gradient packaging sealed with the stamp" loading="lazy"><figcaption>Packaging</figcaption></figure>
-      <figure class="shot m-stat"><img src="book/mockup-stationery.webp" alt="Studio 113 letterhead with a blind-embossed wordmark beside an olive envelope sealed with the stamp" loading="lazy"><figcaption>Letterhead and envelope</figcaption></figure>
+      <figure class="shot m-bag"><img src="book/mockup-bag.webp" alt="Blush Studio 113 shopping bag with gold foil, hanging from a brass door handle on a green door" loading="lazy"></figure>
+      <figure class="shot m-inv"><img src="book/mockup-invite.webp" alt="Burgundy Studio 113 invitation with gold foil on a scalloped silver tray" loading="lazy"></figure>
+      <figure class="shot m-post"><img src="book/mockup-postcards.webp" alt="Studio 113 postcards with the stamp logo on teal" loading="lazy"></figure>
+      <figure class="shot m-tab"><img src="book/mockup-tablet.webp" alt="Studio 113 website on a tablet" loading="lazy"></figure>
+      <figure class="shot m-look"><img src="book/mockup-lookbook.webp" alt="Studio 113 lookbook spread on teal" loading="lazy"></figure>
+      <figure class="shot m-pack"><img src="book/mockup-packaging.webp" alt="Studio 113 gradient packaging sealed with the stamp" loading="lazy"></figure>
+      <figure class="shot m-stat"><img src="book/mockup-stationery.webp" alt="Studio 113 letterhead with a blind-embossed wordmark beside an olive envelope sealed with the stamp" loading="lazy"></figure>
     </div>
   </section>
 

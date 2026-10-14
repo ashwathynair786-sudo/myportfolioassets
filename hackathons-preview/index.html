@@ -1,0 +1,447 @@
+<title>Hackathons Project Preview</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: the portfolio's project page (header → cover → brief → gallery), extended with
+     a kit overview and one chapter per hackathon client, each tinted with its own hue. */
+  :root {
+    color-scheme: dark;
+    --bg: #0b0b0e;
+    --surface: #131317;
+    --muted: #1b1b20;
+    --fg: #f4f3ee;
+    --fg-dim: #a9a79f;
+    --line: rgba(244, 243, 238, .18);
+    --lime: #c4e536;
+    --on-lime: #111114;
+    --booking: #5a8bff;
+    --airwallex: #ff7a45;
+    --mena: #f2b84b;
+    --font-display: "Sora", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    --gutter: clamp(16px, 4vw, 40px);
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-display);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+  .wrap {
+    padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+  }
+  .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--fg-dim); margin: 0; }
+  .eyebrow.lime { color: var(--lime); }
+  .mono { font-family: var(--font-mono); }
+  h1, h2, h3 { text-wrap: balance; margin: 0; }
+
+  /* Preview note */
+  .note {
+    background: var(--lime); color: var(--on-lime);
+    font-family: var(--font-mono); font-size: 12px; line-height: 1.5;
+    padding-block: 10px;
+  }
+  .note p { margin: 0; max-width: 90ch; }
+
+  /* Site header, as on the live portfolio */
+  .site-header {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px; background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+  }
+  .site-header strong { font-size: 13px; text-transform: uppercase; letter-spacing: .02em; }
+  .site-header nav { display: flex; gap: clamp(14px, 3vw, 32px); font-size: 11px; text-transform: uppercase; color: var(--fg-dim); }
+
+  /* Project header */
+  .project-head { padding-block: 56px 48px; display: grid; gap: 40px; }
+  .back { font-size: 11px; text-transform: uppercase; color: var(--fg-dim); text-decoration: none; display: inline-flex; gap: 8px; align-items: center; }
+  .back:hover { color: var(--fg); }
+  .head-grid { display: grid; gap: 32px; align-items: end; }
+  .head-grid > * { min-width: 0; }
+  .project-title { font-weight: 600; font-size: clamp(2.75rem, 9vw, 7.5rem); line-height: .95; letter-spacing: -.02em; margin-top: 16px; }
+  .intro { color: var(--fg-dim); font-size: clamp(1rem, 1.6vw, 1.15rem); max-width: 34rem; margin: 0; }
+  @media (min-width: 860px) { .head-grid { grid-template-columns: 2fr 1fr; } }
+
+  .meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; border-top: 1px solid var(--line); padding-top: 28px; }
+  .meta p { margin: 0; font-size: 14px; }
+  .meta .eyebrow { margin-bottom: 6px; }
+
+  /* Placeholder slot: the dashed tag says what file to drop in */
+  .slot { position: relative; background: var(--muted); overflow: hidden; max-width: 100%; }
+  .slot-tag {
+    position: absolute; left: 12px; bottom: 12px; z-index: 3; max-width: calc(100% - 24px);
+    font-family: var(--font-mono); font-size: 11px; line-height: 1.4;
+    color: var(--fg); background: rgba(11, 11, 14, .82);
+    border: 1px dashed var(--line); padding: 6px 9px;
+  }
+  .slot-tag b { color: var(--lime); font-weight: 500; }
+  .slot-tag.top { bottom: auto; top: 12px; }
+
+  /* Cover */
+  .cover { aspect-ratio: 2 / 1; display: grid; grid-template-columns: repeat(3, 1fr); }
+  .cover > div { position: relative; display: flex; align-items: flex-end; padding: clamp(12px, 2.4vw, 32px); }
+  .cover h3 { font-weight: 600; font-size: clamp(.9rem, 2.4vw, 2rem); line-height: 1.05; position: relative; z-index: 1; }
+  @media (max-width: 600px) { .cover { aspect-ratio: 4 / 5; grid-template-columns: 1fr; } }
+
+  /* Contour texture, borrowed from the HackerEarth identity */
+  .contours {
+    background:
+      repeating-radial-gradient(ellipse at var(--cx, 72%) var(--cy, 38%), transparent 0 13px, color-mix(in srgb, var(--c, var(--lime)) 26%, transparent) 14px 15px),
+      radial-gradient(circle at 20% 110%, color-mix(in srgb, var(--c, var(--lime)) 35%, transparent), transparent 60%),
+      #0f0f13;
+  }
+
+  /* Brief */
+  .section { border-bottom: 1px solid var(--line); padding-block: clamp(56px, 9vw, 112px); }
+  .split { display: grid; gap: 32px; }
+  .split > * { min-width: 0; }
+  @media (min-width: 860px) { .split { grid-template-columns: 1fr 2fr; } }
+  .brief { display: grid; gap: 36px; max-width: 46rem; }
+  .brief p { margin: 0; color: var(--fg-dim); font-weight: 300; }
+  .brief .eyebrow { margin-bottom: 10px; }
+
+  /* Kit overview */
+  .kit { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .kit div { background: var(--bg); padding: 24px 20px 28px; display: grid; gap: 10px; align-content: start; }
+  .kit h3 { font-size: 1.15rem; font-weight: 600; }
+  .kit p { margin: 0; color: var(--fg-dim); font-size: 13.5px; font-weight: 300; }
+  .kit .mono { font-size: 11px; color: var(--lime); }
+
+  /* Client index */
+  .index { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 64px); z-index: 15; background: var(--bg); border-bottom: 1px solid var(--line); padding-block: 12px; }
+  .index ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+  .index a {
+    display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; text-decoration: none;
+    font-size: 12px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; color: var(--fg-dim);
+    transition: border-color .2s, color .2s;
+  }
+  .index a::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+  .index a:hover, .index a[aria-current="true"] { color: var(--fg); border-color: var(--c); }
+
+  /* Chapter */
+  .chapter { padding-block: clamp(56px, 9vw, 112px) 24px; border-bottom: 1px solid var(--line); scroll-margin-top: 120px; }
+  .chapter-head { display: grid; gap: 28px; margin-bottom: 40px; }
+  .chapter-head > * { min-width: 0; }
+  @media (min-width: 860px) { .chapter-head { grid-template-columns: 2fr 1fr; align-items: end; } }
+  .chapter-name { font-size: clamp(2.2rem, 6vw, 5rem); font-weight: 600; line-height: 1; letter-spacing: -.015em; }
+  .chapter-name span { color: var(--c); }
+  .chapter-theme { font-size: clamp(1.05rem, 2vw, 1.4rem); font-weight: 300; margin: 14px 0 0; max-width: 36rem; }
+  .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 20px; font-size: 13px; }
+  .facts p { margin: 0; }
+  .facts .eyebrow { margin-bottom: 4px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+  .chip { font-family: var(--font-mono); font-size: 11px; padding: 4px 9px; border: 1px solid color-mix(in srgb, var(--c) 55%, transparent); color: var(--fg); }
+
+  .group-label { display: flex; align-items: baseline; gap: 14px; margin: 40px 0 14px; }
+  .group-label h3 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+  .group-label p { margin: 0; color: var(--fg-dim); font-size: 13px; font-weight: 300; }
+
+  /* Microsite mock in a browser frame */
+  .browser { border: 1px solid var(--line); background: #0f0f13; }
+  .browser-bar { display: flex; align-items: center; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  .browser-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
+  .browser-bar .url { margin-left: 10px; font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; min-width: 0; }
+  .site { aspect-ratio: 16 / 8; display: flex; flex-direction: column; justify-content: center; gap: 14px; padding: clamp(18px, 5vw, 64px); }
+  .site .kicker { font-family: var(--font-mono); font-size: clamp(9px, 1.1vw, 12px); text-transform: uppercase; letter-spacing: .1em; color: var(--c); position: relative; z-index: 1; }
+  .site h4 { margin: 0; font-size: clamp(1.4rem, 4.6vw, 3.6rem); font-weight: 600; line-height: 1.02; max-width: 14ch; position: relative; z-index: 1; }
+  .site .cta { align-self: flex-start; background: var(--c); color: #0b0b0e; font-size: clamp(10px, 1.1vw, 13px); font-weight: 600; padding: .6em 1.2em; border-radius: 999px; position: relative; z-index: 1; }
+  @media (max-width: 600px) { .site { aspect-ratio: 4 / 3; } }
+
+  /* Social posts */
+  .posts { display: grid; gap: 16px; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: clamp(14px, 3vw, 32px); }
+  @media (max-width: 700px) { .posts { grid-template-columns: 1fr; max-width: 360px; margin-inline: auto; } }
+  .post { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--bg); }
+  .post-head { display: flex; align-items: center; gap: 8px; padding: 9px 11px; font-size: 11.5px; }
+  .post-head .avatar { width: 24px; height: 24px; border-radius: 50%; background: var(--fg); color: var(--bg); display: grid; place-items: center; font-weight: 700; font-size: 11px; }
+  .post-head small { display: block; color: var(--fg-dim); font-size: 10px; }
+  .post-art { aspect-ratio: 4 / 5; position: relative; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; padding: 16px; }
+  .post-art b { font-size: clamp(1.1rem, 2.2vw, 1.6rem); line-height: 1.05; position: relative; z-index: 1; }
+  .post-art span { font-family: var(--font-mono); font-size: 10px; color: var(--c); text-transform: uppercase; letter-spacing: .08em; position: relative; z-index: 1; }
+  .post-art .stack { position: absolute; top: 10px; right: 10px; width: 18px; height: 18px; border: 1.5px solid var(--fg); border-radius: 3px; box-shadow: 3px -3px 0 -1.5px var(--bg), 3px -3px 0 0 var(--fg); }
+  .post-foot { display: flex; gap: 12px; padding: 9px 11px 11px; font-size: 11px; color: var(--fg-dim); }
+  .post.solid .post-art { background: var(--c); color: #0b0b0e; }
+  .post.solid .post-art span { color: #0b0b0e; }
+
+  /* Print + email row */
+  .row { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  @media (min-width: 760px) { .row { grid-template-columns: 1fr 1fr 1.4fr; } }
+  .stage { aspect-ratio: 4 / 5; display: grid; place-items: center; padding: 28px 20px 56px; }
+  @media (min-width: 760px) { .stage.wide { aspect-ratio: auto; height: 100%; } }
+
+  .email { width: min(240px, 80%); background: #f4f3ee; color: #111114; box-shadow: 0 20px 50px rgba(0,0,0,.5); font-size: 9px; }
+  .email header { background: var(--c); padding: 14px 12px; font-weight: 700; font-size: 13px; line-height: 1.1; }
+  .email header small { display: block; font-family: var(--font-mono); font-weight: 400; font-size: 8px; margin-bottom: 6px; text-transform: uppercase; }
+  .email .body { padding: 12px; display: grid; gap: 6px; }
+  .email .bar { height: 5px; background: #d9d7cf; }
+  .email .bar.short { width: 60%; }
+  .email .btn { justify-self: start; margin-top: 6px; background: #111114; color: #f4f3ee; padding: 5px 10px; font-size: 8px; font-weight: 600; }
+
+  .standee { width: min(130px, 46%); display: grid; justify-items: center; }
+  .standee .panel { width: 100%; aspect-ratio: 1 / 2.3; border-radius: 6px 6px 0 0; padding: 14px 10px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+  .standee .panel b { font-size: 14px; line-height: 1.05; position: relative; z-index: 1; }
+  .standee .panel span { font-family: var(--font-mono); font-size: 7.5px; color: var(--c); text-transform: uppercase; position: relative; z-index: 1; }
+  .standee .foot { width: 120%; height: 8px; background: #2a2a30; border-radius: 2px; }
+
+  .cert { width: min(360px, 88%); aspect-ratio: 1.414 / 1; background: #f4f3ee; color: #111114; padding: 6%; display: grid; align-content: space-between; box-shadow: 0 20px 50px rgba(0,0,0,.5); position: relative; }
+  .cert::before { content: ""; position: absolute; inset: 4%; border: 1px solid var(--c); pointer-events: none; }
+  .cert small { font-family: var(--font-mono); font-size: clamp(6px, 1.4vw, 8px); text-transform: uppercase; letter-spacing: .1em; }
+  .cert b { font-size: clamp(11px, 2.4vw, 17px); line-height: 1.1; display: block; }
+  .cert .name { font-size: clamp(9px, 1.8vw, 12px); border-bottom: 1px solid #111114; padding-bottom: 3px; width: 70%; }
+  .cert .sig { display: flex; gap: 18%; }
+  .cert .sig i { flex: 1; border-top: 1px solid #555; font-style: normal; font-size: clamp(5px, 1.2vw, 7px); padding-top: 3px; }
+
+  /* Next project */
+  .next { padding-block: clamp(64px, 10vw, 128px); }
+  .next a { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; text-decoration: none; margin-top: 18px; }
+  .next span { font-size: clamp(3rem, 10vw, 9rem); font-weight: 600; line-height: 1; }
+  .next svg { width: clamp(36px, 7vw, 80px); height: auto; flex: none; transition: transform .3s; }
+  .next a:hover svg { transform: translate(6px, -6px); }
+
+  /* Card preview for the home grid */
+  .card-preview { display: grid; gap: 24px; }
+  @media (min-width: 860px) { .card-preview { grid-template-columns: 1fr 1fr; align-items: center; } }
+  .card { display: grid; gap: 12px; }
+  .card .thumb { aspect-ratio: 4 / 3; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 6px; padding: 6px; background: var(--surface); }
+  .card .thumb div { position: relative; }
+  .card .thumb div:first-child { grid-row: span 2; }
+  .card .row-meta { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; }
+  .card .row-meta span:last-child { color: var(--fg-dim); }
+  .card-preview p.copy { margin: 0; color: var(--fg-dim); font-weight: 300; max-width: 30rem; }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+  html { scroll-behavior: smooth; }
+</style>
+
+<div class="note wrap">
+  <p>Layout preview for project 04. Every dashed tag names the asset that goes in that slot. All text is draft copy for you to rewrite, and the mock artwork is only a stand-in for your real files.</p>
+</div>
+
+<header class="site-header wrap">
+  <strong>Ashwathy Nair</strong>
+  <nav aria-label="Main navigation"><span>Work</span><span>About</span><span>Contact</span></nav>
+</header>
+
+<main>
+  <section class="project-head wrap">
+    <a class="back" href="#top">← All work</a>
+    <div class="head-grid">
+      <div>
+        <p class="eyebrow lime">Event campaigns, collaterals · 2024–2026</p>
+        <h1 class="project-title">Hackathons</h1>
+      </div>
+      <p class="intro">Campaign kits for enterprise hackathons hosted on HackerEarth. Each brief was a new client brand, a new audience of developers, and a hard launch date.</p>
+    </div>
+    <div class="meta">
+      <div><p class="eyebrow">Clients</p><p>Booking Holdings, Airwallex, MENA Ignite</p></div>
+      <div><p class="eyebrow">Platform</p><p>HackerEarth</p></div>
+      <div><p class="eyebrow">Services</p><p>Campaign identity, microsite, social, emailers, print</p></div>
+      <div><p class="eyebrow">Role</p><p>Lead designer</p></div>
+    </div>
+  </section>
+
+  <div class="slot cover" aria-label="Cover placeholder">
+    <div class="contours" style="--c: var(--booking); --cx: 80%; --cy: 30%"><h3>Booking Holdings</h3></div>
+    <div class="contours" style="--c: var(--airwallex); --cx: 30%; --cy: 70%"><h3>Airwallex</h3></div>
+    <div class="contours" style="--c: var(--mena); --cx: 60%; --cy: 20%"><h3>MENA Ignite</h3></div>
+    <span class="slot-tag top"><b>Cover</b> · looping film or a 3-up collage of key visuals · 2:1 · MP4/WebM + poster</span>
+  </div>
+
+  <section class="section wrap">
+    <div class="split">
+      <p class="eyebrow">The brief</p>
+      <div class="brief">
+        <div>
+          <p class="eyebrow lime">Context</p>
+          <p>HackerEarth runs hackathons for companies that want to find developers, test new ideas, or build a community around their platform. Each event needs its own campaign, launched across the web, social, email and on the ground.</p>
+        </div>
+        <div>
+          <p class="eyebrow lime">Challenge</p>
+          <p>Every client arrives with its own brand guidelines and its own audience. The campaign has to feel like the client's event, still read as a HackerEarth hackathon, and be ready to ship in a few weeks.</p>
+        </div>
+        <div>
+          <p class="eyebrow lime">Solution</p>
+          <p>I built a repeatable hackathon kit: one key visual per event, then extended into a microsite, a social series, an email sequence and print for the venue. The structure stays the same from event to event, so each new client gets a campaign that looks bespoke and still ships on schedule.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="split">
+      <p class="eyebrow">What's in a kit</p>
+      <div class="kit">
+        <div><span class="mono">Web</span><h3>Microsite</h3><p>Event landing page with theme, prizes, timeline and registration.</p></div>
+        <div><span class="mono">Social</span><h3>Marketing kit</h3><p>Announcement, countdown, winner and partner posts in feed and story sizes.</p></div>
+        <div><span class="mono">Email</span><h3>Emailers</h3><p>Invite, reminder, submission-deadline and results mailers.</p></div>
+        <div><span class="mono">Print</span><h3>On-ground</h3><p>Standees, certificates and other venue pieces for offline finales.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="index wrap" aria-label="Hackathons">
+    <ul id="index"></ul>
+  </nav>
+
+  <div id="chapters"></div>
+
+  <section class="section wrap">
+    <div class="card-preview">
+      <div>
+        <p class="eyebrow lime">On the home page</p>
+        <h2 style="font-size: clamp(1.6rem, 3.6vw, 2.6rem); font-weight: 300; margin-top: 10px;">How the card could look in Selected work</h2>
+        <p class="copy" style="margin-top: 14px;">A split thumbnail shows that this project covers three clients. You could also use a single hero shot, such as a standee or phone mockup, to match the other cards.</p>
+      </div>
+      <div class="card">
+        <div class="thumb slot">
+          <div class="contours" style="--c: var(--booking)"></div>
+          <div class="contours" style="--c: var(--airwallex)"></div>
+          <div class="contours" style="--c: var(--mena)"></div>
+          <span class="slot-tag"><b>Thumbnail</b> · 4:3 · WebP</span>
+        </div>
+        <div class="row-meta"><span>Hackathons</span><span>Event campaigns · 2026</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="next wrap">
+    <p class="eyebrow">Next project</p>
+    <a href="#top">
+      <span>Echoes</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+    </a>
+  </footer>
+</main>
+
+<script>
+  // One entry per hackathon. Swap in real facts; this mirrors how projects.ts would hold it.
+  const hackathons = [
+    {
+      id: "booking-holdings", name: "Booking Holdings", accent: "var(--booking)",
+      theme: "A hackathon for developers building the next generation of travel tech.",
+      kicker: "Global hackathon · Travel tech",
+      headline: "Build what's next for travel.",
+      url: "hackerearth.com/challenges/hackathon/booking-holdings",
+      facts: [["Format", "Online + finale"], ["Region", "Global"], ["Year", "20XX"], ["Audience", "Developers, students"]],
+      kit: ["Microsite", "Social", "Emailers", "Certificate"],
+      posts: ["Registrations open", "3 days to go", "Meet the winners"],
+    },
+    {
+      id: "airwallex", name: "Airwallex", accent: "var(--airwallex)",
+      theme: "A fintech hackathon for building on global payments infrastructure.",
+      kicker: "Fintech hackathon · APIs",
+      headline: "Ship the future of global payments.",
+      url: "hackerearth.com/challenges/hackathon/airwallex",
+      facts: [["Format", "Online"], ["Region", "APAC"], ["Year", "20XX"], ["Audience", "Fintech developers"]],
+      kit: ["Microsite", "Social", "Emailers", "Standee", "Certificate"],
+      posts: ["The challenge is live", "Prize pool", "Submissions close soon"],
+    },
+    {
+      id: "mena-ignite", name: "MENA Ignite", accent: "var(--mena)",
+      theme: "A regional innovation hackathon for builders across the Middle East and North Africa.",
+      kicker: "Regional hackathon · MENA",
+      headline: "Ignite ideas built for the region.",
+      url: "hackerearth.com/challenges/hackathon/mena-ignite",
+      facts: [["Format", "Hybrid"], ["Region", "MENA"], ["Year", "20XX"], ["Audience", "Startups, developers"]],
+      kit: ["Microsite", "Social", "Emailers", "Standee", "Certificate"],
+      posts: ["Save the date", "Themes announced", "Finale day"],
+    },
+  ];
+
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  document.getElementById("index").innerHTML = hackathons.map((h) =>
+    `<li><a href="#${h.id}" style="--c:${h.accent}">${esc(h.name)}</a></li>`).join("");
+
+  document.getElementById("chapters").innerHTML = hackathons.map((h) => `
+    <section class="chapter wrap" id="${h.id}" style="--c:${h.accent}">
+      <div class="chapter-head">
+        <div>
+          <p class="eyebrow">Hackathon</p>
+          <h2 class="chapter-name">${esc(h.name)}<span>.</span></h2>
+          <p class="chapter-theme">${esc(h.theme)}</p>
+          <div class="chips">${h.kit.map((k) => `<span class="chip">${esc(k)}</span>`).join("")}</div>
+        </div>
+        <div class="facts">${h.facts.map(([k, v]) => `<div><p class="eyebrow">${esc(k)}</p><p>${esc(v)}</p></div>`).join("")}</div>
+      </div>
+
+      <div class="group-label"><h3>Microsite</h3><p>Landing page and registration</p></div>
+      <div class="slot browser">
+        <div class="browser-bar"><i></i><i></i><i></i><span class="url">${esc(h.url)}</span></div>
+        <div class="site contours">
+          <span class="kicker">${esc(h.kicker)}</span>
+          <h4>${esc(h.headline)}</h4>
+          <span class="cta">Register now</span>
+        </div>
+        <span class="slot-tag"><b>Website</b> · hero screenshot 16:8, or a scroll recording of the full page</span>
+      </div>
+
+      <div class="group-label"><h3>Marketing kit</h3><p>Social series</p></div>
+      <div class="slot">
+        <div class="posts">
+          ${h.posts.map((p, i) => `
+            <figure class="post${i === 1 ? " solid" : ""}" style="margin:0">
+              <div class="post-head"><span class="avatar">h</span><span>hackerearth<small>Sponsored</small></span></div>
+              <div class="post-art${i === 1 ? "" : " contours"}" style="--cx:${30 + i * 25}%">
+                ${i === 0 ? '<i class="stack" aria-label="Carousel"></i>' : ""}
+                <span>${esc(h.name)}</span><b>${esc(p)}</b>
+              </div>
+              <figcaption class="post-foot"><span>♡</span><span>💬</span><span>↗</span></figcaption>
+            </figure>`).join("")}
+        </div>
+        <span class="slot-tag"><b>Social</b> · 3 posts at 4:5 (first one can be a carousel)</span>
+      </div>
+
+      <div class="group-label"><h3>Emailers & print</h3><p>Inbox to venue</p></div>
+      <div class="row">
+        <div class="slot stage">
+          <div class="email">
+            <header><small>${esc(h.name)} × HackerEarth</small>You're invited to build.</header>
+            <div class="body"><div class="bar"></div><div class="bar"></div><div class="bar short"></div><div class="bar"></div><div class="bar short"></div><span class="btn">Register</span></div>
+          </div>
+          <span class="slot-tag"><b>Emailer</b> · full-length PNG</span>
+        </div>
+        <div class="slot stage">
+          ${h.kit.includes("Standee") ? `
+          <div class="standee">
+            <div class="panel contours"><span>${esc(h.name)}</span><b>${esc(h.headline)}</b></div>
+            <div class="foot"></div>
+          </div>
+          <span class="slot-tag"><b>Standee</b> · mockup render</span>` : `
+          <div class="email" style="width:min(200px,70%)">
+            <header><small>Reminder</small>48 hours left to submit.</header>
+            <div class="body"><div class="bar"></div><div class="bar short"></div><span class="btn">Submit</span></div>
+          </div>
+          <span class="slot-tag"><b>Emailer 2</b> · reminder or results</span>`}
+        </div>
+        <div class="slot stage wide">
+          <div class="cert">
+            <small>${esc(h.name)} Hackathon</small>
+            <div><b>Certificate of Achievement</b><div class="name" style="margin-top:8px">Participant name</div></div>
+            <div class="sig"><i>${esc(h.name)}</i><i>HackerEarth</i></div>
+          </div>
+          <span class="slot-tag"><b>Certificate</b> · flat artwork or a mockup on a desk</span>
+        </div>
+      </div>
+    </section>`).join("");
+
+  // Highlight the chapter in view in the client index.
+  try {
+    const links = [...document.querySelectorAll("#index a")];
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        links.forEach((a) => a.setAttribute("aria-current", a.getAttribute("href") === "#" + e.target.id ? "true" : "false"));
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    document.querySelectorAll(".chapter").forEach((c) => io.observe(c));
+  } catch (_) {}
+</script>

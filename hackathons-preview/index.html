@@ -291,6 +291,31 @@
   .li-bar span { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: #5e5e5e; padding: 6px 4px; }
   .li-bar svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
 
+  /* Social kit: one creative pair per platform */
+  .social-kit { background: var(--muted); padding: clamp(16px, 3vw, 36px); display: grid; gap: 14px; }
+  .social-kit .platform { margin: 10px 0 0; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--lime); }
+  .social-kit .platform:first-child { margin-top: 0; }
+  .pair { display: grid; gap: clamp(14px, 2.4vw, 28px); grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .story-pair { grid-template-columns: repeat(2, minmax(0, 260px)); justify-content: center; }
+  .li-pair { grid-template-columns: repeat(2, minmax(0, 420px)); justify-content: center; }
+  @media (max-width: 700px) {
+    .pair, .li-pair { grid-template-columns: 1fr; }
+    .story-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  }
+  .fbp { margin: 0; background: #fff; color: #1c1e21; border-radius: 10px; overflow: hidden; font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+  .fbp img { display: block; width: 100%; height: auto; }
+  .li img.free { aspect-ratio: auto; }
+  .story { margin: 0; position: relative; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.45); background: #000; }
+  .story > img { display: block; width: 100%; height: auto; }
+  .story { display: flex; flex-direction: column-reverse; }
+  .story-top { padding: 8px 10px 9px; display: grid; gap: 8px; background: #000; }
+  .story-prog { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+  .story-prog i { height: 2px; border-radius: 2px; background: rgba(255,255,255,.45); }
+  .story-prog i:first-child { background: #fff; }
+  .story-acct { display: flex; align-items: center; gap: 7px; color: #fff; font: 600 11.5px -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+  .story-acct small { font-weight: 400; opacity: .8; }
+  .story-acct .li-avatar { width: 24px; height: 24px; font-size: 12px; border-radius: 50%; background: #000; border: 1px solid rgba(255,255,255,.6); }
+
   /* Emailers: envelopes that open on hover, full email in a lightbox */
   .mailbox { display: grid; gap: clamp(20px, 3vw, 40px); grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--muted); padding: clamp(20px, 4vw, 48px); }
   @media (max-width: 760px) { .mailbox { grid-template-columns: 1fr; } .mail { max-width: 340px; margin-inline: auto; } }
@@ -335,7 +360,7 @@
 </style>
 
 <div class="note wrap">
-  <p>Layout preview for project 04. Booking Holdings is complete. Airwallex is complete with the client-supplied brand covers, your microsite and your emailers. Every dashed tag names the asset that goes in that slot. All text is draft copy for you to rewrite, and the mock artwork is only a stand-in for your real files.</p>
+  <p>Layout preview for project 04. Booking Holdings is complete. Airwallex is complete with the client-supplied brand covers, your microsite, social kit and emailers. Every dashed tag names the asset that goes in that slot. All text is draft copy for you to rewrite, and the mock artwork is only a stand-in for your real files.</p>
 </div>
 
 <header class="site-header wrap">
@@ -544,14 +569,14 @@
           <div>
             <p class="eyebrow">Airwallex</p>
             <h2 class="chapter-name">Agentic Banking Hackathon<span>.</span></h2>
-            <p class="chapter-theme">A global, online hackathon for building AI agents on Airwallex's banking APIs. Airwallex arrived with the ABH brand and design system already in place; I took it into the campaign with the microsite and the emailers.</p>
+            <p class="chapter-theme">A global, online hackathon for building AI agents on Airwallex's banking APIs. Airwallex arrived with the ABH brand and design system already in place; I took it into the campaign with the microsite, a social kit and the emailers.</p>
             <div class="chips">
-              <span class="chip given">Brand · by Airwallex</span><span class="chip done">Microsite</span><span class="chip done">Emailers</span>
+              <span class="chip given">Brand · by Airwallex</span><span class="chip done">Microsite</span><span class="chip done">Social</span><span class="chip done">Emailers</span>
             </div>
           </div>
           <div class="facts">
             <div><p class="eyebrow">Brand</p><p>Supplied by Airwallex</p></div>
-            <div><p class="eyebrow">My role</p><p>Microsite, emailers</p></div>
+            <div><p class="eyebrow">My role</p><p>Microsite, social, emailers</p></div>
             <div><p class="eyebrow">Format</p><p>Online and global, demo day in San Francisco</p></div>
             <div><p class="eyebrow">Dates</p><p>25 Oct – 19 Nov 2026</p></div>
             <div><p class="eyebrow">Prizes</p><p>$100K in prizes and API credits</p></div>
@@ -563,7 +588,7 @@
           <div><span class="real-badge">Draft copy, edit me</span></div>
           <div class="bk-brief">
             <div><p class="eyebrow lime">The brief</p><p>Airwallex came with an established brand for the hackathon. My job was to turn it into a campaign: a microsite and a set of emailers that feel fully Airwallex and still work as a HackerEarth event.</p></div>
-            <div><p class="eyebrow lime">What I made</p><p>I worked inside the ABH system, using its pixel logo, mono type and orange palette. The microsite lays out a lot of detail, from twelve track starter kits to the timeline, prizes, partners and FAQs, in a dark, grid-based layout that stays easy to scan.</p></div>
+            <div><p class="eyebrow lime">What I made</p><p>I worked inside the ABH system, using its pixel logo, mono type and orange palette. The microsite lays out a lot of detail, from twelve track starter kits to the timeline, prizes, partners and FAQs, in a dark, grid-based layout that stays easy to scan. The social kit pairs a dark and a light creative, each sized for Facebook, Instagram stories and LinkedIn.</p></div>
           </div>
         </div>
 
@@ -575,6 +600,51 @@
           </div>
         </div>
         <p class="scroll-hint">Scroll inside the frame to see the whole page.</p>
+
+        <div class="group-label"><h3>Social kit</h3><p>Two creatives, three platforms</p></div>
+        <div class="social-kit">
+          <p class="platform">Facebook</p>
+          <div class="pair fb-pair">
+            <figure class="fbp">
+              <div class="li-head"><span class="li-avatar" aria-hidden="true">h</span><span class="li-name"><b>HackerEarth</b><small>Sponsored</small></span></div>
+              <figcaption class="li-cap">LLMs can talk. Let&rsquo;s see them transact. Give agents something to bank on.</figcaption>
+              <img src="assets/airwallex/abh-fb-dark.webp" alt="Facebook ad on black: LLMs can talk. Let&rsquo;s see them transact." loading="lazy">
+              <div class="li-bar"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v10H4V10h3Zm2 10h8.2a2 2 0 0 0 2-1.6l1.2-6A2 2 0 0 0 18.4 10H14l.7-3.6A1.8 1.8 0 0 0 13 4.2L9 10v10Z"/></svg>Like</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"/></svg>Comment</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5l7 7-7 7v-4c-5 0-8 1.5-10 5 .5-5.5 3.5-9.5 10-10V5Z"/></svg>Share</span></div>
+            </figure>
+            <figure class="fbp">
+              <div class="li-head"><span class="li-avatar" aria-hidden="true">h</span><span class="li-name"><b>HackerEarth</b><small>Sponsored</small></span></div>
+              <figcaption class="li-cap">Your agent can write the code. Can it pay the invoice? Build agents that move real money on global banking APIs.</figcaption>
+              <img src="assets/airwallex/abh-fb-light.webp" alt="Facebook ad on white: Your agent can write the code. Can it pay the invoice?" loading="lazy">
+              <div class="li-bar"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v10H4V10h3Zm2 10h8.2a2 2 0 0 0 2-1.6l1.2-6A2 2 0 0 0 18.4 10H14l.7-3.6A1.8 1.8 0 0 0 13 4.2L9 10v10Z"/></svg>Like</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"/></svg>Comment</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5l7 7-7 7v-4c-5 0-8 1.5-10 5 .5-5.5 3.5-9.5 10-10V5Z"/></svg>Share</span></div>
+            </figure>
+          </div>
+          <p class="platform">Instagram stories</p>
+          <div class="pair story-pair">
+            <figure class="story">
+              <img src="assets/airwallex/abh-story-dark.webp" alt="Instagram story on black: LLMs can talk. Let&rsquo;s see them transact." loading="lazy">
+              <span class="story-top" aria-hidden="true"><span class="story-prog"><i></i><i></i></span><span class="story-acct"><span class="li-avatar">h</span>hackerearth <small>Sponsored</small></span></span>
+            </figure>
+            <figure class="story">
+              <img src="assets/airwallex/abh-story-light.webp" alt="Instagram story on white: Your agent can write the code. Can it pay the invoice?" loading="lazy">
+              <span class="story-top" aria-hidden="true"><span class="story-prog"><i></i><i></i></span><span class="story-acct"><span class="li-avatar">h</span>hackerearth <small>Sponsored</small></span></span>
+            </figure>
+          </div>
+          <p class="platform">LinkedIn</p>
+          <div class="pair li-pair">
+            <figure class="li">
+              <div class="li-head"><span class="li-avatar" aria-hidden="true">h</span><span class="li-name"><b>HackerEarth</b><small>Promoted</small></span><span class="li-follow">+ Follow</span></div>
+              <figcaption class="li-cap">LLMs can talk. Let&rsquo;s see them transact. Give agents something to bank on. <span class="more">…more</span></figcaption>
+              <img class="free" src="assets/airwallex/abh-linkedin-dark.webp" alt="LinkedIn post on black: LLMs can talk. Let&rsquo;s see them transact." loading="lazy">
+              <div class="li-bar"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v10H4V10h3Zm2 10h8.2a2 2 0 0 0 2-1.6l1.2-6A2 2 0 0 0 18.4 10H14l.7-3.6A1.8 1.8 0 0 0 13 4.2L9 10v10Z"/></svg>Like</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"/></svg>Comment</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h11l-3-3M17 17H6l3 3M18 7v5M6 17v-5"/></svg>Repost</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 3 10l7 3 3 7 8-17ZM10 13l5-5"/></svg>Send</span></div>
+            </figure>
+            <figure class="li">
+              <div class="li-head"><span class="li-avatar" aria-hidden="true">h</span><span class="li-name"><b>HackerEarth</b><small>Promoted</small></span><span class="li-follow">+ Follow</span></div>
+              <figcaption class="li-cap">Your agent can write the code. Can it pay the invoice? Build agents that move real money on global banking APIs. <span class="more">…more</span></figcaption>
+              <img class="free" src="assets/airwallex/abh-linkedin-light.webp" alt="LinkedIn post on white: Your agent can write the code. Can it pay the invoice?" loading="lazy">
+              <div class="li-bar"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v10H4V10h3Zm2 10h8.2a2 2 0 0 0 2-1.6l1.2-6A2 2 0 0 0 18.4 10H14l.7-3.6A1.8 1.8 0 0 0 13 4.2L9 10v10Z"/></svg>Like</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"/></svg>Comment</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h11l-3-3M17 17H6l3 3M18 7v5M6 17v-5"/></svg>Repost</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 3 10l7 3 3 7 8-17ZM10 13l5-5"/></svg>Send</span></div>
+            </figure>
+          </div>
+        </div>
 
         <div class="group-label"><h3>Emailers</h3><p>Hover an envelope to open it, click to read the whole email</p></div>
         <div class="mailbox">

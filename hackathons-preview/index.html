@@ -292,8 +292,13 @@
   .li-bar svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
 
   /* Social kit: plain images with a small platform label */
-  .social-plain { display: grid; grid-template-columns: 1.55fr .62fr 1fr; gap: clamp(14px, 2.4vw, 28px); align-items: start; }
-  @media (max-width: 860px) { .social-plain { grid-template-columns: 1fr; } .plain-post { max-width: 420px; width: 100%; margin-inline: auto; } .plain-post:nth-child(2) { max-width: 300px; } }
+  .social-plain { background: var(--muted); padding: clamp(24px, 6vw, 72px) clamp(16px, 5vw, 64px); }
+  .social-plain > .sp-row { max-width: 1000px; margin-inline: auto; }
+  .social-plain > .sp-row + .sp-row { margin-top: clamp(40px, 6vw, 72px); }
+  .sp-row { display: grid; gap: clamp(20px, 4vw, 40px); align-items: start; }
+  /* Story (810×1467) and LinkedIn (1:1) columns sized so both images share one height */
+  .sp-pair { grid-template-columns: 0.552fr 1fr; }
+  @media (max-width: 600px) { .sp-pair { grid-template-columns: 1fr; } .sp-pair .plain-post:first-child { max-width: 300px; width: 100%; margin-inline: auto; } }
   .plain-post { margin: 0; display: grid; gap: 10px; min-width: 0; }
   .plain-post img { display: block; width: 100%; height: auto; max-width: 100%; }
   .plain-post figcaption { font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: .06em; }
@@ -584,9 +589,13 @@
 
         <div class="group-label"><h3>Social kit</h3><p>One creative, three platforms</p></div>
         <div class="social-plain">
+          <div class="sp-row sp-wide">
           <figure class="plain-post"><img src="assets/airwallex/abh-fb-dark.webp" alt="Facebook ad: LLMs can talk. Let&rsquo;s see them transact." loading="lazy"><figcaption>Facebook</figcaption></figure>
+          </div>
+          <div class="sp-row sp-pair">
           <figure class="plain-post"><img src="assets/airwallex/abh-story-dark.webp" alt="Instagram story: LLMs can talk. Let&rsquo;s see them transact." loading="lazy"><figcaption>Instagram story</figcaption></figure>
           <figure class="plain-post"><img src="assets/airwallex/abh-linkedin-dark.webp" alt="LinkedIn post: LLMs can talk. Let&rsquo;s see them transact." loading="lazy"><figcaption>LinkedIn</figcaption></figure>
+          </div>
         </div>
 
         <div class="group-label"><h3>Emailers</h3><p>Hover an envelope to open it, click to read the whole email</p></div>

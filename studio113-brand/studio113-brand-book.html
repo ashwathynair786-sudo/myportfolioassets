@@ -199,20 +199,20 @@ h2, h3 { text-wrap: balance; }
 .shots3 .shot { aspect-ratio: 2 / 3; }
 @media (min-width: 860px) { .shots3 { gap: 16px; } }
 .mocks { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-areas: "bag inv" "post post" "tab tab" "look look" "pack pack" "stat stat"; }
+  grid-template-areas: "bag inv" "post post" "tab tab" "look look" "pack pack" "card card" "stat stat"; }
 .mocks .shot { aspect-ratio: 3 / 2; }
 .mocks .m-bag, .mocks .m-inv { aspect-ratio: 3 / 4; }
+.mocks .m-card { aspect-ratio: 4 / 5; }
 .m-bag { grid-area: bag; } .m-inv { grid-area: inv; } .m-post { grid-area: post; } .m-tab { grid-area: tab; }
-.m-look { grid-area: look; } .m-pack { grid-area: pack; } .m-stat { grid-area: stat; }
+.m-look { grid-area: look; } .m-pack { grid-area: pack; } .m-stat { grid-area: stat; } .m-card { grid-area: card; }
 @media (min-width: 860px) {
   .mocks { gap: 16px; grid-template-columns: repeat(12, minmax(0, 1fr));
     grid-template-areas:
       "bag bag bag bag inv inv inv inv post post post post"
       "bag bag bag bag inv inv inv inv tab tab tab tab"
       "look look look look look look pack pack pack pack pack pack"
-      "stat stat stat stat stat stat stat stat stat stat stat stat"; }
-  .mocks .m-bag, .mocks .m-inv { aspect-ratio: auto; }
-  .mocks .m-stat { aspect-ratio: 16 / 9; }
+      "card card card card stat stat stat stat stat stat stat stat"; }
+  .mocks .m-bag, .mocks .m-inv, .mocks .m-card { aspect-ratio: auto; }
 }
 
 /* 10 · social */
@@ -444,6 +444,7 @@ footer.end img.w { width: min(70%, 520px); }
       <figure class="shot m-tab"><img src="book/mockup-tablet.webp" alt="Studio 113 website on a tablet" loading="lazy"></figure>
       <figure class="shot m-look"><img src="book/mockup-lookbook.webp" alt="Studio 113 lookbook spread on teal" loading="lazy"></figure>
       <figure class="shot m-pack"><img src="book/mockup-packaging.webp" alt="Studio 113 gradient packaging sealed with the stamp" loading="lazy"></figure>
+      <figure class="shot m-card"><img src="book/mockup-cards.webp" alt="Stack of green Studio 113 business cards with a blind-embossed wordmark and the stamp, on maroon" loading="lazy"></figure>
       <figure class="shot m-stat"><img src="book/mockup-stationery.webp" alt="Studio 113 letterhead with a blind-embossed wordmark beside an olive envelope sealed with the stamp" loading="lazy"></figure>
     </div>
   </section>

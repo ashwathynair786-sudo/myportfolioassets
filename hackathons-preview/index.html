@@ -273,8 +273,6 @@
   .abh-covers img { display: block; width: 100%; height: auto; max-width: 100%; aspect-ratio: 16 / 9; border: 1px solid rgba(255,255,255,.12); }
   .abh-credit { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,.7); margin: 0; padding-block: 14px 18px; text-transform: uppercase; letter-spacing: .06em; }
   .chip.given { border-style: solid; border-color: var(--line); color: var(--fg-dim); }
-  .abh-mail-slot { padding: clamp(32px, 6vw, 64px) clamp(20px, 4vw, 48px) 64px; }
-  .abh-mail-slot p { margin: 0; max-width: 40ch; color: var(--fg-dim); font-weight: 300; }
 
   /* LinkedIn post frames */
   .li-posts { display: grid; gap: clamp(16px, 2.4vw, 28px); grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--muted); padding: clamp(16px, 3vw, 36px); align-items: start; }
@@ -315,6 +313,11 @@
   .mail-meta .read { font-size: 12px; color: var(--fg); opacity: .7; transition: opacity .2s; }
   .mail:hover .read, .mail:focus-visible .read { opacity: 1; color: var(--lime); }
 
+  .abh .env-back { background: #1a1a1a; }
+  .abh .env-front { background: #050505; }
+  .abh .env-front img { width: 46%; opacity: 1; }
+  .abh .flap { background: #fb5920; }
+
   .lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(6, 6, 9, .92); backdrop-filter: blur(6px); display: flex; flex-direction: column;
     padding: max(12px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
   .lightbox[hidden] { display: none !important; }
@@ -332,7 +335,7 @@
 </style>
 
 <div class="note wrap">
-  <p>Layout preview for project 04. Booking Holdings is complete. Airwallex has its client-supplied brand covers and your microsite; the emailers are next. Every dashed tag names the asset that goes in that slot. All text is draft copy for you to rewrite, and the mock artwork is only a stand-in for your real files.</p>
+  <p>Layout preview for project 04. Booking Holdings is complete. Airwallex is complete with the client-supplied brand covers, your microsite and your emailers. Every dashed tag names the asset that goes in that slot. All text is draft copy for you to rewrite, and the mock artwork is only a stand-in for your real files.</p>
 </div>
 
 <header class="site-header wrap">
@@ -543,7 +546,7 @@
             <h2 class="chapter-name">Agentic Banking Hackathon<span>.</span></h2>
             <p class="chapter-theme">A global, online hackathon for building AI agents on Airwallex's banking APIs. Airwallex arrived with the ABH brand and design system already in place; I took it into the campaign with the microsite and the emailers.</p>
             <div class="chips">
-              <span class="chip given">Brand · by Airwallex</span><span class="chip done">Microsite</span><span class="chip todo">Emailers</span>
+              <span class="chip given">Brand · by Airwallex</span><span class="chip done">Microsite</span><span class="chip done">Emailers</span>
             </div>
           </div>
           <div class="facts">
@@ -573,12 +576,52 @@
         </div>
         <p class="scroll-hint">Scroll inside the frame to see the whole page.</p>
 
-        <div class="group-label"><h3>Emailers</h3><p>Coming next</p></div>
-        <div class="slot abh-mail-slot">
-          <p>Send the emailer HTML files and they'll open from envelopes here, like the Booking ones.</p>
-          <span class="slot-tag"><b>Emailers</b> · HTML files</span>
+        <div class="group-label"><h3>Emailers</h3><p>Hover an envelope to open it, click to read the whole email</p></div>
+        <div class="mailbox">
+            <button type="button" class="mail" data-i="0" aria-label="Read emailer: Give agents something to bank on.">
+              <span class="env" aria-hidden="true">
+                <span class="env-back"></span>
+                <span class="letter"><img src="assets/airwallex/abh-email-1.webp" alt="" loading="lazy"></span>
+                <span class="env-front"><img src="assets/airwallex/abh-logo-white.webp" alt=""></span>
+                <span class="flap"></span>
+              </span>
+              <span class="mail-meta">
+                <span class="to">Launch email</span>
+                <b>Give agents something to bank on.</b>
+                <span class="pre">Three weeks. $100K in prizes &amp; API credits. Build the agents that run real money, on Airwallex.</span>
+                <span class="read">Read the full email →</span>
+              </span>
+            </button>
+            <button type="button" class="mail" data-i="1" aria-label="Read emailer: This month, don&rsquo;t just earn your salary.">
+              <span class="env" aria-hidden="true">
+                <span class="env-back"></span>
+                <span class="letter"><img src="assets/airwallex/abh-email-builders.webp" alt="" loading="lazy"></span>
+                <span class="env-front"><img src="assets/airwallex/abh-logo-white.webp" alt=""></span>
+                <span class="flap"></span>
+              </span>
+              <span class="mail-meta">
+                <span class="to">To working builders</span>
+                <b>This month, don&rsquo;t just earn your salary.</b>
+                <span class="pre">$100K in prizes &amp; API credits, plus a shot at Demo Day in San Francisco. Applications close October 23.</span>
+                <span class="read">Read the full email →</span>
+              </span>
+            </button>
+            <button type="button" class="mail" data-i="2" aria-label="Read emailer: LLMs can talk. Let&rsquo;s see them transact.">
+              <span class="env" aria-hidden="true">
+                <span class="env-back"></span>
+                <span class="letter"><img src="assets/airwallex/abh-email-6.webp" alt="" loading="lazy"></span>
+                <span class="env-front"><img src="assets/airwallex/abh-logo-white.webp" alt=""></span>
+                <span class="flap"></span>
+              </span>
+              <span class="mail-meta">
+                <span class="to">Launch email · alternate header</span>
+                <b>LLMs can talk. Let&rsquo;s see them transact.</b>
+                <span class="pre">The same launch message under a second header design.</span>
+                <span class="read">Read the full email →</span>
+              </span>
+            </button>
         </div>
-      </div>
+            </div>
     </section>
     <div id="chapters-rest"></div>
   </div>
@@ -717,14 +760,14 @@
 
   // Emailers: hover opens the envelope (CSS); click or Enter opens the full email.
   const emails = [...document.querySelectorAll(".mail")].map((b) => ({
-    btn: b, src: b.querySelector(".letter img").getAttribute("src"),
+    btn: b, box: b.closest(".mailbox"), src: b.querySelector(".letter img").getAttribute("src"),
     to: b.querySelector(".to").textContent, subject: b.querySelector("b").textContent,
   }));
   const lb = document.getElementById("lightbox");
-  let current = 0, lastFocus = null;
+  let group = emails, current = 0, lastFocus = null;
   function showEmail(i) {
-    current = (i + emails.length) % emails.length;
-    const e = emails[current];
+    current = (i + group.length) % group.length;
+    const e = group[current];
     document.getElementById("lb-img").src = e.src;
     document.getElementById("lb-img").alt = "Full emailer: " + e.subject;
     document.getElementById("lb-to").textContent = e.to;
@@ -740,7 +783,10 @@
     emails.forEach((e) => e.btn.classList.remove("open"));
     if (lastFocus) lastFocus.focus();
   }
-  emails.forEach((e, i) => e.btn.addEventListener("click", () => { e.btn.classList.add("open"); openEmail(i); }));
+  emails.forEach((e) => e.btn.addEventListener("click", () => {
+    group = emails.filter((x) => x.box === e.box);
+    e.btn.classList.add("open"); openEmail(group.indexOf(e));
+  }));
   document.getElementById("lb-close").addEventListener("click", closeEmail);
   document.getElementById("lb-prev").addEventListener("click", () => showEmail(current - 1));
   document.getElementById("lb-next").addEventListener("click", () => showEmail(current + 1));

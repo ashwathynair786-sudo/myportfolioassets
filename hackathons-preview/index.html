@@ -293,25 +293,6 @@
   .li-bar span { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: #5e5e5e; padding: 6px 4px; }
   .li-bar svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
 
-  /* Social kit: plain images with a small platform label */
-  .social-plain { background: var(--muted); padding: clamp(24px, 6vw, 72px) clamp(16px, 5vw, 64px); }
-  .social-plain > .sp-row { max-width: 1000px; margin-inline: auto; }
-  .social-plain > .sp-row + .sp-row { margin-top: clamp(40px, 6vw, 72px); }
-  .sp-row { display: grid; gap: clamp(20px, 4vw, 40px); align-items: start; }
-  /* Story (810×1467) and LinkedIn (1:1) columns sized so both images share one height */
-  .sp-pair { grid-template-columns: 0.552fr 1fr; }
-  @media (max-width: 600px) { .sp-pair { grid-template-columns: 1fr; } .sp-pair .plain-post:first-child { max-width: 300px; width: 100%; margin-inline: auto; } }
-  .plain-post { margin: 0; display: grid; gap: 10px; min-width: 0; }
-  .plain-post img { display: block; width: 100%; height: auto; max-width: 100%; }
-  .plain-post figcaption { font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: .06em; }
-  /* More hackathons: loose gallery of mixed-size posts */
-  .more-grid { background: var(--muted); padding: clamp(20px, 5vw, 56px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 3vw, 32px); align-items: start; }
-  .more-col { display: grid; gap: clamp(20px, 3vw, 36px); min-width: 0; }
-  @media (max-width: 760px) { .more-grid { grid-template-columns: 1fr; } .more-col { max-width: 420px; width: 100%; margin-inline: auto; } }
-  .more-post { margin: 0; display: grid; gap: 10px; }
-  .more-post img { display: block; width: 100%; height: auto; max-width: 100%; }
-  .more-post figcaption { font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: .06em; }
-
   /* Emailers: envelopes that open on hover, full email in a lightbox */
   .mailbox { display: grid; gap: clamp(20px, 3vw, 40px); grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--muted); padding: clamp(20px, 4vw, 48px); }
   @media (max-width: 760px) { .mailbox { grid-template-columns: 1fr; } .mail { max-width: 340px; margin-inline: auto; } }
@@ -526,14 +507,14 @@
           <div>
             <p class="eyebrow">Airwallex</p>
             <h2 class="chapter-name">Agentic Banking Hackathon<span>.</span></h2>
-            <p class="chapter-theme">A global, online hackathon for building AI agents on Airwallex's banking APIs. Airwallex arrived with the ABH brand and design system already in place; I took it into the campaign with the microsite, a social kit and the emailers.</p>
+            <p class="chapter-theme">A global, online hackathon for building AI agents on Airwallex's banking APIs. Airwallex arrived with the ABH brand and design system already in place; I took it into the campaign with the microsite and the emailers.</p>
             <div class="chips">
-              <span class="chip given">Brand · by Airwallex</span><span class="chip done">Microsite</span><span class="chip done">Social</span><span class="chip done">Emailers</span>
+              <span class="chip given">Brand · by Airwallex</span><span class="chip done">Microsite</span><span class="chip done">Emailers</span>
             </div>
           </div>
           <div class="facts">
             <div><p class="eyebrow">Brand</p><p>Supplied by Airwallex</p></div>
-            <div><p class="eyebrow">My role</p><p>Microsite, social, emailers</p></div>
+            <div><p class="eyebrow">My role</p><p>Microsite, emailers</p></div>
             <div><p class="eyebrow">Format</p><p>Online and global, demo day in San Francisco</p></div>
             <div><p class="eyebrow">Dates</p><p>25 Oct – 19 Nov 2026</p></div>
             <div><p class="eyebrow">Prizes</p><p>$100K in prizes and API credits</p></div>
@@ -545,7 +526,7 @@
           <div><span class="real-badge">Draft copy, edit me</span></div>
           <div class="bk-brief">
             <div><p class="eyebrow lime">The brief</p><p>Airwallex came with an established brand for the hackathon. My job was to turn it into a campaign: a microsite and a set of emailers that feel fully Airwallex and still work as a HackerEarth event.</p></div>
-            <div><p class="eyebrow lime">What I made</p><p>I worked inside the ABH system, using its pixel logo, mono type and orange palette. The microsite lays out a lot of detail, from twelve track starter kits to the timeline, prizes, partners and FAQs, in a dark, grid-based layout that stays easy to scan. The social kit takes one creative across Facebook, Instagram stories and LinkedIn.</p></div>
+            <div><p class="eyebrow lime">What I made</p><p>I worked inside the ABH system, using its pixel logo, mono type and orange palette. The microsite lays out a lot of detail, from twelve track starter kits to the timeline, prizes, partners and FAQs, in a dark, grid-based layout that stays easy to scan.</p></div>
           </div>
         </div>
 
@@ -557,17 +538,6 @@
           </div>
         </div>
         <p class="scroll-hint">Scroll inside the frame to see the whole page.</p>
-
-        <div class="group-label"><h3>Social kit</h3><p>One creative, three platforms</p></div>
-        <div class="social-plain">
-          <div class="sp-row sp-wide">
-          <figure class="plain-post"><img src="assets/airwallex/abh-fb-dark.webp" alt="Facebook ad: LLMs can talk. Let&rsquo;s see them transact." loading="lazy"><figcaption>Facebook</figcaption></figure>
-          </div>
-          <div class="sp-row sp-pair">
-          <figure class="plain-post"><img src="assets/airwallex/abh-story-dark.webp" alt="Instagram story: LLMs can talk. Let&rsquo;s see them transact." loading="lazy"><figcaption>Instagram story</figcaption></figure>
-          <figure class="plain-post"><img src="assets/airwallex/abh-linkedin-dark.webp" alt="LinkedIn post: LLMs can talk. Let&rsquo;s see them transact." loading="lazy"><figcaption>LinkedIn</figcaption></figure>
-          </div>
-        </div>
 
         <div class="group-label"><h3>Emailers</h3><p>Hover an envelope to open it, click to read the whole email</p></div>
         <div class="mailbox">

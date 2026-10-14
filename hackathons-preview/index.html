@@ -295,6 +295,10 @@
   .social-kit { background: var(--muted); padding: clamp(16px, 3vw, 36px); display: grid; gap: 14px; }
   .social-kit .platform { margin: 10px 0 0; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--lime); }
   .social-kit .platform:first-child { margin-top: 0; }
+  .social-kit.one-set { grid-template-columns: 1.55fr .62fr 1fr; align-items: start; gap: clamp(14px, 2.4vw, 28px); }
+  .slot-col { display: grid; gap: 12px; min-width: 0; }
+  .slot-col .platform { margin: 0; }
+  @media (max-width: 860px) { .social-kit.one-set { grid-template-columns: 1fr; } .slot-col { max-width: 420px; width: 100%; margin-inline: auto; } .story-col { max-width: 300px; } }
   .pair { display: grid; gap: clamp(14px, 2.4vw, 28px); grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
   .story-pair { grid-template-columns: repeat(2, minmax(0, 260px)); justify-content: center; }
   .li-pair { grid-template-columns: repeat(2, minmax(0, 420px)); justify-content: center; }
@@ -588,7 +592,7 @@
           <div><span class="real-badge">Draft copy, edit me</span></div>
           <div class="bk-brief">
             <div><p class="eyebrow lime">The brief</p><p>Airwallex came with an established brand for the hackathon. My job was to turn it into a campaign: a microsite and a set of emailers that feel fully Airwallex and still work as a HackerEarth event.</p></div>
-            <div><p class="eyebrow lime">What I made</p><p>I worked inside the ABH system, using its pixel logo, mono type and orange palette. The microsite lays out a lot of detail, from twelve track starter kits to the timeline, prizes, partners and FAQs, in a dark, grid-based layout that stays easy to scan. The social kit pairs a dark and a light creative, each sized for Facebook, Instagram stories and LinkedIn.</p></div>
+            <div><p class="eyebrow lime">What I made</p><p>I worked inside the ABH system, using its pixel logo, mono type and orange palette. The microsite lays out a lot of detail, from twelve track starter kits to the timeline, prizes, partners and FAQs, in a dark, grid-based layout that stays easy to scan. The social kit takes one creative across Facebook, Instagram stories and LinkedIn.</p></div>
           </div>
         </div>
 
@@ -601,46 +605,27 @@
         </div>
         <p class="scroll-hint">Scroll inside the frame to see the whole page.</p>
 
-        <div class="group-label"><h3>Social kit</h3><p>Two creatives, three platforms</p></div>
-        <div class="social-kit">
-          <p class="platform">Facebook</p>
-          <div class="pair fb-pair">
+        <div class="group-label"><h3>Social kit</h3><p>One creative, three platforms</p></div>
+        <div class="social-kit one-set">
+          <div class="slot-col fb-col"><p class="platform">Facebook</p>
             <figure class="fbp">
               <div class="li-head"><span class="li-avatar" aria-hidden="true">h</span><span class="li-name"><b>HackerEarth</b><small>Sponsored</small></span></div>
               <figcaption class="li-cap">LLMs can talk. Let&rsquo;s see them transact. Give agents something to bank on.</figcaption>
               <img src="assets/airwallex/abh-fb-dark.webp" alt="Facebook ad on black: LLMs can talk. Let&rsquo;s see them transact." loading="lazy">
               <div class="li-bar"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v10H4V10h3Zm2 10h8.2a2 2 0 0 0 2-1.6l1.2-6A2 2 0 0 0 18.4 10H14l.7-3.6A1.8 1.8 0 0 0 13 4.2L9 10v10Z"/></svg>Like</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"/></svg>Comment</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5l7 7-7 7v-4c-5 0-8 1.5-10 5 .5-5.5 3.5-9.5 10-10V5Z"/></svg>Share</span></div>
             </figure>
-            <figure class="fbp">
-              <div class="li-head"><span class="li-avatar" aria-hidden="true">h</span><span class="li-name"><b>HackerEarth</b><small>Sponsored</small></span></div>
-              <figcaption class="li-cap">Your agent can write the code. Can it pay the invoice? Build agents that move real money on global banking APIs.</figcaption>
-              <img src="assets/airwallex/abh-fb-light.webp" alt="Facebook ad on white: Your agent can write the code. Can it pay the invoice?" loading="lazy">
-              <div class="li-bar"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v10H4V10h3Zm2 10h8.2a2 2 0 0 0 2-1.6l1.2-6A2 2 0 0 0 18.4 10H14l.7-3.6A1.8 1.8 0 0 0 13 4.2L9 10v10Z"/></svg>Like</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"/></svg>Comment</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5l7 7-7 7v-4c-5 0-8 1.5-10 5 .5-5.5 3.5-9.5 10-10V5Z"/></svg>Share</span></div>
-            </figure>
           </div>
-          <p class="platform">Instagram stories</p>
-          <div class="pair story-pair">
+          <div class="slot-col story-col"><p class="platform">Instagram story</p>
             <figure class="story">
               <img src="assets/airwallex/abh-story-dark.webp" alt="Instagram story on black: LLMs can talk. Let&rsquo;s see them transact." loading="lazy">
               <span class="story-top" aria-hidden="true"><span class="story-prog"><i></i><i></i></span><span class="story-acct"><span class="li-avatar">h</span>hackerearth <small>Sponsored</small></span></span>
             </figure>
-            <figure class="story">
-              <img src="assets/airwallex/abh-story-light.webp" alt="Instagram story on white: Your agent can write the code. Can it pay the invoice?" loading="lazy">
-              <span class="story-top" aria-hidden="true"><span class="story-prog"><i></i><i></i></span><span class="story-acct"><span class="li-avatar">h</span>hackerearth <small>Sponsored</small></span></span>
-            </figure>
           </div>
-          <p class="platform">LinkedIn</p>
-          <div class="pair li-pair">
+          <div class="slot-col li-col"><p class="platform">LinkedIn</p>
             <figure class="li">
               <div class="li-head"><span class="li-avatar" aria-hidden="true">h</span><span class="li-name"><b>HackerEarth</b><small>Promoted</small></span><span class="li-follow">+ Follow</span></div>
               <figcaption class="li-cap">LLMs can talk. Let&rsquo;s see them transact. Give agents something to bank on. <span class="more">…more</span></figcaption>
               <img class="free" src="assets/airwallex/abh-linkedin-dark.webp" alt="LinkedIn post on black: LLMs can talk. Let&rsquo;s see them transact." loading="lazy">
-              <div class="li-bar"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v10H4V10h3Zm2 10h8.2a2 2 0 0 0 2-1.6l1.2-6A2 2 0 0 0 18.4 10H14l.7-3.6A1.8 1.8 0 0 0 13 4.2L9 10v10Z"/></svg>Like</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"/></svg>Comment</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h11l-3-3M17 17H6l3 3M18 7v5M6 17v-5"/></svg>Repost</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 3 10l7 3 3 7 8-17ZM10 13l5-5"/></svg>Send</span></div>
-            </figure>
-            <figure class="li">
-              <div class="li-head"><span class="li-avatar" aria-hidden="true">h</span><span class="li-name"><b>HackerEarth</b><small>Promoted</small></span><span class="li-follow">+ Follow</span></div>
-              <figcaption class="li-cap">Your agent can write the code. Can it pay the invoice? Build agents that move real money on global banking APIs. <span class="more">…more</span></figcaption>
-              <img class="free" src="assets/airwallex/abh-linkedin-light.webp" alt="LinkedIn post on white: Your agent can write the code. Can it pay the invoice?" loading="lazy">
               <div class="li-bar"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v10H4V10h3Zm2 10h8.2a2 2 0 0 0 2-1.6l1.2-6A2 2 0 0 0 18.4 10H14l.7-3.6A1.8 1.8 0 0 0 13 4.2L9 10v10Z"/></svg>Like</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"/></svg>Comment</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h11l-3-3M17 17H6l3 3M18 7v5M6 17v-5"/></svg>Repost</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 3 10l7 3 3 7 8-17ZM10 13l5-5"/></svg>Send</span></div>
             </figure>
           </div>

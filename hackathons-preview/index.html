@@ -259,24 +259,27 @@
   .browser-bar a.live:hover { text-decoration: underline; }
   .scroll-hint { font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); margin: 10px 0 0; }
   /* Booking-styled mocks for pieces not supplied yet */
-  .bk .post-art.bk-art { background: var(--bk-blue); color: #fff; padding: 0; justify-content: flex-start; }
-  .bk .post-art.bk-art img { width: 100%; height: 56%; object-fit: cover; display: block; }
-  .bk .post-art.bk-art .txt { padding: 14px; display: grid; gap: 6px; }
-  .bk .post-art.bk-art b { font-family: "Archivo", var(--font-display); font-weight: 800; letter-spacing: -.03em; font-size: clamp(1.2rem, 2.4vw, 1.75rem); line-height: .95; }
-  .bk .post-art.bk-art span { color: #acd1eb; }
-  .bk .post-art.bk-art.cream { background: var(--bk-cream); color: var(--bk-ink); justify-content: flex-end; padding: 16px; }
-  .bk .post-art.bk-art.cream span { color: var(--bk-blue); }
-  .bk .post-art.bk-art.navy { background: var(--bk-navy); justify-content: flex-end; padding: 16px; }
-  .bk .email header { background: var(--bk-blue); color: #fff; font-family: "Archivo", var(--font-display); font-weight: 800; letter-spacing: -.02em; }
-  .bk .email .hero { width: 100%; display: block; }
-  .bk .email .btn { background: var(--bk-bright); }
-  .bk .cert::before { border-color: var(--bk-blue); }
-  .bk .cert b { font-family: "Archivo", var(--font-display); font-weight: 800; letter-spacing: -.02em; }
-  .bk .cert .logo { width: 42%; background: var(--bk-blue); padding: 6px 8px; }
 
   .tile.wide { grid-column: 1 / -1; aspect-ratio: 21 / 8; }
   .tile.wide img { width: min(440px, 70%); }
   @media (max-width: 600px) { .tile.wide { aspect-ratio: 4 / 3; } }
+
+  /* LinkedIn post frames */
+  .li-posts { display: grid; gap: clamp(16px, 2.4vw, 28px); grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--muted); padding: clamp(16px, 3vw, 36px); align-items: start; }
+  @media (max-width: 760px) { .li-posts { grid-template-columns: 1fr; } .li { max-width: 380px; width: 100%; margin-inline: auto; } }
+  .li { margin: 0; background: #fff; color: #1d1d1d; border-radius: 10px; overflow: hidden; font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+  .li-head { display: flex; align-items: center; gap: 9px; padding: 12px 14px 8px; }
+  .li-avatar { width: 38px; height: 38px; flex: none; border-radius: 6px; background: #000; color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 17px; }
+  .li-name { display: grid; line-height: 1.25; min-width: 0; }
+  .li-name b { font-size: 13.5px; font-weight: 600; }
+  .li-name small { font-size: 11.5px; color: #666; }
+  .li-follow { margin-left: auto; color: #0a66c2; font-size: 13px; font-weight: 600; white-space: nowrap; }
+  .li-cap { font-size: 13px; line-height: 1.45; padding: 0; margin: 0 14px 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .li-cap .more { color: #666; }
+  .li img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; }
+  .li-bar { display: flex; justify-content: space-around; gap: 4px; padding: 6px 6px 8px; border-top: 1px solid #e8e8e8; margin-inline: 10px; }
+  .li-bar span { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: #5e5e5e; padding: 6px 4px; }
+  .li-bar svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
 
   /* Emailers: envelopes that open on hover, full email in a lightbox */
   .mailbox { display: grid; gap: clamp(20px, 3vw, 40px); grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--muted); padding: clamp(20px, 4vw, 48px); }
@@ -317,7 +320,7 @@
 </style>
 
 <div class="note wrap">
-  <p>Layout preview for project 04. Booking Holdings now uses your real website, illustration, logo and emailers; the social posts are still stand-ins. Every dashed tag names the asset that goes in that slot. All text is draft copy for you to rewrite, and the mock artwork is only a stand-in for your real files.</p>
+  <p>Layout preview for project 04. Booking Holdings is complete with your real website, illustration, logo, LinkedIn posts and emailers. Every dashed tag names the asset that goes in that slot. All text is draft copy for you to rewrite, and the mock artwork is only a stand-in for your real files.</p>
 </div>
 
 <header class="site-header wrap">
@@ -404,7 +407,7 @@
             <h2 class="chapter-name">HackCellence 2026<span>.</span></h2>
             <p class="chapter-theme">The Embark Edition: a hiring hackathon for Embark, the six-month tech internship at the Booking Holdings India Center of Excellence in Bangalore.</p>
             <div class="chips">
-              <span class="chip done">Microsite</span><span class="chip done">Key illustration</span><span class="chip done">Event logo</span><span class="chip done">Emailers</span><span class="chip todo">Social</span>
+              <span class="chip done">Microsite</span><span class="chip done">Key illustration</span><span class="chip done">Event logo</span><span class="chip done">Emailers</span><span class="chip done">LinkedIn posts</span>
             </div>
           </div>
           <div class="facts five">
@@ -420,7 +423,7 @@
           <div><span class="real-badge">Draft copy, edit me</span></div>
           <div class="bk-brief">
             <div><p class="eyebrow lime">The brief</p><p>Booking Holdings wanted to hire its next intern class through a hackathon. The campaign had to reach final-year engineering students, many of whom had never entered a hackathon, and make a six-month internship feel worth competing for.</p></div>
-            <div><p class="eyebrow lime">What I made</p><p>An event identity for HackCellence: The Embark Edition. A friendly, all-blue illustration of students building together sets the tone, and "Think. Build. Ship." carries the message. The microsite turns a long list of rounds, dates, rules and eligibility checks into short, scannable sections, and a set of emailers took the campaign to students and to college placement teams.</p></div>
+            <div><p class="eyebrow lime">What I made</p><p>An event identity for HackCellence: The Embark Edition. A friendly, all-blue illustration of students building together sets the tone, and "Think. Build. Ship." carries the message. The microsite turns a long list of rounds, dates, rules and eligibility checks into short, scannable sections, and a LinkedIn series and a set of emailers took the campaign to students and to college placement teams.</p></div>
           </div>
         </div>
 
@@ -443,26 +446,26 @@
         </div>
         <p class="scroll-hint">Scroll inside the frame to see the whole page.</p>
 
-        <div class="group-label"><h3>Marketing kit</h3><p>Social series</p></div>
-        <div class="slot">
-          <div class="posts">
-            <figure class="post" style="margin:0">
-              <div class="post-head"><span class="avatar">h</span><span>hackerearth<small>Sponsored</small></span></div>
-              <div class="post-art bk-art"><img src="assets/booking/hackcellence-cover-illustration.webp" alt=""><div class="txt"><span>HackCellence 2026</span><b>Think. Build. Ship.</b></div></div>
-              <figcaption class="post-foot"><span>♡</span><span>💬</span><span>↗</span></figcaption>
-            </figure>
-            <figure class="post" style="margin:0">
-              <div class="post-head"><span class="avatar">h</span><span>hackerearth<small>Sponsored</small></span></div>
-              <div class="post-art bk-art cream"><div class="txt" style="padding:0"><span>Embark internship</span><b>Six months. Bangalore. ₹75,000 a month.</b></div></div>
-              <figcaption class="post-foot"><span>♡</span><span>💬</span><span>↗</span></figcaption>
-            </figure>
-            <figure class="post" style="margin:0">
-              <div class="post-head"><span class="avatar">h</span><span>hackerearth<small>Sponsored</small></span></div>
-              <div class="post-art bk-art navy"><div class="txt" style="padding:0"><span>Last call</span><b>Registration closes 8 October.</b></div></div>
-              <figcaption class="post-foot"><span>♡</span><span>💬</span><span>↗</span></figcaption>
-            </figure>
-          </div>
-          <span class="slot-tag"><b>Social</b> · stand-in mocks · replace with your real posts (4:5)</span>
+        <div class="group-label"><h3>Marketing kit</h3><p>LinkedIn posts</p></div>
+        <div class="li-posts">
+          <figure class="li">
+            <div class="li-head"><span class="li-avatar" aria-hidden="true">h</span><span class="li-name"><b>HackerEarth</b><small>Promoted</small></span><span class="li-follow">+ Follow</span></div>
+            <figcaption class="li-cap">Think. Build. Ship. HackCellence: The Embark Edition is a chance to turn your skills into working technology and compete for an exciting internship. <span class="more">…more</span></figcaption>
+            <img src="assets/booking/hackcellence-linkedin-think-light.webp" alt="HackCellence LinkedIn post on a light background: Think. Build. Ship., with students coding together" loading="lazy">
+            <div class="li-bar"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v10H4V10h3Zm2 10h8.2a2 2 0 0 0 2-1.6l1.2-6A2 2 0 0 0 18.4 10H14l.7-3.6A1.8 1.8 0 0 0 13 4.2L9 10v10Z"/></svg>Like</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"/></svg>Comment</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h11l-3-3M17 17H6l3 3M18 7v5M6 17v-5"/></svg>Repost</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 3 10l7 3 3 7 8-17ZM10 13l5-5"/></svg>Send</span></div>
+          </figure>
+          <figure class="li">
+            <div class="li-head"><span class="li-avatar" aria-hidden="true">h</span><span class="li-name"><b>HackerEarth</b><small>Promoted</small></span><span class="li-follow">+ Follow</span></div>
+            <figcaption class="li-cap">Final-year engineering student graduating in 2027? Registration for HackCellence: The Embark Edition closes 8 October. <span class="more">…more</span></figcaption>
+            <img src="assets/booking/hackcellence-linkedin-think-dark.webp" alt="HackCellence LinkedIn post on Booking blue: Think. Build. Ship., with a mentor and two students" loading="lazy">
+            <div class="li-bar"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v10H4V10h3Zm2 10h8.2a2 2 0 0 0 2-1.6l1.2-6A2 2 0 0 0 18.4 10H14l.7-3.6A1.8 1.8 0 0 0 13 4.2L9 10v10Z"/></svg>Like</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"/></svg>Comment</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h11l-3-3M17 17H6l3 3M18 7v5M6 17v-5"/></svg>Repost</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 3 10l7 3 3 7 8-17ZM10 13l5-5"/></svg>Send</span></div>
+          </figure>
+          <figure class="li">
+            <div class="li-head"><span class="li-avatar" aria-hidden="true">h</span><span class="li-name"><b>HackerEarth</b><small>Promoted</small></span><span class="li-follow">+ Follow</span></div>
+            <figcaption class="li-cap">Two rounds. One Finale. Register, build and showcase your ideas to reach the finale in Bangalore. <span class="more">…more</span></figcaption>
+            <img src="assets/booking/hackcellence-linkedin-route.webp" alt="HackCellence LinkedIn post: Two rounds. One Finale., with the three steps Register, Online Rounds and The Finale in Bangalore" loading="lazy">
+            <div class="li-bar"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v10H4V10h3Zm2 10h8.2a2 2 0 0 0 2-1.6l1.2-6A2 2 0 0 0 18.4 10H14l.7-3.6A1.8 1.8 0 0 0 13 4.2L9 10v10Z"/></svg>Like</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z"/></svg>Comment</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h11l-3-3M17 17H6l3 3M18 7v5M6 17v-5"/></svg>Repost</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 3 10l7 3 3 7 8-17ZM10 13l5-5"/></svg>Send</span></div>
+          </figure>
         </div>
 
         <div class="group-label"><h3>Emailers</h3><p>Hover an envelope to open it, click to read the whole email</p></div>

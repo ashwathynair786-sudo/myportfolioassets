@@ -191,23 +191,35 @@ h2, h3 { text-wrap: balance; }
 @media (max-width: 640px) { .hk-card { width: calc(100% - 20px); } }
 .hk-hint { margin-top: 28px; text-align: center; color: var(--muted); }
 
-/* 8–9 · postcards on the desk */
-.desk { background: radial-gradient(90% 70% at 50% 0%, #1a1714, var(--ink) 70%); }
-.cards4 { display: grid; gap: clamp(28px, 4vw, 48px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
-.cards2 { display: grid; gap: clamp(28px, 4vw, 48px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
-.postcard { padding: clamp(10px, 1.4vw, 18px) clamp(10px, 1.4vw, 18px) 12px; background: var(--card); color: #1a1a1a; transform: rotate(var(--tilt, 0deg)); box-shadow: 0 24px 40px rgba(0,0,0,.5), 0 2px 4px rgba(0,0,0,.35); transition: transform .5s cubic-bezier(.2,.8,.2,1); }
-.postcard:hover { transform: rotate(0) translateY(-6px); }
-.postcard .ph { overflow: hidden; aspect-ratio: 4 / 5; max-width: 100%; }
-.cards2 .postcard .ph { aspect-ratio: 3 / 2; }
-.cards2 .postcard.portrait .ph { aspect-ratio: 3 / 4; }
-.cards2 .postcard.wide { grid-column: 1 / -1; justify-self: center; width: min(100%, 940px); }
-.postcard .ph img { width: 100%; height: 100%; object-fit: cover; }
-.postcard figcaption { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 12px; font: italic 400 clamp(18px, 2vw, 24px)/1 var(--serif); }
-.postcard figcaption img { width: 36px; }
+/* 8–9 · product images and mockups: unframed images on a tight grid */
+.shot { position: relative; margin: 0; min-height: 0; overflow: hidden; background: #151515; }
+.shot img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .9s cubic-bezier(.2,.8,.2,1); }
+.shot:hover img { transform: scale(1.025); }
+.shot::after { content: ""; position: absolute; inset: auto 0 0 0; height: 90px; pointer-events: none; background: linear-gradient(transparent, rgba(10,10,10,.55)); }
+.shot figcaption { position: absolute; z-index: 1; left: 16px; bottom: 14px; font: 600 10px/1 var(--sans); letter-spacing: .26em; text-transform: uppercase; color: var(--floral); }
+.shots4 { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.shots4 .shot { aspect-ratio: 4 / 5; }
+@media (min-width: 860px) { .shots4 { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; } }
+.mocks { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-areas: "bag inv" "post post" "tab tab" "look look" "pack pack" "stat stat"; }
+.mocks .shot { aspect-ratio: 3 / 2; }
+.mocks .m-bag, .mocks .m-inv { aspect-ratio: 3 / 4; }
+.m-bag { grid-area: bag; } .m-inv { grid-area: inv; } .m-post { grid-area: post; } .m-tab { grid-area: tab; }
+.m-look { grid-area: look; } .m-pack { grid-area: pack; } .m-stat { grid-area: stat; }
+@media (min-width: 860px) {
+  .mocks { gap: 16px; grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-areas:
+      "bag bag bag bag inv inv inv inv post post post post"
+      "bag bag bag bag inv inv inv inv tab tab tab tab"
+      "look look look look look look pack pack pack pack pack pack"
+      "stat stat stat stat stat stat stat stat stat stat stat stat"; }
+  .mocks .m-bag, .mocks .m-inv { aspect-ratio: auto; }
+  .mocks .m-stat { aspect-ratio: 16 / 9; }
+}
 
 /* 10 · social */
-.social { display: grid; gap: 20px; padding: clamp(16px, 3vw, 32px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); background: var(--paper); }
-.post { overflow: hidden; border-radius: 12px; border: 1px solid rgba(10,10,10,.12); background: #0f0f0f; color: var(--floral); }
+.social { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.post { overflow: hidden; border-radius: 12px; border: 1px solid var(--rule); background: #0f0f0f; color: var(--floral); }
 .post header { display: flex; align-items: center; gap: 10px; padding: 10px 12px; }
 .post header .av { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--floral); color: var(--ink); font: 600 11px/1 var(--sans); }
 .post header b { display: block; font-size: 12px; }
@@ -223,7 +235,8 @@ footer.end img.w { width: min(70%, 520px); }
 @media (prefers-reduced-motion: reduce) {
   .hero img, .film > img.photo, .film .grain, .film .scratch { animation: none; }
   .film .scratch { display: none; }
-  .env-flap, .postcard, .hk-stack, .hk-card { transition: none !important; }
+  .env-flap, .hk-stack, .hk-card { transition: none !important; }
+  .shot img { transition: none; }
   .envelope[data-state] .env-stamp { animation-duration: 1ms; animation-delay: 0s; }
 }
 </style>
@@ -411,27 +424,27 @@ footer.end img.w { width: min(70%, 520px); }
   </section>
 
   <!-- 8 · product images -->
-  <section class="sec wrap desk">
+  <section class="sec wrap">
     <div class="sec-head"><p class="eyebrow">Photography</p><h2>Product images</h2></div>
-    <div class="cards4">
-      <figure class="postcard" style="--tilt:-2.5deg"><div class="ph"><img src="book/photo-arch.webp" alt="Model in a printed black saree under a carved arch" style="object-position:50% 20%"></div><figcaption>The arch<img src="book/stamp-black.webp" alt=""></figcaption></figure>
-      <figure class="postcard" style="--tilt:1.5deg"><div class="ph"><img src="book/photo-chair.webp" alt="Model seated against hand-painted floral walls" style="object-position:50% 30%"></div><figcaption>The portrait<img src="book/stamp-black.webp" alt=""></figcaption></figure>
-      <figure class="postcard" style="--tilt:-1deg"><div class="ph"><img src="book/photo-drape.webp" alt="Saree drape caught in motion on black" style="object-position:70% 20%"></div><figcaption>The drape<img src="book/stamp-black.webp" alt=""></figcaption></figure>
-      <figure class="postcard" style="--tilt:2.5deg"><div class="ph"><img src="book/brochure-gold.webp" alt="Studio 113 brochure in alpine gold beside jewellery" style="object-position:50% 40%"></div><figcaption>The edit<img src="book/stamp-black.webp" alt=""></figcaption></figure>
+    <div class="shots4">
+      <figure class="shot "><img src="book/photo-arch.webp" alt="Model in a printed black saree under a carved arch" loading="lazy" style="object-position:50% 20%"><figcaption>The arch</figcaption></figure>
+      <figure class="shot "><img src="book/photo-chair.webp" alt="Model seated against hand-painted floral walls" loading="lazy" style="object-position:50% 30%"><figcaption>The portrait</figcaption></figure>
+      <figure class="shot "><img src="book/photo-drape.webp" alt="Saree drape caught in motion on black" loading="lazy" style="object-position:70% 20%"><figcaption>The drape</figcaption></figure>
+      <figure class="shot "><img src="book/brochure-gold.webp" alt="Studio 113 brochure in alpine gold beside jewellery" loading="lazy" style="object-position:50% 40%"><figcaption>The edit</figcaption></figure>
     </div>
   </section>
 
   <!-- 9 · mockups -->
-  <section class="sec wrap desk">
+  <section class="sec wrap">
     <div class="sec-head"><p class="eyebrow">Applications</p><h2>Mockups</h2></div>
-    <div class="cards2">
-      <figure class="postcard portrait" style="--tilt:1.4deg"><div class="ph"><img src="book/mockup-bag.webp" alt="Blush Studio 113 shopping bag with gold foil, hanging from a brass door handle on a green door"></div><figcaption>Shopping bag<img src="book/stamp-black.webp" alt=""></figcaption></figure>
-      <figure class="postcard portrait" style="--tilt:-1.6deg"><div class="ph"><img src="book/mockup-invite.webp" alt="Burgundy Studio 113 invitation with gold foil on a scalloped silver tray"></div><figcaption>Invitation<img src="book/stamp-black.webp" alt=""></figcaption></figure>
-      <figure class="postcard" style="--tilt:-1.2deg"><div class="ph"><img src="book/mockup-postcards.webp" alt="Studio 113 postcards with the stamp logo on teal"></div><figcaption>Postcards<img src="book/stamp-black.webp" alt=""></figcaption></figure>
-      <figure class="postcard" style="--tilt:1deg"><div class="ph"><img src="book/mockup-tablet.webp" alt="Studio 113 website on a tablet"></div><figcaption>Website<img src="book/stamp-black.webp" alt=""></figcaption></figure>
-      <figure class="postcard" style="--tilt:.8deg"><div class="ph"><img src="book/mockup-lookbook.webp" alt="Studio 113 lookbook spread on teal"></div><figcaption>Lookbook<img src="book/stamp-black.webp" alt=""></figcaption></figure>
-      <figure class="postcard" style="--tilt:-1.4deg"><div class="ph"><img src="book/mockup-packaging.webp" alt="Studio 113 gradient packaging sealed with the stamp"></div><figcaption>Packaging<img src="book/stamp-black.webp" alt=""></figcaption></figure>
-      <figure class="postcard wide" style="--tilt:-.6deg"><div class="ph"><img src="book/mockup-stationery.webp" alt="Studio 113 letterhead with a blind-embossed wordmark beside an olive envelope sealed with the stamp"></div><figcaption>Letterhead and envelope<img src="book/stamp-black.webp" alt=""></figcaption></figure>
+    <div class="mocks">
+      <figure class="shot m-bag"><img src="book/mockup-bag.webp" alt="Blush Studio 113 shopping bag with gold foil, hanging from a brass door handle on a green door" loading="lazy"><figcaption>Shopping bag</figcaption></figure>
+      <figure class="shot m-inv"><img src="book/mockup-invite.webp" alt="Burgundy Studio 113 invitation with gold foil on a scalloped silver tray" loading="lazy"><figcaption>Invitation</figcaption></figure>
+      <figure class="shot m-post"><img src="book/mockup-postcards.webp" alt="Studio 113 postcards with the stamp logo on teal" loading="lazy"><figcaption>Postcards</figcaption></figure>
+      <figure class="shot m-tab"><img src="book/mockup-tablet.webp" alt="Studio 113 website on a tablet" loading="lazy"><figcaption>Website</figcaption></figure>
+      <figure class="shot m-look"><img src="book/mockup-lookbook.webp" alt="Studio 113 lookbook spread on teal" loading="lazy"><figcaption>Lookbook</figcaption></figure>
+      <figure class="shot m-pack"><img src="book/mockup-packaging.webp" alt="Studio 113 gradient packaging sealed with the stamp" loading="lazy"><figcaption>Packaging</figcaption></figure>
+      <figure class="shot m-stat"><img src="book/mockup-stationery.webp" alt="Studio 113 letterhead with a blind-embossed wordmark beside an olive envelope sealed with the stamp" loading="lazy"><figcaption>Letterhead and envelope</figcaption></figure>
     </div>
   </section>
 

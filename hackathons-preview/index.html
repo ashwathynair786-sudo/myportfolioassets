@@ -266,6 +266,8 @@
 
   /* Airwallex · ABH (client-supplied brand) */
   .cover-real.abh { background: #fb5920; }
+  .cover-real.more { background: #0b0b14; }
+  .cover-real.more img { object-position: center 35%; }
   .cover-real.abh::after { background: linear-gradient(to top, rgba(40,10,0,.7), transparent 55%); }
   .abh-band { background: #000; padding-block: clamp(32px, 6vw, 72px) 0; }
   .abh-covers { display: grid; gap: clamp(12px, 2vw, 24px); grid-template-columns: 1fr; }
@@ -303,11 +305,11 @@
   .plain-post img { display: block; width: 100%; height: auto; max-width: 100%; }
   .plain-post figcaption { font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: .06em; }
   /* More hackathons: loose gallery of mixed-size posts */
-  .more-grid { background: var(--muted); padding: clamp(20px, 5vw, 56px); columns: 3 220px; column-gap: clamp(16px, 3vw, 32px); }
-  .more-post { margin: 0 0 clamp(20px, 3vw, 36px); break-inside: avoid; display: grid; gap: 10px; }
-  .more-post img, .more-slot { display: block; width: 100%; height: auto; max-width: 100%; }
-  .more-slot { background: var(--bg); border: 1px dashed var(--line); display: grid; place-items: center; }
-  .more-slot span { font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); }
+  .more-grid { background: var(--muted); padding: clamp(20px, 5vw, 56px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 3vw, 32px); align-items: start; }
+  .more-col { display: grid; gap: clamp(20px, 3vw, 36px); min-width: 0; }
+  @media (max-width: 760px) { .more-grid { grid-template-columns: 1fr; } .more-col { max-width: 420px; width: 100%; margin-inline: auto; } }
+  .more-post { margin: 0; display: grid; gap: 10px; }
+  .more-post img { display: block; width: 100%; height: auto; max-width: 100%; }
   .more-post figcaption { font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: .06em; }
 
   /* Emailers: envelopes that open on hover, full email in a lightbox */
@@ -354,7 +356,7 @@
 </style>
 
 <div class="note wrap">
-  <p>Layout preview for project 04. Booking Holdings and Airwallex are complete. More hackathons is a placeholder gallery waiting for your social posts.</p>
+  <p>Layout preview for project 04. Booking Holdings, Airwallex and More hackathons are all filled with your real work. Draft copy is marked for you to rewrite.</p>
 </div>
 
 <header class="site-header wrap">
@@ -383,7 +385,7 @@
   <div class="slot cover" aria-label="Cover placeholder">
     <div class="cover-real"><img src="assets/booking/hackcellence-cover-illustration.webp" alt="" loading="eager"><h3>Booking Holdings</h3></div>
     <div class="cover-real abh"><img src="assets/airwallex/abh-cover-orange-crop.webp" alt=""><h3>Airwallex</h3></div>
-    <div class="contours" style="--c: var(--more); --cx: 60%; --cy: 20%"><h3>More hackathons</h3></div>
+    <div class="cover-real more"><img src="assets/more/code-kitchen-story.webp" alt=""><h3>More hackathons</h3></div>
     <span class="slot-tag top"><b>Cover</b> · looping film or a 3-up collage of key visuals · 2:1 · MP4/WebM + poster</span>
   </div>
 
@@ -660,34 +662,23 @@
           <h2 class="chapter-name">More hackathons<span>.</span></h2>
           <p class="chapter-theme">A selection of social posts from other hackathons I marketed at HackerEarth, each one built inside a different client&rsquo;s brand.</p>
         </div>
-        <div><span class="real-badge">Waiting for your posts</span></div>
+        <div class="facts"><div style="grid-column: 1 / -1"><p class="eyebrow">Clients</p><p>Google Cloud, Google Careers, GSMA, Flipkart, Schneider Electric, Godrej Capital</p></div><div><p class="eyebrow">Hackathons</p><p>Six</p></div><div><p class="eyebrow">Platforms</p><p>LinkedIn, Instagram, Facebook</p></div></div>
       </div>
-      <div class="more-grid">
-          <figure class="more-post">
-            <div class="more-slot" style="aspect-ratio: 1 / 1"><span>Post 1 · 1:1</span></div>
-            <figcaption>Client · Hackathon · Platform</figcaption>
-          </figure>
-          <figure class="more-post">
-            <div class="more-slot" style="aspect-ratio: 4 / 5"><span>Post 2 · 4:5</span></div>
-            <figcaption>Client · Hackathon · Platform</figcaption>
-          </figure>
-          <figure class="more-post">
-            <div class="more-slot" style="aspect-ratio: 9 / 16"><span>Post 3 · story 9:16</span></div>
-            <figcaption>Client · Hackathon · Platform</figcaption>
-          </figure>
-          <figure class="more-post">
-            <div class="more-slot" style="aspect-ratio: 1.91 / 1"><span>Post 4 · 1.91:1</span></div>
-            <figcaption>Client · Hackathon · Platform</figcaption>
-          </figure>
-          <figure class="more-post">
-            <div class="more-slot" style="aspect-ratio: 1 / 1"><span>Post 5 · 1:1</span></div>
-            <figcaption>Client · Hackathon · Platform</figcaption>
-          </figure>
-          <figure class="more-post">
-            <div class="more-slot" style="aspect-ratio: 4 / 5"><span>Post 6 · 4:5</span></div>
-            <figcaption>Client · Hackathon · Platform</figcaption>
-          </figure>
-      </div>
+        <div class="more-grid">
+          <div class="more-col">
+            <figure class="more-post"><img src="assets/more/gsma-mena-ignite-linkedin.webp" alt="MENA Ignite Hackathon post for GSMA Open Gateway: Innovate. Connect. Ignite change." loading="lazy"><figcaption>GSMA Open Gateway · MENA Ignite · LinkedIn</figcaption></figure>
+            <figure class="more-post"><img src="assets/more/google-big-code-linkedin.webp" alt="The Big Code post for Google Careers: a challenge to showcase your coding and algorithmic skills on a national stage" loading="lazy"><figcaption>Google Careers · The Big Code · LinkedIn</figcaption></figure>
+          </div>
+          <div class="more-col">
+            <figure class="more-post"><img src="assets/more/code-kitchen-story.webp" alt="Code Kitchen Instagram story: Something&rsquo;s cooking, with a retro computer" loading="lazy"><figcaption>Google Cloud × AIM · Code Kitchen · Instagram story</figcaption></figure>
+            <figure class="more-post"><img src="assets/more/code-kitchen-linkedin.webp" alt="Code Kitchen LinkedIn post: India&rsquo;s first coding reality show, presented by Google Cloud" loading="lazy"><figcaption>Google Cloud × AIM · Code Kitchen · LinkedIn</figcaption></figure>
+          </div>
+          <div class="more-col">
+            <figure class="more-post"><img src="assets/more/flipkart-gridlock-linkedin.webp" alt="Flipkart Gridlock Hackathon post: Break the block. Build the future." loading="lazy"><figcaption>Flipkart · Gridlock Hackathon · LinkedIn</figcaption></figure>
+            <figure class="more-post"><img src="assets/more/godrej-pride-in-tech-linkedin.webp" alt="Godrej Capital Pride in Tech post: Crafting queer algorithms" loading="lazy"><figcaption>Godrej Capital · Pride in Tech · LinkedIn</figcaption></figure>
+            <figure class="more-post"><img src="assets/more/schneider-yuva-yodha-facebook.webp" alt="Schneider Electric Yuva Yodha energy tech hackathon Facebook post: Let your big idea shape the future of energy tech" loading="lazy"><figcaption>Schneider Electric · Yuva Yodha · Facebook</figcaption></figure>
+          </div>
+        </div>
     </section>
   </div>
 
@@ -702,7 +693,7 @@
         <div class="thumb slot">
           <div class="cover-real"><img src="assets/booking/hackcellence-cover-illustration.webp" alt=""></div>
           <div class="cover-real abh"><img src="assets/airwallex/abh-cover-orange-crop.webp" alt=""></div>
-          <div class="contours" style="--c: var(--more)"></div>
+          <div class="cover-real more"><img src="assets/more/code-kitchen-story.webp" alt=""></div>
           <span class="slot-tag"><b>Thumbnail</b> · 4:3 · WebP</span>
         </div>
         <div class="row-meta"><span>Hackathons</span><span>Event campaigns · 2026</span></div>

@@ -293,6 +293,13 @@
   .li-bar span { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: #5e5e5e; padding: 6px 4px; }
   .li-bar svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
 
+  /* More hackathons: masonry gallery, multi-column at every width */
+  .more-grid { background: var(--muted); padding: clamp(14px, 5vw, 56px); columns: 3; column-gap: clamp(12px, 3vw, 32px); }
+  @media (max-width: 760px) { .more-grid { columns: 2; } }
+  .more-post { margin: 0 0 clamp(16px, 3vw, 36px); break-inside: avoid; display: grid; gap: 8px; }
+  .more-post img { display: block; width: 100%; height: auto; max-width: 100%; }
+  .more-post figcaption { font-family: var(--font-mono); font-size: clamp(9px, 2.4vw, 11px); color: var(--fg-dim); text-transform: uppercase; letter-spacing: .06em; line-height: 1.4; }
+
   /* Emailers: envelopes that open on hover, full email in a lightbox */
   .mailbox { display: grid; gap: clamp(20px, 3vw, 40px); grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--muted); padding: clamp(20px, 4vw, 48px); }
   @media (max-width: 760px) { .mailbox { grid-template-columns: 1fr; } .mail { max-width: 340px; margin-inline: auto; } }
@@ -596,20 +603,14 @@
         <div class="facts"><div style="grid-column: 1 / -1"><p class="eyebrow">Clients</p><p>Google Cloud, Google Careers, GSMA, Flipkart, Tata Steel, Schneider Electric, Godrej Capital</p></div><div><p class="eyebrow">Hackathons</p><p>Seven</p></div><div><p class="eyebrow">Platforms</p><p>LinkedIn, Instagram, Facebook</p></div></div>
       </div>
         <div class="more-grid">
-          <div class="more-col">
-            <figure class="more-post"><img src="assets/more/gsma-mena-ignite-linkedin.webp" alt="MENA Ignite Hackathon post for GSMA Open Gateway: Innovate. Connect. Ignite change." loading="lazy"><figcaption>GSMA Open Gateway · MENA Ignite · LinkedIn</figcaption></figure>
-            <figure class="more-post"><img src="assets/more/google-big-code-linkedin.webp" alt="The Big Code post for Google Careers: a challenge to showcase your coding and algorithmic skills on a national stage" loading="lazy"><figcaption>Google Careers · The Big Code · LinkedIn</figcaption></figure>
-            <figure class="more-post"><img src="assets/more/tata-steel-ai-hackathon-facebook.webp" alt="Tata Steel AI Hackathon 2026 Facebook post: solve real-world ML challenges and stand a chance to be hired" loading="lazy"><figcaption>Tata Steel · AI Hackathon 2026 · Facebook</figcaption></figure>
-          </div>
-          <div class="more-col">
-            <figure class="more-post"><img src="assets/more/code-kitchen-story.webp" alt="Code Kitchen Instagram story: Something&rsquo;s cooking, with a retro computer" loading="lazy"><figcaption>Google Cloud × AIM · Code Kitchen · Instagram story</figcaption></figure>
-            <figure class="more-post"><img src="assets/more/code-kitchen-linkedin.webp" alt="Code Kitchen LinkedIn post: India&rsquo;s first coding reality show, presented by Google Cloud" loading="lazy"><figcaption>Google Cloud × AIM · Code Kitchen · LinkedIn</figcaption></figure>
-          </div>
-          <div class="more-col">
-            <figure class="more-post"><img src="assets/more/flipkart-gridlock-linkedin.webp" alt="Flipkart Gridlock Hackathon post: Break the block. Build the future." loading="lazy"><figcaption>Flipkart · Gridlock Hackathon · LinkedIn</figcaption></figure>
-            <figure class="more-post"><img src="assets/more/godrej-pride-in-tech-linkedin.webp" alt="Godrej Capital Pride in Tech post: Crafting queer algorithms" loading="lazy"><figcaption>Godrej Capital · Pride in Tech · LinkedIn</figcaption></figure>
-            <figure class="more-post"><img src="assets/more/schneider-yuva-yodha-facebook.webp" alt="Schneider Electric Yuva Yodha energy tech hackathon Facebook post: Let your big idea shape the future of energy tech" loading="lazy"><figcaption>Schneider Electric · Yuva Yodha · Facebook</figcaption></figure>
-          </div>
+          <figure class="more-post"><img src="assets/more/gsma-mena-ignite-linkedin.webp" alt="MENA Ignite Hackathon post for GSMA Open Gateway: Innovate. Connect. Ignite change." loading="lazy"><figcaption>GSMA Open Gateway · MENA Ignite · LinkedIn</figcaption></figure>
+          <figure class="more-post"><img src="assets/more/google-big-code-linkedin.webp" alt="The Big Code post for Google Careers: a challenge to showcase your coding and algorithmic skills on a national stage" loading="lazy"><figcaption>Google Careers · The Big Code · LinkedIn</figcaption></figure>
+          <figure class="more-post"><img src="assets/more/tata-steel-ai-hackathon-facebook.webp" alt="Tata Steel AI Hackathon 2026 Facebook post: solve real-world ML challenges and stand a chance to be hired" loading="lazy"><figcaption>Tata Steel · AI Hackathon 2026 · Facebook</figcaption></figure>
+          <figure class="more-post"><img src="assets/more/code-kitchen-story.webp" alt="Code Kitchen Instagram story: Something&rsquo;s cooking, with a retro computer" loading="lazy"><figcaption>Google Cloud × AIM · Code Kitchen · Instagram story</figcaption></figure>
+          <figure class="more-post"><img src="assets/more/code-kitchen-linkedin.webp" alt="Code Kitchen LinkedIn post: India&rsquo;s first coding reality show, presented by Google Cloud" loading="lazy"><figcaption>Google Cloud × AIM · Code Kitchen · LinkedIn</figcaption></figure>
+          <figure class="more-post"><img src="assets/more/flipkart-gridlock-linkedin.webp" alt="Flipkart Gridlock Hackathon post: Break the block. Build the future." loading="lazy"><figcaption>Flipkart · Gridlock Hackathon · LinkedIn</figcaption></figure>
+          <figure class="more-post"><img src="assets/more/godrej-pride-in-tech-linkedin.webp" alt="Godrej Capital Pride in Tech post: Crafting queer algorithms" loading="lazy"><figcaption>Godrej Capital · Pride in Tech · LinkedIn</figcaption></figure>
+          <figure class="more-post"><img src="assets/more/schneider-yuva-yodha-facebook.webp" alt="Schneider Electric Yuva Yodha energy tech hackathon Facebook post: Let your big idea shape the future of energy tech" loading="lazy"><figcaption>Schneider Electric · Yuva Yodha · Facebook</figcaption></figure>
         </div>
     </section>
   </div>

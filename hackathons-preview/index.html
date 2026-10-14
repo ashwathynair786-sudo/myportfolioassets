@@ -273,9 +273,6 @@
   .abh-covers img { display: block; width: 100%; height: auto; max-width: 100%; aspect-ratio: 16 / 9; border: 1px solid rgba(255,255,255,.12); }
   .abh-credit { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,.7); margin: 0; padding-block: 14px 18px; text-transform: uppercase; letter-spacing: .06em; }
   .chip.given { border-style: solid; border-color: var(--line); color: var(--fg-dim); }
-  .abh-site { background: #000; }
-  .abh-site .kicker { font-family: var(--font-mono); letter-spacing: .3em; color: #fb5920; }
-  .abh-site h4 { font-family: var(--font-mono); font-weight: 500; text-transform: uppercase; letter-spacing: .08em; }
   .abh-mail-slot { padding: clamp(32px, 6vw, 64px) clamp(20px, 4vw, 48px) 64px; }
   .abh-mail-slot p { margin: 0; max-width: 40ch; color: var(--fg-dim); font-weight: 300; }
 
@@ -335,7 +332,7 @@
 </style>
 
 <div class="note wrap">
-  <p>Layout preview for project 04. Booking Holdings is complete. Airwallex has its client-supplied brand covers; the microsite and emailers are next. Every dashed tag names the asset that goes in that slot. All text is draft copy for you to rewrite, and the mock artwork is only a stand-in for your real files.</p>
+  <p>Layout preview for project 04. Booking Holdings is complete. Airwallex has its client-supplied brand covers and your microsite; the emailers are next. Every dashed tag names the asset that goes in that slot. All text is draft copy for you to rewrite, and the mock artwork is only a stand-in for your real files.</p>
 </div>
 
 <header class="site-header wrap">
@@ -544,16 +541,18 @@
           <div>
             <p class="eyebrow">Airwallex</p>
             <h2 class="chapter-name">Agentic Banking Hackathon<span>.</span></h2>
-            <p class="chapter-theme">Airwallex arrived with the ABH brand and design system already in place. I took it into the campaign: the microsite and the emailers.</p>
+            <p class="chapter-theme">A global, online hackathon for building AI agents on Airwallex's banking APIs. Airwallex arrived with the ABH brand and design system already in place; I took it into the campaign with the microsite and the emailers.</p>
             <div class="chips">
-              <span class="chip given">Brand · by Airwallex</span><span class="chip todo">Microsite</span><span class="chip todo">Emailers</span>
+              <span class="chip given">Brand · by Airwallex</span><span class="chip done">Microsite</span><span class="chip todo">Emailers</span>
             </div>
           </div>
           <div class="facts">
             <div><p class="eyebrow">Brand</p><p>Supplied by Airwallex</p></div>
             <div><p class="eyebrow">My role</p><p>Microsite, emailers</p></div>
-            <div><p class="eyebrow">Format</p><p>To add from the microsite</p></div>
-            <div><p class="eyebrow">Dates</p><p>To add from the microsite</p></div>
+            <div><p class="eyebrow">Format</p><p>Online and global, demo day in San Francisco</p></div>
+            <div><p class="eyebrow">Dates</p><p>25 Oct – 19 Nov 2026</p></div>
+            <div><p class="eyebrow">Prizes</p><p>$100K in prizes and API credits</p></div>
+            <div><p class="eyebrow">Tracks</p><p>12 starter kits across the stack</p></div>
           </div>
         </div>
 
@@ -561,19 +560,18 @@
           <div><span class="real-badge">Draft copy, edit me</span></div>
           <div class="bk-brief">
             <div><p class="eyebrow lime">The brief</p><p>Airwallex came with an established brand for the hackathon. My job was to turn it into a campaign: a microsite and a set of emailers that feel fully Airwallex and still work as a HackerEarth event.</p></div>
-            <div><p class="eyebrow lime">What I made</p><p>I worked inside the ABH system, using its pixel logo, mono type and orange palette, and built the microsite and the emailers from it.</p></div>
+            <div><p class="eyebrow lime">What I made</p><p>I worked inside the ABH system, using its pixel logo, mono type and orange palette. The microsite lays out a lot of detail, from twelve track starter kits to the timeline, prizes, partners and FAQs, in a dark, grid-based layout that stays easy to scan.</p></div>
           </div>
         </div>
 
-        <div class="group-label"><h3>Microsite</h3><p>Coming next</p></div>
-        <div class="slot browser">
-          <div class="browser-bar"><i></i><i></i><i></i><span class="url">Microsite link to come</span></div>
-          <div class="site abh-site">
-            <span class="kicker">Agentic Banking Hackathon</span>
-            <h4>Microsite goes here.</h4>
+        <div class="group-label"><h3>Microsite</h3><p>airwallex.hackerearth.com</p></div>
+        <div class="browser scroll">
+          <div class="browser-bar"><i></i><i></i><i></i><span class="url">airwallex.hackerearth.com</span><a class="live" href="https://airwallex.hackerearth.com/" target="_blank" rel="noopener">Visit live site ↗</a></div>
+          <div class="viewport" tabindex="0" aria-label="Full-length Agentic Banking Hackathon microsite, scrollable" style="background:#0a0a0a">
+            <img src="assets/airwallex/abh-website-full.webp" alt="Full-length Agentic Banking Hackathon microsite: hero, about, twelve track starter kits, key dates, prizes and credits, product partners, FAQs and closing call to register" loading="lazy">
           </div>
-          <span class="slot-tag"><b>Website</b> · send the link and I'll capture the full page</span>
         </div>
+        <p class="scroll-hint">Scroll inside the frame to see the whole page.</p>
 
         <div class="group-label"><h3>Emailers</h3><p>Coming next</p></div>
         <div class="slot abh-mail-slot">

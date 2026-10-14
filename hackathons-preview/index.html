@@ -18,7 +18,7 @@
     --on-lime: #111114;
     --booking: #5a8bff;
     --airwallex: #fb5920;
-    --mena: #f2b84b;
+    --more: #f2b84b;
     --font-display: "Sora", "Helvetica Neue", Arial, sans-serif;
     --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
     --gutter: clamp(16px, 4vw, 40px);
@@ -302,6 +302,14 @@
   .plain-post { margin: 0; display: grid; gap: 10px; min-width: 0; }
   .plain-post img { display: block; width: 100%; height: auto; max-width: 100%; }
   .plain-post figcaption { font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: .06em; }
+  /* More hackathons: loose gallery of mixed-size posts */
+  .more-grid { background: var(--muted); padding: clamp(20px, 5vw, 56px); columns: 3 220px; column-gap: clamp(16px, 3vw, 32px); }
+  .more-post { margin: 0 0 clamp(20px, 3vw, 36px); break-inside: avoid; display: grid; gap: 10px; }
+  .more-post img, .more-slot { display: block; width: 100%; height: auto; max-width: 100%; }
+  .more-slot { background: var(--bg); border: 1px dashed var(--line); display: grid; place-items: center; }
+  .more-slot span { font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); }
+  .more-post figcaption { font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: .06em; }
+
   /* Emailers: envelopes that open on hover, full email in a lightbox */
   .mailbox { display: grid; gap: clamp(20px, 3vw, 40px); grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--muted); padding: clamp(20px, 4vw, 48px); }
   @media (max-width: 760px) { .mailbox { grid-template-columns: 1fr; } .mail { max-width: 340px; margin-inline: auto; } }
@@ -346,7 +354,7 @@
 </style>
 
 <div class="note wrap">
-  <p>Layout preview for project 04. Booking Holdings is complete. Airwallex is complete with the client-supplied brand covers, your microsite, social kit and emailers. Every dashed tag names the asset that goes in that slot. All text is draft copy for you to rewrite, and the mock artwork is only a stand-in for your real files.</p>
+  <p>Layout preview for project 04. Booking Holdings and Airwallex are complete. More hackathons is a placeholder gallery waiting for your social posts.</p>
 </div>
 
 <header class="site-header wrap">
@@ -365,7 +373,7 @@
       <p class="intro">Campaign kits for enterprise hackathons hosted on HackerEarth. Each brief was a new client brand, a new audience of developers, and a hard launch date.</p>
     </div>
     <div class="meta">
-      <div><p class="eyebrow">Clients</p><p>Booking Holdings, Airwallex, MENA Ignite</p></div>
+      <div><p class="eyebrow">Clients</p><p>Booking Holdings, Airwallex and more</p></div>
       <div><p class="eyebrow">Platform</p><p>HackerEarth</p></div>
       <div><p class="eyebrow">Services</p><p>Campaign identity, microsite, social, emailers, print</p></div>
       <div><p class="eyebrow">Role</p><p>Lead designer</p></div>
@@ -375,7 +383,7 @@
   <div class="slot cover" aria-label="Cover placeholder">
     <div class="cover-real"><img src="assets/booking/hackcellence-cover-illustration.webp" alt="" loading="eager"><h3>Booking Holdings</h3></div>
     <div class="cover-real abh"><img src="assets/airwallex/abh-cover-orange-crop.webp" alt=""><h3>Airwallex</h3></div>
-    <div class="contours" style="--c: var(--mena); --cx: 60%; --cy: 20%"><h3>MENA Ignite</h3></div>
+    <div class="contours" style="--c: var(--more); --cx: 60%; --cy: 20%"><h3>More hackathons</h3></div>
     <span class="slot-tag top"><b>Cover</b> · looping film or a 3-up collage of key visuals · 2:1 · MP4/WebM + poster</span>
   </div>
 
@@ -645,7 +653,42 @@
         </div>
             </div>
     </section>
-    <div id="chapters-rest"></div>
+    <section class="chapter wrap" id="more-hackathons" style="--c: var(--more);">
+      <div class="chapter-head">
+        <div>
+          <p class="eyebrow">Social</p>
+          <h2 class="chapter-name">More hackathons<span>.</span></h2>
+          <p class="chapter-theme">A selection of social posts from other hackathons I marketed at HackerEarth, each one built inside a different client&rsquo;s brand.</p>
+        </div>
+        <div><span class="real-badge">Waiting for your posts</span></div>
+      </div>
+      <div class="more-grid">
+          <figure class="more-post">
+            <div class="more-slot" style="aspect-ratio: 1 / 1"><span>Post 1 · 1:1</span></div>
+            <figcaption>Client · Hackathon · Platform</figcaption>
+          </figure>
+          <figure class="more-post">
+            <div class="more-slot" style="aspect-ratio: 4 / 5"><span>Post 2 · 4:5</span></div>
+            <figcaption>Client · Hackathon · Platform</figcaption>
+          </figure>
+          <figure class="more-post">
+            <div class="more-slot" style="aspect-ratio: 9 / 16"><span>Post 3 · story 9:16</span></div>
+            <figcaption>Client · Hackathon · Platform</figcaption>
+          </figure>
+          <figure class="more-post">
+            <div class="more-slot" style="aspect-ratio: 1.91 / 1"><span>Post 4 · 1.91:1</span></div>
+            <figcaption>Client · Hackathon · Platform</figcaption>
+          </figure>
+          <figure class="more-post">
+            <div class="more-slot" style="aspect-ratio: 1 / 1"><span>Post 5 · 1:1</span></div>
+            <figcaption>Client · Hackathon · Platform</figcaption>
+          </figure>
+          <figure class="more-post">
+            <div class="more-slot" style="aspect-ratio: 4 / 5"><span>Post 6 · 4:5</span></div>
+            <figcaption>Client · Hackathon · Platform</figcaption>
+          </figure>
+      </div>
+    </section>
   </div>
 
   <section class="section wrap">
@@ -653,13 +696,13 @@
       <div>
         <p class="eyebrow lime">On the home page</p>
         <h2 style="font-size: clamp(1.6rem, 3.6vw, 2.6rem); font-weight: 300; margin-top: 10px;">How the card could look in Selected work</h2>
-        <p class="copy" style="margin-top: 14px;">A split thumbnail shows that this project covers three clients. You could also use a single hero shot, such as a standee or phone mockup, to match the other cards.</p>
+        <p class="copy" style="margin-top: 14px;">A split thumbnail shows that this project covers several clients. You could also use a single hero shot, such as a standee or phone mockup, to match the other cards.</p>
       </div>
       <div class="card">
         <div class="thumb slot">
           <div class="cover-real"><img src="assets/booking/hackcellence-cover-illustration.webp" alt=""></div>
           <div class="cover-real abh"><img src="assets/airwallex/abh-cover-orange-crop.webp" alt=""></div>
-          <div class="contours" style="--c: var(--mena)"></div>
+          <div class="contours" style="--c: var(--more)"></div>
           <span class="slot-tag"><b>Thumbnail</b> · 4:3 · WebP</span>
         </div>
         <div class="row-meta"><span>Hackathons</span><span>Event campaigns · 2026</span></div>
@@ -689,96 +732,10 @@
 </div>
 
 <script>
-  // One entry per hackathon. Swap in real facts; this mirrors how projects.ts would hold it.
-  const hackathons = [
-    {
-      id: "mena-ignite", name: "MENA Ignite", accent: "var(--mena)",
-      theme: "A regional innovation hackathon for builders across the Middle East and North Africa.",
-      kicker: "Regional hackathon · MENA",
-      headline: "Ignite ideas built for the region.",
-      url: "hackerearth.com/challenges/hackathon/mena-ignite",
-      facts: [["Format", "Hybrid"], ["Region", "MENA"], ["Year", "20XX"], ["Audience", "Startups, developers"]],
-      kit: ["Microsite", "Social", "Emailers", "Standee", "Certificate"],
-      posts: ["Save the date", "Themes announced", "Finale day"],
-    },
-  ];
-
-  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-
-  document.getElementById("index").innerHTML = `<li><a href="#booking-holdings" style="--c:var(--booking)">Booking Holdings</a></li><li><a href="#airwallex" style="--c:var(--airwallex)">Airwallex</a></li>` + hackathons.map((h) =>
-    `<li><a href="#${h.id}" style="--c:${h.accent}">${esc(h.name)}</a></li>`).join("");
-
-  document.getElementById("chapters-rest").innerHTML = hackathons.map((h) => `
-    <section class="chapter wrap" id="${h.id}" style="--c:${h.accent}">
-      <div class="chapter-head">
-        <div>
-          <p class="eyebrow">Hackathon</p>
-          <h2 class="chapter-name">${esc(h.name)}<span>.</span></h2>
-          <p class="chapter-theme">${esc(h.theme)}</p>
-          <div class="chips">${h.kit.map((k) => `<span class="chip">${esc(k)}</span>`).join("")}</div>
-        </div>
-        <div class="facts">${h.facts.map(([k, v]) => `<div><p class="eyebrow">${esc(k)}</p><p>${esc(v)}</p></div>`).join("")}</div>
-      </div>
-
-      <div class="group-label"><h3>Microsite</h3><p>Landing page and registration</p></div>
-      <div class="slot browser">
-        <div class="browser-bar"><i></i><i></i><i></i><span class="url">${esc(h.url)}</span></div>
-        <div class="site contours">
-          <span class="kicker">${esc(h.kicker)}</span>
-          <h4>${esc(h.headline)}</h4>
-          <span class="cta">Register now</span>
-        </div>
-        <span class="slot-tag"><b>Website</b> · hero screenshot 16:8, or a scroll recording of the full page</span>
-      </div>
-
-      <div class="group-label"><h3>Marketing kit</h3><p>Social series</p></div>
-      <div class="slot">
-        <div class="posts">
-          ${h.posts.map((p, i) => `
-            <figure class="post${i === 1 ? " solid" : ""}" style="margin:0">
-              <div class="post-head"><span class="avatar">h</span><span>hackerearth<small>Sponsored</small></span></div>
-              <div class="post-art${i === 1 ? "" : " contours"}" style="--cx:${30 + i * 25}%">
-                ${i === 0 ? '<i class="stack" aria-label="Carousel"></i>' : ""}
-                <span>${esc(h.name)}</span><b>${esc(p)}</b>
-              </div>
-              <figcaption class="post-foot"><span>♡</span><span>💬</span><span>↗</span></figcaption>
-            </figure>`).join("")}
-        </div>
-        <span class="slot-tag"><b>Social</b> · 3 posts at 4:5 (first one can be a carousel)</span>
-      </div>
-
-      <div class="group-label"><h3>Emailers & print</h3><p>Inbox to venue</p></div>
-      <div class="row">
-        <div class="slot stage">
-          <div class="email">
-            <header><small>${esc(h.name)} × HackerEarth</small>You're invited to build.</header>
-            <div class="body"><div class="bar"></div><div class="bar"></div><div class="bar short"></div><div class="bar"></div><div class="bar short"></div><span class="btn">Register</span></div>
-          </div>
-          <span class="slot-tag"><b>Emailer</b> · full-length PNG</span>
-        </div>
-        <div class="slot stage">
-          ${h.kit.includes("Standee") ? `
-          <div class="standee">
-            <div class="panel contours"><span>${esc(h.name)}</span><b>${esc(h.headline)}</b></div>
-            <div class="foot"></div>
-          </div>
-          <span class="slot-tag"><b>Standee</b> · mockup render</span>` : `
-          <div class="email" style="width:min(200px,70%)">
-            <header><small>Reminder</small>48 hours left to submit.</header>
-            <div class="body"><div class="bar"></div><div class="bar short"></div><span class="btn">Submit</span></div>
-          </div>
-          <span class="slot-tag"><b>Emailer 2</b> · reminder or results</span>`}
-        </div>
-        <div class="slot stage wide">
-          <div class="cert">
-            <small>${esc(h.name)} Hackathon</small>
-            <div><b>Certificate of Achievement</b><div class="name" style="margin-top:8px">Participant name</div></div>
-            <div class="sig"><i>${esc(h.name)}</i><i>HackerEarth</i></div>
-          </div>
-          <span class="slot-tag"><b>Certificate</b> · flat artwork or a mockup on a desk</span>
-        </div>
-      </div>
-    </section>`).join("");
+  document.getElementById("index").innerHTML =
+    `<li><a href="#booking-holdings" style="--c:var(--booking)">Booking Holdings</a></li>` +
+    `<li><a href="#airwallex" style="--c:var(--airwallex)">Airwallex</a></li>` +
+    `<li><a href="#more-hackathons" style="--c:var(--more)">More hackathons</a></li>`;
 
   // Emailers: hover opens the envelope (CSS); click or Enter opens the full email.
   const emails = [...document.querySelectorAll(".mail")].map((b) => ({

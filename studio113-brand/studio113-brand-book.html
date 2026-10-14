@@ -197,9 +197,14 @@ h2, h3 { text-wrap: balance; }
 .shot:hover img { transform: scale(1.025); }
 .shot::after { content: ""; position: absolute; inset: auto 0 0 0; height: 90px; pointer-events: none; background: linear-gradient(transparent, rgba(10,10,10,.55)); }
 .shot figcaption { position: absolute; z-index: 1; left: 16px; bottom: 14px; font: 600 10px/1 var(--sans); letter-spacing: .26em; text-transform: uppercase; color: var(--floral); }
-.shots4 { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.shots4 .shot { aspect-ratio: 4 / 5; }
-@media (min-width: 860px) { .shots4 { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; } }
+.collection + .collection { margin-top: clamp(32px, 5vw, 56px); }
+.collection-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
+.collection-head h3 { font: 400 clamp(22px, 2.6vw, 30px)/1 var(--display); }
+.collection-head .eyebrow { color: var(--muted); }
+.shots3 { display: grid; gap: 8px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.shots3 .shot { aspect-ratio: 2 / 3; }
+.shots3 .shot::after { display: none; }
+@media (min-width: 860px) { .shots3 { gap: 16px; } }
 .mocks { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-areas: "bag inv" "post post" "tab tab" "look look" "pack pack" "stat stat"; }
 .mocks .shot { aspect-ratio: 3 / 2; }
@@ -426,11 +431,21 @@ footer.end img.w { width: min(70%, 520px); }
   <!-- 8 · product images -->
   <section class="sec wrap">
     <div class="sec-head"><p class="eyebrow">Photography</p><h2>Product images</h2></div>
-    <div class="shots4">
-      <figure class="shot "><img src="book/photo-arch.webp" alt="Model in a printed black saree under a carved arch" loading="lazy" style="object-position:50% 20%"><figcaption>The arch</figcaption></figure>
-      <figure class="shot "><img src="book/photo-chair.webp" alt="Model seated against hand-painted floral walls" loading="lazy" style="object-position:50% 30%"><figcaption>The portrait</figcaption></figure>
-      <figure class="shot "><img src="book/photo-drape.webp" alt="Saree drape caught in motion on black" loading="lazy" style="object-position:70% 20%"><figcaption>The drape</figcaption></figure>
-      <figure class="shot "><img src="book/brochure-gold.webp" alt="Studio 113 brochure in alpine gold beside jewellery" loading="lazy" style="object-position:50% 40%"><figcaption>The edit</figcaption></figure>
+    <div class="collection">
+      <div class="collection-head"><h3>Corsets</h3><span class="eyebrow">Warm studio, natural light</span></div>
+      <div class="shots3">
+        <figure class="shot"><img src="book/product-corset-1.webp" alt="Model in a grey printed corset and black skirt, leaning on a wooden chest" loading="lazy"></figure>
+        <figure class="shot"><img src="book/product-corset-2.webp" alt="Model in an olive and mustard printed corset saree, seated on a wooden chest" loading="lazy"></figure>
+        <figure class="shot"><img src="book/product-corset-3.webp" alt="Model in a mustard printed corset with a draped skirt, looking down" loading="lazy"></figure>
+      </div>
+    </div>
+    <div class="collection">
+      <div class="collection-head"><h3>Mehfil</h3><span class="eyebrow">Painted skies, Persian rugs</span></div>
+      <div class="shots3">
+        <figure class="shot"><img src="book/product-mehfil-1.webp" alt="Model in a yellow floral saree on a Persian rug against a dark painted sky" loading="lazy"></figure>
+        <figure class="shot"><img src="book/product-mehfil-2.webp" alt="Model in a raspberry floral saree on a Persian rug against a dark painted sky" loading="lazy"></figure>
+        <figure class="shot"><img src="book/product-mehfil-3.webp" alt="Model in a yellow floral saree with a high neck on a Persian rug" loading="lazy"></figure>
+      </div>
     </div>
   </section>
 

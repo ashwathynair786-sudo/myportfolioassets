@@ -87,6 +87,7 @@ p { margin: 0; }
 .meta dd { margin: 0; font-size: 15px; color: var(--on-dark); }
 .hero-image { max-width: var(--wrap); margin: 0 auto; padding-bottom: clamp(64px, 9vw, 120px); }
 .hero-image img { width: 100%; }
+.hero-pair { display: grid; grid-template-columns: minmax(0, 0.909fr) minmax(0, 0.942fr); gap: clamp(10px, 1.4vw, 16px); align-items: start; }
 
 /* ── Brief ── */
 .brief { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 32px 72px; }
@@ -159,8 +160,7 @@ p { margin: 0; }
 .deep .grid figcaption, .band:not(.paper):not(.blush) .grid figcaption { color: var(--on-dark-soft); }
 .deep .grid figcaption b, .band:not(.paper):not(.blush) .grid figcaption b { color: var(--on-dark); }
 .pair { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
-.pattern-pair { grid-template-columns: minmax(0, 1.426fr) minmax(0, 1.318fr); }
-.g-station { grid-template-columns: minmax(0, 1.787fr) minmax(0, 0.942fr); align-items: start; }
+.pattern { max-width: 760px; }
 .subhead + .pair { margin-top: 0; }
 
 /* store photos: the source files are about 550px wide, so the gallery is capped to keep them crisp */
@@ -192,7 +192,7 @@ p { margin: 0; }
   .meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .meta > div:nth-child(3) { padding-left: 0; border-left: 0; }
   .meta > div:nth-child(n+3) { padding-top: 18px; }
-  .compare, .pair, .pattern-pair, .g-station, .submarks, .stores { grid-template-columns: minmax(0, 1fr); }
+  .compare, .pair, .submarks, .stores { grid-template-columns: minmax(0, 1fr); }
   .stores .st-c { grid-column: auto; grid-row: auto; }
   .palette { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
@@ -214,7 +214,7 @@ p { margin: 0; }
       <div><dt>Role</dt><dd>Brand &amp; visual identity designer</dd></div>
     </dl>
   </div>
-  <div class="hero-image"><img src="img/cover-cards.webp" alt="Samyakk business cards: celadon front with lotus border and gold logo, ivory back with gold frame" width="1926" height="1461"></div>
+  <div class="hero-image hero-pair"><img src="img/cover-business-card.webp" alt="Samyakk business cards: celadon front with lotus border and gold logo, ivory back with gold frame" width="1154" height="1270"><img src="img/cover-thank-you.webp" alt="Samyakk thank-you card: celadon front with lotuses and gold logo, peach note card" width="944" height="1002"></div>
 </header>
 
 <div class="ribbon" aria-hidden="true"></div>
@@ -293,6 +293,8 @@ p { margin: 0; }
       <figure><img src="img/foil-lotus.webp" alt="Gold foil lotus mark on olive green" width="1926" height="1461"><figcaption>Lotus mark, gold foil</figcaption></figure>
       <figure><img src="img/kraft.webp" alt="Samyakk logo printed on kraft paper with painted lotuses" width="1926" height="1461"><figcaption>Logo on kraft</figcaption></figure>
     </div>
+    <h3 class="subhead">Pattern</h3>
+    <div class="grid pattern"><figure><img src="img/pattern.webp" alt="Samyakk pattern: gold chevrons on ivory with painted pink lotuses and lily pads" width="1926" height="1351"></figure></div>
   </div>
 </section>
 
@@ -320,18 +322,8 @@ p { margin: 0; }
 <section class="band paper" aria-labelledby="station-title">
   <div class="inner">
     <div class="section-head"><div class="titles"><h2 id="station-title">Stationery</h2></div></div>
-    <div class="grid g-station">
-      <figure><img src="img/business-cards.webp" alt="Samyakk business cards: celadon front with lotus border, ivory back with gold frame" width="2000" height="1119"><figcaption>Business card</figcaption></figure>
-      <figure><img src="img/thank-you-card.webp" alt="Samyakk thank-you note on peach card with a celadon lotus card" width="944" height="1002"><figcaption>Thank-you card</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<section class="band blush" aria-labelledby="pattern-title">
-  <div class="inner">
-    <div class="section-head"><div class="titles"><h2 id="pattern-title">Pattern</h2></div></div>
-    <div class="grid pair pattern-pair">
-      <figure><img src="img/pattern.webp" alt="Samyakk pattern: gold chevrons on ivory with painted pink lotuses and lily pads" width="1926" height="1351"><figcaption>Chevron and lotus pattern</figcaption></figure>
+    <div class="grid pair">
+      <figure><img src="img/cover-cards.webp" alt="Samyakk business cards on sage: celadon front with lotus border, ivory back with gold frame" width="1926" height="1461"><figcaption>Business card</figcaption></figure>
       <figure><img src="img/embossed-cards.webp" alt="Green Samyakk cards with the logo embossed and foiled, scattered on a table" width="1926" height="1461"><figcaption>Embossed cards</figcaption></figure>
     </div>
   </div>

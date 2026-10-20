@@ -170,13 +170,19 @@ p { margin: 0; }
 .g-vanity .frame { aspect-ratio: 1100 / 1408; overflow: hidden; }
 .g-vanity figure:first-child .frame { aspect-ratio: 1 / 1; }
 
-/* stores placeholder */
-.todo { border: 1.5px dashed rgba(35, 48, 43, .35); padding: clamp(28px, 5vw, 56px); display: grid; gap: 22px; }
-.todo .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.todo .chips span { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px 6px 6px; background: rgba(255,255,255,.45); font-size: 13px; color: var(--ink); }
-.todo .chips i { width: 18px; height: 18px; border-radius: 50%; display: block; }
-.todo p { color: var(--ink-soft); max-width: 62ch; }
-.todo .flag { font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: #7E5530; font-weight: 500; }
+/* store photos: the source files are about 550px wide, so the gallery is capped to keep them crisp */
+.stores { max-width: 940px; display: grid; grid-template-columns: minmax(0, 1.27fr) minmax(0, 1fr); gap: clamp(10px, 1.4vw, 16px); }
+.stores figure { margin: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 10px; min-width: 0; }
+.stores img { width: 100%; height: 100%; object-fit: cover; }
+.stores .st-a img, .stores .st-b img { aspect-ratio: 548 / 364; }
+.stores .st-c { grid-column: 2; grid-row: 1 / span 2; }
+.stores .st-c img { object-position: left center; }
+.stores figcaption { font-size: 14px; color: var(--ink-soft); }
+.store-palette { margin-top: clamp(28px, 4vw, 44px); display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.store-palette .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.store-palette .chips span { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px 6px 6px; background: rgba(255,255,255,.45); font-size: 13px; color: var(--ink); }
+.store-palette .chips i { width: 18px; height: 18px; border-radius: 50%; display: block; }
+.store-palette .flag { font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: #7E5530; font-weight: 500; }
 
 /* closing */
 .closing > .inner { display: grid; justify-items: center; text-align: center; gap: 22px; padding-block: clamp(72px, 10vw, 140px); }
@@ -199,7 +205,8 @@ p { margin: 0; }
   .meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .meta > div:nth-child(3) { padding-left: 0; border-left: 0; }
   .meta > div:nth-child(n+3) { padding-top: 18px; }
-  .compare, .g-station, .g-vanity, .submarks { grid-template-columns: minmax(0, 1fr); }
+  .compare, .g-station, .g-vanity, .submarks, .stores { grid-template-columns: minmax(0, 1fr); }
+  .stores .st-c { grid-column: auto; grid-row: auto; }
   .palette { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .swatch:nth-child(n) { border-left: 0; border-top: 0; }
   .swatch:nth-child(even) { border-left: 1px solid var(--hair-dark); }
@@ -378,11 +385,15 @@ p { margin: 0; }
   <div class="inner">
     <div class="section-head">
       <div class="titles"><p class="eyebrow">Store revamp</p><h2 id="store-title">The palette, at <em>full scale</em></h2></div>
-      <p class="lede">The same colours carried into the Richmond Town store: banyan green and gold for the fixtures, lotus blush and celadon for the bridal floor.</p>
+      <p class="lede">The identity carried into the store: a banyan green arch lit in gold over the bridal edit, the lotus set into the floor, and the gold wordmark beside the trial room.</p>
     </div>
-    <div class="todo">
-      <p class="flag">Photos needed</p>
-      <p>No store photographs were in the uploaded files. Add before and after shots of the store to the repo and they'll go here, with the palette chips below as captions.</p>
+    <div class="stores">
+      <figure class="st-a"><img src="img/store-arch.webp" alt="Three bridal lehengas under a banyan green arch lit in warm gold, between painted mural panels" width="548" height="364"><figcaption>The bridal edit under the banyan arch</figcaption></figure>
+      <figure class="st-b"><img src="img/store-display.webp" alt="Bridal and occasion wear on mannequins, with the Samyakk lotus inlaid in the floor and Samyakk signage on the pillars" width="548" height="364"><figcaption>The lotus set into the floor</figcaption></figure>
+      <figure class="st-c"><img src="img/store-trial-room.webp" alt="A bride in a draped lehenga beside the trial room arch, with the gold Samyakk wordmark on the wall" width="315" height="577"><figcaption>The wordmark at the trial room</figcaption></figure>
+    </div>
+    <div class="store-palette">
+      <p class="flag">Colours in store</p>
       <div class="chips">
         <span><i style="background:#0F3A33"></i>Banyan Green</span>
         <span><i style="background:#A87A2F"></i>Temple Gold</span>

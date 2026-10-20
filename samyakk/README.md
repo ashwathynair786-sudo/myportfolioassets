@@ -14,7 +14,7 @@ Open `preview/index.html` to see the case study as a page.
 | `collateral/packaging/` | Gift box in three finishes (gold filigree, gold lotus, lotus pond), vanity case closed and open. `cutouts/` has the saree box (gold filigree) and bridal box (lotus pond) with the background removed. |
 | `source/` | The two original presentation PDFs the mockups were extracted from. |
 | `preview/` | The HTML case study and its web-sized images (`preview/img/`). |
-| `stores/` | Not created yet. Add store revamp photos here. |
+| `stores/` | Store photos: the bridal arch, the lotus floor display and the wordmark at the trial room. These are small (about 550px wide); larger originals would sharpen the page. |
 
 ## Palette
 

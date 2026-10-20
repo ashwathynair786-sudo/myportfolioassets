@@ -1,0 +1,472 @@
+<meta charset="utf-8">
+<title>Samyakk Brand Identity</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&family=Noto+Serif+Devanagari:wght@400&display=swap">
+<style>
+/* Layout: a trousseau unfolding. Banyan-green ground with ivory and blush "paper" bands,
+   gold chevron ribbons (from the bags and tags) marking each turn of the story. */
+:root {
+  color-scheme: dark;
+  --banyan: #0F3A33;
+  --banyan-deep: #0A2A25;
+  --gold: #AA823C;
+  --gold-soft: #C9A564;
+  --ivory: #FFF6E2;
+  --blush: #E8C6BB;
+  --mauve: #A86E7D;
+  --celadon: #B5D1BF;
+  --ink: #23302B;
+  --ink-soft: #5A645E;
+  --on-dark: #F3EAD6;
+  --on-dark-soft: #B9C2B6;
+  --hair-dark: rgba(201, 165, 100, .28);
+  --hair-light: rgba(35, 48, 43, .16);
+  --display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --body: "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
+  --wrap: 1240px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+body {
+  margin: 0;
+  background: var(--banyan);
+  color: var(--on-dark);
+  font-family: var(--body);
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+
+.band { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.band > .inner { max-width: var(--wrap); margin: 0 auto; padding-block: clamp(64px, 9vw, 128px); }
+.band.paper { background: var(--ivory); color: var(--ink); }
+.band.blush { background: var(--blush); color: var(--ink); }
+.band.deep { background: var(--banyan-deep); }
+
+.eyebrow { font-size: 12px; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: var(--gold-soft); }
+.paper .eyebrow, .blush .eyebrow { color: var(--gold); }
+.blush .eyebrow { color: #7E5530; }
+
+.section-head { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 24px 64px; align-items: end; margin-bottom: clamp(36px, 5vw, 64px); }
+.section-head h2 { font-size: clamp(2.3rem, 5.4vw, 4.4rem); line-height: 1.02; letter-spacing: -.01em; }
+.section-head h2 em { font-style: italic; color: var(--gold-soft); }
+.paper .section-head h2 em, .blush .section-head h2 em { color: var(--gold); }
+.blush .section-head h2 em { color: #8A5E2E; }
+.section-head .lede { max-width: 58ch; color: var(--on-dark-soft); }
+.paper .section-head .lede, .blush .section-head .lede { color: var(--ink-soft); }
+.section-head .titles { display: grid; gap: 14px; }
+
+/* chevron ribbon, the pattern from the carry bags and swing tags */
+.ribbon {
+  height: 28px;
+  background-color: var(--blush);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M0 20 L14 8 L28 20' fill='none' stroke='%23C9A564' stroke-width='2.2'/%3E%3C/svg%3E");
+  background-size: 28px 28px;
+  background-position: center;
+}
+
+/* ── Hero ── */
+.hero > .inner { padding-block: clamp(56px, 8vw, 104px) clamp(40px, 6vw, 72px); display: grid; gap: clamp(40px, 6vw, 72px); }
+.hero-top { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--on-dark-soft); }
+.hero-mark { display: grid; justify-items: center; gap: clamp(22px, 3vw, 34px); text-align: center; }
+.logo-mask {
+  width: min(100%, 640px);
+  aspect-ratio: 1244 / 526;
+  background: var(--gold-soft);
+  -webkit-mask: url("img/logo.png") center / contain no-repeat;
+  mask: url("img/logo.png") center / contain no-repeat;
+}
+.hero-mark .logo-mask { background: linear-gradient(100deg, #9B7433 0%, #D9B672 38%, #A8803A 58%, #E6C98C 78%, #9B7433 100%); background-size: 220% 100%; animation: foil 9s ease-in-out infinite alternate; }
+@keyframes foil { from { background-position: 0% 0; } to { background-position: 100% 0; } }
+.hero-mark h1 { font-size: clamp(1.4rem, 3vw, 2.1rem); font-style: italic; line-height: 1.3; color: var(--on-dark); max-width: 30ch; }
+.meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--hair-dark); }
+.meta > div { padding: 22px 20px 0 0; display: grid; gap: 6px; min-width: 0; }
+.meta > div + div { padding-left: 20px; border-left: 1px solid var(--hair-dark); }
+.meta dt { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-soft); }
+.meta dd { margin: 0; font-size: 15px; color: var(--on-dark); }
+.hero-image { max-width: var(--wrap); margin: 0 auto; padding-bottom: clamp(64px, 9vw, 120px); }
+.hero-image img { width: 100%; }
+
+/* ── Brief ── */
+.brief { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 32px 72px; }
+.name-card { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; align-content: start; }
+.deva { font-family: "Noto Serif Devanagari", var(--display); font-size: clamp(3rem, 7vw, 5.2rem); line-height: 1; color: var(--gold); }
+.name-card .gloss { font-family: var(--display); font-style: italic; font-size: clamp(1.25rem, 2.2vw, 1.6rem); line-height: 1.35; color: var(--ink); max-width: 22ch; }
+.name-card .pron { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.brief-cols { display: grid; gap: 36px; }
+.brief-cols h3 { font-family: var(--body); font-weight: 500; font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.brief-cols p { color: var(--ink); max-width: 64ch; }
+.brief-cols p + p { margin-top: 14px; }
+
+/* ── Before / after ── */
+.compare { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: clamp(16px, 2.4vw, 28px); }
+.compare figure { margin: 0; display: grid; grid-template-rows: 1fr auto; gap: 16px; }
+.compare .plate { display: grid; place-items: center; padding: clamp(36px, 6vw, 72px) clamp(24px, 4vw, 48px); min-height: clamp(240px, 32vw, 380px); }
+.compare .before .plate { background: #EFECE6; }
+.compare .before img { width: min(78%, 260px); filter: saturate(.85); }
+.compare .after .plate { background: var(--ivory); }
+.compare .after .logo-mask { background: var(--gold); width: min(100%, 520px); }
+.compare figcaption { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 14px; color: var(--on-dark-soft); }
+.compare figcaption b { font-weight: 500; letter-spacing: .2em; text-transform: uppercase; font-size: 12px; color: var(--gold-soft); }
+
+/* ── The mark ── */
+.anatomy { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+.anatomy .sheet { background: #fff; border: 1px solid var(--hair-light); }
+.anatomy ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 26px; counter-reset: part; }
+.anatomy li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 4px 16px; counter-increment: part; }
+.anatomy li::before { content: counter(part); grid-row: span 2; width: 34px; height: 34px; border: 1px solid var(--gold); border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-size: 15px; color: var(--gold); }
+.anatomy li h3 { font-size: 1.35rem; color: var(--ink); line-height: 1.3; }
+.anatomy li p { color: var(--ink-soft); font-size: 15.5px; }
+
+.lockups { margin-top: clamp(48px, 7vw, 88px); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.lockup { aspect-ratio: 4 / 3; display: grid; place-items: center; padding: 18%; position: relative; }
+.lockup .logo-mask { width: 100%; }
+.lockup span { position: absolute; left: 14px; bottom: 10px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; }
+.lk-1 { background: var(--banyan); } .lk-1 .logo-mask { background: var(--gold-soft); } .lk-1 span { color: var(--on-dark-soft); }
+.lk-2 { background: var(--blush); } .lk-2 .logo-mask { background: #9A7034; } .lk-2 span { color: #6E4E3E; }
+.lk-3 { background: var(--mauve); } .lk-3 .logo-mask { background: var(--ivory); } .lk-3 span { color: #F6E3E2; }
+.lk-4 { background: var(--celadon); } .lk-4 .logo-mask { background: var(--banyan); } .lk-4 span { color: #2F4A40; }
+.submarks { margin-top: 12px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.submarks > div { background: #F7EEDA; display: flex; align-items: center; gap: 24px; padding: 26px 28px; }
+.submarks img { width: 72px; flex: none; }
+.submarks .seal { width: 76px; height: 76px; flex: none; border: 1.5px solid var(--gold); border-radius: 50%; display: grid; place-items: center; }
+.submarks .seal img { width: 46px; }
+.submarks p { color: var(--ink-soft); font-size: 15px; }
+.submarks b { display: block; font-weight: 500; color: var(--ink); font-size: 15px; }
+
+/* ── Palette ── */
+.palette { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; border: 1px solid var(--hair-dark); }
+.swatch { display: grid; grid-template-rows: auto 1fr; min-width: 0; }
+.swatch + .swatch { border-left: 1px solid var(--hair-dark); }
+.chip { aspect-ratio: 3 / 4; }
+.swatch .info { padding: 18px 16px 22px; display: grid; gap: 4px; align-content: start; }
+.swatch h3 { font-size: 1.2rem; line-height: 1.2; }
+.swatch code { font-family: var(--body); font-size: 13px; letter-spacing: .08em; color: var(--gold-soft); font-variant-numeric: tabular-nums; }
+.swatch p { font-size: 13.5px; line-height: 1.5; color: var(--on-dark-soft); margin-top: 6px; }
+.copy-hex { all: unset; cursor: pointer; justify-self: start; border-bottom: 1px dotted transparent; }
+.copy-hex:hover, .copy-hex:focus-visible { border-bottom-color: currentColor; }
+.copy-hex:focus-visible { outline: 1px solid var(--gold-soft); outline-offset: 3px; }
+
+/* ── Galleries ── */
+.grid { display: grid; gap: clamp(12px, 1.6vw, 20px); }
+.grid figure { margin: 0; display: grid; gap: 12px; min-width: 0; }
+.grid img { width: 100%; height: 100%; object-fit: cover; }
+.grid figcaption { font-size: 14px; color: var(--ink-soft); display: flex; gap: 10px; align-items: baseline; }
+.grid figcaption b { font-weight: 500; color: var(--ink); }
+.deep .grid figcaption, .band:not(.paper):not(.blush) .grid figcaption { color: var(--on-dark-soft); }
+.deep .grid figcaption b, .band:not(.paper):not(.blush) .grid figcaption b { color: var(--on-dark); }
+.g-station { grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr); align-items: start; }
+.g-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+.g-pair .frame { aspect-ratio: 1224 / 1405; overflow: hidden; }
+.g-three { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: start; }
+.g-three .frame { aspect-ratio: 1039 / 1300; overflow: hidden; }
+
+/* gift box finish picker */
+.finish { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: clamp(20px, 3vw, 40px); align-items: center; }
+.stage { position: relative; aspect-ratio: 2000 / 1070; overflow: hidden; background: #1C2A26; }
+.stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .6s ease; }
+.stage img.on { opacity: 1; }
+.finish-list { display: grid; gap: 10px; }
+.finish-list button {
+  font: inherit; text-align: left; cursor: pointer; color: var(--on-dark-soft);
+  background: transparent; border: 1px solid var(--hair-dark); padding: 16px 18px;
+  display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 2px 14px; align-items: center;
+  transition: border-color .25s, background-color .25s, color .25s;
+}
+.finish-list button:hover { border-color: var(--gold-soft); color: var(--on-dark); }
+.finish-list button:focus-visible { outline: 2px solid var(--gold-soft); outline-offset: 2px; }
+.finish-list button[aria-pressed="true"] { background: rgba(201, 165, 100, .1); border-color: var(--gold-soft); color: var(--on-dark); }
+.finish-list .dot { grid-row: span 2; width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); }
+.finish-list strong { font-family: var(--display); font-weight: 400; font-size: 1.15rem; line-height: 1.2; }
+.finish-list small { font-size: 13px; line-height: 1.45; }
+.g-vanity { margin-top: clamp(16px, 2vw, 24px); grid-template-columns: minmax(0, 1.27fr) minmax(0, 1fr); align-items: start; }
+.g-vanity .frame { aspect-ratio: 1100 / 1408; overflow: hidden; }
+
+/* stores placeholder */
+.todo { border: 1.5px dashed rgba(35, 48, 43, .35); padding: clamp(28px, 5vw, 56px); display: grid; gap: 22px; }
+.todo .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.todo .chips span { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px 6px 6px; background: rgba(255,255,255,.45); font-size: 13px; color: var(--ink); }
+.todo .chips i { width: 18px; height: 18px; border-radius: 50%; display: block; }
+.todo p { color: var(--ink-soft); max-width: 62ch; }
+.todo .flag { font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: #7E5530; font-weight: 500; }
+
+/* closing */
+.closing > .inner { display: grid; justify-items: center; text-align: center; gap: 22px; padding-block: clamp(72px, 10vw, 140px); }
+.closing .lotus { width: 92px; }
+.closing p.line { font-family: var(--display); font-style: italic; font-size: clamp(1.4rem, 3vw, 2.2rem); line-height: 1.3; max-width: 26ch; }
+.closing .credit { font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--on-dark-soft); }
+
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 12px); background: var(--ivory); color: var(--ink); padding: 10px 16px; font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (max-width: 900px) {
+  .section-head, .brief, .anatomy, .finish { grid-template-columns: minmax(0, 1fr); }
+  .palette { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .swatch:nth-child(4) { border-left: 0; }
+  .swatch:nth-child(n+4) { border-top: 1px solid var(--hair-dark); }
+  .lockups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .finish-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .finish-list button { grid-template-columns: minmax(0, 1fr); }
+  .finish-list .dot { grid-row: auto; }
+  .finish-list small { display: none; }
+}
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .meta > div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .meta > div:nth-child(n+3) { padding-top: 18px; }
+  .compare, .g-station, .g-pair, .g-three, .g-vanity, .submarks { grid-template-columns: minmax(0, 1fr); }
+  .palette { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .swatch:nth-child(n) { border-left: 0; border-top: 0; }
+  .swatch:nth-child(even) { border-left: 1px solid var(--hair-dark); }
+  .swatch:nth-child(n+3) { border-top: 1px solid var(--hair-dark); }
+  .finish-list { grid-template-columns: minmax(0, 1fr); }
+}
+</style>
+
+<header class="band hero">
+  <div class="inner">
+    <div class="hero-top"><span>Branding &amp; visual identity</span><span>Richmond Town, Bengaluru</span></div>
+    <div class="hero-mark">
+      <div class="logo-mask" role="img" aria-label="Samyakk wordmark with lotus crown"></div>
+      <h1>A wedding destination, dressed in temple gold and lotus pink.</h1>
+    </div>
+    <dl class="meta">
+      <div><dt>Client</dt><dd>Samyakk</dd></div>
+      <div><dt>Sector</dt><dd>Bridal &amp; occasion wear</dd></div>
+      <div><dt>Scope</dt><dd>Logo, palette, store revamp, collateral</dd></div>
+      <div><dt>Role</dt><dd>Brand &amp; visual identity designer</dd></div>
+    </dl>
+  </div>
+  <div class="hero-image"><img src="img/shopping-bags.webp" alt="Samyakk carry bags in celadon and lotus blush with gold chevrons, on banyan green" width="2400" height="1343"></div>
+</header>
+
+<div class="ribbon" aria-hidden="true"></div>
+
+<section class="band paper" aria-labelledby="brief-title">
+  <div class="inner brief">
+    <div class="name-card">
+      <p class="eyebrow" id="brief-title">The name</p>
+      <p class="deva" lang="sa">सम्यक्</p>
+      <p class="gloss">Sanskrit for complete, whole, done rightly.</p>
+    </div>
+    <div class="brief-cols">
+      <div>
+        <h3>Context</h3>
+        <p>Samyakk is a wedding destination store in Richmond Town, Bengaluru. Bridal wear, sarees, menswear and womenswear sit under one roof, so the whole wedding party can be dressed in one place.</p>
+      </div>
+      <div>
+        <h3>Challenge</h3>
+        <p>The old identity was a stock lotus over a plain lowercase serif. It was tidy, but it could have belonged to a spa, and it said nothing about weddings, craft or celebration. Samyakk needed a brand as considered as the trousseau it sells, and one that could stretch from a swing tag to a whole store.</p>
+      </div>
+      <div>
+        <h3>What I did</h3>
+        <p>I drew a new wordmark with a lotus crown and a swash that curls under the name, set in temple gold. I built a palette from lotus pinks, celadon and banyan green, carried it into the store revamp, and extended it across stationery, tags, garment covers, carry bags, gift boxes, a vanity case and staff uniforms.</p>
+        <p>Samyakk approved the new identity at the first presentation and replaced their old logo with it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="ba-title">
+  <div class="inner">
+    <div class="section-head">
+      <div class="titles"><p class="eyebrow">Before &amp; after</p><h2 id="ba-title">From a stock lotus to a <em>signature</em></h2></div>
+      <p class="lede">The lotus stays as the link to the old brand. What changes is everything around it: the lotus moves from an icon above the name to a crown sitting on it, and the letters themselves carry the ceremony.</p>
+    </div>
+    <div class="compare">
+      <figure class="before">
+        <div class="plate"><img src="img/previous-logo.png" alt="Previous Samyakk logo: a brown lotus icon above a lowercase grey serif" width="474" height="286"></div>
+        <figcaption><b>Before</b><span>Icon and name, set apart</span></figcaption>
+      </figure>
+      <figure class="after">
+        <div class="plate"><div class="logo-mask" role="img" aria-label="New Samyakk wordmark in temple gold"></div></div>
+        <figcaption><b>After</b><span>One mark, drawn as a whole</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" aria-labelledby="mark-title">
+  <div class="inner">
+    <div class="section-head">
+      <div class="titles"><p class="eyebrow">The mark</p><h2 id="mark-title">Three details, <em>one name</em></h2></div>
+      <p class="lede">A high-contrast display serif, redrawn by hand where the name needed a little ceremony. Clear space is measured by the lotus itself, so the mark always has room to breathe on foil, fabric and signage.</p>
+    </div>
+    <div class="anatomy">
+      <div class="sheet"><img src="img/logo-clear-space.webp" alt="Samyakk logo construction grid with lotus-sized clear space marked X on every side" width="843" height="525"></div>
+      <ol>
+        <li><h3>The lotus crown</h3><p>A five-petal lotus sits over the y like a maang tikka, centred on the word rather than above it.</p></li>
+        <li><h3>The curling tail</h3><p>The y drops below the line and turns back on itself, a flourish taken from hand-lettered wedding cards.</p></li>
+        <li><h3>The double k</h3><p>The final k opens into a soft hook, so the name ends with a gesture instead of a full stop.</p></li>
+      </ol>
+    </div>
+    <div class="lockups" aria-label="Wordmark on brand colours">
+      <div class="lockup lk-1"><div class="logo-mask" role="img" aria-label="Gold wordmark on banyan green"></div><span>Gold on banyan</span></div>
+      <div class="lockup lk-2"><div class="logo-mask" role="img" aria-label="Gold wordmark on lotus blush"></div><span>Gold on blush</span></div>
+      <div class="lockup lk-3"><div class="logo-mask" role="img" aria-label="Ivory wordmark on rose mauve"></div><span>Ivory on mauve</span></div>
+      <div class="lockup lk-4"><div class="logo-mask" role="img" aria-label="Banyan wordmark on celadon"></div><span>Banyan on celadon</span></div>
+    </div>
+    <div class="submarks">
+      <div><img src="img/lotus.png" alt="Samyakk lotus mark" width="262" height="166"><p><b>Lotus mark</b>For small spaces: card backs, the thank-you note, tissue stickers.</p></div>
+      <div><span class="seal"><img src="img/lotus.png" alt="" width="262" height="166"></span><p><b>Seal</b>The lotus in a ring, used as the gift box closure and on garment labels.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band deep" aria-labelledby="palette-title">
+  <div class="inner">
+    <div class="section-head">
+      <div class="titles"><p class="eyebrow">Colour</p><h2 id="palette-title">A palette taken from the <em>lotus pond</em></h2></div>
+      <p class="lede">Petal pinks, leaf greens and gold, with banyan green as the anchor. These are the colours I proposed for the store revamp, and every printed piece draws from the same six. Click a code to copy it.</p>
+    </div>
+    <div class="palette">
+      <div class="swatch"><div class="chip" style="background:#AA823C"></div><div class="info"><h3>Temple Gold</h3><button class="copy-hex" type="button" data-hex="#AA823C"><code>#AA823C</code></button><p>The wordmark. Foiled on every piece.</p></div></div>
+      <div class="swatch"><div class="chip" style="background:#0F3A33"></div><div class="info"><h3>Banyan Green</h3><button class="copy-hex" type="button" data-hex="#0F3A33"><code>#0F3A33</code></button><p>Garment covers, staff uniforms, store accents.</p></div></div>
+      <div class="swatch"><div class="chip" style="background:#B5D1BF"></div><div class="info"><h3>Celadon</h3><button class="copy-hex" type="button" data-hex="#B5D1BF"><code>#B5D1BF</code></button><p>Business cards, carry bags, the vanity case.</p></div></div>
+      <div class="swatch"><div class="chip" style="background:#E8C6BB"></div><div class="info"><h3>Lotus Blush</h3><button class="copy-hex" type="button" data-hex="#E8C6BB"><code>#E8C6BB</code></button><p>Swing tags, chevron bags, tissue wrap.</p></div></div>
+      <div class="swatch"><div class="chip" style="background:#A86E7D"></div><div class="info"><h3>Rose Mauve</h3><button class="copy-hex" type="button" data-hex="#A86E7D"><code>#A86E7D</code></button><p>Gift boxes and the lotus seal.</p></div></div>
+      <div class="swatch"><div class="chip" style="background:#FFF6E2"></div><div class="info"><h3>Ivory</h3><button class="copy-hex" type="button" data-hex="#FFF6E2"><code>#FFF6E2</code></button><p>Card stock, notes and inner trays.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="ribbon" aria-hidden="true"></div>
+
+<section class="band paper" aria-labelledby="station-title">
+  <div class="inner">
+    <div class="section-head">
+      <div class="titles"><p class="eyebrow">Stationery</p><h2 id="station-title">Cards that open on a <em>lotus pond</em></h2></div>
+      <p class="lede">A celadon front with a painted lotus border and a gold-foiled name. The back is quiet ivory with a gold frame, listing the four departments: menswear, womenswear, bridal and sarees.</p>
+    </div>
+    <div class="grid g-station">
+      <figure><img src="img/business-cards.webp" alt="Samyakk business cards: celadon front with lotus border, ivory back with gold frame" width="2000" height="1119" loading="lazy"><figcaption><b>Business card</b>Front and back</figcaption></figure>
+      <figure><img src="img/thank-you-card.webp" alt="Samyakk thank-you note on peach card with a celadon lotus envelope card" width="944" height="1002" loading="lazy"><figcaption><b>Thank-you note</b>Tucked into every order</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="band blush" aria-labelledby="retail-title">
+  <div class="inner">
+    <div class="section-head">
+      <div class="titles"><p class="eyebrow">In store</p><h2 id="retail-title">Everything the <em>bride</em> carries home</h2></div>
+      <p class="lede">The gold chevron runs through the retail pieces like a woven border. Pink and celadon bags pair up at the counter, and jute totes give a softer option for sarees and everyday buys.</p>
+    </div>
+    <div class="grid g-pair">
+      <figure><div class="frame"><img src="img/swing-tag.webp" alt="Lotus blush swing tag with chevron edge and gold Samyakk wordmark" width="1287" height="1405" loading="lazy"></div><figcaption><b>Swing tag</b>Chevron edge, lotus foot</figcaption></figure>
+      <figure><div class="frame"><img src="img/garment-cover.webp" alt="Banyan green garment cover with gold Samyakk wordmark" width="1224" height="1405" loading="lazy"></div><figcaption><b>Garment cover</b>For bridal and occasion wear</figcaption></figure>
+    </div>
+    <div class="grid g-three" style="margin-top: clamp(12px, 1.6vw, 20px)">
+      <figure><div class="frame"><img src="img/jute-bags.webp" alt="Two jute tote bags, one printed with the gold Samyakk wordmark, one with a chevron weave" width="1400" height="1549" loading="lazy"></div><figcaption><b>Jute totes</b>Front and back</figcaption></figure>
+      <figure><div class="frame"><img src="img/tissue-wrap.webp" alt="Blush tissue paper printed with lotuses, sealed with a gold Samyakk sticker" width="1039" height="1381" loading="lazy"></div><figcaption><b>Tissue wrap</b>Lotus print with a foil seal</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="pack-title">
+  <div class="inner">
+    <div class="section-head">
+      <div class="titles"><p class="eyebrow">Packaging</p><h2 id="pack-title">A gift box in <em>three finishes</em></h2></div>
+      <p class="lede">One sliding box, three ways to dress it. Each sleeve wraps a white chevron tray, so the bride opens gold onto ivory. Pick a finish to see it.</p>
+    </div>
+    <div class="finish">
+      <div class="stage" id="stage">
+        <img class="on" data-key="filigree" src="img/box-filigree.webp" alt="Rose mauve gift box with gold filigree corners, sliding open onto a white chevron tray" width="2000" height="1067">
+        <img data-key="line" src="img/box-lotus-line.webp" alt="Rose mauve gift box with gold line-drawn lotuses and a fine gold frame" width="2000" height="1074" loading="lazy">
+        <img data-key="pond" src="img/box-lotus-pond.webp" alt="Blush gift box with a painted lotus pond, opening onto a mauve wrap and lotus seal" width="2000" height="1070" loading="lazy">
+      </div>
+      <div class="finish-list" role="group" aria-label="Gift box finish">
+        <button type="button" id="f-filigree" data-key="filigree" aria-pressed="true"><span class="dot" style="background:radial-gradient(circle at 35% 35%, #E3C27D, #9E6F75 70%)"></span><strong>Gold filigree</strong><small>Mauve sleeve, foiled vine corners</small></button>
+        <button type="button" id="f-line" data-key="line" aria-pressed="false"><span class="dot" style="background:linear-gradient(135deg, #A86E7D 50%, #C9A564 50%)"></span><strong>Gold lotus</strong><small>Line-drawn lotuses, fine foil frame</small></button>
+        <button type="button" id="f-pond" data-key="pond" aria-pressed="false"><span class="dot" style="background:linear-gradient(180deg, #E8C6BB 55%, #7CA59D 55%)"></span><strong>Lotus pond</strong><small>Painted pond, mauve wrap, seal</small></button>
+      </div>
+    </div>
+    <div class="grid g-vanity">
+      <figure><div class="frame"><img src="img/vanity-closed.webp" alt="Celadon leatherette vanity case with gold clasps and Samyakk wordmark, framed by lotuses" width="1400" height="1400" loading="lazy"></div><figcaption><b>Vanity case</b>Closed</figcaption></figure>
+      <figure><div class="frame"><img src="img/vanity-open.webp" alt="The Samyakk vanity case open, showing a mirror and a pleated apricot lining" width="1100" height="1408" loading="lazy"></div><figcaption><b>Vanity case</b>Open, with mirror and pleated lining</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="band deep" aria-labelledby="team-title">
+  <div class="inner">
+    <div class="section-head">
+      <div class="titles"><p class="eyebrow">Staff uniform</p><h2 id="team-title">The team wears <em>banyan and gold</em></h2></div>
+      <p class="lede">A banyan green shirt with gold piping and a small chest wordmark, so the people on the floor read as part of the store.</p>
+    </div>
+    <div class="grid"><figure><img src="img/staff-uniform.webp" alt="Banyan green staff shirt with gold piping, front and back" width="1800" height="1006" loading="lazy"></figure></div>
+  </div>
+</section>
+
+<section class="band blush" aria-labelledby="store-title">
+  <div class="inner">
+    <div class="section-head">
+      <div class="titles"><p class="eyebrow">Store revamp</p><h2 id="store-title">The palette, at <em>full scale</em></h2></div>
+      <p class="lede">The same colours carried into the Richmond Town store: banyan green and gold for the fixtures, lotus blush and celadon for the bridal floor.</p>
+    </div>
+    <div class="todo">
+      <p class="flag">Photos needed</p>
+      <p>No store photographs were in the uploaded files. Add before and after shots of the store to the repo and they'll go here, with the palette chips below as captions.</p>
+      <div class="chips">
+        <span><i style="background:#0F3A33"></i>Banyan Green</span>
+        <span><i style="background:#AA823C"></i>Temple Gold</span>
+        <span><i style="background:#E8C6BB"></i>Lotus Blush</span>
+        <span><i style="background:#B5D1BF"></i>Celadon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ribbon" aria-hidden="true"></div>
+
+<footer class="band closing">
+  <div class="inner">
+    <img class="lotus" src="img/lotus.png" alt="" width="262" height="166">
+    <p class="line">Complete, whole, done rightly.</p>
+    <p class="credit">Samyakk · Branding &amp; visual identity by Ashwathy Nair</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  const stage = document.getElementById("stage");
+  const buttons = document.querySelectorAll(".finish-list button");
+  buttons.forEach((btn) => btn.addEventListener("click", () => {
+    const key = btn.dataset.key;
+    buttons.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+    stage.querySelectorAll("img").forEach((img) => img.classList.toggle("on", img.dataset.key === key));
+  }));
+
+  const toast = document.getElementById("toast");
+  let timer;
+  const say = (msg) => {
+    toast.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(timer);
+    timer = setTimeout(() => toast.classList.remove("show"), 1600);
+  };
+  document.querySelectorAll(".copy-hex").forEach((btn) => btn.addEventListener("click", () => {
+    const hex = btn.dataset.hex;
+    const fallback = () => {
+      const range = document.createRange();
+      range.selectNodeContents(btn);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      say(hex + " selected. Press Ctrl+C to copy.");
+    };
+    try {
+      navigator.clipboard.writeText(hex).then(() => say("Copied " + hex), fallback);
+    } catch (e) { fallback(); }
+  }));
+})();
+</script>

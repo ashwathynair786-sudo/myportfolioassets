@@ -78,6 +78,7 @@ p { margin: 0; }
 .hero-mark { display: grid; justify-items: center; gap: clamp(22px, 3vw, 34px); text-align: center; }
 .logo { display: block; width: min(100%, 640px); height: auto; aspect-ratio: 2191.8 / 960.2; fill: currentColor; color: var(--gold); overflow: visible; }
 .hero-mark .logo { color: var(--gold); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .hero-mark h1 { font-size: clamp(1.4rem, 3vw, 2.1rem); font-style: italic; line-height: 1.3; color: var(--on-dark); max-width: 30ch; }
 .meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--hair-dark); }
 .meta > div { padding: 22px 20px 0 0; display: grid; gap: 6px; min-width: 0; }
@@ -119,7 +120,8 @@ p { margin: 0; }
 .anatomy li h3 { font-size: 1.35rem; color: var(--ink); line-height: 1.3; }
 .anatomy li p { color: var(--ink-soft); font-size: 15.5px; }
 
-.lockups { margin-top: clamp(48px, 7vw, 88px); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.subhead { margin-top: clamp(48px, 7vw, 88px); margin-bottom: 20px; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--ink); }
+.lockups { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
 .lockup { aspect-ratio: 4 / 3; display: grid; place-items: center; padding: 18%; position: relative; }
 .lockup .logo { width: 100%; }
 .lockup span { position: absolute; left: 14px; bottom: 10px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; }
@@ -224,7 +226,7 @@ p { margin: 0; }
     <div class="hero-top"><span>Branding &amp; visual identity</span><span>Richmond Town, Bengaluru</span></div>
     <div class="hero-mark">
       <svg class="logo" viewBox="0 0 2191.8 960.2" role="img" aria-label="Samyakk wordmark with lotus crown"><use href="#sk-logo"/></svg>
-      <h1>A wedding destination, dressed in temple gold and lotus pink.</h1>
+      <h1 class="sr-only">Samyakk branding</h1>
     </div>
     <dl class="meta">
       <div><dt>Client</dt><dd>Samyakk</dd></div>
@@ -248,16 +250,16 @@ p { margin: 0; }
     <div class="brief-cols">
       <div>
         <h3>Context</h3>
-        <p>Samyakk is a wedding destination store in Richmond Town, Bengaluru. Bridal wear, sarees, menswear and womenswear sit under one roof, so the whole wedding party can be dressed in one place.</p>
+        <p>Samyakk is a wedding destination store in Richmond Town, Bengaluru. It sells bridal wear, sarees, menswear and womenswear.</p>
       </div>
       <div>
         <h3>Challenge</h3>
-        <p>The old identity was a stock lotus over a plain lowercase serif. It was tidy, but it could have belonged to a spa, and it said nothing about weddings, craft or celebration. Samyakk needed a brand as considered as the trousseau it sells, and one that could stretch from a swing tag to a whole store.</p>
+        <p>The old logo was a stock lotus over a plain lowercase serif. It looked generic and did not suggest weddings or luxury. Samyakk needed an identity that would work across print, packaging and the store.</p>
       </div>
       <div>
         <h3>What I did</h3>
-        <p>I drew a new wordmark with a lotus crown and a swash that curls under the name, set in temple gold. I built a palette from lotus pinks, celadon and banyan green, carried it into the store revamp, and extended it across stationery, tags, garment covers, carry bags, gift boxes, a vanity case and staff uniforms.</p>
-        <p>Samyakk approved the new identity at the first presentation and replaced their old logo with it.</p>
+        <p>I designed a new logo, a custom wordmark with a lotus crown, and a colour palette of gold, green, pinks and celadon. I applied the palette to the store revamp and designed the brand collateral: stationery, carry bags, gift boxes, a vanity case and staff uniforms.</p>
+        <p>The client approved the new identity at the first presentation and replaced their old logo with it.</p>
       </div>
     </div>
   </div>
@@ -266,17 +268,17 @@ p { margin: 0; }
 <section class="band" aria-labelledby="ba-title">
   <div class="inner">
     <div class="section-head">
-      <div class="titles"><p class="eyebrow">Before &amp; after</p><h2 id="ba-title">From a stock lotus to a <em>signature</em></h2></div>
-      <p class="lede">The lotus stays as the link to the old brand. What changes is everything around it: the lotus moves from an icon above the name to a crown sitting on it, and the letters themselves carry the ceremony.</p>
+      <div class="titles"><h2 id="ba-title">Before and after</h2></div>
+      <p class="lede">The lotus from the old logo is kept and redrawn as a crown on a custom wordmark.</p>
     </div>
     <div class="compare">
       <figure class="before">
         <div class="plate"><img src="img/previous-logo.png" alt="Previous Samyakk logo: a brown lotus icon above a lowercase grey serif" width="474" height="286"></div>
-        <figcaption><b>Before</b><span>Icon and name, set apart</span></figcaption>
+        <figcaption><b>Before</b><span>Previous logo</span></figcaption>
       </figure>
       <figure class="after">
         <div class="plate"><svg class="logo" viewBox="0 0 2191.8 960.2" role="img" aria-label="New Samyakk wordmark in temple gold"><use href="#sk-logo"/></svg></div>
-        <figcaption><b>After</b><span>One mark, drawn as a whole</span></figcaption>
+        <figcaption><b>After</b><span>New logo</span></figcaption>
       </figure>
     </div>
   </div>
@@ -285,26 +287,27 @@ p { margin: 0; }
 <section class="band paper" aria-labelledby="mark-title">
   <div class="inner">
     <div class="section-head">
-      <div class="titles"><p class="eyebrow">The mark</p><h2 id="mark-title">Three details, <em>one name</em></h2></div>
-      <p class="lede">A high-contrast display serif, redrawn by hand where the name needed a little ceremony. Clear space is measured by the lotus crown, so the mark always has room to breathe on foil, fabric and signage.</p>
+      <div class="titles"><h2 id="mark-title">Logo</h2></div>
+      <p class="lede">Custom wordmark with a lotus crown. Clear space X equals the height of the lotus.</p>
     </div>
     <div class="anatomy">
       <div class="sheet"><svg class="cs-grid" role="img" aria-label="Samyakk logo construction grid: clear space X, equal to the height of the lotus crown, on every side" viewBox="-237 83 3364 1772" font-family="Jost, Futura, 'Century Gothic', sans-serif"><rect x="-237" y="83" width="3364" height="1772" fill="#FFFAEF"/><g fill="#CDBFA3" opacity=".55" transform="translate(31.0 214.8) scale(0.2597) translate(-250.6 -217.3)"><use href="#sk-lotus-g"/></g><g fill="#CDBFA3" opacity=".55" transform="translate(2473.8 214.8) scale(0.2597) translate(-250.6 -217.3)"><use href="#sk-lotus-g"/></g><g fill="#CDBFA3" opacity=".55" transform="translate(31.0 1426.0) scale(0.2597) translate(-250.6 -217.3)"><use href="#sk-lotus-g"/></g><g fill="#CDBFA3" opacity=".55" transform="translate(2473.8 1426.0) scale(0.2597) translate(-250.6 -217.3)"><use href="#sk-lotus-g"/></g><rect x="-6.9" y="142.9" width="2713.8" height="1482.2" fill="none" stroke="#CDBFA3" stroke-width="3"/><line x1="264.1" y1="142.9" x2="264.1" y2="1625.1" stroke="#CDBFA3" stroke-width="2.5" stroke-dasharray="14 12"/><line x1="2435.9" y1="142.9" x2="2435.9" y2="1625.1" stroke="#CDBFA3" stroke-width="2.5" stroke-dasharray="14 12"/><line x1="1350.0" y1="142.9" x2="1350.0" y2="1625.1" stroke="#CDBFA3" stroke-width="2.5" stroke-dasharray="14 12"/><line x1="-6.9" y1="413.9" x2="2706.9" y2="413.9" stroke="#CDBFA3" stroke-width="2.5" stroke-dasharray="14 12"/><line x1="-6.9" y1="1354.1" x2="2706.9" y2="1354.1" stroke="#CDBFA3" stroke-width="2.5" stroke-dasharray="14 12"/><line x1="264.1" y1="528.1" x2="2746.9" y2="528.1" stroke="#D9A5A0" stroke-width="2.5" stroke-dasharray="4 10" stroke-linecap="round"/><text x="2766.9" y="540.1" font-size="34" letter-spacing="3" fill="#9A8B70">Ascender</text><line x1="264.1" y1="788.5" x2="2746.9" y2="788.5" stroke="#D9A5A0" stroke-width="2.5" stroke-dasharray="4 10" stroke-linecap="round"/><text x="2766.9" y="800.5" font-size="34" letter-spacing="3" fill="#9A8B70">x-height</text><line x1="264.1" y1="1090.3" x2="2746.9" y2="1090.3" stroke="#D9A5A0" stroke-width="2.5" stroke-dasharray="4 10" stroke-linecap="round"/><text x="2766.9" y="1102.3" font-size="34" letter-spacing="3" fill="#9A8B70">Baseline</text><line x1="264.1" y1="1354.1" x2="2746.9" y2="1354.1" stroke="#D9A5A0" stroke-width="2.5" stroke-dasharray="4 10" stroke-linecap="round"/><text x="2766.9" y="1366.1" font-size="34" letter-spacing="3" fill="#9A8B70">Descender</text><g fill="#A87A2F"><use href="#sk-logo-g"/></g><g stroke="#8E7F66" stroke-width="3"><line x1="-77" y1="142.9" x2="-77" y2="413.9"/><line x1="-93" y1="142.9" x2="-61" y2="142.9"/><line x1="-93" y1="413.9" x2="-61" y2="413.9"/></g><text x="-127" y="292.4" font-size="42" fill="#8E7F66" text-anchor="middle" font-style="italic">X</text><g stroke="#8E7F66" stroke-width="3"><line x1="-77" y1="1354.1" x2="-77" y2="1625.1"/><line x1="-93" y1="1354.1" x2="-61" y2="1354.1"/><line x1="-93" y1="1625.1" x2="-61" y2="1625.1"/></g><text x="-127" y="1503.6" font-size="42" fill="#8E7F66" text-anchor="middle" font-style="italic">X</text><g stroke="#8E7F66" stroke-width="3"><line x1="-6.9" y1="1695" x2="264.1" y2="1695"/><line x1="-6.9" y1="1679" x2="-6.9" y2="1711"/><line x1="264.1" y1="1679" x2="264.1" y2="1711"/></g><text x="128.6" y="1765" font-size="42" fill="#8E7F66" text-anchor="middle" font-style="italic">X</text><g stroke="#8E7F66" stroke-width="3"><line x1="2435.9" y1="1695" x2="2706.9" y2="1695"/><line x1="2435.9" y1="1679" x2="2435.9" y2="1711"/><line x1="2706.9" y1="1679" x2="2706.9" y2="1711"/></g><text x="2571.4" y="1765" font-size="42" fill="#8E7F66" text-anchor="middle" font-style="italic">X</text><g stroke="#A87A2F" stroke-width="3" opacity=".8"><line x1="770" y1="461.8" x2="770" y2="732.8"/><line x1="754" y1="461.8" x2="786" y2="461.8"/><line x1="754" y1="732.8" x2="786" y2="732.8"/></g><text x="720" y="612" font-size="42" fill="#A87A2F" text-anchor="middle" font-style="italic">X</text></svg></div>
       <ol>
-        <li><h3>The lotus crown</h3><p>A five-petal lotus rests on the name like a maang tikka. Its height sets the clear space, marked X.</p></li>
-        <li><h3>The curling tail</h3><p>The y drops below the line and turns back on itself, a flourish taken from hand-lettered wedding cards.</p></li>
-        <li><h3>The joined kk</h3><p>The two ks share one curling stroke at the top, a ligature drawn just for this name.</p></li>
+        <li><h3>Lotus crown</h3><p>Sits above the name. Its height sets the clear space, X.</p></li>
+        <li><h3>Descender swash</h3><p>The tail of the y curls back under the name.</p></li>
+        <li><h3>kk ligature</h3><p>The two ks are joined at the top.</p></li>
       </ol>
     </div>
-    <div class="lockups" aria-label="Wordmark on brand colours">
-      <div class="lockup lk-1"><svg class="logo" viewBox="0 0 2191.8 960.2" role="img" aria-label="Gold wordmark on banyan green"><use href="#sk-logo"/></svg><span>Gold on banyan</span></div>
+    <h3 class="subhead">Logo variations</h3>
+    <div class="lockups" aria-label="Logo on brand colours">
+      <div class="lockup lk-1"><svg class="logo" viewBox="0 0 2191.8 960.2" role="img" aria-label="Gold wordmark on banyan green"><use href="#sk-logo"/></svg><span>Gold on green</span></div>
       <div class="lockup lk-2"><svg class="logo" viewBox="0 0 2191.8 960.2" role="img" aria-label="Gold wordmark on lotus blush"><use href="#sk-logo"/></svg><span>Gold on blush</span></div>
       <div class="lockup lk-3"><svg class="logo" viewBox="0 0 2191.8 960.2" role="img" aria-label="Ivory wordmark on rose mauve"><use href="#sk-logo"/></svg><span>Ivory on mauve</span></div>
       <div class="lockup lk-4"><svg class="logo" viewBox="0 0 2191.8 960.2" role="img" aria-label="Banyan wordmark on celadon"><use href="#sk-logo"/></svg><span>Banyan on celadon</span></div>
     </div>
     <div class="submarks">
-      <div><svg class="mark" viewBox="0 0 751.4 489.6" role="img" aria-label="Samyakk lotus mark"><use href="#sk-lotus"/></svg><p><b>Lotus mark</b>For small spaces: card backs, the thank-you note, tissue stickers.</p></div>
-      <div><span class="seal"><svg class="mark" viewBox="0 0 751.4 489.6" aria-hidden="true"><use href="#sk-lotus"/></svg></span><p><b>Seal</b>The lotus in a ring, used as the gift box closure and on garment labels.</p></div>
+      <div><svg class="mark" viewBox="0 0 751.4 489.6" role="img" aria-label="Samyakk lotus mark"><use href="#sk-lotus"/></svg><p><b>Lotus mark</b>For small spaces, such as card backs and stickers.</p></div>
+      <div><span class="seal"><svg class="mark" viewBox="0 0 751.4 489.6" aria-hidden="true"><use href="#sk-lotus"/></svg></span><p><b>Seal</b>Lotus in a ring, used to close the gift boxes.</p></div>
     </div>
   </div>
 </section>
@@ -312,8 +315,8 @@ p { margin: 0; }
 <section class="band deep" aria-labelledby="palette-title">
   <div class="inner">
     <div class="section-head">
-      <div class="titles"><p class="eyebrow">Colour</p><h2 id="palette-title">A palette taken from the <em>lotus pond</em></h2></div>
-      <p class="lede">Petal pinks, leaf greens and gold, with banyan green as the anchor. These are the colours I proposed for the store revamp, and every printed piece draws from the same six. Click a code to copy it.</p>
+      <div class="titles"><h2 id="palette-title">Colour palette</h2></div>
+      <p class="lede">Six colours used across print, packaging and the store. Click a code to copy it.</p>
     </div>
     <div class="palette">
       <div class="swatch"><div class="chip" style="background:#A87A2F"></div><div class="info"><h3>Temple Gold</h3><button class="copy-hex" type="button" data-hex="#A87A2F"><code>#A87A2F</code></button><p>The wordmark. Foiled on every piece.</p></div></div>
@@ -331,12 +334,12 @@ p { margin: 0; }
 <section class="band paper" aria-labelledby="station-title">
   <div class="inner">
     <div class="section-head">
-      <div class="titles"><p class="eyebrow">Stationery</p><h2 id="station-title">Cards that open on a <em>lotus pond</em></h2></div>
-      <p class="lede">A celadon front with a painted lotus border and a gold-foiled name. The back is quiet ivory with a gold frame, listing the four departments: menswear, womenswear, bridal and sarees.</p>
+      <div class="titles"><h2 id="station-title">Stationery</h2></div>
+      <p class="lede">Celadon front with a lotus border and gold-foiled logo. Ivory back with a gold frame and the four departments: menswear, womenswear, bridal and sarees.</p>
     </div>
     <div class="grid g-station">
       <figure><img src="img/business-cards.webp" alt="Samyakk business cards: celadon front with lotus border, ivory back with gold frame" width="2000" height="1119"><figcaption><b>Business card</b>Front and back</figcaption></figure>
-      <figure><img src="img/thank-you-card.webp" alt="Samyakk thank-you note on peach card with a celadon lotus envelope card" width="944" height="1002"><figcaption><b>Thank-you note</b>Tucked into every order</figcaption></figure>
+      <figure><img src="img/thank-you-card.webp" alt="Samyakk thank-you note on peach card with a celadon lotus envelope card" width="944" height="1002"><figcaption><b>Thank-you note</b></figcaption></figure>
     </div>
   </div>
 </section>
@@ -344,17 +347,17 @@ p { margin: 0; }
 <section class="band" aria-labelledby="retail-title">
   <div class="inner">
     <div class="section-head">
-      <div class="titles"><p class="eyebrow">Gift boxes</p><h2 id="retail-title">Everything the <em>bride</em> carries home</h2></div>
-      <p class="lede">Two sliding boxes, one for sarees and one for the bridal trousseau. Both open onto the house chevron and close with gold, so the unboxing feels like part of the occasion.</p>
+      <div class="titles"><h2 id="retail-title">Gift boxes</h2></div>
+      <p class="lede">A saree box and a bridal box. Both are sliding boxes with a chevron tray.</p>
     </div>
     <div class="boxes">
       <figure>
         <div class="box-stage"><img src="img/saree-box.webp" alt="Samyakk saree box: rose mauve sleeve with gold-foiled vines at each corner, sliding open onto a white chevron tray" width="1400" height="1120"></div>
-        <figcaption><b>Saree box</b><span>Rose mauve sleeve, gold-foiled vines at every corner, white chevron tray.</span></figcaption>
+        <figcaption><b>Saree box</b><span>Mauve sleeve with gold-foiled corners, chevron tray.</span></figcaption>
       </figure>
       <figure>
         <div class="box-stage"><img src="img/bridal-box.webp" alt="Samyakk bridal box: chevron sleeve with a painted lotus pond, opening onto a mauve wrap closed with the lotus seal" width="1400" height="694"></div>
-        <figcaption><b>Bridal box</b><span>A painted lotus pond on the sleeve, a mauve wrap inside, closed with the lotus seal.</span></figcaption>
+        <figcaption><b>Bridal box</b><span>Lotus print sleeve, mauve wrap, lotus seal.</span></figcaption>
       </figure>
     </div>
   </div>
@@ -363,17 +366,17 @@ p { margin: 0; }
 <section class="band blush" aria-labelledby="pack-title">
   <div class="inner">
     <div class="section-head">
-      <div class="titles"><p class="eyebrow">Packaging</p><h2 id="pack-title">A vanity case for the <em>bride</em></h2></div>
-      <p class="lede">Celadon leatherette with gold clasps and the wordmark on the lid. Inside, a mirror and a pleated apricot lining for jewellery and the last touches before the ceremony.</p>
+      <div class="titles"><h2 id="pack-title">Vanity case</h2></div>
+      <p class="lede">Celadon leatherette with gold clasps and the logo on the lid. Mirror and pleated lining inside.</p>
     </div>
     <div class="boxes tall">
       <figure>
         <div class="box-stage"><img src="img/vanity-closed-cutout.webp" alt="The Samyakk vanity case closed: celadon leatherette, gold clasps and handle, the wordmark foiled on the lid" width="1100" height="1186"></div>
-        <figcaption><b>Closed</b><span>Celadon leatherette, gold clasps, the wordmark foiled on the lid.</span></figcaption>
+        <figcaption><b>Closed</b></figcaption>
       </figure>
       <figure>
         <div class="box-stage"><img src="img/vanity-open-cutout.webp" alt="The Samyakk vanity case open, with a mirror in the lid and a pleated apricot lining" width="1100" height="1260"></div>
-        <figcaption><b>Open</b><span>A mirror in the lid and a pleated apricot lining.</span></figcaption>
+        <figcaption><b>Open</b></figcaption>
       </figure>
     </div>
   </div>
@@ -382,8 +385,8 @@ p { margin: 0; }
 <section class="band deep" aria-labelledby="team-title">
   <div class="inner">
     <div class="section-head">
-      <div class="titles"><p class="eyebrow">Staff uniform</p><h2 id="team-title">The team wears <em>banyan and gold</em></h2></div>
-      <p class="lede">A banyan green shirt with gold piping and a small chest wordmark, so the people on the floor read as part of the store.</p>
+      <div class="titles"><h2 id="team-title">Staff uniform</h2></div>
+      <p class="lede">Green shirt with gold piping and the logo on the chest.</p>
     </div>
     <div class="grid"><figure><img src="img/staff-uniform.webp" alt="Banyan green staff shirt with gold piping, front and back" width="1800" height="1006"></figure></div>
   </div>
@@ -392,13 +395,13 @@ p { margin: 0; }
 <section class="band blush" aria-labelledby="store-title">
   <div class="inner">
     <div class="section-head">
-      <div class="titles"><p class="eyebrow">Store revamp</p><h2 id="store-title">The palette, at <em>full scale</em></h2></div>
-      <p class="lede">The identity carried into the store: a banyan green arch lit in gold over the bridal edit, the lotus set into the floor, and the gold wordmark beside the trial room.</p>
+      <div class="titles"><h2 id="store-title">Store revamp</h2></div>
+      <p class="lede">The new logo and colours in the store.</p>
     </div>
     <div class="stores">
-      <figure class="st-a"><img src="img/store-arch.webp" alt="Three bridal lehengas under a banyan green arch lit in warm gold, between painted mural panels" width="548" height="364"><figcaption>The bridal edit under the banyan arch</figcaption></figure>
-      <figure class="st-b"><img src="img/store-display.webp" alt="Bridal and occasion wear on mannequins, with the Samyakk lotus inlaid in the floor and Samyakk signage on the pillars" width="548" height="364"><figcaption>The lotus set into the floor</figcaption></figure>
-      <figure class="st-c"><img src="img/store-trial-room.webp" alt="A bride in a draped lehenga beside the trial room arch, with the gold Samyakk wordmark on the wall" width="315" height="577"><figcaption>The wordmark at the trial room</figcaption></figure>
+      <figure class="st-a"><img src="img/store-arch.webp" alt="Three bridal lehengas under a banyan green arch lit in warm gold, between painted mural panels" width="548" height="364"><figcaption>Bridal display</figcaption></figure>
+      <figure class="st-b"><img src="img/store-display.webp" alt="Bridal and occasion wear on mannequins, with the Samyakk lotus inlaid in the floor and Samyakk signage on the pillars" width="548" height="364"><figcaption>Display with the lotus floor inlay</figcaption></figure>
+      <figure class="st-c"><img src="img/store-trial-room.webp" alt="A bride in a draped lehenga beside the trial room arch, with the gold Samyakk wordmark on the wall" width="315" height="577"><figcaption>Logo at the trial room</figcaption></figure>
     </div>
     <div class="store-palette">
       <p class="flag">Colours in store</p>
@@ -417,8 +420,7 @@ p { margin: 0; }
 <footer class="band closing">
   <div class="inner">
     <svg class="lotus" viewBox="0 0 751.4 489.6" aria-hidden="true"><use href="#sk-lotus"/></svg>
-    <p class="line">Complete, whole, done rightly.</p>
-    <p class="credit">Samyakk · Branding &amp; visual identity by Ashwathy Nair</p>
+        <p class="credit">Samyakk · Branding &amp; visual identity by Ashwathy Nair</p>
   </div>
 </footer>
 

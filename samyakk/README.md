@@ -11,7 +11,7 @@ Open `preview/index.html` to see the case study as a page.
 | `logo/` | `samyakk-logo-master.pdf` is the vector master from Illustrator. From it: `samyakk-logo.svg` and `.png` (transparent), `samyakk-lotus-mark.svg` and `.png`, and `samyakk-logo-clear-space.svg` (construction grid, clear space X = height of the lotus crown). Also the old brand sheet and the previous logo for before/after. |
 | `collateral/stationery/` | Business cards, thank-you note. |
 | `collateral/retail/` | Swing tag, garment cover, carry bags, jute totes, tissue wrap and seal, staff uniform. |
-| `collateral/packaging/` | Gift box in three finishes (gold filigree, gold lotus, lotus pond), vanity case closed and open. `cutouts/` has the saree box (gold filigree) and bridal box (lotus pond) with the background removed. |
+| `collateral/packaging/` | Gift box in three finishes (gold filigree, gold lotus, lotus pond), vanity case closed and open. `cutouts/` has the saree box (gold filigree), the bridal box (lotus pond) and the vanity case open and closed, all with the background removed. |
 | `source/` | The two original presentation PDFs the mockups were extracted from. |
 | `preview/` | The HTML case study and its web-sized images (`preview/img/`). |
 | `stores/` | Store photos: the bridal arch, the lotus floor display and the wordmark at the trial room. These are small (about 550px wide); larger originals would sharpen the page. |

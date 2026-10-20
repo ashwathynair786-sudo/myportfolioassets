@@ -9,7 +9,7 @@ Open `preview/index.html` to see the case study as a page.
 | Folder | What's in it |
 | --- | --- |
 | `logo/` | `samyakk-logo-master.pdf` is the vector master from Illustrator. From it: `samyakk-logo.svg` and `.png` (transparent), `samyakk-lotus-mark.svg` and `.png`, and `samyakk-logo-clear-space.svg` (construction grid, clear space X = height of the lotus crown). Also the old brand sheet and the previous logo for before/after. |
-| `collateral/stationery/` | Business cards (the cover image). |
+| `collateral/stationery/` | Business cards (the cover image), business card front and back, thank-you card, embossed green cards. |
 | `collateral/packaging/` | Bridal box (front and angle), saree box, tissue wrap and boxes. |
 | `collateral/retail/` | Paper bags and jute bags. |
 | `collateral/pattern/` | Chevron and lotus pattern. |

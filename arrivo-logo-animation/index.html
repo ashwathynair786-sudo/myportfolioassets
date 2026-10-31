@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arrivo Logo Animation</title>
+<style>
+  :root { --bg: #263a32; --ink: #e4ddcc; }
+  html, body { margin: 0; height: 100%; background: var(--bg); overflow: hidden; }
+  body { display: grid; place-items: center; cursor: pointer; }
+  svg { width: 100vw; height: 100vh; display: block; }
+</style>
+</head>
+<body>
+<svg id="stage" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- letters emerge from the baseline ("ground") -->
+    <clipPath id="ground"><rect x="-50" y="-200" width="600" height="391.5"/></clipPath>
+    <!-- reveals the contrail behind the plane -->
+    <mask id="trailMask" maskUnits="userSpaceOnUse" x="-400" y="-400" width="2400" height="1700">
+      <path id="trailReveal" fill="none" stroke="#fff" stroke-width="24" stroke-linecap="round"/>
+    </mask>
+    <path id="planeShape" d="M 30 0 C 30 -3 27 -4.5 22 -4.5 L 6 -4.5 L -8 -28 L -14 -28 L -6 -4.5 L -20 -4.5 L -26 -13 L -30 -13 L -27 -2.5 L -27 2.5 L -30 13 L -26 13 L -20 4.5 L -6 4.5 L -14 28 L -8 28 L 6 4.5 L 22 4.5 C 27 4.5 30 3 30 0 Z"/>
+  </defs>
+
+  <rect width="1600" height="900" fill="#263a32"/>
+
+  <g id="scene">
+    <!-- flight path: swoop in, glide over the word, loop, land on the i -->
+    <path id="flight" fill="none" stroke="none"
+      d="M -140 760
+         C 150 740 300 360 560 320
+         C 820 282 1080 270 1260 272
+         C 1470 274 1500 96 1340 84
+         C 1190 74 1130 210 1050 268
+         C 965 328 880 354.7 815.9 354.7"/>
+    <path id="trail" fill="none" stroke="#e4ddcc" stroke-opacity="0.55" stroke-width="3"
+      stroke-dasharray="2 13" stroke-linecap="round" mask="url(#trailMask)"/>
+
+    <!-- logo: original arrivo glyphs from ine.svg -->
+    <g id="logo" transform="translate(382 202) scale(2)">
+      <g clip-path="url(#ground)" fill="#e4ddcc">
+        <g class="letter" data-cx="54"><g transform="translate(3.337937, 185.225126)"><path d="M 43.375 1.96875 C 35.925781 1.96875 29.351562 0.0507812 23.65625 -3.78125 C 17.96875 -7.613281 13.535156 -12.789062 10.359375 -19.3125 C 7.179688 -25.832031 5.59375 -33.195312 5.59375 -41.40625 C 5.59375 -49.957031 7.453125 -57.597656 11.171875 -64.328125 C 14.898438 -71.066406 20.1875 -76.40625 27.03125 -80.34375 C 33.875 -84.289062 41.953125 -86.265625 51.265625 -86.265625 C 60.691406 -86.265625 68.71875 -84.320312 75.34375 -80.4375 C 81.96875 -76.550781 87.0625 -71.238281 90.625 -64.5 C 94.1875 -57.757812 95.96875 -50.226562 95.96875 -41.90625 L 95.96875 0 L 70.984375 0 L 70.984375 -13.46875 L 70.328125 -13.46875 C 68.796875 -10.507812 66.820312 -7.851562 64.40625 -5.5 C 62 -3.144531 59.070312 -1.3125 55.625 0 C 52.175781 1.3125 48.09375 1.96875 43.375 1.96875 Z M 50.9375 -20.046875 C 54.769531 -20.046875 58.140625 -21.003906 61.046875 -22.921875 C 63.953125 -24.835938 66.171875 -27.492188 67.703125 -30.890625 C 69.234375 -34.285156 70 -38.066406 70 -42.234375 C 70 -46.285156 69.234375 -49.953125 67.703125 -53.234375 C 66.171875 -56.523438 63.953125 -59.128906 61.046875 -61.046875 C 58.140625 -62.960938 54.769531 -63.921875 50.9375 -63.921875 C 47 -63.921875 43.550781 -62.960938 40.59375 -61.046875 C 37.632812 -59.128906 35.382812 -56.523438 33.84375 -53.234375 C 32.3125 -49.953125 31.546875 -46.285156 31.546875 -42.234375 C 31.546875 -38.066406 32.3125 -34.285156 33.84375 -30.890625 C 35.382812 -27.492188 37.632812 -24.835938 40.59375 -22.921875 C 43.550781 -21.003906 47 -20.046875 50.9375 -20.046875 Z"/></g></g>
+        <g class="letter" data-cx="130"><g transform="translate(97.323798, 185.225126)"><path d="M 8.875 0 L 8.875 -59.484375 C 8.875 -67.148438 11.0625 -73.175781 15.4375 -77.5625 C 19.820312 -81.945312 25.90625 -84.140625 33.6875 -84.140625 L 58.171875 -84.140625 L 58.171875 -63.4375 L 39.9375 -63.4375 C 38.394531 -63.4375 37.078125 -62.914062 35.984375 -61.875 C 34.890625 -60.832031 34.34375 -59.488281 34.34375 -57.84375 L 34.34375 0 Z"/></g></g>
+        <g class="letter" data-cx="179"><g transform="translate(145.958869, 185.225126)"><path d="M 8.875 0 L 8.875 -59.484375 C 8.875 -67.148438 11.0625 -73.175781 15.4375 -77.5625 C 19.820312 -81.945312 25.90625 -84.140625 33.6875 -84.140625 L 58.171875 -84.140625 L 58.171875 -63.4375 L 39.9375 -63.4375 C 38.394531 -63.4375 37.078125 -62.914062 35.984375 -61.875 C 34.890625 -60.832031 34.34375 -59.488281 34.34375 -57.84375 L 34.34375 0 Z"/></g></g>
+        <g class="letter" data-cx="217"><g transform="translate(194.59394, 185.225126)"><path d="M 9.53125 0 L 9.53125 -84.296875 L 35.171875 -84.296875 L 35.171875 0 Z"/></g></g>
+        <g class="letter" data-cx="276"><g transform="translate(227.619138, 185.225126)"><path d="M 47.984375 1.96875 C 42.941406 1.96875 38.335938 0.652344 34.171875 -1.96875 C 30.015625 -4.601562 27.171875 -8.164062 25.640625 -12.65625 L 1.640625 -84.296875 L 29.578125 -84.296875 L 46.5 -24.15625 C 46.71875 -23.71875 46.960938 -23.390625 47.234375 -23.171875 C 47.515625 -22.953125 47.816406 -22.84375 48.140625 -22.84375 C 48.585938 -22.84375 48.945312 -22.953125 49.21875 -23.171875 C 49.488281 -23.390625 49.679688 -23.71875 49.796875 -24.15625 L 67.046875 -84.296875 L 94.328125 -84.296875 L 70.328125 -12.65625 C 68.796875 -8.164062 65.972656 -4.601562 61.859375 -1.96875 C 57.753906 0.652344 53.128906 1.96875 47.984375 1.96875 Z"/></g></g>
+        <g class="letter" data-cx="363"><g transform="translate(312.23909, 185.225126)"><path d="M 51.265625 1.96875 C 42.609375 1.96875 34.828125 0.0507812 27.921875 -3.78125 C 21.023438 -7.613281 15.578125 -12.867188 11.578125 -19.546875 C 7.585938 -26.234375 5.59375 -33.738281 5.59375 -42.0625 C 5.59375 -50.5 7.585938 -58.03125 11.578125 -64.65625 C 15.578125 -71.289062 21.023438 -76.550781 27.921875 -80.4375 C 34.828125 -84.320312 42.609375 -86.265625 51.265625 -86.265625 C 59.921875 -86.265625 67.671875 -84.320312 74.515625 -80.4375 C 81.367188 -76.550781 86.796875 -71.289062 90.796875 -64.65625 C 94.796875 -58.03125 96.796875 -50.5 96.796875 -42.0625 C 96.796875 -33.738281 94.796875 -26.234375 90.796875 -19.546875 C 86.796875 -12.867188 81.34375 -7.613281 74.4375 -3.78125 C 67.539062 0.0507812 59.816406 1.96875 51.265625 1.96875 Z M 51.265625 -20.21875 C 55.316406 -20.21875 58.820312 -21.203125 61.78125 -23.171875 C 64.738281 -25.140625 67.039062 -27.765625 68.6875 -31.046875 C 70.332031 -34.335938 71.15625 -38.066406 71.15625 -42.234375 C 71.15625 -46.285156 70.332031 -49.953125 68.6875 -53.234375 C 67.039062 -56.523438 64.738281 -59.15625 61.78125 -61.125 C 58.820312 -63.101562 55.316406 -64.09375 51.265625 -64.09375 C 47.210938 -64.09375 43.679688 -63.101562 40.671875 -61.125 C 37.660156 -59.15625 35.332031 -56.523438 33.6875 -53.234375 C 32.039062 -49.953125 31.21875 -46.285156 31.21875 -42.234375 C 31.21875 -38.066406 32.039062 -34.335938 33.6875 -31.046875 C 35.332031 -27.765625 37.660156 -25.140625 40.671875 -23.171875 C 43.679688 -21.203125 47.210938 -20.21875 51.265625 -20.21875 Z"/></g></g>
+      </g>
+    </g>
+
+    <!-- arrival: ripples + the dot of the i (canvas coords) -->
+    <circle class="ripple" cx="815.9" cy="354.7" r="30" fill="none" stroke="#e4ddcc" stroke-width="2.5" opacity="0"/>
+    <circle class="ripple" cx="815.9" cy="354.7" r="30" fill="none" stroke="#e4ddcc" stroke-width="2.5" opacity="0"/>
+    <circle id="dot" cx="815.9" cy="354.7" r="29.9" fill="#e4ddcc" opacity="0"/>
+
+    <!-- plane + its ground shadow -->
+    <use id="planeShadow" href="#planeShape" fill="#000" fill-opacity="0.22"/>
+    <use id="plane" href="#planeShape" fill="#e4ddcc"/>
+  </g>
+</svg>
+
+<script>
+(() => {
+  // ---- timeline (seconds) ----
+  const T_START = 0.35;     // plane enters
+  const T_FLY   = 3.4;      // flight duration
+  const T_LAND  = T_START + T_FLY;
+  const T_END   = 6.4;      // animation finished (hold)
+  const LOOP    = 7.2;      // cycle length when looping in the browser
+  const TRAIL_TAIL = 760;   // visible contrail length (px)
+
+  const $ = s => document.querySelector(s);
+  const flight = $('#flight'), trail = $('#trail'), reveal = $('#trailReveal');
+  const plane = $('#plane'), shadow = $('#planeShadow'), dot = $('#dot');
+  const ripples = [...document.querySelectorAll('.ripple')];
+  const letters = [...document.querySelectorAll('.letter')];
+  const scene = $('#scene');
+
+  const d = flight.getAttribute('d');
+  trail.setAttribute('d', d); reveal.setAttribute('d', d);
+  const L = flight.getTotalLength();
+
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+  const easeInOutCubic = t => t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
+  const easeOutBack = (t, k = 1.9) => 1 + (k + 1) * Math.pow(t - 1, 3) + k * Math.pow(t - 1, 2);
+  // flight easing: quick entry, gentle deceleration into the landing
+  const P = 1.7;
+  const flyEase = u => 1 - Math.pow(1 - u, P);
+  const flyEaseInv = f => 1 - Math.pow(1 - f, 1 / P);
+
+  const pt = s => flight.getPointAtLength(clamp(s, 0, L));
+  const heading = s => {
+    const a = pt(s - 1.5), b = pt(s + 1.5);
+    return Math.atan2(b.y - a.y, b.x - a.x);
+  };
+
+  // when does the plane first fly over each letter?  (letter cx is in logo-local units)
+  letters.forEach(g => {
+    const cx = 382 + 2 * parseFloat(g.dataset.cx);
+    let s = 0;
+    while (s < L && pt(s).x < cx) s += 2;
+    g._t = T_START + flyEaseInv(s / L) * T_FLY + 0.05;
+  });
+
+  function renderAt(t) {
+    // ---- plane ----
+    const u = clamp((t - T_START) / T_FLY);
+    const s = flyEase(u) * L;
+    const p = pt(s);
+    const h = heading(s);
+    // bank: squash the wings in proportion to turn rate
+    const turn = Math.atan2(Math.sin(heading(s + 12) - heading(s - 12)), Math.cos(heading(s + 12) - heading(s - 12)));
+    const bank = 1 - clamp(Math.abs(turn) * 1.6, 0, 0.45);
+    // shrink while landing
+    const landK = easeInOutCubic(clamp((u - 0.86) / 0.14));
+    const scale = 1.55 * (1 - 0.55 * landK);
+    const alt = 26 * (1 - landK);               // shadow offset = altitude
+    const planeOpacity = 1 - clamp((t - T_LAND) / 0.12);
+    const deg = h * 180 / Math.PI;
+    const tf = (dx, dy) => `translate(${p.x + dx} ${p.y + dy}) rotate(${deg}) scale(${scale} ${scale * bank})`;
+    plane.setAttribute('transform', tf(0, 0));
+    shadow.setAttribute('transform', tf(alt * 0.6, alt));
+    plane.setAttribute('opacity', t < T_START ? 0 : planeOpacity);
+    shadow.setAttribute('opacity', t < T_START ? 0 : planeOpacity * (1 - landK));
+
+    // ---- contrail: dashed line revealed behind the plane, tail retracts after landing ----
+    const retract = easeInOutCubic(clamp((t - T_LAND) / 0.7));
+    const head = s;
+    let tail = Math.max(0, head - TRAIL_TAIL);
+    tail = tail + (head - tail) * retract;
+    reveal.setAttribute('stroke-dasharray', `${Math.max(0, head - tail)} ${L * 3}`);
+    reveal.setAttribute('stroke-dashoffset', -tail);
+    trail.setAttribute('opacity', t < T_START ? 0 : 1);
+
+    // ---- letters rise out of the baseline as the plane passes over ----
+    letters.forEach(g => {
+      const k = clamp((t - g._t) / 0.65);
+      const y = (1 - easeOutBack(k, 1.4)) * 100;
+      g.setAttribute('transform', `translate(0 ${y})`);
+      g.setAttribute('opacity', k > 0 ? 1 : 0);
+    });
+
+    // ---- arrival: plane becomes the dot of the i ----
+    const dk = clamp((t - T_LAND + 0.04) / 0.5);
+    const ds = dk > 0 ? 0.45 + 0.55 * easeOutBack(dk, 2.6) : 0;
+    dot.setAttribute('opacity', dk > 0 ? 1 : 0);
+    dot.setAttribute('r', 29.9 * ds);
+
+    ripples.forEach((c, i) => {
+      const rk = clamp((t - T_LAND - 0.05 - i * 0.22) / 1.1);
+      const e = easeOutCubic(rk);
+      c.setAttribute('r', 30 + e * 120);
+      c.setAttribute('opacity', rk > 0 && rk < 1 ? 0.55 * (1 - e) : 0);
+      c.setAttribute('stroke-width', 2.5 * (1 - e) + 0.5);
+    });
+
+    // ---- settle: tiny scale breath on the whole lockup after arrival ----
+    const bk = clamp((t - T_LAND - 0.1) / 1.2);
+    const breath = 1 + 0.018 * Math.sin(bk * Math.PI) ;
+    scene.setAttribute('transform', `translate(800 450) scale(${breath}) translate(-800 -450)`);
+  }
+  window.renderAt = renderAt;
+  window.ANIM_DURATION = T_END;
+
+  // ---- playback (skipped when ?export is used for frame export) ----
+  if (new URLSearchParams(location.search).has('export')) { renderAt(0); return; }
+  let t0 = performance.now();
+  const loop = now => {
+    const t = ((now - t0) / 1000) % LOOP;
+    renderAt(t);
+    // soft fade between loops
+    const f = t > LOOP - 0.45 ? 1 - (t - (LOOP - 0.45)) / 0.45 : t < 0.2 ? t / 0.2 : 1;
+    scene.style.opacity = f;
+    requestAnimationFrame(loop);
+  };
+  requestAnimationFrame(loop);
+  document.body.addEventListener('click', () => { t0 = performance.now(); });
+})();
+</script>
+</body>
+</html>
